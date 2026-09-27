@@ -72,3 +72,6 @@ sprites.info.json
 .vs/
 x64/
 *.user
+
+# GameMaker build output
+$out/
