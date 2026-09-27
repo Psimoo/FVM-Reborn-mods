@@ -1,0 +1,11 @@
+event_inherited();
+atk = 20;
+hp = 1800;
+maxhp = 1800;
+helmet_hp = 1440;
+helmet_max_hp = 1440;
+armor_dropped = false;
+attack_anim = 6;
+move_anim = 16;
+death_anim = 17;
+immune_to_ash = true;

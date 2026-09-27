@@ -1,7 +1,7 @@
 ﻿{
   "$GMFolder":"",
   "%Name":"undersea_can_mouse",
-  "folderPath":"folders/绮剧伒/Enemy/undersea_vortex/undersea_can_mouse.yy",
+  "folderPath":"folders/精灵/Enemy/undersea_vortex/undersea_can_mouse.yy",
   "isDefaultView":false,
   "listViewItems":[],
   "name":"undersea_can_mouse",

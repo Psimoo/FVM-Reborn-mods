@@ -38,7 +38,7 @@
   ],
   "name":"spr_lingrong_god_1",
   "nineSlice":null,
-  "origin":7,
+  "origin":9,
   "parent":{
     "name":"lingrong_god",
     "path":"folders/精灵/mod/Cards/lingrong_god.yy",
@@ -136,7 +136,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":44,
-    "yorigin":87,
+    "yorigin":76,
   },
   "swatchColours":null,
   "swfPrecision":0.5,

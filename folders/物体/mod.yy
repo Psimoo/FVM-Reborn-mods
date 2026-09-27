@@ -15,6 +15,7 @@
     {"name":"UI","path":"folders/物体/mod/UI.yy",},
     {"name":"Bullet","path":"folders/物体/mod/Bullet.yy",},
     {"name":"Gods Shop","path":"folders/物体/mod/Gods Shop.yy",},
+    {"name":"Cross Server","path":"folders/物体/mod/Cross Server.yy",},
     {"name":"germ","path":"folders/物体/mod/germ.yy",}
   ],
   "listItems":[],

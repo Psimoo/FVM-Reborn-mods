@@ -1,7 +1,7 @@
 ﻿{
   "$GMFolder":"",
   "%Name":"Shop",
-  "folderPath":"folders/绮剧伒/UI/Shop.yy",
+  "folderPath":"folders/精灵/UI/Shop.yy",
   "isDefaultView":false,
   "listViewItems":[],
   "name":"Shop",
@@ -10,7 +10,7 @@
   "viewLocked":false,
   "visible":true,
   "folders":[
-    {"name":"products","path":"folders/绮剧伒/UI/Shop/products.yy",}
+    {"name":"products","path":"folders/精灵/UI/Shop/products.yy",}
   ],
   "listItems":[],
 }

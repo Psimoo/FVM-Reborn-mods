@@ -1,7 +1,7 @@
 ﻿{
   "$GMFolder":"",
   "%Name":"machine_iron_pan_mouse",
-  "folderPath":"folders/绮剧伒/Enemy/floating_island/machine_iron_pan_mouse.yy",
+  "folderPath":"folders/精灵/Enemy/floating_island/machine_iron_pan_mouse.yy",
   "isDefaultView":false,
   "listViewItems":[],
   "name":"machine_iron_pan_mouse",

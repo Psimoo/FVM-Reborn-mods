@@ -1,7 +1,7 @@
 ﻿{
   "$GMFolder":"",
   "%Name":"mouse_train_1",
-  "folderPath":"folders/绮剧伒/Enemy/floating_island/BOSS/mouse_train_1.yy",
+  "folderPath":"folders/精灵/Enemy/floating_island/BOSS/mouse_train_1.yy",
   "isDefaultView":false,
   "listViewItems":[],
   "name":"mouse_train_1",

@@ -224,12 +224,13 @@ switch state{
 		}
 		if timer == 7*5+24*5*jump_times{
 			var avaliable_line = []
-			for(var i = 0 ; i < global.grid_rows-1;i++){
-				var lf = global.row_feature[i]
-				if lf == "land"{
-					array_push(avaliable_line,i)
-				}
+		for(var i = 0 ; i < global.grid_rows;i++){
+			var lf = global.row_feature[i]
+			if lf == "land"{
+				array_push(avaliable_line,i)
 			}
+		}
+		if (array_length(avaliable_line) > 0) {
 			var linei = irandom_range(0,array_length(avaliable_line)-1)
 			var hole_col = irandom_range(7,8)
 			var hole_row = avaliable_line[linei]
@@ -243,7 +244,8 @@ switch state{
 				}
 			}
 			instance_create_depth(hole_pos.x,hole_pos.y,-5,obj_pharaoh_hole)
-			jump_times++
+		}
+		jump_times++
 		}
 		if timer >= 12*5*8-1{
 			skill_cycle += 1

@@ -1,23 +1,22 @@
-var bullet_count = 2;
-var execute_threshold = 0.15;
-var elite_multiplier = 5;
+var bullet_count = 1;
+var execute_threshold = 0.25;
+var elite_multiplier = 10;
 var bullet_spr = spr_shuangrenshe_bullet;
+var damage_mult = 2;
 
 if (shape == 1) {
-    bullet_count = 3;
+    damage_mult = 3;
     bullet_spr = spr_shuangrenshe_bullet_1;
 } else if (shape == 2) {
-    bullet_count = 4;
-    execute_threshold = 0.25;
-    elite_multiplier = 10;
+    damage_mult = 4;
     bullet_spr = spr_shuangrenshe_bullet_2;
 }
 
-var y_offsets = [-75, -65, -85, -70];
+var y_offsets = [-75];
 
 for (var i = 0; i < bullet_count; i++) {
     var inst = instance_create_depth(x + 40, y + y_offsets[i], depth - 500, obj_double_blade_snake_bullet);
-    inst.damage = atk;
+    inst.damage = atk * damage_mult;
     inst.move_speed = 8;
     inst.row = grid_row;
     inst.execute_threshold = execute_threshold;

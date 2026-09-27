@@ -1,7 +1,7 @@
 ﻿{
   "$GMFolder":"",
   "%Name":"Shop",
-  "folderPath":"folders/鐗╀綋/Menu/Shop.yy",
+  "folderPath":"folders/物体/Menu/Shop.yy",
   "isDefaultView":false,
   "listViewItems":[],
   "name":"Shop",

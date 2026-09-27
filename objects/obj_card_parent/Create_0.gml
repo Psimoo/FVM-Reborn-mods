@@ -54,3 +54,9 @@ awake_anim = 0
 plant_id = ""  // 植物唯一标识符
 current_level = 0  // 当前等级
 
+// ========== 重生神减伤BUFF ==========
+chongsheng_buff_timer = 0
+chongsheng_buff_reduction = 0
+chongsheng_buff_source = noone
+_prev_hp = hp
+

@@ -1,7 +1,7 @@
 ﻿{
   "$GMFolder":"",
   "%Name":"chocolate_cannon",
-  "folderPath":"folders/绮剧伒/Cards/boomer/chocolate_cannon.yy",
+  "folderPath":"folders/精灵/Cards/boomer/chocolate_cannon.yy",
   "isDefaultView":false,
   "listViewItems":[],
   "name":"chocolate_cannon",

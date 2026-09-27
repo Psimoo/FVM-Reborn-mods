@@ -1,7 +1,7 @@
 ﻿{
   "$GMFolder":"",
   "%Name":"World Map",
-  "folderPath":"folders/鐗╀綋/Menu/World Map.yy",
+  "folderPath":"folders/物体/Menu/World Map.yy",
   "isDefaultView":false,
   "listViewItems":[],
   "name":"World Map",

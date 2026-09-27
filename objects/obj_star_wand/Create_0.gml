@@ -73,9 +73,3 @@ fire_cd = 0;
 burst_idx = 0;
 pending_hits = [];
 cur_hit = -4;
-
-enum UnknownEnum
-{
-    Value_0,
-    Value_1
-}

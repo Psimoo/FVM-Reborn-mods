@@ -1,4 +1,4 @@
-if (ds_list_find_index(brazier_list, other.id) == -1 && burnt == 0 && row == other.grid_row)
+if (ds_list_find_index(brazier_list, other.id) == -1 && burnt == 0 && col == other.grid_col)
 {
     burnt += 1;
     damage = round(damage * other.atk);

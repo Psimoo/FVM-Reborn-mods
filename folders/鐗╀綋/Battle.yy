@@ -1,7 +1,7 @@
 ﻿{
   "$GMFolder":"",
   "%Name":"Battle",
-  "folderPath":"folders/鐗╀綋/Battle.yy",
+  "folderPath":"folders/物体/Battle.yy",
   "isDefaultView":false,
   "listViewItems":[],
   "name":"Battle",
@@ -10,7 +10,7 @@
   "viewLocked":false,
   "visible":true,
   "folders":[
-    {"name":"Menu","path":"folders/鐗╀綋/Battle/Menu.yy",}
+    {"name":"Menu","path":"folders/物体/Battle/Menu.yy",}
   ],
   "listItems":[],
 }

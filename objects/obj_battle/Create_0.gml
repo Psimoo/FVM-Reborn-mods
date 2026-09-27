@@ -118,7 +118,7 @@ var plant_list = global.level_file.map
 global.grid_terrains = global.level_file.map
 global.row_feature = []
 for(var i = 0 ; i < global.grid_rows;i++){
-	if global.grid_terrains[i][0].type == "water"{
+	if global.grid_terrains[i][1].type == "water"{
 		global.row_feature[i] = "water"
 	}
 	else{
@@ -201,6 +201,7 @@ if is_real(global.level_file.version){
 
 current_wave_max_time = wave_max_time
 global.prev_place_id = ""
+boss_waiting_clear = false  // BOSS波：等待小怪全部清完再出BOSS
 
 function enemy_subwave_summon(){
 	current_total_hp = 0
@@ -254,11 +255,16 @@ function enemy_subwave_summon(){
     for (var m = 0; m < spawn_multiplier; m++) {
     for (var i = 0; i < array_length(enemy_list); i++) {
         if (enemy_list[i].type != "") {
+            var _enemy_type = enemy_list[i].type
+            if (!ds_map_exists(global.enemy_map, _enemy_type)){
+                show_debug_message("警告：敌人类型未注册，跳过生成: " + _enemy_type)
+                continue
+            }
             var target_row = enemy_list[i].row;
             var x_offset = 0;
             
             // 获取敌人的特性（陆地或水上）
-            var enemy_feature = global.enemy_map[? enemy_list[i].type].feature;
+            var enemy_feature = global.enemy_map[? _enemy_type].feature;
             
             // 情况1：已有行数的敌人
             if (target_row > 0 && target_row <= global.grid_rows) {
@@ -338,7 +344,7 @@ function enemy_subwave_summon(){
             }
             
             // 创建敌人实例
-            var enemy_obj = global.enemy_map[? enemy_list[i].type]._obj;
+            var enemy_obj = global.enemy_map[? _enemy_type]._obj;
             
             // 计算位置（考虑偏移）
             var new_x = global.grid_offset_x + (9 + x_offset) * global.grid_cell_size_x;
@@ -348,7 +354,7 @@ function enemy_subwave_summon(){
             var new_enemy = instance_create_depth(grid_pos.x+30, grid_pos.y + 38, 0, enemy_obj);
             
             // 更新统计信息
-            current_total_hp += global.enemy_map[? enemy_list[i].type].hp;
+            current_total_hp += global.enemy_map[? _enemy_type].hp;
             
             // 更新该行的敌人数
             var row_index = target_row - 1;

@@ -16,10 +16,13 @@ draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 // 绘制植物图标
 if card_equipped_attire_id(card_id) != -1{
-	var spr_list = get_attire_info(card_equipped_attire_id(card_id)).card_slot_icon
-	card_spr = spr_list[get_card_info_simple(card_id).shape]
-	var place_list = get_attire_info(card_equipped_attire_id(card_id)).spr
-	place_preview = place_list[get_card_info_simple(card_id).shape]
+	var _card_info = get_card_info_simple(card_id)
+	if _card_info != false{
+		var spr_list = get_attire_info(card_equipped_attire_id(card_id)).card_slot_icon
+		card_spr = spr_list[_card_info.shape]
+		var place_list = get_attire_info(card_equipped_attire_id(card_id)).spr
+		place_preview = place_list[_card_info.shape]
+	}
 }
 draw_sprite_ext(card_spr, 0, x, y+18,0.9,0.9,0,c_white,1);
 //绘制星级

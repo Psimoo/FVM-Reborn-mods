@@ -1,7 +1,7 @@
 ﻿{
   "$GMFolder":"",
   "%Name":"conch_mouse",
-  "folderPath":"folders/绮剧伒/Enemy/undersea_vortex/conch_mouse.yy",
+  "folderPath":"folders/精灵/Enemy/undersea_vortex/conch_mouse.yy",
   "isDefaultView":false,
   "listViewItems":[],
   "name":"conch_mouse",

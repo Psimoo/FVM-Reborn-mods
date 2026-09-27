@@ -38,6 +38,15 @@ function mod_buff_init()
     ds_map_set(global.plant_buff_map, "tiancheng", "multi_dir");
     ds_map_set(global.plant_buff_map, "war_god", "multi_dir");
 
+    // 附加类（海洋女神5x1范围增幅目标）
+    ds_map_set(global.plant_buff_map, "magic_chicken", "attach");
+    ds_map_set(global.plant_buff_map, "coke_bomb", "attach");
+    ds_map_set(global.plant_buff_map, "xuanfengniu", "attach");
+    ds_map_set(global.plant_buff_map, "nizhuanniu", "attach");
+    ds_map_set(global.plant_buff_map, "soda_bubble", "attach");
+    ds_map_set(global.plant_buff_map, "firework_dragon", "attach");
+    ds_map_set(global.plant_buff_map, "hufa_god", "attach");
+
     // 第二buff类型映射（植物可同时受益于两种buff类型，倍率相乘）
     global.plant_buff_map_2 = ds_map_create();
     ds_map_set(global.plant_buff_map_2, "cold_drew", "xiangshui");

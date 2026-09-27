@@ -1,7 +1,7 @@
 ﻿{
   "$GMFolder":"",
   "%Name":"pharaoh",
-  "folderPath":"folders/绮剧伒/Enemy/delicious_island/BOSS/pharaoh.yy",
+  "folderPath":"folders/精灵/Enemy/delicious_island/BOSS/pharaoh.yy",
   "isDefaultView":false,
   "listViewItems":[],
   "name":"pharaoh",

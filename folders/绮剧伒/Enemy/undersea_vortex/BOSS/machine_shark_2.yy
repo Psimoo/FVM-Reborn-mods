@@ -1,7 +1,7 @@
 ﻿{
   "$GMFolder":"",
   "%Name":"machine_shark_2",
-  "folderPath":"folders/绮剧伒/Enemy/undersea_vortex/BOSS/machine_shark_2.yy",
+  "folderPath":"folders/精灵/Enemy/undersea_vortex/BOSS/machine_shark_2.yy",
   "isDefaultView":false,
   "listViewItems":[],
   "name":"machine_shark_2",

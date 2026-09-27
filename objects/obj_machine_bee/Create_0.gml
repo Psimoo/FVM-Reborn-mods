@@ -8,4 +8,5 @@ death_anim = 10
 move_speed = 0.9
 atk = 20
 immune_to_ash = true
+mouse_id = "machine_bee"
 target_type = "air"

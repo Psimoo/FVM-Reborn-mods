@@ -1,0 +1,12 @@
+event_inherited();
+atk = 30;
+atk_cycle = 24;
+attack_range = 120;
+hp = 1200;
+maxhp = 1200;
+attack_anim = 8;
+move_anim = 8;
+death_anim = 12;
+move_speed = 0.6;
+reversed = false;
+immune_to_ash = true;

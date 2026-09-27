@@ -1,7 +1,7 @@
 ﻿{
   "$GMFolder":"",
   "%Name":"dragon_fruit",
-  "folderPath":"folders/绮剧伒/Cards/boomer/dragon_fruit.yy",
+  "folderPath":"folders/精灵/Cards/boomer/dragon_fruit.yy",
   "isDefaultView":false,
   "listViewItems":[],
   "name":"dragon_fruit",

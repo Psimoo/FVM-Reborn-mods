@@ -29,6 +29,7 @@ _poison.tick_damages = [round(atk * _poison_mult), round(_tick2 * _poison_mult),
 // 4) 四转：全屏 8000 灰烬爆炸 + 鼠疫（每1s 造成 [体力×0.03+1215] ×3次）
 if (shape >= 2)
 {
+    var _plague_hp = hp;
     with (obj_enemy_parent)
     {
         if (hp > 0)
@@ -39,7 +40,7 @@ if (shape >= 2)
         }
     }
     _poison.has_plague = true;
-    _poison.plague_damage = round(hp * 0.03 + 1215);
+    _poison.plague_damage = min(1000000, round(_plague_hp * 0.03 + 1215));
 }
 
 audio_play_sound(snd_coke_bomb_explode, 0, false);

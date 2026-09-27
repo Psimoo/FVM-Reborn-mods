@@ -1,7 +1,7 @@
 ﻿{
   "$GMFolder":"",
   "%Name":"houyi_god",
-  "folderPath":"folders/绮剧伒/mod/Cards/houyi_god.yy",
+  "folderPath":"folders/精灵/mod/Cards/houyi_god.yy",
   "isDefaultView":false,
   "listViewItems":[],
   "name":"houyi_god",

@@ -31,8 +31,9 @@ if (plant_data != undefined) {
             flame_produce = upgrade_data[? "flame_produce"];
         }
     }
-	
 }
+
+_prev_hp = hp
 
 if current_level >= 4{ //绑定星级贴图
 	var inst = instance_create_depth(x,y-5,depth-1,obj_stars)

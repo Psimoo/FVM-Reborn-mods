@@ -1,7 +1,7 @@
 ﻿{
   "$GMFolder":"",
   "%Name":"triple_wine_rack",
-  "folderPath":"folders/绮剧伒/Cards/Shooter/triple_wine_rack.yy",
+  "folderPath":"folders/精灵/Cards/Shooter/triple_wine_rack.yy",
   "isDefaultView":false,
   "listViewItems":[],
   "name":"triple_wine_rack",

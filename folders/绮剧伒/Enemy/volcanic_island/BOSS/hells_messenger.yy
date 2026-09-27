@@ -1,7 +1,7 @@
 ﻿{
   "$GMFolder":"",
   "%Name":"hells_messenger",
-  "folderPath":"folders/绮剧伒/Enemy/volcanic_island/BOSS/hells_messenger.yy",
+  "folderPath":"folders/精灵/Enemy/volcanic_island/BOSS/hells_messenger.yy",
   "isDefaultView":false,
   "listViewItems":[],
   "name":"hells_messenger",

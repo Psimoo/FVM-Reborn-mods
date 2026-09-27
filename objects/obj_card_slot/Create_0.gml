@@ -58,13 +58,22 @@ function select_slot(){
 function try_place_once(){
 	// 检查是否在可种植区域
 		
-		var card_shape = get_card_info_simple(card_id).shape
-		var card_data = deck_get_card_data(card_id,card_shape)
+		var card_data = noone
+		var _info = get_card_info_simple(card_id)
+		if _info != false{
+			var card_shape = _info.shape
+			card_data = deck_get_card_data(card_id,card_shape)
+		}
 		if card_id == "magic_chicken"{
 			if global.last_placed_card_id != ""{
-				card_shape = get_card_info_simple(global.last_placed_card_id).shape
-				card_data = deck_get_card_data(global.last_placed_card_id,card_shape)
+				var _info2 = get_card_info_simple(global.last_placed_card_id)
+				if _info2 != false{
+					card_data = deck_get_card_data(global.last_placed_card_id,_info2.shape)
+				}
 			}
+		}
+		if card_data == noone{
+			return
 		}
         
         var found_plat = noone;

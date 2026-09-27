@@ -36,7 +36,9 @@ if card_id == "magic_chicken"{
 				cooldown_timer = cooldown
 			}
 			var card_slot_data = deck_get_card_data(global.last_placed_card_id,card_save_data.shape)
-			card_spr = card_slot_data[? "sprite"]
+			if card_slot_data != noone{
+				card_spr = card_slot_data[? "sprite"]
+			}
 			//place_preview = card_slot_data[? "place_preview"]
 			//card_obj = card_slot_data[? "obj"]
 			

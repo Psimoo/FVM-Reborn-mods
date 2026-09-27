@@ -1,7 +1,7 @@
 ﻿{
   "$GMFolder":"",
   "%Name":"Cookbook",
-  "folderPath":"folders/鐗╀綋/Menu/Cookbook.yy",
+  "folderPath":"folders/物体/Menu/Cookbook.yy",
   "isDefaultView":false,
   "listViewItems":[],
   "name":"Cookbook",

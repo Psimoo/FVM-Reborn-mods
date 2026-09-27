@@ -1,10 +1,10 @@
 ﻿{
   "$GMFolder":"",
-  "%Name":"鍔ㄧ敾鏇茬嚎",
-  "folderPath":"folders/鍔ㄧ敾鏇茬嚎.yy",
+  "%Name":"动画曲线",
+  "folderPath":"folders/动画曲线.yy",
   "isDefaultView":false,
   "listViewItems":[],
-  "name":"鍔ㄧ敾鏇茬嚎",
+  "name":"动画曲线",
   "resourceType":"GMFolder",
   "resourceVersion":"2.0",
   "viewLocked":false,

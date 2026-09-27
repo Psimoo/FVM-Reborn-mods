@@ -1,7 +1,7 @@
 ﻿{
   "$GMFolder":"",
   "%Name":"Cards",
-  "folderPath":"folders/绮剧伒/Cards.yy",
+  "folderPath":"folders/精灵/Cards.yy",
   "isDefaultView":false,
   "listViewItems":[],
   "name":"Cards",
@@ -10,15 +10,15 @@
   "viewLocked":false,
   "visible":true,
   "folders":[
-    {"name":"Track","path":"folders/绮剧伒/Cards/Track.yy",},
-    {"name":"Vehicle","path":"folders/绮剧伒/Cards/Vehicle.yy",},
-    {"name":"Melee","path":"folders/绮剧伒/Cards/Melee.yy",},
-    {"name":"defender","path":"folders/绮剧伒/Cards/defender.yy",},
-    {"name":"boomer","path":"folders/绮剧伒/Cards/boomer.yy",},
-    {"name":"Flame Producer","path":"folders/绮剧伒/Cards/Flame Producer.yy",},
-    {"name":"Shooter","path":"folders/绮剧伒/Cards/Shooter.yy",},
-    {"name":"Pult","path":"folders/绮剧伒/Cards/Pult.yy",},
-    {"name":"Assistant","path":"folders/绮剧伒/Cards/Assistant.yy",}
+    {"name":"Track","path":"folders/精灵/Cards/Track.yy",},
+    {"name":"Vehicle","path":"folders/精灵/Cards/Vehicle.yy",},
+    {"name":"Melee","path":"folders/精灵/Cards/Melee.yy",},
+    {"name":"defender","path":"folders/精灵/Cards/defender.yy",},
+    {"name":"boomer","path":"folders/精灵/Cards/boomer.yy",},
+    {"name":"Flame Producer","path":"folders/精灵/Cards/Flame Producer.yy",},
+    {"name":"Shooter","path":"folders/精灵/Cards/Shooter.yy",},
+    {"name":"Pult","path":"folders/精灵/Cards/Pult.yy",},
+    {"name":"Assistant","path":"folders/精灵/Cards/Assistant.yy",}
   ],
   "listItems":[],
 }

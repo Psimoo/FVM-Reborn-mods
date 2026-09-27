@@ -16,6 +16,44 @@ if (x > 2200 || y > 1200 || x < 0 || y < 0)
     exit;
 }
 
+// Use the unscaled sprite bbox for reflection and obstacle blocking.
+if (!bounced)
+{
+    with (obj_water_god)
+    {
+        if (other.row == grid_row && precise_bbox_collision(other.id, id))
+        {
+            other.move_speed *= -1;
+            other.damage += atk;
+            other.image_angle += 180;
+            other.bounced = true;
+            break;
+        }
+    }
+}
+
+with (obj_obstacle)
+{
+    if (other.target_type == "normal" && other.row == row
+        && precise_bbox_collision(other.id, id))
+    {
+        if (other.burnt == 0)
+        {
+            var _effect = instance_create_depth(other.x, other.y, other.depth, obj_corn_shooter_effect);
+            _effect.sprite_index = spr_corn_shooter_bullet_effect;
+        }
+        else
+        {
+            var _effect = instance_create_depth(other.x + 25, other.y, other.depth, obj_fire_bullet_effect);
+            _effect.sprite_index = spr_fire_bullet_effect;
+        }
+        instance_destroy(other.id);
+    }
+}
+
+if (!instance_exists(id))
+    exit;
+
 // 类型过滤碰撞检测
 if (variable_global_exists("enemy_by_type"))
 {

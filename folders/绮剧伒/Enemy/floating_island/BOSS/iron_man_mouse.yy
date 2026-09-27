@@ -1,7 +1,7 @@
 ﻿{
   "$GMFolder":"",
   "%Name":"iron_man_mouse",
-  "folderPath":"folders/绮剧伒/Enemy/floating_island/BOSS/iron_man_mouse.yy",
+  "folderPath":"folders/精灵/Enemy/floating_island/BOSS/iron_man_mouse.yy",
   "isDefaultView":false,
   "listViewItems":[],
   "name":"iron_man_mouse",

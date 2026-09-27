@@ -139,48 +139,27 @@ else{
 	wave_data = global.level_file.waves[current_wave-1]
 }
 
-if wave_data.boss_wave && level_stage != "boss" && global.save_data.unlocked_items.elite_unlocked && wave_timer <= 1{
-	level_stage = "boss"
-	var boss_spawn_mult = 1
-	if global.difficulty == 5 || global.difficulty == 7{
-		boss_spawn_mult = 2
-	}
-	for (var bm = 0; bm < boss_spawn_mult; bm++){
-		var enemy_row = irandom_range(0,global.grid_rows-1)
-		var enemy_pos = get_world_position_from_grid(10,enemy_row)
-		var boss_inst = instance_create_depth(enemy_pos.x-80,enemy_pos.y+30,-200,global.enemy_map[? wave_data.boss]._obj)
-		boss_count ++
-		if is_real(global.level_file.version){
-			boss_inst.hp *= wave_data.boss_1_hp_modify
-			boss_inst.maxhp *= wave_data.boss_1_hp_modify
-			if wave_data.boss2 != ""{
-				var enemy_row_2 = irandom_range(0,global.grid_rows-1)
-				var enemy_pos_2 = get_world_position_from_grid(10,enemy_row_2)
-				var boss_2_inst = instance_create_depth(enemy_pos_2.x-80,enemy_pos_2.y+30,-200,global.enemy_map[? wave_data.boss2]._obj)
-				boss_2_inst.hp *= wave_data.boss_2_hp_modify
-				boss_2_inst.maxhp *= wave_data.boss_2_hp_modify
-				boss_count ++
-			}
-		}
-	}
-	with obj_battle_music_controller{
-		new_battle_music = global.level_data.boss_music
-		event_user(10)
-	}
-}
 if wave_timer <= 0 && level_stage == "pre"{
-	if(global.save_data.unlocked_items.elite_unlocked) || !global.save_data.unlocked_items.elite_unlocked && current_wave < global.level_file.elite_wave{
-		if current_wave < total_wave{
-			enemy_subwave_summon()
-		}
-		if current_subwave < current_total_subwaves-1{
-			current_subwave+=1
-		}
-		else if current_wave < total_wave{
-			current_wave += 1
-			current_subwave = 0
-			audio_play_sound(snd_mouse_wave_attack,0,0)
-			instance_create_depth(room_width/2,room_height/2,-300,obj_huge_wave_text)
+	if !boss_waiting_clear {
+		if(global.save_data.unlocked_items.elite_unlocked) || !global.save_data.unlocked_items.elite_unlocked && current_wave < global.level_file.elite_wave{
+			if current_wave < total_wave{
+				enemy_subwave_summon()
+			}
+			if current_subwave < current_total_subwaves-1{
+				current_subwave+=1
+			}
+			else if current_wave < total_wave{
+				if wave_data.boss_wave && global.save_data.unlocked_items.elite_unlocked{
+					// BOSS波：所有小怪生成完毕，等待玩家清光后再出BOSS
+					boss_waiting_clear = true
+				}
+				else{
+					current_wave += 1
+					current_subwave = 0
+					audio_play_sound(snd_mouse_wave_attack,0,0)
+					instance_create_depth(room_width/2,room_height/2,-300,obj_huge_wave_text)
+				}
+			}
 		}
 	}
 }

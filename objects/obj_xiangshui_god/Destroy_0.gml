@@ -1,6 +1,9 @@
 if (hp < max_hp && !invincible)
     obj_task_manager.card_loss++;
 
+if (instance_exists(xiangshui_effect_obj))
+    instance_destroy(xiangshui_effect_obj);
+
 card_destroyed(id);
 var idx = ds_list_find_index(global.buff_sources, id);
 
@@ -24,7 +27,7 @@ if (shape >= 2)
             {
                 if (_prev_hp > 0 && hp <= 0)
                 {
-                    if (special_ash)
+                    if ((is_boss || string_pos("infected_", mouse_id) == 1) && special_ash)
                     {
                         var inst = instance_create_depth(x, y - 20, depth, obj_mouse_ash_death);
                         inst.special_ash = true;

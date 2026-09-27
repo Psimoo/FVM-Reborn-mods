@@ -15,6 +15,10 @@ if (should_record && variable_instance_exists(id, "plant_id") && plant_id != "ba
         global.dead_cards = ds_list_create();
     }
 
+    var _death_cause = "mouse";
+    if (variable_instance_exists(id, "is_shoveled") && is_shoveled)
+        _death_cause = "shovel";
+
     var dead_data = ds_map_create();
     ds_map_add(dead_data, "plant_id", plant_id);
     ds_map_add(dead_data, "shape", shape);
@@ -22,6 +26,7 @@ if (should_record && variable_instance_exists(id, "plant_id") && plant_id != "ba
     ds_map_add(dead_data, "skill", skill);
     ds_map_add(dead_data, "grid_col", grid_col);
     ds_map_add(dead_data, "grid_row", grid_row);
+    ds_map_add(dead_data, "death_cause", _death_cause);
     ds_list_add(global.dead_cards, dead_data);
 }
 

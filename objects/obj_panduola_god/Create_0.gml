@@ -10,6 +10,8 @@ else if (shape == 1)
     sprite_index = spr_panduola_god_1;
 else if (shape == 2)
     sprite_index = spr_panduola_god_2;
+else if (shape == 3)
+    sprite_index = spr_panduola_god_3;
 
 image_index = 0;
 image_speed = 0;

@@ -1,7 +1,7 @@
 ﻿{
   "$GMFolder":"",
   "%Name":"sardine_mouse",
-  "folderPath":"folders/绮剧伒/Enemy/undersea_vortex/sardine_mouse.yy",
+  "folderPath":"folders/精灵/Enemy/undersea_vortex/sardine_mouse.yy",
   "isDefaultView":false,
   "listViewItems":[],
   "name":"sardine_mouse",

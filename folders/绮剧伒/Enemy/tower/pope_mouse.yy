@@ -1,7 +1,7 @@
 ﻿{
   "$GMFolder":"",
   "%Name":"pope_mouse",
-  "folderPath":"folders/绮剧伒/Enemy/tower/pope_mouse.yy",
+  "folderPath":"folders/精灵/Enemy/tower/pope_mouse.yy",
   "isDefaultView":false,
   "listViewItems":[],
   "name":"pope_mouse",

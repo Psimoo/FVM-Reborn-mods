@@ -164,6 +164,11 @@ function wanpilong_move_entity(_entity, _from_col, _from_row, _to_col, _to_row)
         _entity.banding_sleep_obj.x = _dest_pos.x;
         _entity.banding_sleep_obj.y = _dest_pos.y;
     }
+    if (variable_instance_exists(_entity, "inner_inst") && instance_exists(_entity.inner_inst))
+    {
+        _entity.inner_inst.x += _dest_pos.x - _orig_x;
+        _entity.inner_inst.y += _dest_pos.y - _orig_y;
+    }
 
     // 7. 如果是玩家角色，需要额外处理（角色逻辑）
     if (variable_instance_exists(_entity, "plant_id") && _entity.plant_id == "player")
@@ -290,7 +295,7 @@ function step_targeting_source()
     {
         var _plant_list = ds_grid_get(global.grid_plants, _mouse_grid.col, _mouse_grid.row);
 
-        for (var i = 0; i < ds_list_size(_plant_list); i++)
+        for (var i = ds_list_size(_plant_list) - 1; i >= 0; i--)
         {
             var _plant = ds_list_find_value(_plant_list, i);
             if (instance_exists(_plant) && wanpilong_is_valid_source(_plant))

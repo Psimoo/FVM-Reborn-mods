@@ -1,0 +1,9 @@
+row = 0;
+col = 0;
+timer = 0;
+banding_pipeline_obj = -4;
+image_xscale = 1.8;
+image_yscale = 1.8;
+image_speed = 0;
+ignore_list = ["infected_mario_mouse", "infected_mario_pipeline", "infected_arno", "barrier"];
+current_grid_type = "";

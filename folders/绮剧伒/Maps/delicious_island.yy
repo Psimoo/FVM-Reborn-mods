@@ -1,7 +1,7 @@
 ﻿{
   "$GMFolder":"",
   "%Name":"delicious_island",
-  "folderPath":"folders/绮剧伒/Maps/delicious_island.yy",
+  "folderPath":"folders/精灵/Maps/delicious_island.yy",
   "isDefaultView":false,
   "listViewItems":[],
   "name":"delicious_island",

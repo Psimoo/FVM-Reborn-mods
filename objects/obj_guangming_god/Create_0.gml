@@ -11,7 +11,7 @@ else if (shape == 1)
 else if (shape == 2)
     sprite_index = spr_guangming_god_2;
 else if (shape == 3)
-    sprite_index = spr_guangming_god_2;
+    sprite_index = spr_guangming_god_3;
 
 idle_anim = 11;           // 前12帧为待机（帧0-11）
 attack_anim = 21;         // 攻击动画21帧（帧12-32）
@@ -25,6 +25,9 @@ image_speed = 0;
 // 攻击相关变量
 attack_timer = 0;
 has_fired = false;
+attack_tick = 0;
+attack_tick_timer = 0;
+attack_targets = [];
 state = CARD_STATE.IDLE;
 
 // 范围（以格子为单位）

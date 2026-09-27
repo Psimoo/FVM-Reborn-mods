@@ -2,6 +2,8 @@ event_inherited();
 
 var _exp_range = explosion_range;
 var _center_x = x + global.grid_cell_size_x;
+if (shape >= 3)
+	_exp_range = 2.5 * global.grid_cell_size_x;
 
 var _effect_spr = spr_hundun_god_effect;
 if (shape == 1)
@@ -28,9 +30,27 @@ with (obj_enemy_parent)
 		var dy = y - other.y;
 		if (abs(dx) <= _exp_range && abs(dy) <= _exp_range)
 		{
-			damage_amount = other.elite_damage;
-			damage_type = "normal";
-			event_user(0);
+			if (!immune_to_ash)
+			{
+				if ((is_boss || string_pos("infected_", mouse_id) == 1) && special_ash)
+				{
+					var _ash = instance_create_depth(x, y - 20, depth, obj_mouse_ash_death);
+					_ash.special_ash = true;
+					_ash.sprite_index = sprite_index;
+					_ash.image_index = image_index;
+				}
+				else
+				{
+					instance_create_depth(x, y - 20, depth, obj_mouse_ash_death);
+				}
+				instance_destroy();
+			}
+			else
+			{
+				damage_amount = other.elite_damage;
+				damage_type = "pierce";
+				event_user(0);
+			}
 		}
 	}
 }

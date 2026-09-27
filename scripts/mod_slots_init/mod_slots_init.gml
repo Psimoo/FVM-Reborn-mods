@@ -1135,7 +1135,7 @@ function mod_slots_init()
         sprite: spr_save_god_0,
         cost: 375,
         cooldown: 1800,
-        description: "灵鱼摩蹉神使：化身为4条灵鱼，冲撞沿途遇到的老鼠",
+        description: "灵鱼摩羯神使：化身为4条灵鱼，冲撞沿途遇到的老鼠",
         plant_type: "normal",
         feature_type: "normal",
         target_card: "none",
@@ -1146,7 +1146,7 @@ function mod_slots_init()
         sprite: spr_save_god_1,
         cost: 375,
         cooldown: 1800,
-        description: "灵鱼摩蹉圣神：化身为4条灵鱼，冲撞沿途遇到的老鼠",
+        description: "灵鱼摩羯圣神：化身为4条灵鱼，冲撞沿途遇到的老鼠",
         plant_type: "coffee",
         feature_type: "normal",
         target_card: "none",
@@ -1157,7 +1157,7 @@ function mod_slots_init()
         sprite: spr_save_god_2_icon,
         cost: 375,
         cooldown: 1800,
-        description: "救世神·灵鱼摩蹉：化身为5条灵鱼，冲撞沿途遇到的老鼠",
+        description: "救世神·灵鱼摩羯：化身为5条灵鱼，冲撞沿途遇到的老鼠",
         plant_type: "coffee",
         feature_type: "normal",
         target_card: "none",
@@ -1438,9 +1438,9 @@ function mod_slots_init()
         sprite: spr_juxie,
         cost: 225,
         cooldown: 1800,
-        description: "巨蟹座精灵：发射4发强力钳子，全屏跟踪",
+        description: "巨蟹座精灵：发射4发强力钳子，全屏跟踪，海陆两栖",
         plant_type: "normal",
-        feature_type: "normal",
+        feature_type: "amphi",
         target_card: "none"
     }, 
     {
@@ -1448,9 +1448,9 @@ function mod_slots_init()
         sprite: spr_juxie_1,
         cost: 225,
         cooldown: 1200,
-        description: "巨蟹座战将：发射4发强力钳子，全屏跟踪",
+        description: "巨蟹座战将：发射4发强力钳子，全屏跟踪，海陆两栖",
         plant_type: "normal",
-        feature_type: "normal",
+        feature_type: "amphi",
         target_card: "none"
     }, 
     {
@@ -1458,9 +1458,9 @@ function mod_slots_init()
         sprite: spr_juxie_2,
         cost: 225,
         cooldown: 900,
-        description: "巨蟹座星宿：发射6发强力钳子，全屏跟踪",
+        description: "巨蟹座星宿：发射6发强力钳子，全屏跟踪，海陆两栖",
         plant_type: "normal",
-        feature_type: "normal",
+        feature_type: "amphi",
         target_card: "none"
     }]);
     register_card("shizi", obj_shizi, [
@@ -1931,7 +1931,7 @@ register_card("xiangshui_god", obj_xiangshui_god, [
 },
 {
     shape: 3,
-    sprite: spr_xiangshui_god_2,
+    sprite: spr_xiangshui_god_3,
     cost: 260,
     cooldown: 2400,
     description: "至尊宴飨女神：冰神类卡片共享增幅，为周围5x5范围追踪卡片提升大幅攻击力",
@@ -1939,7 +1939,7 @@ register_card("xiangshui_god", obj_xiangshui_god, [
     feature_type: "normal",
     target_card: "none",
     is_gold: 1,
-    place_preview: spr_xiangshui_god_2
+    place_preview: spr_xiangshui_god_3
 }]);
 
 register_card("fengrao_god", obj_fengrao_god, [
@@ -2042,6 +2042,56 @@ register_card("houyi_god", obj_houyi_god, [
     place_preview: spr_houyi_god_3
 }]);
 
+register_card("gongjiang_god", obj_gongjiang_god, [
+{
+    shape: 0,
+    sprite: spr_gongjiang_god,
+    cost: 385,
+    cooldown: 420,
+    description: "工匠神使：发射1发河豚子弹（4倍伤害）沿固定轨迹往返，可攻击地下/陆地/飞行老鼠",
+    plant_type: "normal",
+    feature_type: "normal",
+    target_card: "none",
+    is_gold: 1,
+    place_preview: spr_gongjiang_god
+},
+{
+    shape: 1,
+    sprite: spr_gongjiang_god_1,
+    cost: 385,
+    cooldown: 420,
+    description: "工匠圣神：子弹威力提升，概率附加河豚毒素",
+    plant_type: "normal",
+    feature_type: "normal",
+    target_card: "none",
+    is_gold: 1,
+    place_preview: spr_gongjiang_god_1
+},
+{
+    shape: 2,
+    sprite: spr_gongjiang_god_2,
+    cost: 385,
+    cooldown: 420,
+    description: "神工天匠：子弹威力提升至5倍，概率释放河豚毒素",
+    plant_type: "normal",
+    feature_type: "normal",
+    target_card: "none",
+    is_gold: 1,
+    place_preview: spr_gongjiang_god_2
+},
+{
+    shape: 3,
+    sprite: spr_gongjiang_god_3,
+    cost: 385,
+    cooldown: 420,
+    description: "至尊工匠神：第1、2列增加上下竖向子弹，子弹威力再次提升",
+    plant_type: "normal",
+    feature_type: "normal",
+    target_card: "none",
+    is_gold: 1,
+    place_preview: spr_gongjiang_god_3
+}]);
+
 register_card("heian_god", obj_heian_god, [
 {
     shape: 0,
@@ -2128,6 +2178,18 @@ register_card("hundun_god", obj_hundun_god, [
     target_card: "none",
     is_gold: 1,
     place_preview: spr_hundun_god_2
+},
+{
+    shape: 3,
+    sprite: spr_hundun_god_3,
+    cost: 350,
+    cooldown: 1800,
+    description: "至尊上古神：自身右侧为中心5×7范围吞噬普通鼠军，对精英鼠造成9000伤害",
+    plant_type: "normal",
+    feature_type: "normal",
+    target_card: "none",
+    is_gold: 1,
+    place_preview: spr_hundun_god_3
 }]);
 
 register_card("guangming_god", obj_guangming_god, [
@@ -2169,7 +2231,7 @@ register_card("guangming_god", obj_guangming_god, [
 },
 {
     shape: 3,
-    sprite: spr_guangming_god_2,
+    sprite: spr_guangming_god_3,
     cost: 395,
     cooldown: 1260,
     description: "至尊光明神：范围扩大至7*7，黑暗神在场时伤害提升至5/8倍，放置黑暗神触发更大爆炸",
@@ -2177,7 +2239,7 @@ register_card("guangming_god", obj_guangming_god, [
     feature_type: "normal",
     target_card: "none",
     is_gold: 1,
-    place_preview: spr_guangming_god_2
+    place_preview: spr_guangming_god_3
 }]);
 
 register_card("lingrong_god", obj_lingrong_god, [
@@ -2254,6 +2316,18 @@ register_card("lingrong_god", obj_lingrong_god, [
     target_card: "none",
     is_gold: 1,
     place_preview: spr_panduola_god_2
+},
+{
+    shape: 3,
+    sprite: spr_panduola_god_3,
+    cost: 255,
+    cooldown: 2400,
+    description: "终转疫神·潘多拉：全屏8000灰烬爆炸并造成三次鼠疫",
+    plant_type: "normal",
+    feature_type: "normal",
+    target_card: "none",
+    is_gold: 1,
+    place_preview: spr_panduola_god_3
 }]);
 
     register_card("12yinliao", obj_12yinliao, [
@@ -2711,4 +2785,192 @@ register_card("xuanfengniu", obj_xuanfengniu, [
         target_card: "none",
         is_gold: 0
     }]);
+
+    register_card("chongsheng_god", obj_chongsheng_god, [
+    {
+        shape: 0,
+        sprite: spr_chongsheng_god,
+        cost: 400,
+        cooldown: 1800,
+        description: "重生神使：5*5范围内监听卡片死亡并复活，首次触发时施加减伤BUFF",
+        plant_type: "normal",
+        feature_type: "normal",
+        target_card: "none",
+        is_gold: 1,
+        place_preview: spr_chongsheng_god
+    },
+    {
+        shape: 1,
+        sprite: spr_chongsheng_god_1,
+        cost: 400,
+        cooldown: 1800,
+        description: "重生圣神：复活上限提升至6张，减伤效果增强",
+        plant_type: "normal",
+        feature_type: "normal",
+        target_card: "none",
+        is_gold: 1,
+        place_preview: spr_chongsheng_god_1
+    },
+    {
+        shape: 2,
+        sprite: spr_chongsheng_god_2,
+        cost: 400,
+        cooldown: 1800,
+        description: "重生天神：复活上限6张，减伤BUFF持续时间延长",
+        plant_type: "normal",
+        feature_type: "normal",
+        target_card: "none",
+        is_gold: 1,
+        place_preview: spr_chongsheng_god_2
+    },
+    {
+        shape: 3,
+        sprite: spr_chongsheng_god_3,
+        cost: 400,
+        cooldown: 1800,
+        description: "至尊重生神：范围扩大至5*7，复活上限提升至12张，减伤大幅增强",
+        plant_type: "normal",
+        feature_type: "normal",
+        target_card: "none",
+        is_gold: 1,
+        place_preview: spr_chongsheng_god_3
+    }]);
+
+    register_card("haiyang_god", obj_haiyang_god, [
+    {
+        shape: 0,
+        sprite: spr_haiyang_god,
+        cost: 360,
+        cooldown: 2400,
+        description: "海洋女神使：5x5范围喷壶类、5x1范围附加类、本行咖啡喷壶类卡片增伤",
+        plant_type: "normal",
+        feature_type: "normal",
+        target_card: "none",
+        is_gold: 1,
+        place_preview: spr_haiyang_god
+    },
+    {
+        shape: 1,
+        sprite: spr_haiyang_god_1,
+        cost: 360,
+        cooldown: 2400,
+        description: "海洋女圣神：5x5范围喷壶类、5x1范围附加类、本行咖啡喷壶类卡片增伤",
+        plant_type: "normal",
+        feature_type: "normal",
+        target_card: "none",
+        is_gold: 1,
+        place_preview: spr_haiyang_god_1
+    },
+    {
+        shape: 2,
+        sprite: spr_haiyang_god_2,
+        cost: 360,
+        cooldown: 2400,
+        description: "海洋女神·忒堤斯：悬浮卡，5x5范围喷壶类、5x1范围附加类、本行咖啡喷壶类卡片增伤",
+        plant_type: "gridless",
+        feature_type: "normal",
+        target_card: "none",
+        is_gold: 1,
+        place_preview: spr_haiyang_god_2
+    },
+    {
+        shape: 3,
+        sprite: spr_haiyang_god_3,
+        cost: 360,
+        cooldown: 2400,
+        description: "至尊海洋女神：悬浮卡，场上满4张后全屏增幅喷壶类、附加类、咖啡喷壶类卡片",
+        plant_type: "gridless",
+        feature_type: "normal",
+        target_card: "none",
+        is_gold: 1,
+        place_preview: spr_haiyang_god_3
+    }]);
+
+register_card("hufa_god", obj_hufa_god, [
+{
+    shape: 0,
+    sprite: spr_hufa_god,
+    cost: 300,
+    cooldown: 420,
+    description: "护法神使：全屏索敌追踪穿透弹，秒杀非精英鼠，15%概率定身1.5秒",
+    plant_type: "normal",
+    feature_type: "normal",
+    target_card: "none",
+    is_gold: 1,
+    place_preview: spr_hufa_god
+},
+{
+    shape: 1,
+    sprite: spr_hufa_god_1,
+    cost: 300,
+    cooldown: 420,
+    description: "护法圣神：攻击力提升，魂系老鼠1.8倍伤害",
+    plant_type: "normal",
+    feature_type: "normal",
+    target_card: "none",
+    is_gold: 1,
+    place_preview: spr_hufa_god_1
+},
+{
+    shape: 2,
+    sprite: spr_hufa_god_2,
+    cost: 300,
+    cooldown: 420,
+    description: "护法天尊：追加地鼠目标，攻击力大幅提升",
+    plant_type: "normal",
+    feature_type: "normal",
+    target_card: "none",
+    is_gold: 1,
+    place_preview: spr_hufa_god_2
+},
+{
+    shape: 3,
+    sprite: spr_hufa_god_3,
+    cost: 300,
+    cooldown: 420,
+    description: "至尊护法神：终转对BOSS造成基础形态攻击力2倍伤害",
+    plant_type: "normal",
+    feature_type: "normal",
+    target_card: "none",
+    is_gold: 1,
+    place_preview: spr_hufa_god_3
+}]);
+
+register_card("shennong_god", obj_shennong_god, [
+{
+    shape: 0,
+    sprite: spr_shennong_god,
+    cost: 320,
+    cooldown: 420,
+    description: "炎帝神使：召唤固定轨迹穿透神焰攻击敌人，可攻击空中单位，击杀产生灰烬",
+    plant_type: "normal",
+    feature_type: "normal",
+    target_card: "none",
+    is_gold: 1,
+    place_preview: spr_shennong_god
+},
+{
+    shape: 1,
+    sprite: spr_shennong_god_1,
+    cost: 320,
+    cooldown: 420,
+    description: "炎帝圣神：攻击力提升，召唤固定轨迹穿透神焰攻击敌人",
+    plant_type: "normal",
+    feature_type: "normal",
+    target_card: "none",
+    is_gold: 1,
+    place_preview: spr_shennong_god_1
+},
+{
+    shape: 2,
+    sprite: spr_shennong_god_2,
+    cost: 320,
+    cooldown: 420,
+    description: "赤帝·炎帝：攻击力大幅提升，神焰威力增强",
+    plant_type: "normal",
+    feature_type: "normal",
+    target_card: "none",
+    is_gold: 1,
+    place_preview: spr_shennong_god_2
+}]);
 }

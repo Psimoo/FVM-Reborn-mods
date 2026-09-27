@@ -115,12 +115,6 @@ if (state != CARD_STATE.SLEEP)
         {
             has_fired = true;
 
-            var _atk = floor(atk * damage_multiplier);
-            var _gm_shape = shape;
-            var _gbullet_spr = spr_guangming_god_bullet;
-            if (_gm_shape == 1) _gbullet_spr = spr_guangming_god_bullet_1;
-            else if (_gm_shape >= 2) _gbullet_spr = spr_guangming_god_bullet_2;
-
             // Phase 1: 收集范围内所有可攻击敌人
             var _enemies = [];
             with (obj_enemy_parent)
@@ -140,50 +134,61 @@ if (state != CARD_STATE.SLEEP)
                 }
             }
 
-            // Phase 2: 为每个敌人创建子弹并造成伤害
-            for (var _i = 0; _i < array_length(_enemies); _i++)
+            attack_targets = _enemies;
+            attack_tick = 0;
+            attack_tick_timer = 0;
+        }
+
+        // 每次攻击持续约2.1秒，均匀结算10次伤害。
+        if (has_fired && attack_tick < 10)
+        {
+            attack_tick_timer++;
+            if (attack_tick_timer >= 13)
             {
-                var _e = _enemies[_i];
-                if (!instance_exists(_e)) continue;
-                if (_e.hp <= 0) continue;
-
-                // 创建子弹（视觉效果，出现在敌人位置）
-                var _gbullet = instance_create_depth(_e.x, _e.y - 20, depth - 100, obj_guangming_god_bullet);
-                _gbullet.sprite_index = _gbullet_spr;
-
-                // 爆炸光效
-                var _boom = instance_create_depth(_e.x, _e.y - 20, depth - 150, obj_guangming_god_effect);
-                _boom.sprite_index = _gbullet_spr;
-                _boom.is_one_shot = true;
-                _boom.frame_counter = 0;
-                _boom.flash_speed = 4;
-                _boom.image_xscale = 1.5;
-                _boom.image_yscale = 1.5;
-
-                // 子弹出现时立即造成伤害
-                if (_e.hp <= _atk)
+                attack_tick_timer = 0;
+                attack_tick++;
+                var _tick_atk = floor(atk * damage_multiplier);
+                for (var _ti = 0; _ti < array_length(attack_targets); _ti++)
                 {
-                    instance_create_depth(_e.x, _e.y - 20, _e.depth, obj_mouse_ash_death);
-                    instance_destroy(_e);
-                }
-                else
-                {
-                    with (_e)
+                    var _te = attack_targets[_ti];
+                    if (!instance_exists(_te) || _te.hp <= 0) continue;
+
+                    var _tick_spr = spr_guangming_god_bullet;
+                    if (shape == 1) _tick_spr = spr_guangming_god_bullet_1;
+                    else if (shape >= 2) _tick_spr = spr_guangming_god_bullet_2;
+
+                    var _bullet = instance_create_depth(_te.x, _te.y - 20, depth - 100, obj_guangming_god_bullet);
+                    _bullet.sprite_index = _tick_spr;
+                    var _impact = instance_create_depth(_te.x, _te.y - 20, depth - 150, obj_guangming_god_effect);
+                    _impact.sprite_index = _tick_spr;
+                    _impact.is_one_shot = true;
+                    _impact.frame_counter = 0;
+                    _impact.flash_speed = 4;
+                    _impact.image_xscale = 1.5;
+                    _impact.image_yscale = 1.5;
+
+                    var _before = _te.hp;
+                    _te.damage_amount = _tick_atk;
+                    _te.damage_type = "holy";
+                    with (_te)
                     {
-                        damage_amount = _atk;
-                        damage_type = "holy";
                         event_user(0);
                     }
+                    if (_before > 0 && _te.hp <= 0)
+                        instance_create_depth(_te.x, _te.y - 20, _te.depth, obj_mouse_ash_death);
                 }
             }
         }
 
         // 攻击动画播放完毕（image_index回到攻击起点），回到待机
-        if (has_fired && image_index <= idle_anim + 1)
+        if (has_fired && attack_tick >= 10 && image_index <= idle_anim + 1)
         {
             if (_has_enemy)
             {
                 has_fired = false;
+                attack_targets = [];
+                attack_tick = 0;
+                attack_tick_timer = 0;
             }
             else
             {

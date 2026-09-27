@@ -13,7 +13,8 @@
     {"name":"fengrao_god","path":"folders/物体/mod/Cards/fengrao_god.yy",},
     {"name":"save_god","path":"folders/物体/mod/Cards/save_god.yy",},
     {"name":"baibianshe","path":"folders/物体/mod/Cards/baibianshe.yy",},
-    {"name":"xiangshui_god","path":"folders/物体/mod/Cards/xiangshui_god.yy",}
+    {"name":"xiangshui_god","path":"folders/物体/mod/Cards/xiangshui_god.yy",},
+    {"name":"haiyang_god","path":"folders/物体/mod/Cards/haiyang_god.yy",}
   ],
   "listItems":[
     {"name":"obj_12yinliao","path":"objects/obj_12yinliao/obj_12yinliao.yy",},
@@ -25,6 +26,7 @@
     {"name":"obj_berry_dessert","path":"objects/obj_berry_dessert/obj_berry_dessert.yy",},
     {"name":"obj_blueberry_tower","path":"objects/obj_blueberry_tower/obj_blueberry_tower.yy",},
     {"name":"obj_brahma","path":"objects/obj_brahma/obj_brahma.yy",},
+    {"name":"obj_chongsheng_god","path":"objects/obj_chongsheng_god/obj_chongsheng_god.yy",},
     {"name":"obj_chunv","path":"objects/obj_chunv/obj_chunv.yy",},
     {"name":"obj_chunv_inner","path":"objects/obj_chunv_inner/obj_chunv_inner.yy",},
     {"name":"obj_clotho","path":"objects/obj_clotho/obj_clotho.yy",},

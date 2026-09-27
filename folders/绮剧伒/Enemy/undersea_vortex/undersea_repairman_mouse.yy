@@ -1,7 +1,7 @@
 ﻿{
   "$GMFolder":"",
   "%Name":"undersea_repairman_mouse",
-  "folderPath":"folders/绮剧伒/Enemy/undersea_vortex/undersea_repairman_mouse.yy",
+  "folderPath":"folders/精灵/Enemy/undersea_vortex/undersea_repairman_mouse.yy",
   "isDefaultView":false,
   "listViewItems":[],
   "name":"undersea_repairman_mouse",

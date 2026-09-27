@@ -1,0 +1,13 @@
+event_inherited();
+hp = 3600;
+maxhp = 3600;
+atk = 1800;
+atk_cycle = 108;
+attack_range = 120;
+move_speed = 0.27;
+move_anim = 21;
+attack_anim = 18;
+death_anim = 22;
+immune_to_ash = true;
+giant_type = true;
+throwed = false;

@@ -1,0 +1,756 @@
+{
+  "$GMSprite": "v2",
+  "%Name": "spr_infected_zhanshen_wood",
+  "bboxMode": 2,
+  "bbox_bottom": 209,
+  "bbox_left": 68,
+  "bbox_right": 133,
+  "bbox_top": 44,
+  "collisionKind": 5,
+  "collisionTolerance": 0,
+  "DynamicTexturePage": false,
+  "edgeFiltering": false,
+  "For3D": false,
+  "frames": [
+    {
+      "$GMSpriteFrame": "v1",
+      "%Name": "81533b06-b395-4840-8cec-30b938f54fdb",
+      "name": "81533b06-b395-4840-8cec-30b938f54fdb",
+      "resourceType": "GMSpriteFrame",
+      "resourceVersion": "2.0"
+    },
+    {
+      "$GMSpriteFrame": "v1",
+      "%Name": "3a9f8b81-f84f-45a1-8925-88c59aaaccdc",
+      "name": "3a9f8b81-f84f-45a1-8925-88c59aaaccdc",
+      "resourceType": "GMSpriteFrame",
+      "resourceVersion": "2.0"
+    },
+    {
+      "$GMSpriteFrame": "v1",
+      "%Name": "156e1a7e-1b0a-4374-92b8-541b3381003e",
+      "name": "156e1a7e-1b0a-4374-92b8-541b3381003e",
+      "resourceType": "GMSpriteFrame",
+      "resourceVersion": "2.0"
+    },
+    {
+      "$GMSpriteFrame": "v1",
+      "%Name": "7e809d9b-548b-4202-bebe-26013c270dee",
+      "name": "7e809d9b-548b-4202-bebe-26013c270dee",
+      "resourceType": "GMSpriteFrame",
+      "resourceVersion": "2.0"
+    },
+    {
+      "$GMSpriteFrame": "v1",
+      "%Name": "dfbe4045-2ebd-4d9f-afde-a00fc9e21d5f",
+      "name": "dfbe4045-2ebd-4d9f-afde-a00fc9e21d5f",
+      "resourceType": "GMSpriteFrame",
+      "resourceVersion": "2.0"
+    },
+    {
+      "$GMSpriteFrame": "v1",
+      "%Name": "ce65124e-0168-47e6-b2c8-e4ea3b91a9e4",
+      "name": "ce65124e-0168-47e6-b2c8-e4ea3b91a9e4",
+      "resourceType": "GMSpriteFrame",
+      "resourceVersion": "2.0"
+    },
+    {
+      "$GMSpriteFrame": "v1",
+      "%Name": "e5cf05b2-ed44-4f9a-9926-c2bef51d6fb1",
+      "name": "e5cf05b2-ed44-4f9a-9926-c2bef51d6fb1",
+      "resourceType": "GMSpriteFrame",
+      "resourceVersion": "2.0"
+    },
+    {
+      "$GMSpriteFrame": "v1",
+      "%Name": "d0965eb3-4e56-426c-8982-a75ffdbd6c99",
+      "name": "d0965eb3-4e56-426c-8982-a75ffdbd6c99",
+      "resourceType": "GMSpriteFrame",
+      "resourceVersion": "2.0"
+    },
+    {
+      "$GMSpriteFrame": "v1",
+      "%Name": "c08e763a-5fc9-49ee-90ae-189fa99dd67e",
+      "name": "c08e763a-5fc9-49ee-90ae-189fa99dd67e",
+      "resourceType": "GMSpriteFrame",
+      "resourceVersion": "2.0"
+    },
+    {
+      "$GMSpriteFrame": "v1",
+      "%Name": "3bab20dc-8050-4f3e-adc9-4ff83845e0e5",
+      "name": "3bab20dc-8050-4f3e-adc9-4ff83845e0e5",
+      "resourceType": "GMSpriteFrame",
+      "resourceVersion": "2.0"
+    },
+    {
+      "$GMSpriteFrame": "v1",
+      "%Name": "7b74c536-d6a1-4216-8933-f937f2fd5fa1",
+      "name": "7b74c536-d6a1-4216-8933-f937f2fd5fa1",
+      "resourceType": "GMSpriteFrame",
+      "resourceVersion": "2.0"
+    },
+    {
+      "$GMSpriteFrame": "v1",
+      "%Name": "e6b48fd4-59eb-4480-95e4-2e9f950e1afb",
+      "name": "e6b48fd4-59eb-4480-95e4-2e9f950e1afb",
+      "resourceType": "GMSpriteFrame",
+      "resourceVersion": "2.0"
+    },
+    {
+      "$GMSpriteFrame": "v1",
+      "%Name": "bf579d70-a8ca-4427-9c15-6db946982189",
+      "name": "bf579d70-a8ca-4427-9c15-6db946982189",
+      "resourceType": "GMSpriteFrame",
+      "resourceVersion": "2.0"
+    },
+    {
+      "$GMSpriteFrame": "v1",
+      "%Name": "fa5332bb-d64d-4f3a-a0e1-26600f960060",
+      "name": "fa5332bb-d64d-4f3a-a0e1-26600f960060",
+      "resourceType": "GMSpriteFrame",
+      "resourceVersion": "2.0"
+    },
+    {
+      "$GMSpriteFrame": "v1",
+      "%Name": "357c8473-6fa6-499c-ba04-57d61fdb434b",
+      "name": "357c8473-6fa6-499c-ba04-57d61fdb434b",
+      "resourceType": "GMSpriteFrame",
+      "resourceVersion": "2.0"
+    },
+    {
+      "$GMSpriteFrame": "v1",
+      "%Name": "10328151-1b82-493d-82be-7aa49e52bf5d",
+      "name": "10328151-1b82-493d-82be-7aa49e52bf5d",
+      "resourceType": "GMSpriteFrame",
+      "resourceVersion": "2.0"
+    },
+    {
+      "$GMSpriteFrame": "v1",
+      "%Name": "1e7cefd9-97c4-48e6-a3c5-d2dd17af07d1",
+      "name": "1e7cefd9-97c4-48e6-a3c5-d2dd17af07d1",
+      "resourceType": "GMSpriteFrame",
+      "resourceVersion": "2.0"
+    },
+    {
+      "$GMSpriteFrame": "v1",
+      "%Name": "db35cbd7-74ad-44b5-8e4a-d17a62cb1540",
+      "name": "db35cbd7-74ad-44b5-8e4a-d17a62cb1540",
+      "resourceType": "GMSpriteFrame",
+      "resourceVersion": "2.0"
+    },
+    {
+      "$GMSpriteFrame": "v1",
+      "%Name": "e64ffbb4-e136-4b8f-83fd-88b26f788fda",
+      "name": "e64ffbb4-e136-4b8f-83fd-88b26f788fda",
+      "resourceType": "GMSpriteFrame",
+      "resourceVersion": "2.0"
+    },
+    {
+      "$GMSpriteFrame": "v1",
+      "%Name": "901b6f46-70e7-4fa2-96c5-e120c05175d9",
+      "name": "901b6f46-70e7-4fa2-96c5-e120c05175d9",
+      "resourceType": "GMSpriteFrame",
+      "resourceVersion": "2.0"
+    },
+    {
+      "$GMSpriteFrame": "v1",
+      "%Name": "6c9140e5-cfae-4cc9-a59e-43fb76aee94c",
+      "name": "6c9140e5-cfae-4cc9-a59e-43fb76aee94c",
+      "resourceType": "GMSpriteFrame",
+      "resourceVersion": "2.0"
+    },
+    {
+      "$GMSpriteFrame": "v1",
+      "%Name": "85041208-1399-491b-9cc6-8da792146f9d",
+      "name": "85041208-1399-491b-9cc6-8da792146f9d",
+      "resourceType": "GMSpriteFrame",
+      "resourceVersion": "2.0"
+    }
+  ],
+  "gridX": 0,
+  "gridY": 0,
+  "height": 263,
+  "HTile": false,
+  "layers": [
+    {
+      "$GMImageLayer": "",
+      "%Name": "17bf03c7-b076-4109-b85a-794205895a74",
+      "blendMode": 0,
+      "displayName": "default",
+      "isLocked": false,
+      "name": "17bf03c7-b076-4109-b85a-794205895a74",
+      "opacity": 100,
+      "resourceType": "GMImageLayer",
+      "resourceVersion": "2.0",
+      "visible": true
+    }
+  ],
+  "name": "spr_infected_zhanshen_wood",
+  "nineSlice": null,
+  "origin": 9,
+  "parent": {
+    "name": "infected_zhanshen",
+    "path": "folders/精灵/Enemy/volcanic_island/BOSS/infected_zhanshen.yy"
+  },
+  "preMultiplyAlpha": false,
+  "resourceType": "GMSprite",
+  "resourceVersion": "2.0",
+  "sequence": {
+    "$GMSequence": "v1",
+    "%Name": "spr_infected_zhanshen_wood",
+    "autoRecord": true,
+    "backdropHeight": 768,
+    "backdropImageOpacity": 0.5,
+    "backdropImagePath": "",
+    "backdropWidth": 1366,
+    "backdropXOffset": 0,
+    "backdropYOffset": 0,
+    "events": {
+      "$KeyframeStore<MessageEventKeyframe>": "",
+      "Keyframes": [],
+      "resourceType": "KeyframeStore<MessageEventKeyframe>",
+      "resourceVersion": "2.0"
+    },
+    "eventStubScript": null,
+    "eventToFunction": {},
+    "length": 22,
+    "lockOrigin": false,
+    "moments": {
+      "$KeyframeStore<MomentsEventKeyframe>": "",
+      "Keyframes": [],
+      "resourceType": "KeyframeStore<MomentsEventKeyframe>",
+      "resourceVersion": "2.0"
+    },
+    "name": "spr_infected_zhanshen_wood",
+    "playback": 1,
+    "playbackSpeed": 12,
+    "playbackSpeedType": 0,
+    "resourceType": "GMSequence",
+    "resourceVersion": "2.0",
+    "showBackdrop": true,
+    "showBackdropImage": false,
+    "timeUnits": 1,
+    "tracks": [
+      {
+        "$GMSpriteFramesTrack": "",
+        "builtinName": 0,
+        "events": [],
+        "inheritsTrackColour": true,
+        "interpolation": 1,
+        "isCreationTrack": false,
+        "keyframes": {
+          "$KeyframeStore<SpriteFrameKeyframe>": "",
+          "Keyframes": [
+            {
+              "$Keyframe<SpriteFrameKeyframe>": "",
+              "Channels": {
+                "0": {
+                  "$SpriteFrameKeyframe": "",
+                  "Id": {
+                    "name": "81533b06-b395-4840-8cec-30b938f54fdb",
+                    "path": "sprites/spr_infected_zhanshen_wood/spr_infected_zhanshen_wood.yy"
+                  },
+                  "resourceType": "SpriteFrameKeyframe",
+                  "resourceVersion": "2.0"
+                }
+              },
+              "Disabled": false,
+              "id": "ed3235cf-60de-46de-953b-855d3d7ff919",
+              "IsCreationKey": false,
+              "Key": 0,
+              "Length": 1,
+              "resourceType": "Keyframe<SpriteFrameKeyframe>",
+              "resourceVersion": "2.0",
+              "Stretch": false
+            },
+            {
+              "$Keyframe<SpriteFrameKeyframe>": "",
+              "Channels": {
+                "0": {
+                  "$SpriteFrameKeyframe": "",
+                  "Id": {
+                    "name": "3a9f8b81-f84f-45a1-8925-88c59aaaccdc",
+                    "path": "sprites/spr_infected_zhanshen_wood/spr_infected_zhanshen_wood.yy"
+                  },
+                  "resourceType": "SpriteFrameKeyframe",
+                  "resourceVersion": "2.0"
+                }
+              },
+              "Disabled": false,
+              "id": "478d2b1c-8528-42e1-ada2-29078f157dc0",
+              "IsCreationKey": false,
+              "Key": 1,
+              "Length": 1,
+              "resourceType": "Keyframe<SpriteFrameKeyframe>",
+              "resourceVersion": "2.0",
+              "Stretch": false
+            },
+            {
+              "$Keyframe<SpriteFrameKeyframe>": "",
+              "Channels": {
+                "0": {
+                  "$SpriteFrameKeyframe": "",
+                  "Id": {
+                    "name": "156e1a7e-1b0a-4374-92b8-541b3381003e",
+                    "path": "sprites/spr_infected_zhanshen_wood/spr_infected_zhanshen_wood.yy"
+                  },
+                  "resourceType": "SpriteFrameKeyframe",
+                  "resourceVersion": "2.0"
+                }
+              },
+              "Disabled": false,
+              "id": "d88f0806-4a7e-487f-b06c-dce9aab26316",
+              "IsCreationKey": false,
+              "Key": 2,
+              "Length": 1,
+              "resourceType": "Keyframe<SpriteFrameKeyframe>",
+              "resourceVersion": "2.0",
+              "Stretch": false
+            },
+            {
+              "$Keyframe<SpriteFrameKeyframe>": "",
+              "Channels": {
+                "0": {
+                  "$SpriteFrameKeyframe": "",
+                  "Id": {
+                    "name": "7e809d9b-548b-4202-bebe-26013c270dee",
+                    "path": "sprites/spr_infected_zhanshen_wood/spr_infected_zhanshen_wood.yy"
+                  },
+                  "resourceType": "SpriteFrameKeyframe",
+                  "resourceVersion": "2.0"
+                }
+              },
+              "Disabled": false,
+              "id": "ea903a17-85c6-4451-be98-142256a4b204",
+              "IsCreationKey": false,
+              "Key": 3,
+              "Length": 1,
+              "resourceType": "Keyframe<SpriteFrameKeyframe>",
+              "resourceVersion": "2.0",
+              "Stretch": false
+            },
+            {
+              "$Keyframe<SpriteFrameKeyframe>": "",
+              "Channels": {
+                "0": {
+                  "$SpriteFrameKeyframe": "",
+                  "Id": {
+                    "name": "dfbe4045-2ebd-4d9f-afde-a00fc9e21d5f",
+                    "path": "sprites/spr_infected_zhanshen_wood/spr_infected_zhanshen_wood.yy"
+                  },
+                  "resourceType": "SpriteFrameKeyframe",
+                  "resourceVersion": "2.0"
+                }
+              },
+              "Disabled": false,
+              "id": "f9be2b51-9f89-4dc9-bc6f-8dfd827c27ee",
+              "IsCreationKey": false,
+              "Key": 4,
+              "Length": 1,
+              "resourceType": "Keyframe<SpriteFrameKeyframe>",
+              "resourceVersion": "2.0",
+              "Stretch": false
+            },
+            {
+              "$Keyframe<SpriteFrameKeyframe>": "",
+              "Channels": {
+                "0": {
+                  "$SpriteFrameKeyframe": "",
+                  "Id": {
+                    "name": "ce65124e-0168-47e6-b2c8-e4ea3b91a9e4",
+                    "path": "sprites/spr_infected_zhanshen_wood/spr_infected_zhanshen_wood.yy"
+                  },
+                  "resourceType": "SpriteFrameKeyframe",
+                  "resourceVersion": "2.0"
+                }
+              },
+              "Disabled": false,
+              "id": "13ec373e-6fd2-44e7-8382-5f2b61733376",
+              "IsCreationKey": false,
+              "Key": 5,
+              "Length": 1,
+              "resourceType": "Keyframe<SpriteFrameKeyframe>",
+              "resourceVersion": "2.0",
+              "Stretch": false
+            },
+            {
+              "$Keyframe<SpriteFrameKeyframe>": "",
+              "Channels": {
+                "0": {
+                  "$SpriteFrameKeyframe": "",
+                  "Id": {
+                    "name": "e5cf05b2-ed44-4f9a-9926-c2bef51d6fb1",
+                    "path": "sprites/spr_infected_zhanshen_wood/spr_infected_zhanshen_wood.yy"
+                  },
+                  "resourceType": "SpriteFrameKeyframe",
+                  "resourceVersion": "2.0"
+                }
+              },
+              "Disabled": false,
+              "id": "a68bcf84-2d0e-426b-9c99-8f12f3847cd3",
+              "IsCreationKey": false,
+              "Key": 6,
+              "Length": 1,
+              "resourceType": "Keyframe<SpriteFrameKeyframe>",
+              "resourceVersion": "2.0",
+              "Stretch": false
+            },
+            {
+              "$Keyframe<SpriteFrameKeyframe>": "",
+              "Channels": {
+                "0": {
+                  "$SpriteFrameKeyframe": "",
+                  "Id": {
+                    "name": "d0965eb3-4e56-426c-8982-a75ffdbd6c99",
+                    "path": "sprites/spr_infected_zhanshen_wood/spr_infected_zhanshen_wood.yy"
+                  },
+                  "resourceType": "SpriteFrameKeyframe",
+                  "resourceVersion": "2.0"
+                }
+              },
+              "Disabled": false,
+              "id": "2b8f6b8b-85bd-4417-96ad-cc8b5b64e6d5",
+              "IsCreationKey": false,
+              "Key": 7,
+              "Length": 1,
+              "resourceType": "Keyframe<SpriteFrameKeyframe>",
+              "resourceVersion": "2.0",
+              "Stretch": false
+            },
+            {
+              "$Keyframe<SpriteFrameKeyframe>": "",
+              "Channels": {
+                "0": {
+                  "$SpriteFrameKeyframe": "",
+                  "Id": {
+                    "name": "c08e763a-5fc9-49ee-90ae-189fa99dd67e",
+                    "path": "sprites/spr_infected_zhanshen_wood/spr_infected_zhanshen_wood.yy"
+                  },
+                  "resourceType": "SpriteFrameKeyframe",
+                  "resourceVersion": "2.0"
+                }
+              },
+              "Disabled": false,
+              "id": "f3e44e54-e6cb-437b-aa42-a456b9432543",
+              "IsCreationKey": false,
+              "Key": 8,
+              "Length": 1,
+              "resourceType": "Keyframe<SpriteFrameKeyframe>",
+              "resourceVersion": "2.0",
+              "Stretch": false
+            },
+            {
+              "$Keyframe<SpriteFrameKeyframe>": "",
+              "Channels": {
+                "0": {
+                  "$SpriteFrameKeyframe": "",
+                  "Id": {
+                    "name": "3bab20dc-8050-4f3e-adc9-4ff83845e0e5",
+                    "path": "sprites/spr_infected_zhanshen_wood/spr_infected_zhanshen_wood.yy"
+                  },
+                  "resourceType": "SpriteFrameKeyframe",
+                  "resourceVersion": "2.0"
+                }
+              },
+              "Disabled": false,
+              "id": "4ba9b61a-cfd1-434f-9f75-84180d43fd43",
+              "IsCreationKey": false,
+              "Key": 9,
+              "Length": 1,
+              "resourceType": "Keyframe<SpriteFrameKeyframe>",
+              "resourceVersion": "2.0",
+              "Stretch": false
+            },
+            {
+              "$Keyframe<SpriteFrameKeyframe>": "",
+              "Channels": {
+                "0": {
+                  "$SpriteFrameKeyframe": "",
+                  "Id": {
+                    "name": "7b74c536-d6a1-4216-8933-f937f2fd5fa1",
+                    "path": "sprites/spr_infected_zhanshen_wood/spr_infected_zhanshen_wood.yy"
+                  },
+                  "resourceType": "SpriteFrameKeyframe",
+                  "resourceVersion": "2.0"
+                }
+              },
+              "Disabled": false,
+              "id": "88ee6b17-c8b3-4d1b-beb9-15862e5a742e",
+              "IsCreationKey": false,
+              "Key": 10,
+              "Length": 1,
+              "resourceType": "Keyframe<SpriteFrameKeyframe>",
+              "resourceVersion": "2.0",
+              "Stretch": false
+            },
+            {
+              "$Keyframe<SpriteFrameKeyframe>": "",
+              "Channels": {
+                "0": {
+                  "$SpriteFrameKeyframe": "",
+                  "Id": {
+                    "name": "e6b48fd4-59eb-4480-95e4-2e9f950e1afb",
+                    "path": "sprites/spr_infected_zhanshen_wood/spr_infected_zhanshen_wood.yy"
+                  },
+                  "resourceType": "SpriteFrameKeyframe",
+                  "resourceVersion": "2.0"
+                }
+              },
+              "Disabled": false,
+              "id": "99bf98c5-0483-41e4-ac31-f28ad297a6a0",
+              "IsCreationKey": false,
+              "Key": 11,
+              "Length": 1,
+              "resourceType": "Keyframe<SpriteFrameKeyframe>",
+              "resourceVersion": "2.0",
+              "Stretch": false
+            },
+            {
+              "$Keyframe<SpriteFrameKeyframe>": "",
+              "Channels": {
+                "0": {
+                  "$SpriteFrameKeyframe": "",
+                  "Id": {
+                    "name": "bf579d70-a8ca-4427-9c15-6db946982189",
+                    "path": "sprites/spr_infected_zhanshen_wood/spr_infected_zhanshen_wood.yy"
+                  },
+                  "resourceType": "SpriteFrameKeyframe",
+                  "resourceVersion": "2.0"
+                }
+              },
+              "Disabled": false,
+              "id": "d78acde0-474f-4a91-b659-7f216d5fe1b6",
+              "IsCreationKey": false,
+              "Key": 12,
+              "Length": 1,
+              "resourceType": "Keyframe<SpriteFrameKeyframe>",
+              "resourceVersion": "2.0",
+              "Stretch": false
+            },
+            {
+              "$Keyframe<SpriteFrameKeyframe>": "",
+              "Channels": {
+                "0": {
+                  "$SpriteFrameKeyframe": "",
+                  "Id": {
+                    "name": "fa5332bb-d64d-4f3a-a0e1-26600f960060",
+                    "path": "sprites/spr_infected_zhanshen_wood/spr_infected_zhanshen_wood.yy"
+                  },
+                  "resourceType": "SpriteFrameKeyframe",
+                  "resourceVersion": "2.0"
+                }
+              },
+              "Disabled": false,
+              "id": "8d2b1342-f320-45cc-a534-6a404d56e6ef",
+              "IsCreationKey": false,
+              "Key": 13,
+              "Length": 1,
+              "resourceType": "Keyframe<SpriteFrameKeyframe>",
+              "resourceVersion": "2.0",
+              "Stretch": false
+            },
+            {
+              "$Keyframe<SpriteFrameKeyframe>": "",
+              "Channels": {
+                "0": {
+                  "$SpriteFrameKeyframe": "",
+                  "Id": {
+                    "name": "357c8473-6fa6-499c-ba04-57d61fdb434b",
+                    "path": "sprites/spr_infected_zhanshen_wood/spr_infected_zhanshen_wood.yy"
+                  },
+                  "resourceType": "SpriteFrameKeyframe",
+                  "resourceVersion": "2.0"
+                }
+              },
+              "Disabled": false,
+              "id": "68f21565-f908-47b5-83dd-260d6bfa5d26",
+              "IsCreationKey": false,
+              "Key": 14,
+              "Length": 1,
+              "resourceType": "Keyframe<SpriteFrameKeyframe>",
+              "resourceVersion": "2.0",
+              "Stretch": false
+            },
+            {
+              "$Keyframe<SpriteFrameKeyframe>": "",
+              "Channels": {
+                "0": {
+                  "$SpriteFrameKeyframe": "",
+                  "Id": {
+                    "name": "10328151-1b82-493d-82be-7aa49e52bf5d",
+                    "path": "sprites/spr_infected_zhanshen_wood/spr_infected_zhanshen_wood.yy"
+                  },
+                  "resourceType": "SpriteFrameKeyframe",
+                  "resourceVersion": "2.0"
+                }
+              },
+              "Disabled": false,
+              "id": "1094c1db-47f6-479b-9aaf-6945ae4444f2",
+              "IsCreationKey": false,
+              "Key": 15,
+              "Length": 1,
+              "resourceType": "Keyframe<SpriteFrameKeyframe>",
+              "resourceVersion": "2.0",
+              "Stretch": false
+            },
+            {
+              "$Keyframe<SpriteFrameKeyframe>": "",
+              "Channels": {
+                "0": {
+                  "$SpriteFrameKeyframe": "",
+                  "Id": {
+                    "name": "1e7cefd9-97c4-48e6-a3c5-d2dd17af07d1",
+                    "path": "sprites/spr_infected_zhanshen_wood/spr_infected_zhanshen_wood.yy"
+                  },
+                  "resourceType": "SpriteFrameKeyframe",
+                  "resourceVersion": "2.0"
+                }
+              },
+              "Disabled": false,
+              "id": "d7f2b306-c70b-415d-9663-a2b3a32e0bf7",
+              "IsCreationKey": false,
+              "Key": 16,
+              "Length": 1,
+              "resourceType": "Keyframe<SpriteFrameKeyframe>",
+              "resourceVersion": "2.0",
+              "Stretch": false
+            },
+            {
+              "$Keyframe<SpriteFrameKeyframe>": "",
+              "Channels": {
+                "0": {
+                  "$SpriteFrameKeyframe": "",
+                  "Id": {
+                    "name": "db35cbd7-74ad-44b5-8e4a-d17a62cb1540",
+                    "path": "sprites/spr_infected_zhanshen_wood/spr_infected_zhanshen_wood.yy"
+                  },
+                  "resourceType": "SpriteFrameKeyframe",
+                  "resourceVersion": "2.0"
+                }
+              },
+              "Disabled": false,
+              "id": "445e3a14-4a67-4f61-9c55-c750febfbd98",
+              "IsCreationKey": false,
+              "Key": 17,
+              "Length": 1,
+              "resourceType": "Keyframe<SpriteFrameKeyframe>",
+              "resourceVersion": "2.0",
+              "Stretch": false
+            },
+            {
+              "$Keyframe<SpriteFrameKeyframe>": "",
+              "Channels": {
+                "0": {
+                  "$SpriteFrameKeyframe": "",
+                  "Id": {
+                    "name": "e64ffbb4-e136-4b8f-83fd-88b26f788fda",
+                    "path": "sprites/spr_infected_zhanshen_wood/spr_infected_zhanshen_wood.yy"
+                  },
+                  "resourceType": "SpriteFrameKeyframe",
+                  "resourceVersion": "2.0"
+                }
+              },
+              "Disabled": false,
+              "id": "84591ba9-de00-4a5d-9676-18a40f5d5860",
+              "IsCreationKey": false,
+              "Key": 18,
+              "Length": 1,
+              "resourceType": "Keyframe<SpriteFrameKeyframe>",
+              "resourceVersion": "2.0",
+              "Stretch": false
+            },
+            {
+              "$Keyframe<SpriteFrameKeyframe>": "",
+              "Channels": {
+                "0": {
+                  "$SpriteFrameKeyframe": "",
+                  "Id": {
+                    "name": "901b6f46-70e7-4fa2-96c5-e120c05175d9",
+                    "path": "sprites/spr_infected_zhanshen_wood/spr_infected_zhanshen_wood.yy"
+                  },
+                  "resourceType": "SpriteFrameKeyframe",
+                  "resourceVersion": "2.0"
+                }
+              },
+              "Disabled": false,
+              "id": "1cab0643-6d6b-4128-894a-d25df6a72a24",
+              "IsCreationKey": false,
+              "Key": 19,
+              "Length": 1,
+              "resourceType": "Keyframe<SpriteFrameKeyframe>",
+              "resourceVersion": "2.0",
+              "Stretch": false
+            },
+            {
+              "$Keyframe<SpriteFrameKeyframe>": "",
+              "Channels": {
+                "0": {
+                  "$SpriteFrameKeyframe": "",
+                  "Id": {
+                    "name": "6c9140e5-cfae-4cc9-a59e-43fb76aee94c",
+                    "path": "sprites/spr_infected_zhanshen_wood/spr_infected_zhanshen_wood.yy"
+                  },
+                  "resourceType": "SpriteFrameKeyframe",
+                  "resourceVersion": "2.0"
+                }
+              },
+              "Disabled": false,
+              "id": "3b59e8be-6c29-438a-8592-3b6061757577",
+              "IsCreationKey": false,
+              "Key": 20,
+              "Length": 1,
+              "resourceType": "Keyframe<SpriteFrameKeyframe>",
+              "resourceVersion": "2.0",
+              "Stretch": false
+            },
+            {
+              "$Keyframe<SpriteFrameKeyframe>": "",
+              "Channels": {
+                "0": {
+                  "$SpriteFrameKeyframe": "",
+                  "Id": {
+                    "name": "85041208-1399-491b-9cc6-8da792146f9d",
+                    "path": "sprites/spr_infected_zhanshen_wood/spr_infected_zhanshen_wood.yy"
+                  },
+                  "resourceType": "SpriteFrameKeyframe",
+                  "resourceVersion": "2.0"
+                }
+              },
+              "Disabled": false,
+              "id": "cd1c3290-e523-4ee3-a065-873081e2cb4d",
+              "IsCreationKey": false,
+              "Key": 21,
+              "Length": 1,
+              "resourceType": "Keyframe<SpriteFrameKeyframe>",
+              "resourceVersion": "2.0",
+              "Stretch": false
+            }
+          ],
+          "resourceType": "KeyframeStore<SpriteFrameKeyframe>",
+          "resourceVersion": "2.0"
+        },
+        "modifiers": [],
+        "name": "frames",
+        "resourceType": "GMSpriteFramesTrack",
+        "resourceVersion": "2.0",
+        "spriteId": null,
+        "trackColour": 0,
+        "tracks": [],
+        "traits": 0
+      }
+    ],
+    "visibleRange": null,
+    "volume": 1,
+    "xorigin": 100,
+    "yorigin": 145
+  },
+  "swatchColours": null,
+  "swfPrecision": 0.5,
+  "textureGroupId": {
+    "name": "enemy_volcanic",
+    "path": "texturegroups/enemy_volcanic"
+  },
+  "type": 0,
+  "VTile": false,
+  "width": 201
+}

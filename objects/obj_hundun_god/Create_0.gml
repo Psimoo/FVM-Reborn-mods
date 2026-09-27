@@ -24,7 +24,7 @@ else if (shape == 1)
 else if (shape == 2)
 	sprite_index = spr_hundun_god_2;
 else if (shape == 3)
-	sprite_index = spr_hundun_god_2;
+	sprite_index = spr_hundun_god_3;
 
 flash_speed = 5;
 plant_type = "normal";
@@ -82,28 +82,22 @@ target_enemy = [];
 enemy_encounted = false;
 enemy_hitted = false;
 
-grid_range = 2;
-if (shape >= 1)
-	grid_range = 3;
-if (shape >= 2)
-	grid_range = 4;
-
-swallow_range_x = 2.5 * global.grid_cell_size_x;
-swallow_range_y = 2.5 * global.grid_cell_size_y;
+grid_range_col = 2;
+grid_range_row = 2;
 if (shape >= 1)
 {
-	swallow_range_x = 3.5 * global.grid_cell_size_x;
-	swallow_range_y = 3.5 * global.grid_cell_size_y;
+	grid_range_col = 3;
+	grid_range_row = 3;
 }
 if (shape >= 2)
 {
-	swallow_range_x = 3.5 * global.grid_cell_size_x;
-	swallow_range_y = 4.5 * global.grid_cell_size_y;
+	grid_range_col = 3;
+	grid_range_row = 4;
 }
 if (shape >= 3)
 {
-	swallow_range_x = 4.5 * global.grid_cell_size_x;
-	swallow_range_y = 4.5 * global.grid_cell_size_y;
+	grid_range_col = 2;
+	grid_range_row = 3;
 }
 
 elite_damage = 4500;
@@ -111,6 +105,8 @@ if (shape == 1)
 	elite_damage = 6000;
 else if (shape == 2)
 	elite_damage = 6000;
+else if (shape >= 3)
+	elite_damage = 9000;
 
 explosion_range = 1.5 * global.grid_cell_size_x;
 if (shape >= 1)

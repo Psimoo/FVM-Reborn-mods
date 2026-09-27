@@ -16,7 +16,8 @@
     {"name":"UI","path":"folders/精灵/mod/UI.yy",},
     {"name":"Bullet","path":"folders/精灵/mod/Bullet.yy",},
     {"name":"Effect","path":"folders/精灵/mod/Effect.yy",},
-    {"name":"germ","path":"folders/精灵/mod/germ.yy",}
+    {"name":"germ","path":"folders/精灵/mod/germ.yy",},
+    {"name":"Cross Server","path":"folders/精灵/mod/Cross Server.yy",}
   ],
   "listItems":[],
 }

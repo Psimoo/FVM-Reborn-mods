@@ -1,0 +1,16 @@
+event_inherited();
+atk = 20;
+hp = 360;
+maxhp = 360;
+move_anim = 13;
+attack_anim = 6;
+death_anim = 11;
+state = UnknownEnum.Value_4;
+sprite_index = spr_infected_little_panda_throw;
+target_type = "air";
+target_col = 2;
+target_row = 0;
+chspeed = -4;
+cvspeed = 7;
+cgravity = -0.2;
+land_timer = 0;

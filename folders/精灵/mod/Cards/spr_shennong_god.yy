@@ -1,0 +1,23 @@
+{
+  "$GMFolder":"",
+  "%Name":"spr_shennong_god",
+  "folderPath":"folders/精灵/mod/Cards/spr_shennong_god.yy",
+  "isDefaultView":false,
+  "listViewItems":[],
+  "name":"spr_shennong_god",
+  "resourceType":"GMFolder",
+  "resourceVersion":"2.0",
+  "viewLocked":false,
+  "visible":true,
+  "folders":[],
+  "listItems":[
+    {"name":"spr_shennong_god","path":"sprites/spr_shennong_god/spr_shennong_god.yy",},
+    {"name":"spr_shennong_god_1","path":"sprites/spr_shennong_god_1/spr_shennong_god_1.yy",},
+    {"name":"spr_shennong_god_2","path":"sprites/spr_shennong_god_2/spr_shennong_god_2.yy",},
+    {"name":"spr_shennong_god_bullet","path":"sprites/spr_shennong_god_bullet/spr_shennong_god_bullet.yy",},
+    {"name":"spr_shennong_god_bullet_1","path":"sprites/spr_shennong_god_bullet_1/spr_shennong_god_bullet_1.yy",},
+    {"name":"spr_shennong_god_bullet_2","path":"sprites/spr_shennong_god_bullet_2/spr_shennong_god_bullet_2.yy",},
+    {"name":"spr_shennong_god_pin1","path":"sprites/spr_shennong_god_pin1/spr_shennong_god_pin1.yy",},
+    {"name":"spr_shennong_god_pin2","path":"sprites/spr_shennong_god_pin2/spr_shennong_god_pin2.yy",}
+  ],
+}

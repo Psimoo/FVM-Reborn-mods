@@ -1,7 +1,7 @@
 ﻿{
   "$GMFolder":"",
   "%Name":"pete",
-  "folderPath":"folders/绮剧伒/Enemy/volcanic_island/BOSS/pete.yy",
+  "folderPath":"folders/精灵/Enemy/volcanic_island/BOSS/pete.yy",
   "isDefaultView":false,
   "listViewItems":[],
   "name":"pete",

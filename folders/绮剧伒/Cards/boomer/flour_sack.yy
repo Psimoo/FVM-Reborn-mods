@@ -1,7 +1,7 @@
 ﻿{
   "$GMFolder":"",
   "%Name":"flour_sack",
-  "folderPath":"folders/绮剧伒/Cards/boomer/flour_sack.yy",
+  "folderPath":"folders/精灵/Cards/boomer/flour_sack.yy",
   "isDefaultView":false,
   "listViewItems":[],
   "name":"flour_sack",

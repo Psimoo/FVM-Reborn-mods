@@ -1,7 +1,7 @@
 ﻿{
   "$GMFolder":"",
   "%Name":"lobster_athena",
-  "folderPath":"folders/绮剧伒/UI/Attire/lobster_athena.yy",
+  "folderPath":"folders/精灵/UI/Attire/lobster_athena.yy",
   "isDefaultView":false,
   "listViewItems":[],
   "name":"lobster_athena",

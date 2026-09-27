@@ -197,8 +197,8 @@ function gods_shop_init()
         type: "card",
         cost: "16",
         unlock_item_id: "save_god",
-        description: "灵鱼摩蹉神使：化身为4条灵鱼，冲撞沿途遇到的老鼠",
-        display_name: "灵鱼摩蹉神使"
+        description: "灵鱼摩羯神使：化身为4条灵鱼，冲撞沿途遇到的老鼠",
+        display_name: "灵鱼摩羯神使"
     });
     register_gods_goods("joker", 
     {
@@ -454,7 +454,7 @@ function gods_shop_init()
         cost: "16",
         unlock_item_id: "save_god",
         target_shape: 1,
-        description: "灵鱼摩蹉圣神：无需格子",
+        description: "灵鱼摩羯圣神：无需格子",
         display_name: "三转凭证（救世神）",
         spr: spr_save_1pin
     });
@@ -714,7 +714,7 @@ function gods_shop_init()
         cost: "32",
         unlock_item_id: "save_god",
         target_shape: 2,
-        description: "救世神·灵鱼摩蹉：增加2条灵鱼，几率清理障碍",
+        description: "救世神·灵鱼摩羯：增加2条灵鱼，几率清理障碍",
         display_name: "四转凭证（救世神）",
         spr: spr_save_2pin
     });
@@ -1018,7 +1018,7 @@ register_gods_goods("xiangshui_god_3",
     target_shape: 3,
     description: "至尊宴飨女神：冰神类卡片共享增幅，增幅倍数大幅提升",
     display_name: "终转凭证（塔利亚）",
-    spr: spr_xiangshui_god_pin2
+    spr: spr_xiangshui_god_pin3
 });
 
 register_gods_goods("fengrao_god",
@@ -1094,6 +1094,17 @@ register_gods_goods("panduola_god_2",
     spr: spr_panduola_pin2
 });
 
+register_gods_goods("panduola_god_3",
+{
+    type: "shape",
+    cost: "48",
+    unlock_item_id: "panduola_god",
+    target_shape: 3,
+    description: "终转疫神·潘多拉：全屏8000灰烬爆炸并造成三次鼠疫",
+    display_name: "终转凭证（潘多拉）",
+    spr: spr_panduola_pin3
+});
+
 register_gods_goods("houyi_god",
 {
     type: "card",
@@ -1136,6 +1147,48 @@ register_gods_goods("houyi_god_3",
     spr: spr_houyi_god_pin3
 });
 
+register_gods_goods("gongjiang_god",
+{
+    type: "card",
+    cost: "16",
+    unlock_item_id: "gongjiang_god",
+    description: "工匠神使：发射1发河豚子弹（4倍伤害）沿固定轨迹往返，可攻击地下/陆地/飞行老鼠",
+    display_name: "工匠神使"
+});
+
+register_gods_goods("gongjiang_god_1",
+{
+    type: "shape",
+    cost: "16",
+    unlock_item_id: "gongjiang_god",
+    target_shape: 1,
+    description: "工匠圣神：子弹威力提升，概率附加河豚毒素",
+    display_name: "三转凭证（工匠）",
+    spr: spr_gongjiang_god_pin1
+});
+
+register_gods_goods("gongjiang_god_2",
+{
+    type: "shape",
+    cost: "32",
+    unlock_item_id: "gongjiang_god",
+    target_shape: 2,
+    description: "神工天匠：子弹威力提升至5倍，概率释放河豚毒素",
+    display_name: "四转凭证（工匠）",
+    spr: spr_gongjiang_god_pin2
+});
+
+register_gods_goods("gongjiang_god_3",
+{
+    type: "shape",
+    cost: "48",
+    unlock_item_id: "gongjiang_god",
+    target_shape: 3,
+    description: "至尊工匠神：第1、2列增加上下竖向子弹，子弹威力再次提升",
+    display_name: "终转凭证（工匠）",
+    spr: spr_gongjiang_god_pin3
+});
+
 register_gods_goods("guangming_god",
 {
     type: "card",
@@ -1165,6 +1218,17 @@ register_gods_goods("guangming_god_2",
     description: "光明神·巴德尔：黑暗神存在时，光影爆炸效果和圣光威力大幅提升",
     display_name: "四转凭证（光明神）",
     spr: spr_guangming_god_pin2
+});
+
+register_gods_goods("guangming_god_3",
+{
+    type: "shape",
+    cost: "48",
+    unlock_item_id: "guangming_god",
+    target_shape: 3,
+    description: "至尊光明神：范围扩大至7×7，黑暗神联动爆炸强化",
+    display_name: "终转凭证（光明神）",
+    spr: spr_guangming_god_pin3
 });
 
 register_gods_goods("heian_god",
@@ -1240,6 +1304,17 @@ register_gods_goods("hundun_god_2",
     spr: spr_hundun_pin2_
 });
 
+register_gods_goods("hundun_god_3",
+{
+    type: "shape",
+    cost: "48",
+    unlock_item_id: "hundun_god",
+    target_shape: 3,
+    description: "至尊上古神：自身右侧为中心5×7范围吞噬普通鼠军，对精英鼠造成9000伤害",
+    display_name: "终转凭证（上古神）",
+    spr: spr_hundun_pin3
+});
+
 register_gods_goods("lingrong_god",
 {
     type: "card",
@@ -1271,5 +1346,161 @@ register_gods_goods("lingrong_god_2",
     spr: spr_lingrong_god_pin2
 });
 
-}
+register_gods_goods("shennong_god",
+{
+    type: "card",
+    cost: "16",
+    unlock_item_id: "shennong_god",
+    description: "炎帝神使：召唤固定轨迹穿透神焰攻击敌人，可攻击空中单位，击杀产生灰烬",
+    display_name: "炎帝神使"
+});
 
+register_gods_goods("shennong_god_1",
+{
+    type: "shape",
+    cost: "16",
+    unlock_item_id: "shennong_god",
+    target_shape: 1,
+    description: "炎帝圣神：攻击力提升，召唤固定轨迹穿透神焰攻击敌人",
+    display_name: "三转凭证（炎帝）",
+    spr: spr_shennong_god_pin1
+});
+
+register_gods_goods("shennong_god_2",
+{
+    type: "shape",
+    cost: "32",
+    unlock_item_id: "shennong_god",
+    target_shape: 2,
+    description: "赤帝·炎帝：攻击力大幅提升，神焰威力增强",
+    display_name: "四转凭证（炎帝）",
+    spr: spr_shennong_god_pin2
+});
+
+register_gods_goods("chongsheng_god",
+{
+    type: "card",
+    cost: "16",
+    unlock_item_id: "chongsheng_god",
+    description: "重生神使：5*5范围内监听卡片死亡并复活，首次触发时施加减伤BUFF",
+    display_name: "重生神使"
+});
+
+register_gods_goods("chongsheng_god_1",
+{
+    type: "shape",
+    cost: "16",
+    unlock_item_id: "chongsheng_god",
+    target_shape: 1,
+    description: "重生圣神：复活上限提升至6张，减伤效果增强",
+    display_name: "三转凭证（重生神）",
+    spr: spr_chongsheng_god_pin1
+});
+
+register_gods_goods("chongsheng_god_2",
+{
+    type: "shape",
+    cost: "32",
+    unlock_item_id: "chongsheng_god",
+    target_shape: 2,
+    description: "重生天神：复活上限6张，减伤BUFF持续时间延长",
+    display_name: "四转凭证（重生神）",
+    spr: spr_chongsheng_god_pin2
+});
+
+register_gods_goods("chongsheng_god_3",
+{
+    type: "shape",
+    cost: "48",
+    unlock_item_id: "chongsheng_god",
+    target_shape: 3,
+    description: "至尊重生神：范围扩大至5*7，复活上限提升至12张，减伤大幅增强",
+    display_name: "终转凭证（重生神）",
+    spr: spr_chongsheng_god_pin3
+});
+
+register_gods_goods("hufa_god",
+{
+    type: "card",
+    cost: "16",
+    unlock_item_id: "hufa_god",
+    description: "护法神使：全屏索敌追踪穿透弹，秒杀非精英鼠，15%概率定身1.5秒",
+    display_name: "护法神使"
+});
+
+register_gods_goods("hufa_god_1",
+{
+    type: "shape",
+    cost: "16",
+    unlock_item_id: "hufa_god",
+    target_shape: 1,
+    description: "护法圣神：攻击力提升，魂系老鼠1.8倍伤害",
+    display_name: "三转凭证（护法）",
+    spr: spr_hufa_god_pin1
+});
+
+register_gods_goods("hufa_god_2",
+{
+    type: "shape",
+    cost: "32",
+    unlock_item_id: "hufa_god",
+    target_shape: 2,
+    description: "护法天尊：追加地鼠目标，攻击力大幅提升",
+    display_name: "四转凭证（护法）",
+    spr: spr_hufa_god_pin2
+});
+
+register_gods_goods("hufa_god_3",
+{
+    type: "shape",
+    cost: "48",
+    unlock_item_id: "hufa_god",
+    target_shape: 3,
+    description: "至尊护法神：终转对BOSS造成基础形态攻击力2倍伤害",
+    display_name: "终转凭证（护法）",
+    spr: spr_hufa_god_pin3
+});
+
+register_gods_goods("haiyang_god",
+{
+    type: "card",
+    cost: "16",
+    unlock_item_id: "haiyang_god",
+    description: "海洋女神使：为5×5范围喷壶类、5×1范围附加类、本行咖啡喷壶类卡片增伤",
+    display_name: "海洋女神使"
+});
+
+register_gods_goods("haiyang_god_1",
+{
+    type: "shape",
+    cost: "16",
+    unlock_item_id: "haiyang_god",
+    target_shape: 1,
+    description: "海洋女圣神：攻击力提升，增幅倍率增加",
+    display_name: "三转凭证（海洋女神）",
+    spr: spr_haiyang_god_pin1
+});
+
+register_gods_goods("haiyang_god_2",
+{
+    type: "shape",
+    cost: "32",
+    unlock_item_id: "haiyang_god",
+    target_shape: 2,
+    description: "海洋女神·忒堤斯：悬浮卡，不占用格子，攻击力大幅提升",
+    display_name: "四转凭证（海洋女神）",
+    spr: spr_haiyang_god_pin2
+});
+
+register_gods_goods("haiyang_god_3",
+{
+    type: "shape",
+    cost: "48",
+    unlock_item_id: "haiyang_god",
+    target_shape: 3,
+    description: "至尊海洋女神：场上满4张后，增幅范围扩大至全屏",
+    display_name: "终转凭证（海洋女神）",
+    spr: spr_haiyang_god_pin3
+});
+
+}

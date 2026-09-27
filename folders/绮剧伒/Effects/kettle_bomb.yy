@@ -1,7 +1,7 @@
 ﻿{
   "$GMFolder":"",
   "%Name":"kettle_bomb",
-  "folderPath":"folders/绮剧伒/Effects/kettle_bomb.yy",
+  "folderPath":"folders/精灵/Effects/kettle_bomb.yy",
   "isDefaultView":false,
   "listViewItems":[],
   "name":"kettle_bomb",

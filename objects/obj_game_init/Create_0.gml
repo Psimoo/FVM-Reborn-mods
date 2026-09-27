@@ -44,9 +44,10 @@ global.level_name = "曲奇岛"
 global.level_data = {}
 global.debug = 0
 global.laboretory_room = false
-global.game_version = "2.4.1.18"
+global.game_version = "2.4.1.22"
 global.tower_level_click = false
 global.tower_cake_page = 1
+global.cross_server_return_page = -1
 Music_Init()
 
 global.laboratory_manager = new LaboratoryManager()

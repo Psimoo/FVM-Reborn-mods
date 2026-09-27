@@ -1,7 +1,7 @@
 ﻿{
   "$GMFolder":"",
   "%Name":"cotton_candy",
-  "folderPath":"folders/绮剧伒/Cards/Vehicle/cotton_candy.yy",
+  "folderPath":"folders/精灵/Cards/Vehicle/cotton_candy.yy",
   "isDefaultView":false,
   "listViewItems":[],
   "name":"cotton_candy",

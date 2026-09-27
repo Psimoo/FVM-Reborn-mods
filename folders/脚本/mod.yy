@@ -29,6 +29,7 @@
     {"name":"mod_shop_init","path":"scripts/mod_shop_init/mod_shop_init.yy",},
     {"name":"mod_skill_init","path":"scripts/mod_skill_init/mod_skill_init.yy",},
     {"name":"mod_slots_init","path":"scripts/mod_slots_init/mod_slots_init.yy",},
+    {"name":"ocean_god_buff","path":"scripts/ocean_god_buff/ocean_god_buff.yy",},
     {"name":"mod_transform_into_target","path":"scripts/mod_transform_into_target/mod_transform_into_target.yy",},
     {"name":"mod_weapons_init","path":"scripts/mod_weapons_init/mod_weapons_init.yy",},
     {"name":"zhiyumiao_config","path":"scripts/zhiyumiao_config/zhiyumiao_config.yy",},

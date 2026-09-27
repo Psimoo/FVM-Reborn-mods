@@ -1,7 +1,7 @@
 ﻿{
   "$GMFolder":"",
   "%Name":"spr_youyu_god",
-  "folderPath":"folders/绮剧伒/mod/shengxiaocard/spr_youyu_god.yy",
+  "folderPath":"folders/精灵/mod/shengxiaocard/spr_youyu_god.yy",
   "isDefaultView":false,
   "listViewItems":[],
   "name":"spr_youyu_god",

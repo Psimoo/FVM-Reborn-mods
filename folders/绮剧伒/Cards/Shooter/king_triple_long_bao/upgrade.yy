@@ -1,7 +1,7 @@
 ﻿{
   "$GMFolder":"",
   "%Name":"upgrade",
-  "folderPath":"folders/绮剧伒/Cards/Shooter/king_triple_long_bao/upgrade.yy",
+  "folderPath":"folders/精灵/Cards/Shooter/king_triple_long_bao/upgrade.yy",
   "isDefaultView":false,
   "listViewItems":[],
   "name":"upgrade",

@@ -1,8 +1,11 @@
 var _elite_damage = elite_damage
 var _double_hit = double_hit
-var _grid_range = grid_range
+var _grid_range_col = grid_range_col
+var _grid_range_row = grid_range_row
 var _center_row = grid_row
 var _center_col = grid_col
+if (shape >= 3)
+	_center_col += 1
 
 if shape == 0{
 	if array_length(target_enemy) > 0{
@@ -36,7 +39,7 @@ else{
 		if hp > 0{
 			var _rd = abs(grid_row - _center_row)
 			var _cd = abs(grid_col - _center_col)
-			if _rd <= _grid_range && _cd <= _grid_range && can_hit(other.target_type, target_type){
+			if _rd <= _grid_range_row && _cd <= _grid_range_col && can_hit(other.target_type, target_type){
 				if !immune_to_ash
 					array_push(_kill_list, id)
 				else

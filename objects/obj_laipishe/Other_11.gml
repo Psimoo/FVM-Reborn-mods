@@ -18,7 +18,7 @@ for (var i = 0; i < bullet_count; i++)
     // 路径点1：右下角（最右列最后一行格子，子弹底部对齐到格子下边）
     var _wp1 = get_world_position_from_grid(_right_col, global.grid_rows - 1);
     inst.wp1_x = _wp1.x;
-    inst.wp1_y = _wp1.y + global.grid_cell_size_y / 2 - sprite_get_height(spr_laipishe_bullet) / 2;
+    inst.wp1_y = _wp1.y + global.grid_cell_size_y / 2 - sprite_get_height(spr_laipishe_bullet) * inst.image_yscale / 2;
 
     // 路径点2：右上角（最右列第一行格子的上边）
     var _wp2 = get_world_position_from_grid(_right_col, 0);

@@ -11,14 +11,35 @@ if (!has_activated && state_timer >= activate_delay) {
     is_activating = true;
     state = CARD_STATE.RELAX;
 
+    // 1) 对指定飞行老鼠造成伤害（不再秒杀，扣除血量）
+    var _damage_targets = [
+        obj_aircraft_carrier,
+        obj_kamikaze_glider_mouse,
+        obj_machine_bee,
+        obj_machine_flag_mouse,
+        obj_machine_bomb_mouse,
+        obj_airbrone_explosive_mouse,
+        obj_flight_barrier_mouse
+    ];
+    for (var _d = 0; _d < array_length(_damage_targets); _d++) {
+        var _obj = _damage_targets[_d];
+        with (_obj) {
+            if (hp > 0 && state != ENEMY_STATE.DEAD) {
+                damage_amount = other.damage;
+                damage_type = "normal";
+                event_user(0);
+                instance_create_depth(x, y, depth - 10, obj_xuanfengniu_effect);
+            }
+        }
+    }
+
+    // 2) 快照其余合法空中老鼠（按白名单筛选）
     var _ids = [];
 
-    // 1) 快照全屏合法空中老鼠（按白名单筛选）
     with (obj_enemy_parent) {
         if (hp <= 0) continue;
         if (state == ENEMY_STATE.DEAD) continue;
         if (is_boss) continue;
-        if (target_type != "air") continue;
 
         // 必须在白名单内才能被吹走
         if (array_get_index(other.air_mouse_whitelist, mouse_id) == -1) continue;

@@ -12,4 +12,10 @@ function mod_boss_init()
         hp: 18000,
         icon: spr_arno_icon
     });
+    register_boss("infected_fire_residue", 
+    {
+        name: "感染火渣",
+        hp: 12000,
+        icon: spr_infected_bingzha_icon
+    });
 }

@@ -10,6 +10,13 @@ if (global.buff_dirty)
     show_debug_message("buff地图更新");
 }
 
+// 海洋女神增幅系统
+if (variable_global_exists("ocean_buff_dirty") && global.ocean_buff_dirty)
+{
+    rebuild_ocean_buff();
+    show_debug_message("海洋女神增幅更新");
+}
+
 if (!shield_replaced)
 {
     if (global.save_data.equipped_items.secondary_weapon.id == "master_shield")
@@ -66,6 +73,12 @@ else
             if (!variable_instance_exists(self.id, "buff_applied_id"))
             {
                 self.buff_applied_id = -1;
+                just_initialized = true;
+            }
+
+            if (!variable_instance_exists(self.id, "ocean_buff_multiplier"))
+            {
+                self.ocean_buff_multiplier = 1;
                 just_initialized = true;
             }
             
@@ -202,7 +215,12 @@ else
                     buff_multiplier = max(buff_multiplier, buff2_multiplier);
                 }
 
-                self.atk = self.base_atk * buff_multiplier;
+                // 海洋女神增幅倍率
+                var ocean_mult = 1;
+                if (variable_instance_exists(self.id, "ocean_buff_multiplier"))
+                    ocean_mult = self.ocean_buff_multiplier;
+
+                self.atk = self.base_atk * buff_multiplier * ocean_mult;
 
                 self.buff_applied_id = global.buff_apply_id;
             }

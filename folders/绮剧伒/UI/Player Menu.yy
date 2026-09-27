@@ -1,7 +1,7 @@
 ﻿{
   "$GMFolder":"",
   "%Name":"Player Menu",
-  "folderPath":"folders/绮剧伒/UI/Player Menu.yy",
+  "folderPath":"folders/精灵/UI/Player Menu.yy",
   "isDefaultView":false,
   "listViewItems":[],
   "name":"Player Menu",

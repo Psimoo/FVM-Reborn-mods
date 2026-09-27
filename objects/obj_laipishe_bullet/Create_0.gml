@@ -33,3 +33,7 @@ wp2_y = 0;
 // 最大存活帧数兜底
 max_life_frames = 900;
 life_frames = 0;
+
+// 视觉与碰撞放大 1.8 倍（对齐披萨子弹）
+image_xscale = 1.8;
+image_yscale = 1.8;

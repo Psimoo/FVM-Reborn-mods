@@ -1,0 +1,13 @@
+event_inherited();
+atk = 20;
+attack_range = 180;
+hp = 720;
+maxhp = 720;
+move_anim = 4;
+attack_anim = 10;
+death_anim = 10;
+move_speed = 2.25;
+state = UnknownEnum.Value_4;
+immune_to_ash = true;
+arm_dropped = false;
+block_list = ["chocolate_bread", "pineapple_explosive_bread"];

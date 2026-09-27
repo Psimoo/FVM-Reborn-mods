@@ -1,0 +1,21 @@
+{
+  "$GMFolder":"",
+  "%Name":"infected_pharaoh",
+  "folderPath":"folders/精灵/Enemy/delicious_island/BOSS/infected_pharaoh.yy",
+  "isDefaultView":false,
+  "listViewItems":[],
+  "name":"infected_pharaoh",
+  "resourceType":"GMFolder",
+  "resourceVersion":"2.0",
+  "viewLocked":false,
+  "visible":true,
+  "folders":[],
+  "listItems":[
+    {"name":"262ff54b-7ed3-4531-9b85-43ee349a8d94","path":"sprites/spr_infected_pharaoh_appear/spr_infected_pharaoh_appear.yy",},
+    {"name":"40c12f18-0065-46a7-ab13-0292f767c9fa","path":"sprites/spr_infected_pharaoh_death/spr_infected_pharaoh_death.yy",},
+    {"name":"e2aac18f-8df6-4fb6-8ff9-5d022ec19aac","path":"sprites/spr_infected_pharaoh_idle/spr_infected_pharaoh_idle.yy",},
+    {"name":"7d47624a-8ffd-4824-a6e6-abd43a9fb8c5","path":"sprites/spr_infected_pharaoh_skill_1/spr_infected_pharaoh_skill_1.yy",},
+    {"name":"858d2777-1e5e-424b-b212-730cf4b1c94d","path":"sprites/spr_infected_pharaoh_skill_2/spr_infected_pharaoh_skill_2.yy",},
+    {"name":"8ee220c2-5adf-4688-b89c-a72487c379f5","path":"sprites/spr_infected_pharaoh_skill_3/spr_infected_pharaoh_skill_3.yy",}
+  ],
+}

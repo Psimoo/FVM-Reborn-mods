@@ -83,17 +83,17 @@ if (has_enemy)
         }
         
         attack_timer++;
-        state = UnknownEnum.Value_1;
+        state = 1;
     }
     else
     {
         attack_timer = 0;
-        state = UnknownEnum.Value_0;
+        state = 0;
     }
 }
 else
 {
     attack_timer = 0;
-    state = UnknownEnum.Value_0;
+    state = 0;
 }
 

@@ -1,7 +1,7 @@
 ﻿{
   "$GMFolder":"",
   "%Name":"spr_anranxiaohunfan",
-  "folderPath":"folders/绮剧伒/mod/shengxiaocard/spr_anranxiaohunfan.yy",
+  "folderPath":"folders/精灵/mod/shengxiaocard/spr_anranxiaohunfan.yy",
   "isDefaultView":false,
   "listViewItems":[],
   "name":"spr_anranxiaohunfan",

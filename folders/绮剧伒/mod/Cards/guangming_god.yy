@@ -1,7 +1,7 @@
 ﻿{
   "$GMFolder":"",
   "%Name":"guangming_god",
-  "folderPath":"folders/绮剧伒/mod/Cards/guangming_god.yy",
+  "folderPath":"folders/精灵/mod/Cards/guangming_god.yy",
   "isDefaultView":false,
   "listViewItems":[],
   "name":"guangming_god",

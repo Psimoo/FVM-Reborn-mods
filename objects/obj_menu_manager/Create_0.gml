@@ -9,6 +9,7 @@ if surface_exists(application_surface){
 	surface_reset_target();
 }
 
+
 instance_create_depth(1355,820,-2,obj_startgame_button)
 instance_create_depth(100,0,-2,obj_player_info_ui)
 
@@ -61,25 +62,20 @@ function after_texture_load() {
     scribble_font_set_default("font_hei")
     scribble_font_bake_outline_4dir("font_hei", "font_hei_outline_4dir_black", c_dkgray, false)
     
-    // 字体缺失字符适配：从 font_pixel 复制缺失的汉字到各主字体
-    var _missing_chars = "窒黏蝙蝠鲨鳗牡蛎";
+    // 字体缺失字符适配：将导出字体中的全部字形合并到各主字体。
+    // 情报岛文案覆盖面很大，手工维护少数字符会持续产生方框。
     var _target_fonts = ["font_yuan", "font_hei", "font_song", "font_song2"];
-    var _source_font = "font_pixel";
-    
-    if (scribble_font_exists(_source_font)) {
-        for (var _fi = 0; _fi < array_length(_target_fonts); _fi++) {
-            var _tfont = _target_fonts[_fi];
-            if (scribble_font_exists(_tfont)) {
-                var _chars_to_copy = "";
-                for (var _ci = 1; _ci <= string_length(_missing_chars); _ci++) {
-                    var _ch = string_char_at(_missing_chars, _ci);
-                    if (!scribble_font_has_character(_tfont, _ch)) {
-                        _chars_to_copy += _ch;
-                    }
-                }
-                if (string_length(_chars_to_copy) > 0) {
-                    scribble_super_glyph_copy(_tfont, _source_font, false, _chars_to_copy);
-                }
+    var _source_fonts = ["font_yuan", "font_pixel", "font_song", "font_song2"];
+
+    for (var _fi = 0; _fi < array_length(_target_fonts); _fi++) {
+        var _tfont = _target_fonts[_fi];
+        if (!scribble_font_exists(_tfont)) continue;
+
+        for (var _si = 0; _si < array_length(_source_fonts); _si++) {
+            var _sfont = _source_fonts[_si];
+            if (scribble_font_exists(_sfont) && _sfont != _tfont) {
+                // overwrite=false 只补目标字体没有的字形，保留原字体已有字形。
+                scribble_super_glyph_copy_all(_tfont, _sfont, false);
             }
         }
     }
@@ -92,6 +88,16 @@ function after_texture_load() {
 	}
 	obj_player_info_ui.menu_type = 0
 	obj_world_map_button.world_map = 0
+
+	// 从跨服远征关卡返回时，恢复跨服远征界面
+	if (global.cross_server_return_page >= 0) {
+	    var _cs_bg = instance_create_depth((room_width / 2) - 5, room_height / 2, -100, obj_cross_server_bg);
+	    _cs_bg.selected_page = global.cross_server_return_page;
+	    _cs_bg.refresh_level_buttons();
+	    obj_player_info_ui.menu_type = 4;
+	    obj_world_map_button.world_map = 2;
+	    global.cross_server_return_page = -1;
+	}
 }
 
 function pre_load_texture() {
@@ -168,3 +174,12 @@ function on_draw() {
 	draw_text(_x1+self.total_progress_bar_width/2, _y1 - 80, "本游戏为免费开源游戏，任何付费获取方式均为诈骗\n游戏作者B站名称：Spring曙光");
 }
 
+// 纹理已预加载时，直接在 Create 阶段恢复跨服远征界面（首次加载走 after_texture_load）
+if (global.preloaded && global.cross_server_return_page >= 0) {
+    var _cs_bg = instance_create_depth((room_width / 2) - 5, room_height / 2, -100, obj_cross_server_bg);
+    _cs_bg.selected_page = global.cross_server_return_page;
+    _cs_bg.refresh_level_buttons();
+    obj_player_info_ui.menu_type = 4;
+    obj_world_map_button.world_map = 2;
+    global.cross_server_return_page = -1;
+}

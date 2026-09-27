@@ -1,5 +1,8 @@
-clevel = get_card_info_simple(card_id).level
-cshape = get_card_info_simple(card_id).shape
+var _base_info = get_card_info_simple(card_id)
+if _base_info != false{
+	clevel = _base_info.level
+	cshape = _base_info.shape
+}
 //cskill = get_card_info_simple(card_id).skill
 var plant_data = get_plant_data(card_id);
 if (plant_data != undefined) {

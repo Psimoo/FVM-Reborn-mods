@@ -205,7 +205,7 @@ function mod_shop_init()
         type: "card",
         cost: "10000",
         unlock_item_id: "juxie",
-        description: "巨蟹座精灵：发射4发强力钳子，全屏跟踪",
+        description: "巨蟹座精灵：发射4发强力钳子，全屏跟踪，海陆两栖",
         display_name: "巨蟹座精灵"
     });
     register_goods("shizi", 

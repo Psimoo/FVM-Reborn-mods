@@ -1,0 +1,16 @@
+{
+  "$GMFolder":"",
+  "%Name":"shennong_god",
+  "folderPath":"folders/物体/mod/Cards/shennong_god.yy",
+  "isDefaultView":false,
+  "listViewItems":[],
+  "name":"shennong_god",
+  "resourceType":"GMFolder",
+  "resourceVersion":"2.0",
+  "viewLocked":false,
+  "visible":true,
+  "folders":[],
+  "listItems":[
+    {"name":"obj_shennong_god","path":"objects/obj_shennong_god/obj_shennong_god.yy",}
+  ],
+}

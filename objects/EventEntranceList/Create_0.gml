@@ -30,7 +30,8 @@ function create_widgets() {
                                                    instance_exists(obj_task_bg) ||
                                                    instance_exists(obj_craft_bg) ||
                                                    instance_exists(obj_tower_cake_bg) ||
-                                                   instance_exists(obj_quit_confirm)
+                                                   instance_exists(obj_quit_confirm) ||
+                                                   instance_exists(obj_cross_server_bg)
                             return !_has_float_layer
                         }))
 

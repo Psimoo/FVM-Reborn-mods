@@ -1,7 +1,7 @@
 ﻿{
   "$GMFolder":"",
   "%Name":"Button",
-  "folderPath":"folders/绮剧伒/Button.yy",
+  "folderPath":"folders/精灵/Button.yy",
   "isDefaultView":false,
   "listViewItems":[],
   "name":"Button",

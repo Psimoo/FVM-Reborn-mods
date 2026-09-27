@@ -1,0 +1,13 @@
+event_inherited();
+atk = 20;
+hp = 360;
+maxhp = 360;
+attack_anim = 4;
+move_anim = 16;
+death_anim = 13;
+move_speed = 0.6;
+reversed = false;
+immune_to_ash = true;
+entered = false;
+up = false;
+target_type = "diver";

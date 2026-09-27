@@ -192,7 +192,7 @@ function zhiyumiao_heal_area_5x5(_source, _heal_amount, _apply_regen, _stage) {
             _total_healed += _applied;
 
             if (_apply_regen && _applied >= 0) {
-                zhiyumiao_apply_regen_buff(_source, id);
+                zhiyumiao_apply_regen_buff(_source, id, _stage);
             }
         }
     }
@@ -210,7 +210,7 @@ function zhiyumiao_heal_full_board(_source, _heal_amount, _apply_regen, _stage) 
             _total_healed += _applied;
 
             if (_apply_regen && _applied >= 0) {
-                zhiyumiao_apply_regen_buff(_source, id);
+                zhiyumiao_apply_regen_buff(_source, id, _stage);
             }
         }
     }

@@ -1,7 +1,7 @@
 ﻿{
   "$GMFolder":"",
   "%Name":"gatlin_long_bao",
-  "folderPath":"folders/绮剧伒/Cards/Shooter/gatlin_long_bao.yy",
+  "folderPath":"folders/精灵/Cards/Shooter/gatlin_long_bao.yy",
   "isDefaultView":false,
   "listViewItems":[],
   "name":"gatlin_long_bao",

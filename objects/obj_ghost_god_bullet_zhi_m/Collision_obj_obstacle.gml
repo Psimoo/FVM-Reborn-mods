@@ -1,4 +1,4 @@
-if (target_type == "normal" && precise_bbox_collision(id, other))
+if (damage_type != "pierce" && target_type == "normal" && precise_bbox_collision(id, other))
 {
     if (burnt == 0)
     {

@@ -1,4 +1,4 @@
-{
+﻿{
   "$GMFolder":"",
   "%Name":"BOSS",
   "folderPath":"folders/物体/Enemy/delicious_island/BOSS.yy",
@@ -15,6 +15,10 @@
     {"name":"obj_arno","path":"objects/obj_arno/obj_arno.yy",},
     {"name":"obj_ice_residue","path":"objects/obj_ice_residue/obj_ice_residue.yy",},
     {"name":"obj_ice_residue_ball","path":"objects/obj_ice_residue_ball/obj_ice_residue_ball.yy",},
+    {"name":"obj_infected_bingzha","path":"objects/obj_infected_bingzha/obj_infected_bingzha.yy",},
+    {"name":"obj_infected_bingzha_ball","path":"objects/obj_infected_bingzha_ball/obj_infected_bingzha_ball.yy",},
+    {"name":"obj_infected_bingzha_bullet","path":"objects/obj_infected_bingzha_bullet/obj_infected_bingzha_bullet.yy",},
+    {"name":"obj_infected_fire_residue","path":"objects/obj_infected_fire_residue/obj_infected_fire_residue.yy",},
     {"name":"obj_mario_mouse","path":"objects/obj_mario_mouse/obj_mario_mouse.yy",},
     {"name":"obj_mario_pipeline","path":"objects/obj_mario_pipeline/obj_mario_pipeline.yy",},
     {"name":"obj_pharaoh_coffin","path":"objects/obj_pharaoh_coffin/obj_pharaoh_coffin.yy",},
@@ -22,6 +26,9 @@
     {"name":"obj_rumble","path":"objects/obj_rumble/obj_rumble.yy",},
     {"name":"obj_rumble_laser","path":"objects/obj_rumble_laser/obj_rumble_laser.yy",},
     {"name":"obj_rumble_missile","path":"objects/obj_rumble_missile/obj_rumble_missile.yy",},
+    {"name":"obj_honglonglong","path":"objects/obj_honglonglong/obj_honglonglong.yy",},
+    {"name":"obj_honglonglong_laser","path":"objects/obj_honglonglong_laser/obj_honglonglong_laser.yy",},
+    {"name":"obj_honglonglong_missile","path":"objects/obj_honglonglong_missile/obj_honglonglong_missile.yy",},
     {"name":"obj_temple_pharaoh","path":"objects/obj_temple_pharaoh/obj_temple_pharaoh.yy",}
   ],
 }

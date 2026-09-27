@@ -1,7 +1,7 @@
 ﻿{
   "$GMFolder":"",
   "%Name":"mouse_clip",
-  "folderPath":"folders/绮剧伒/Cards/boomer/mouse_clip.yy",
+  "folderPath":"folders/精灵/Cards/boomer/mouse_clip.yy",
   "isDefaultView":false,
   "listViewItems":[],
   "name":"mouse_clip",

@@ -1,7 +1,7 @@
 ﻿{
   "$GMFolder":"",
   "%Name":"hotdog_cannon",
-  "folderPath":"folders/绮剧伒/Cards/Shooter/hotdog_cannon.yy",
+  "folderPath":"folders/精灵/Cards/Shooter/hotdog_cannon.yy",
   "isDefaultView":false,
   "listViewItems":[],
   "name":"hotdog_cannon",

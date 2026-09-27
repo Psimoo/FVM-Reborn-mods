@@ -1,0 +1,12 @@
+event_inherited();
+atk = 20;
+hp = 720;
+maxhp = 720;
+move_speed = 0.9;
+move_anim = 7;
+attack_anim = 12;
+death_anim = 14;
+immune_to_ash = true;
+skipped = false;
+arm_dropped = false;
+block_list = ["chocolate_bread", "pineapple_explosive_bread"];

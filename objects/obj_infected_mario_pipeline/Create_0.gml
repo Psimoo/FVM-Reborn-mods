@@ -1,0 +1,12 @@
+event_inherited();
+timer = 0;
+hp = 1500;
+maxhp = 1500;
+banding_cave_obj = -4;
+state = "appear";
+anim_wait = 90;
+special_ash = true;
+immune_to_ash = true;
+mouse_id = "infected_mario_pipeline";
+current_grid_type = "";
+main_pipe = false;

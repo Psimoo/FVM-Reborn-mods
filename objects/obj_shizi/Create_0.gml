@@ -17,5 +17,5 @@ flash_speed = 5;
 plant_type = "normal";
 is_slowdown = false;
 anim_timer = 0;
-awake_anim = 6;
+awake_anim = 0;
 wake_timer = 0;

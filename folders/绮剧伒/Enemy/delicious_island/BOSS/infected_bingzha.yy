@@ -1,0 +1,32 @@
+﻿{
+  "$GMFolder":"",
+  "%Name":"infected_bingzha",
+  "folderPath":"folders/精灵/Enemy/delicious_island/BOSS/infected_bingzha.yy",
+  "isDefaultView":false,
+  "listViewItems":[],
+  "name":"infected_bingzha",
+  "resourceType":"GMFolder",
+  "resourceVersion":"2.0",
+  "viewLocked":false,
+  "visible":true,
+  "folders":[],
+  "listItems":[
+    {"name":"47dd6a2f-3480-4539-8aa4-2f6a0366e31a","path":"sprites/spr_infected_bingzha_appear/spr_infected_bingzha_appear.yy",}
+    {"name":"e98c5f76-1bf8-4507-933c-dc29c2bf1f2a","path":"sprites/spr_infected_bingzha_ball/spr_infected_bingzha_ball.yy",}
+    {"name":"2971edd4-43d2-4e9d-ac6d-e153d2008b5a","path":"sprites/spr_infected_bingzha_bullet/spr_infected_bingzha_bullet.yy",}
+    {"name":"d8a5eacd-b18e-4757-b571-49d63ed5c72e","path":"sprites/spr_infected_bingzha_bullet_effect/spr_infected_bingzha_bullet_effect.yy",}
+    {"name":"c68450dd-394d-4fe1-8706-1d6f2ff048e3","path":"sprites/spr_infected_bingzha_death/spr_infected_bingzha_death.yy",}
+    {"name":"42e02fa2-1ade-47eb-b2d4-5cd5000a90dc","path":"sprites/spr_infected_bingzha_disappear/spr_infected_bingzha_disappear.yy",}
+    {"name":"9fb8d471-d39f-4a8b-92e8-d0cfcf916548","path":"sprites/spr_infected_bingzha_fire_appear/spr_infected_bingzha_fire_appear.yy",}
+    {"name":"985ccbe0-65e6-4436-acaf-7c7e27629d81","path":"sprites/spr_infected_bingzha_fire_ball/spr_infected_bingzha_fire_ball.yy",}
+    {"name":"110f8abe-f003-4dad-9839-82bf23817f75","path":"sprites/spr_infected_bingzha_fire_death/spr_infected_bingzha_fire_death.yy",}
+    {"name":"8c25dd51-7633-4e02-a9bb-d70353fbaa49","path":"sprites/spr_infected_bingzha_fire_disappear/spr_infected_bingzha_fire_disappear.yy",}
+    {"name":"cfc70b1a-1828-49e0-ad29-fecbe92bc7fe","path":"sprites/spr_infected_bingzha_fire_skill_1/spr_infected_bingzha_fire_skill_1.yy",}
+    {"name":"d54d908e-49c7-4a85-ab37-2ff4144023da","path":"sprites/spr_infected_bingzha_fire_skill_1_ready/spr_infected_bingzha_fire_skill_1_ready.yy",}
+    {"name":"9fe341a5-eaea-4d83-a935-beb8a00a6d2b","path":"sprites/spr_infected_bingzha_fire_skill_2/spr_infected_bingzha_fire_skill_2.yy",}
+    {"name":"b0b22587-bdfe-49bc-8844-3136a5f1cdd8","path":"sprites/spr_infected_bingzha_icon/spr_infected_bingzha_icon.yy",}
+    {"name":"9447d163-ec29-40b5-967f-6c3baa90ab87","path":"sprites/spr_infected_bingzha_skill_1/spr_infected_bingzha_skill_1.yy",}
+    {"name":"b8447f2f-e1ab-41bf-b129-cf6d23396387","path":"sprites/spr_infected_bingzha_skill_1_ready/spr_infected_bingzha_skill_1_ready.yy",}
+    {"name":"dca188c2-a8d2-4c8e-a66c-49181d85d581","path":"sprites/spr_infected_bingzha_skill_2/spr_infected_bingzha_skill_2.yy",}
+  ],
+}

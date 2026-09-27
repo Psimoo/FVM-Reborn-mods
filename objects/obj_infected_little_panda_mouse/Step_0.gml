@@ -1,0 +1,38 @@
+if (hp <= 0 && state != UnknownEnum.Value_3)
+{
+    sprite_index = spr_infected_little_panda;
+    state = UnknownEnum.Value_3;
+    timer = 0;
+}
+
+event_inherited();
+
+if (global.is_paused || is_frozen || is_stun)
+    exit;
+
+var target_pos = get_world_position_from_grid(target_col, target_row);
+
+if (state == UnknownEnum.Value_4)
+{
+    if (grid_col > target_col && y < (target_pos.y + 38))
+    {
+        x += chspeed;
+        y -= cvspeed;
+        cvspeed -= cgravity;
+        image_index = floor(timer / 3) % 9;
+    }
+    else
+    {
+        y = target_pos.y + 38;
+        land_timer++;
+        image_index = (floor(land_timer / flash_speed) % 3) + 9;
+        
+        if (land_timer >= ((3 * flash_speed) - 1))
+        {
+            sprite_index = spr_infected_little_panda;
+            state = UnknownEnum.Value_2;
+            timer = 0;
+            target_type = "normal";
+        }
+    }
+}

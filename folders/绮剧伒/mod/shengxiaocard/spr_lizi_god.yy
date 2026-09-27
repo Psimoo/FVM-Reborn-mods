@@ -1,7 +1,7 @@
 ﻿{
   "$GMFolder":"",
   "%Name":"spr_lizi_god",
-  "folderPath":"folders/绮剧伒/mod/shengxiaocard/spr_lizi_god.yy",
+  "folderPath":"folders/精灵/mod/shengxiaocard/spr_lizi_god.yy",
   "isDefaultView":false,
   "listViewItems":[],
   "name":"spr_lizi_god",

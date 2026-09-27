@@ -177,7 +177,7 @@ if info_button_select == 1 {
 		var info_text = global.info_island[? card_id]
 		
 		//绘制文本
-		draw_set_font(font_hei)
+		draw_set_font(font_yuan)
 		draw_sprite_ext(card_data[? "sprite"], 0, x-320, y-210, 1.5, 1.5, 0, c_white, 1);
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_top);
@@ -185,7 +185,10 @@ if info_button_select == 1 {
 		draw_set_color(c_white);
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
+		// 卡片名称使用与列表/提示一致的元圆字体，确保扩展汉字有对应字形
+		draw_set_font(font_yuan)
 		draw_text(x-320,y-190,name)
+		draw_set_font(font_yuan)
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_top);
 		if info != undefined{
@@ -301,7 +304,7 @@ else if info_button_select == 2 {
 		
 		
 		//绘制文本
-		draw_set_font(font_hei)
+		draw_set_font(font_yuan)
 		draw_sprite_ext(enemy_data.spr, 0, x-320, y-180, 1.5, 1.5, 0, c_white, 1);
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_top);
@@ -427,7 +430,7 @@ else if info_button_select == 3 {
 		
 		
 		//绘制文本
-		draw_set_font(font_hei)
+		draw_set_font(font_yuan)
 		draw_sprite_ext(enemy_data.spr, 0, x-390, y-355, 0.2, 0.2, 0, c_white, 1);
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_top);

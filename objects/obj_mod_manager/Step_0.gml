@@ -15,6 +15,13 @@ if (!instance_exists(obj_gods_hall_enter))
         instance_create_depth(750, 56, -3, obj_gods_hall_enter);
 }
 
+// 跨服远征入口按钮
+if (!instance_exists(obj_cross_server_enter))
+{
+    if (room == room_map || room == room_menu)
+        instance_create_depth(850, 56, -3, obj_cross_server_enter);
+}
+
 if (!noticed && global.preloaded == true)
 {
     if (room == room_menu)

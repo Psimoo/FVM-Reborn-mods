@@ -1,0 +1,27 @@
+{
+  "$GMFolder":"",
+  "%Name":"haiyang_god",
+  "folderPath":"folders/物体/mod/Cards/haiyang_god.yy",
+  "isDefaultView":false,
+  "listViewItems":[],
+  "name":"haiyang_god",
+  "resourceType":"GMFolder",
+  "resourceVersion":"2.0",
+  "viewLocked":false,
+  "visible":true,
+  "folders":[],
+  "listItems":[
+    {"name":"obj_haiyang_god","path":"objects/obj_haiyang_god/obj_haiyang_god.yy",},
+    {"name":"spr_haiyang_god","path":"sprites/spr_haiyang_god/spr_haiyang_god.yy",},
+    {"name":"spr_haiyang_god_1","path":"sprites/spr_haiyang_god_1/spr_haiyang_god_1.yy",},
+    {"name":"spr_haiyang_god_2","path":"sprites/spr_haiyang_god_2/spr_haiyang_god_2.yy",},
+    {"name":"spr_haiyang_god_3","path":"sprites/spr_haiyang_god_3/spr_haiyang_god_3.yy",},
+    {"name":"spr_haiyang_god_effect","path":"sprites/spr_haiyang_god_effect/spr_haiyang_god_effect.yy",},
+    {"name":"spr_haiyang_god_effect_1","path":"sprites/spr_haiyang_god_effect_1/spr_haiyang_god_effect_1.yy",},
+    {"name":"spr_haiyang_god_effect_2","path":"sprites/spr_haiyang_god_effect_2/spr_haiyang_god_effect_2.yy",},
+    {"name":"spr_haiyang_god_effect_3","path":"sprites/spr_haiyang_god_effect_3/spr_haiyang_god_effect_3.yy",},
+    {"name":"spr_haiyang_god_pin1","path":"sprites/spr_haiyang_god_pin1/spr_haiyang_god_pin1.yy",},
+    {"name":"spr_haiyang_god_pin2","path":"sprites/spr_haiyang_god_pin2/spr_haiyang_god_pin2.yy",},
+    {"name":"spr_haiyang_god_pin3","path":"sprites/spr_haiyang_god_pin3/spr_haiyang_god_pin3.yy",}
+  ],
+}

@@ -48,6 +48,25 @@ if keyboard_check_pressed(vk_escape){
 		obj_world_map_button.world_map = 0
 		global.gui_stack.pop()
 	}
+	else if instance_exists(obj_gods_store_bg){
+		if (!obj_gods_store_bg.is_submenu_opened){
+			instance_destroy(obj_gods_store_bg)
+		}
+	}
+	else if instance_exists(obj_gods_hall_bg){
+		if (!obj_gods_hall_bg.is_submenu_opened){
+			instance_destroy(obj_gods_hall_bg)
+			obj_player_info_ui.menu_type = 0
+			obj_world_map_button.world_map = 0
+		}
+	}
+	else if instance_exists(obj_cross_server_bg){
+		if (!obj_cross_server_bg.is_submenu_opened){
+			instance_destroy(obj_cross_server_bg)
+			obj_player_info_ui.menu_type = 0
+			obj_world_map_button.world_map = 0
+		}
+	}
 	else if instance_exists(obj_quit_confirm){
 		game_end()
 	}

@@ -1,7 +1,7 @@
 ﻿{
   "$GMFolder":"",
   "%Name":"Shovel",
-  "folderPath":"folders/鑴氭湰/Shovel.yy",
+  "folderPath":"folders/脚本/Shovel.yy",
   "isDefaultView":false,
   "listViewItems":[],
   "name":"Shovel",

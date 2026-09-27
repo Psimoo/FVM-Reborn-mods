@@ -1,7 +1,7 @@
 ﻿{
   "$GMFolder":"",
   "%Name":"Music",
-  "folderPath":"folders/鑴氭湰/Music.yy",
+  "folderPath":"folders/脚本/Music.yy",
   "isDefaultView":false,
   "listViewItems":[],
   "name":"Music",
