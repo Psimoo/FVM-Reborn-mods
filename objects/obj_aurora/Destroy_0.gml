@@ -2,6 +2,9 @@ if (hp < max_hp && !invincible)
     obj_task_manager.card_loss++;
 
 card_destroyed(id);
+if (instance_exists(aurora_effect_obj))
+    instance_destroy(aurora_effect_obj);
+
 var idx = ds_list_find_index(global.buff_sources, id);
 
 if (idx != -1)

@@ -3,8 +3,8 @@ if not obj_shop_bg.is_submenu_opened and not is_disabled{
 	audio_play_sound(snd_button,0,0)
 	if btn_type == "card" || btn_type == "weapon" || btn_type == "gem" || btn_type == "attire"{
 		// 抽卡模式：禁用卡片购买
-		if (btn_type == "card" && is_eternal_gacha_mode()) {
-			show_notice("抽卡模式无法购买卡片", 60);
+		if (btn_type == "card" && (is_eternal_gacha_mode() || is_random_gift_mode())) {
+			show_notice(is_random_gift_mode() ? "随机礼盒模式无法购买卡片" : "抽卡模式无法购买卡片", 60);
 			exit;
 		}
 		// 抽卡模式：禁用MOD武器购买

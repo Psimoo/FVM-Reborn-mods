@@ -10,5 +10,8 @@
   "viewLocked": false,
   "visible": true,
   "folders": [],
-  "listItems": []
+  "listItems": [
+    {"name":"obj_lihe","path":"objects/obj_lihe/obj_lihe.yy",},
+    {"name":"obj_random_gift_effect","path":"objects/obj_random_gift_effect/obj_random_gift_effect.yy",}
+  ]
 }

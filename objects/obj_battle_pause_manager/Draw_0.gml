@@ -200,9 +200,7 @@ if (global.is_paused)
 				draw_text(630,260, "通关时间："+string(minute)+":"+string(second));
 				draw_text(630,285,"卡片损失："+string(obj_task_manager.card_loss))
 				draw_text(630,310,"猫损失："+string(obj_task_manager.cat_loss))
-				var _diff_text = string(global.difficulty)
-				if (global.difficulty == 6) _diff_text = "抽卡"
-				else if (global.difficulty == 7) _diff_text = "欧皇"
+				var _diff_text = difficulty_get_display_name()
 				draw_text(630,335,"难度："+_diff_text)
 				if global.level_file.version != "1.0.0" && !global.laboretory_room{
 					if first_complete{

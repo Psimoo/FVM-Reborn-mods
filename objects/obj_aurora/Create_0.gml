@@ -30,5 +30,12 @@ else
     buff_cells_refreshed = true;
 }
 
+// Keep the final-form ground effect alive with the card.
+aurora_effect_obj = noone;
+if (shape >= 3)
+{
+    aurora_effect_obj = instance_create_depth(x, y, 0, obj_aurora_effect);
+}
+
 ds_list_add(global.buff_sources, id);
 global.buff_dirty = true;

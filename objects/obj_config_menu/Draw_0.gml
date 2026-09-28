@@ -37,6 +37,11 @@ switch (button_select) {
 		draw_sprite(spr_option_menu_text,2,x-120,y+60)
 		var diff_img = global.difficulty;
 		draw_sprite_ext(spr_option_menu_difficulty,diff_img,x+15,y+102,0.2,0.2,0,c_white,1)
+		draw_set_color(c_white);
+		draw_set_halign(fa_left);
+		draw_text(x + 340, y + 60, "抽卡模式");
+		draw_text(x + 340, y + 140, "欧皇模式");
+		draw_text(x + 340, y + 220, "随机礼盒模式");
 		break
     
     // 可以添加其他设置页面

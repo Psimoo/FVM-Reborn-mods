@@ -11,6 +11,7 @@ function create_battle_slots() {
     for(var i = 0; i < max_slot; i++) {
         if (deck_slot_is_empty(i)) continue; // 跳过空槽
         var deck_entry = global.selected_deck[| i];
+        if (deck_entry[? "card_id"] == "lihe" && !is_random_gift_mode()) continue;
         var card_data = deck_entry[? "data"];
         var inst = noone
 		if n <= 14{

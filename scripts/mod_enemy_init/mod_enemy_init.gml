@@ -222,7 +222,7 @@ function mod_enemy_init()
         cycle: 36,
         range: 180,
         ash_proof: true,
-        spr: spr_infected_frog_prince_mouse_frog,
+        spr: spr_infected_frog_prince_mouse_land,
         feature: "water"
     });
     register_enemy("infected_submarine_mouse", 

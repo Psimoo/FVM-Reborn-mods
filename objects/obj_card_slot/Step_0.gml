@@ -12,6 +12,10 @@ if (global.level_id == "test_level"
 
 if card_id != "magic_chicken"{
 	current_cost = cost
+	if (is_random_gift_mode() && card_id == "lihe") {
+		current_cost = 50;
+		cooldown = 600;
+	}
 	if ds_exists(global.plus_card_map, ds_type_map) && ds_map_find_value(global.plus_card_map,card_id) != undefined{
 		var plus_info = ds_map_find_value(global.plus_card_map,card_id)
 		with plus_info[0]{
@@ -20,6 +24,7 @@ if card_id != "magic_chicken"{
 			}
 		}
 	}
+	if (is_random_gift_mode() && card_id == "lihe") current_cost = 50;
 }
 if global.debug || global.level_id == "test_level"{
 	cooldown_timer = cooldown
@@ -249,14 +254,29 @@ if (is_selected) {
 					}
 				}
 			}
-            var new_plant = instance_create_depth(logical_world.x + platform_shift_x, logical_world.y + platform_shift_y, 0,card_obj);
-			// 计算深度值
-			var depth_value = calculate_plant_depth(logical_col, logical_row, new_plant.plant_type);
-			card_created(new_plant, logical_col, logical_row);
-			new_plant.depth = depth_value
-			// 平台移动期间放置时锁定逻辑网格位置，防止视觉位置覆盖grid_col/grid_row
-			if (found_plat != noone && variable_instance_exists(found_plat, "state") && found_plat.state == "moving") {
-				new_plant.platform_grid_lock = true;
+			var gift_queued = false;
+			var new_plant = noone;
+			if (is_random_gift_mode() && card_id == "lihe") {
+				var gift_fx = instance_create_depth(logical_world.x + platform_shift_x, logical_world.y + platform_shift_y, -2600, obj_random_gift_effect);
+				gift_fx.spawn_x = logical_world.x + platform_shift_x;
+				gift_fx.spawn_y = logical_world.y + platform_shift_y;
+				gift_fx.spawn_col = logical_col;
+				gift_fx.spawn_row = logical_row;
+				gift_fx.spawn_level = clevel;
+				gift_fx.spawn_platform = found_plat;
+				gift_queued = true;
+			} else {
+				new_plant = instance_create_depth(logical_world.x + platform_shift_x, logical_world.y + platform_shift_y, 0,card_obj);
+			}
+			if (!gift_queued) {
+				// 计算深度值
+				var depth_value = calculate_plant_depth(logical_col, logical_row, new_plant.plant_type);
+				card_created(new_plant, logical_col, logical_row);
+				new_plant.depth = depth_value
+				// 平台移动期间放置时锁定逻辑网格位置，防止视觉位置覆盖grid_col/grid_row
+				if (found_plat != noone && variable_instance_exists(found_plat, "state") && found_plat.state == "moving") {
+					new_plant.platform_grid_lock = true;
+				}
 			}
 			if global.grid_terrains[logical_row][logical_col].type == "normal"{
 				instance_create_depth(logical_world.x + platform_shift_x, logical_world.y + platform_shift_y,-2,obj_place_effect)

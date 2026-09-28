@@ -109,6 +109,11 @@ function ensure_save_data() {
             {id: "flour_sack", level: 0, shape: 0, skill: 0, max_level: 0, max_shape: 0}
         ]
     }
+    var _has_lihe = false;
+    for (var _li = 0; _li < array_length(global.save_data.unlocked_cards); _li++) {
+        if (global.save_data.unlocked_cards[_li].id == "lihe") { _has_lihe = true; break; }
+    }
+    if (!_has_lihe) array_push(global.save_data.unlocked_cards, {id: "lihe", level: 0, shape: 0, skill: 0, max_level: 16, max_shape: 0});
     if !variable_struct_exists(global.save_data, "unlocked_weapons") || !is_array(global.save_data.unlocked_weapons) {
         global.save_data.unlocked_weapons = [{id: "long_bao_gun"}]
     }
@@ -175,7 +180,8 @@ function reset_file(file_slot){
                 {"id": "small_fire", "level": 0, "shape": 0,"skill":0,"max_level":0,"max_shape":0},
 				{"id": "toast_bread", "level": 0, "shape": 0,"skill":0,"max_level":0,"max_shape":0},
 				{"id": "xiao_long_bao", "level": 0, "shape": 0,"skill":0,"max_level":0,"max_shape":0},
-				{"id": "flour_sack", "level": 0, "shape": 0,"skill":0,"max_level":0,"max_shape":0}
+				{"id": "flour_sack", "level": 0, "shape": 0,"skill":0,"max_level":0,"max_shape":0},
+				{"id": "lihe", "level": 0, "shape": 0,"skill":0,"max_level":16,"max_shape":0}
             ],
             "completed_levels": [],
             "completed_elite_levels": [],

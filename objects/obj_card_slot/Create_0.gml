@@ -56,6 +56,10 @@ function select_slot(){
 
 //尝试放置逻辑
 function try_place_once(){
+	if (is_random_gift_mode() && card_id == "lihe") {
+		current_cost = 50;
+		cooldown = 600;
+	}
 	// 检查是否在可种植区域
 		
 		var card_data = noone
@@ -165,11 +169,26 @@ function try_place_once(){
 					}
 				}
 			}
-            var new_plant = instance_create_depth(logical_world.x + platform_shift_x, logical_world.y + platform_shift_y, 0,card_obj);
-			// 计算深度值
-			var depth_value = calculate_plant_depth(logical_col, logical_row, new_plant.plant_type);
-			card_created(new_plant, logical_col, logical_row);
-			new_plant.depth = depth_value
+			var gift_queued = false;
+			var new_plant = noone;
+			if (is_random_gift_mode() && card_id == "lihe") {
+				var gift_fx = instance_create_depth(logical_world.x + platform_shift_x, logical_world.y + platform_shift_y, -2600, obj_random_gift_effect);
+				gift_fx.spawn_x = logical_world.x + platform_shift_x;
+				gift_fx.spawn_y = logical_world.y + platform_shift_y;
+				gift_fx.spawn_col = logical_col;
+				gift_fx.spawn_row = logical_row;
+				gift_fx.spawn_level = clevel;
+				gift_fx.spawn_platform = found_plat;
+				gift_queued = true;
+			} else {
+				new_plant = instance_create_depth(logical_world.x + platform_shift_x, logical_world.y + platform_shift_y, 0,card_obj);
+			}
+			if (!gift_queued) {
+				// 计算深度值
+				var depth_value = calculate_plant_depth(logical_col, logical_row, new_plant.plant_type);
+				card_created(new_plant, logical_col, logical_row);
+				new_plant.depth = depth_value
+			}
 			if global.grid_terrains[logical_row][logical_col].type == "normal"{
 				instance_create_depth(logical_world.x + platform_shift_x, logical_world.y + platform_shift_y,-2,obj_place_effect)
 			}

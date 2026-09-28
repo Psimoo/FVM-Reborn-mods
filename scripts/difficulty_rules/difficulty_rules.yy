@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"difficulty_rules",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"difficulty_rules",
+  "parent":{
+    "name":"mod",
+    "path":"folders/脚本/mod.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -109,7 +109,26 @@ function draw_games_page(){
 	    btn32.state = global.difficulty;
 		btn32.b_type = "next"
 		btn32.image_xscale = -0.9
-	    array_push(setting_buttons, btn32);
+		array_push(setting_buttons, btn32);
+
+		// 抽卡版与欧皇版互斥模式
+		var gacha_btn = instance_create_depth(x + 300, y + 60, depth-1, obj_setting_toggle);
+		gacha_btn.config_key = "play_mode_gacha";
+		gacha_btn.state = (global.play_mode == 1);
+		gacha_btn.tooltip_text = "启用抽卡版：卡片和形态通过礼盒随机获得，难度与奖励跟随基础难度";
+		array_push(setting_buttons, gacha_btn);
+
+		var lucky_btn = instance_create_depth(x + 300, y + 140, depth-1, obj_setting_toggle);
+		lucky_btn.config_key = "play_mode_lucky";
+		lucky_btn.state = (global.play_mode == 2);
+		lucky_btn.tooltip_text = "启用欧皇版：使用欧皇抽卡权重，难度与奖励跟随基础难度";
+		array_push(setting_buttons, lucky_btn);
+
+		var gift_btn = instance_create_depth(x + 300, y + 220, depth-1, obj_setting_toggle);
+		gift_btn.config_key = "play_mode_gift";
+		gift_btn.state = (global.play_mode == 3);
+		gift_btn.tooltip_text = "启用随机礼盒：开局只有礼盒，通关特殊卡可正常获得";
+		array_push(setting_buttons, gift_btn);
 		
 		// 创建失焦暂停开关
 	    var btn4 = instance_create_depth(x - 200, y + 260, depth-1, obj_setting_toggle);
@@ -217,4 +236,3 @@ function draw_controls_page(){
 	    current_settings = id;
 	}
 }
-

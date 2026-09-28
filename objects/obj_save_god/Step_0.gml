@@ -43,9 +43,10 @@ if timer < current_flash_speed - 1 {
             var fish_type = obj_save_god01_e
             if (shape == 2 || shape == 3) fish_type = obj_save_god23_e2
 
+            var summon_col = get_grid_position_from_world(x, y).col
             for (var i = 0; i < fish_count; i++) {
                 var target_row = i % global.grid_rows
-                var world_pos = get_world_position_from_grid(0, target_row)
+                var world_pos = get_world_position_from_grid(summon_col, target_row)
                 var inst = instance_create_depth(world_pos.x, world_pos.y, depth, fish_type)
                 inst.grid_row = target_row
                 inst.atk = atk

@@ -17,6 +17,8 @@ draw_text(565,53,global.level_data.name)
     deck_sort_order = []
     var _gold_order = []
     for(var si = 0; si < ds_list_size(global.player_deck); si += 2) {
+        if (global.player_deck[| si] == "lihe" && !is_random_gift_mode()) continue;
+        if (is_random_gift_mode() && !random_gift_is_direct_card_allowed(global.player_deck[| si])) continue;
         var _entry = global.player_deck[| si+1]
         var _shapes = _entry[? "shapes"]
         var _data = _shapes[| 0]
@@ -76,7 +78,8 @@ for(var i = 0 ; i < slot_rows ; i++){
                 }
             }
 			for(var s = 0;s<ds_list_size(global.selected_deck);s++){
-				if global.selected_deck[| s][? "card_id"] == card_id{
+				if global.selected_deck[| s][? "card_id"] == card_id
+				&& !(is_random_gift_mode() && card_id == "lihe"){
 					is_unlocked = false
 					is_selected = true
 					break

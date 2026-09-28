@@ -104,7 +104,8 @@ if (keyboard_check_pressed(vk_space) || (mouse_check_button_pressed(mb_left) && 
                 point_in_rectangle(mouse_x, mouse_y, btn_x - btn_w/2, btn_y - btn_h/2, btn_x + btn_w/2, btn_y + btn_h/2)) {
                 
                 // 执行抽卡模式结算
-                var reward_multiplier = 3; // 抽卡难度：3倍金币/材料奖励
+                // 抽卡结算的难度奖励也完全跟随基础难度。
+                var reward_multiplier = difficulty_get_reward_multiplier();
                 
                 // 旧存档兼容：确保 completed_elite_levels 存在
                 if (!variable_struct_exists(global.save_data, "completed_elite_levels")) {
@@ -280,7 +281,7 @@ if (keyboard_check_pressed(vk_space) || (mouse_check_button_pressed(mb_left) && 
     
     //if global.selected_slot == noone {
         if (!global.is_paused) {
-            if (global.difficulty < 4 || global.difficulty == 6) {
+            if (global.difficulty < 4) {
                 // 空格暂停：只暂停不显示菜单
                 global.is_paused = true;
                 global.show_menu = false;
@@ -303,13 +304,7 @@ if (keyboard_check_pressed(vk_space) || (mouse_check_button_pressed(mb_left) && 
 				}
 				if global.level_file.version != "1.0.0"{
 					if obj_game_over.sprite_index == spr_win && !settlement{
-					var reward_multiplier = 1
-					if global.difficulty == 4{
-						reward_multiplier = 10
-					}
-					else if global.difficulty == 5{
-						reward_multiplier = 15
-					}
+					var reward_multiplier = difficulty_get_reward_multiplier()
 					if !global.laboretory_room{
 							with obj_task_manager{
 								refresh_task_progress()
@@ -360,7 +355,7 @@ if (keyboard_check_pressed(vk_space) || (mouse_check_button_pressed(mb_left) && 
 							for(var i = 0 ; i < array_length(card_unlock_id_list) ; i++){
 								var card_id = card_unlock_id_list[i]
 								// 抽卡难度：仅发放排除卡（其他卡通过抽卡获得）
-								if (is_eternal_gacha_mode() && !gacha_is_excluded_card(card_id)) continue;
+								if ((is_eternal_gacha_mode() || is_random_gift_mode()) && !gacha_is_excluded_card(card_id)) continue;
 								unlock_card(card_id,0,0,global.save_data.unlocked_items.max_skill_level)
 							}
 						

@@ -2,7 +2,7 @@
 if room != room_battle{
 	if config_key == "difficulty"{
 		if b_type == "next"{
-			if state < 7{
+			if state < 5{
 				state ++
 			}
 			else{
@@ -14,7 +14,7 @@ if room != room_battle{
 				state --
 			}
 			else{
-				state = 7
+				state = 5
 			}
 		}
 	}
@@ -28,15 +28,11 @@ if room != room_battle{
 
 	if (config_key == "difficulty"){
 		global.difficulty = state
-		// 切换到不朽难度或欧皇难度时，新存档发放20w金币奖励
-		if (state == 5 || state == 7) && !variable_struct_exists(global.save_data, "immortal_bonus_given"){
+		// 切换到不朽难度时，新存档发放原有难度奖励。
+		if (state == 5) && !variable_struct_exists(global.save_data, "immortal_bonus_given"){
 			if array_length(global.save_data.completed_levels) == 0{
 				global.save_data.player.gold += 200000
-				if state == 5 {
-					show_notice("不朽难度奖励：+200,000 金币", 60)
-				} else {
-					show_notice("欧皇难度奖励：+200,000 金币", 60)
-				}
+				show_notice("不朽难度奖励：+200,000 金币", 60)
 			}
 			global.save_data.immortal_bonus_given = true
 			save_file(global.save_slot)

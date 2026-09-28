@@ -2,6 +2,7 @@ if hover_card_index != -1 && !is_submenu_open{
 	if deck_slot_first_empty() != -1{
 		audio_play_sound(snd_button,0,0)
 		var card_id = global.player_deck[| deck_sort_order[hover_card_index]];
+		if ((card_id == "lihe" && !is_random_gift_mode()) || (is_random_gift_mode() && !random_gift_is_direct_card_allowed(card_id))) exit;
 		var _shape_info = get_card_info_simple(card_id)
 		if _shape_info != false{
 			add_to_deck(card_id,_shape_info.shape)

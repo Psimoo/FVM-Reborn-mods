@@ -2,14 +2,98 @@
 /// @desc 判断是否为抽卡模式难度（星际抽卡 或 欧皇抽卡）
 /// @return {bool}
 function is_eternal_gacha_mode() {
-    return global.difficulty == 6 || global.difficulty == 7;
+    return is_gacha_mode();
 }
 
 /// @function is_lucky_gacha_mode()
 /// @desc 判断是否为欧皇抽卡难度
 /// @return {bool}
 function is_lucky_gacha_mode() {
-    return global.difficulty == 7;
+    return global.play_mode == 2;
+}
+
+/// @function random_gift_pick_card()
+/// @desc 从完整注册卡池按20/30/50类别权重抽取卡片和形态。
+function random_gift_pick_card() {
+    var pools = [[], [], []]; // gold, zodiac, normal
+    for (var i = 0; i < ds_list_size(global.player_deck); i += 2) {
+        var card_id = global.player_deck[| i];
+		if (card_id == "lihe") continue;
+        if (card_id == "lihe" || card_id == "magic_chicken") continue;
+        var card = global.player_deck[| i + 1];
+        if (!ds_exists(card, ds_type_map)) continue;
+        var shapes = card[? "shapes"];
+        var has_card = false;
+        for (var s = 0; s < ds_list_size(shapes); s++) {
+            var data = shapes[| s];
+            var shape = data[? "shape"];
+            if (data[? "obj"] == noone || get_plant_shape_data(card_id, shape) == undefined) continue;
+            has_card = true;
+        }
+        if (!has_card) continue;
+        var category = gacha_is_gold_card(card_id) ? 0 : (gacha_is_zodiac_card(card_id) ? 1 : 2);
+        array_push(pools[category], {id: card_id});
+    }
+    var weights = [20, 30, 50];
+    var available = [];
+    for (var c = 0; c < 3; c++) if (array_length(pools[c]) > 0) array_push(available, c);
+    if (array_length(available) != 3) {
+        show_debug_message("随机礼盒候选池分类不完整，无法维持20/30/50概率");
+        return undefined;
+    }
+    var total = 0;
+    for (var a = 0; a < array_length(available); a++) total += weights[available[a]];
+    var roll = random(total);
+    var category = available[array_length(available) - 1];
+    var acc = 0;
+    for (var a = 0; a < array_length(available); a++) {
+        acc += weights[available[a]];
+        if (roll < acc) { category = available[a]; break; }
+    }
+    var card_id = pools[category][irandom(array_length(pools[category]) - 1)].id;
+    var card = noone;
+    for (var i = 0; i < ds_list_size(global.player_deck); i += 2) {
+        if (global.player_deck[| i] == card_id) { card = global.player_deck[| i + 1]; break; }
+    }
+    if (card == noone) return undefined;
+    var shape_list = [];
+    var shapes = card[? "shapes"];
+    for (var s = 0; s < ds_list_size(shapes); s++) {
+        var data = shapes[| s];
+        if (get_plant_shape_data(card_id, data[? "shape"]) != undefined) array_push(shape_list, data[? "shape"]);
+    }
+    if (array_length(shape_list) == 0) return undefined;
+    var shape = shape_list[irandom(array_length(shape_list) - 1)];
+    return {card_id: card_id, shape: shape, category: category, data: deck_get_card_data(card_id, shape)};
+}
+
+/// @function random_gift_spawn_card(x, y, col, row, level)
+/// @desc 创建礼盒抽出的卡片，并在创建前传入形态、星级和技能参数。
+function random_gift_spawn_card(_x, _y, _col, _row, _level) {
+    var result = random_gift_pick_card();
+    if (result == undefined) return noone;
+    var target_level = clamp(_level, 0, 18);
+    while (target_level > 0 && get_plant_upgrade(result.card_id, result.shape, target_level) == undefined) target_level--;
+    if (get_plant_upgrade(result.card_id, result.shape, target_level) == undefined) return noone;
+    var skill_level = 0;
+    if (variable_global_exists("save_data") && variable_struct_exists(global.save_data, "unlocked_items")) {
+        skill_level = global.save_data.unlocked_items.max_skill_level;
+    }
+    global.random_gift_spawn_context = {
+        card_id: result.card_id,
+        shape: result.shape,
+        level: target_level,
+        skill: skill_level,
+        source: "random_gift",
+        terrain_adapted: true
+    };
+    var inst = instance_create_depth(_x, _y, 0, result.data[? "obj"]);
+    global.random_gift_spawn_context = undefined;
+    if (!instance_exists(inst)) return noone;
+    card_created(inst, _col, _row);
+    inst.depth = calculate_plant_depth(_col, _row, inst.plant_type);
+    inst.random_gift_result = true;
+    return inst;
 }
 
 /// @function gacha_get_excluded_cards()
@@ -241,6 +325,7 @@ function gacha_pick_random_reward() {
     // === 卡片候选池 ===
     for (var i = 0; i < ds_list_size(global.player_deck); i += 2) {
         var card_id = global.player_deck[| i];
+		if (card_id == "lihe") continue;
 
         // 跳过抽卡排除的卡片（只能通过关卡奖励获得）
         if (gacha_is_excluded_card(card_id)) continue;

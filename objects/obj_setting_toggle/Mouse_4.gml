@@ -1,10 +1,31 @@
 // 切换状态
 state = !state;
 audio_play_sound(snd_button,0,0)
+
+// 抽卡版和欧皇版互斥，并统一保存为 play_mode。
+if (config_key == "play_mode_gacha" && state) {
+    with (obj_setting_toggle) {
+        if (config_key == "play_mode_lucky" || config_key == "play_mode_gift") state = false;
+    }
+}
+if (config_key == "play_mode_lucky" && state) {
+    with (obj_setting_toggle) {
+        if (config_key == "play_mode_gacha" || config_key == "play_mode_gift") state = false;
+    }
+}
+if (config_key == "play_mode_gift" && state) {
+    with (obj_setting_toggle) {
+        if (config_key == "play_mode_gacha" || config_key == "play_mode_lucky") state = false;
+    }
+}
 // 保存到配置文件
 if (config_key != "") {
     ini_open("config.ini");
-    ini_write_real("settings", config_key, state);
+    if (config_key == "play_mode_gacha" || config_key == "play_mode_lucky" || config_key == "play_mode_gift") {
+        ini_write_real("settings", "play_mode", state ? (config_key == "play_mode_gacha" ? 1 : (config_key == "play_mode_lucky" ? 2 : 3)) : 0);
+    } else {
+        ini_write_real("settings", config_key, state);
+    }
     ini_close();
 }
 
@@ -36,6 +57,15 @@ else if (config_key == "tex_fliter"){
 }
 else if (config_key == "difficulty"){
 	global.difficulty = state
+}
+else if (config_key == "play_mode_gacha"){
+    global.play_mode = state ? 1 : 0;
+}
+else if (config_key == "play_mode_lucky"){
+    global.play_mode = state ? 2 : 0;
+}
+else if (config_key == "play_mode_gift"){
+    global.play_mode = state ? 3 : 0;
 }
 else if (config_key == "borderless_window"){
 	global.borderless_window = state

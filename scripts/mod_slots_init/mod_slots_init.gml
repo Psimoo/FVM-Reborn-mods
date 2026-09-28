@@ -1,5 +1,18 @@
 function mod_slots_init()
 {
+    // 随机礼盒：固定50火苗、10秒冷却，可兼容陆地和水面放置。
+    register_card("lihe", obj_lihe, [
+    {
+        shape: 0,
+        sprite: spr_lihe,
+        cost: 50,
+        cooldown: 600,
+        description: "随机礼盒：随机生成一张卡片，生成卡片继承礼盒星级",
+        plant_type: "normal",
+        feature_type: "amphi",
+        target_card: "none"
+    }]);
+
     register_card("gaia", obj_gaia, [
     {
         shape: 0,

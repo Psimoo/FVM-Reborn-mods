@@ -1,5 +1,18 @@
 function mod_cards_init()
 {
+    // 礼盒自身属性固定；星级数据存在于注册表中以复用普通升星流程。
+    mod_register_plant_lite("lihe", [{
+        name: "随机礼盒",
+        shape: 0,
+        description: "随机生成一张卡片，生成卡片继承礼盒星级",
+        hp: array_create(19, 1),
+        cost: array_create(19, 50),
+        atk: array_create(19, 0),
+        range: array_create(19, 0),
+        cooldown: array_create(19, 600),
+        cycle: array_create(19, 0)
+    }], false);
+
     mod_register_plant_lite("gaia", [
     {
         name: "盖亚神使",

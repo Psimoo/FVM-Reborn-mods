@@ -44,7 +44,7 @@ global.level_name = "曲奇岛"
 global.level_data = {}
 global.debug = 0
 global.laboretory_room = false
-global.game_version = "2.4.1.23"
+global.game_version = "2.4.1.24"
 global.tower_level_click = false
 global.tower_cake_page = 1
 global.cross_server_return_page = -1
@@ -126,10 +126,26 @@ global.replace_placement = ini_read_bool("settings", "replace_placement", false)
 global.card_hpbar = ini_read_bool("settings", "card_hpbar", false);
 global.enemy_hpbar = ini_read_bool("settings", "enemy_hpbar", false);
 global.tex_fliter = ini_read_bool("settings", "tex_fliter", true);
-global.difficulty = ini_read_real("settings", "difficulty", 1)
-// 确保难度值在有效范围内
-if (global.difficulty < 0) global.difficulty = 0;
-if (global.difficulty > 6) global.difficulty = 6;
+// 难度与玩法模式分开保存。旧版 6/7 难度在这里迁移。
+var _difficulty_text = ini_read_string("settings", "difficulty", "1");
+global.difficulty = real(_difficulty_text);
+global.play_mode = 0;
+var _play_mode_text = ini_read_string("settings", "play_mode", "");
+if (_play_mode_text == "") {
+    if (global.difficulty == 6) {
+        global.difficulty = 3;
+        global.play_mode = 1;
+    } else if (global.difficulty == 7) {
+        global.difficulty = 5;
+        global.play_mode = 2;
+    }
+    ini_write_real("settings", "difficulty", global.difficulty);
+    ini_write_real("settings", "play_mode", global.play_mode);
+} else {
+    global.play_mode = real(_play_mode_text);
+}
+global.difficulty = clamp(global.difficulty, 0, 5);
+global.play_mode = clamp(global.play_mode, 0, 3);
 global.borderless_window = ini_read_bool("settings", "borderless_window", true);
 global.save_slot = ini_read_real("settings", "save_slot", 0)
 global.lose_focus_pause = ini_read_bool("settings", "lose_focus_pause", true);

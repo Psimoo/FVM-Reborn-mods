@@ -12,6 +12,7 @@ function load_custom_deck(deck_index) {
     for(var i = 0; i < len; i++) {
         var cid = card_ids[i];
         if (cid == "" || is_undefined(cid) || cid == noone) continue; // 跳过空槽
+        if (cid == "lihe" && !is_random_gift_mode()) continue;
         var info = get_card_info(cid);
         if (info != false) {
             add_to_deck(cid, info.shape, i);

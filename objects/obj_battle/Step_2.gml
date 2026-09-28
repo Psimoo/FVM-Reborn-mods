@@ -82,7 +82,7 @@ if boss_waiting_clear && level_stage == "pre" && (current_wave_hp <= 0 || _is_to
 	}
 	var wave_data = global.level_file.waves[current_wave]
 	var boss_spawn_mult = 1
-	if global.difficulty == 5 || global.difficulty == 7{
+	if global.difficulty == 5{
 		boss_spawn_mult = 2
 	}
 	var _boss_id = wave_data.boss

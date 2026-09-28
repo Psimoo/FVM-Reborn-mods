@@ -4,12 +4,22 @@
 // 使用注册数据初始化属性
 var plant_data = get_plant_data(plant_id);
 current_level = 0
+var _gift_context = undefined;
+if (variable_global_exists("random_gift_spawn_context") && is_struct(global.random_gift_spawn_context)
+    && variable_struct_exists(global.random_gift_spawn_context, "card_id")
+    && global.random_gift_spawn_context.card_id == plant_id) {
+    _gift_context = global.random_gift_spawn_context;
+}
 if (plant_data != undefined) {
     name = plant_data[? "name"];
     description = plant_data[? "description"];
 	
 	var card_save_data = get_card_info(plant_id)
-	if card_save_data != false{
+	if (_gift_context != undefined) {
+		current_level = _gift_context.level;
+		skill = _gift_context.skill;
+		shape = _gift_context.shape;
+	} else if card_save_data != false{
 		current_level = card_save_data.level
 		skill = card_save_data.skill
 		shape = card_save_data.shape
@@ -58,7 +68,7 @@ if current_level >= 4{ //绑定星级贴图
 	banding_star_obj = inst.id
 }
 
-var card_shape_data = get_card_info_simple(plant_id)
+	var card_shape_data = (_gift_context != undefined) ? {shape: _gift_context.shape} : get_card_info_simple(plant_id)
 var card_shape = 0
 if card_shape_data != false{
 	card_shape = card_shape_data.shape

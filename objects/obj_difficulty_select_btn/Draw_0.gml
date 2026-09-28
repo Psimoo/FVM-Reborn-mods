@@ -28,14 +28,6 @@ if config_key == "difficulty"{
 			//draw_text(x,y,"不朽级")
 			tooltip_text = "敌人生成倍率×2，胜利奖励15倍"
 			break
-		case 6:
-			//draw_text(x,y,"星际·抽卡")
-			tooltip_text = "星际级敌人强度。\n禁用商店、诸神商店和关卡卡片奖励。\n通关后通过礼盒随机获得卡片或卡片形态。\n金卡5% / 生肖卡25% / 普通卡70%"
-			break
-		case 7:
-			//draw_text(x,y,"欧皇·抽卡")
-			tooltip_text = "不朽级敌人强度。\n禁用商店、诸神商店和关卡卡片奖励。\n通关后通过礼盒随机获得卡片或卡片形态。\n金卡50% / 生肖卡25% / 普通卡20% / 武器宝石5%"
-			break
 	}
 	
 }

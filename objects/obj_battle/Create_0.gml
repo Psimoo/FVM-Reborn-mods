@@ -255,7 +255,7 @@ function enemy_subwave_summon(){
     
     // 第二阶段：创建敌人实例
     var spawn_multiplier = 1
-    if global.difficulty == 5 || global.difficulty == 7{
+    if global.difficulty == 5{
         spawn_multiplier = 2
     }
     for (var m = 0; m < spawn_multiplier; m++) {
