@@ -355,8 +355,8 @@ function mod_weapons_init()
     });
     register_gem("rose_shield_gem_1",
     {
-        name: "玫瑰之心",
-        description: "玫瑰之心：生产极限量的火苗\n[专属宝石]：荆棘玫瑰",
+        name: "光合作用",
+        description: "光合作用：生产极限量的火苗\n[专属宝石]：荆棘玫瑰",
         icon: spr_rose_shield_gem_1,
         slot: "secondary_weapon",
         obj: obj_rose_shield_gem_1,

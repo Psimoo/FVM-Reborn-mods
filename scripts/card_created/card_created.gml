@@ -19,4 +19,9 @@ function card_created(plant_inst, col, row) {
     
     // 更新所有植物的深度偏移
 	sort_plants_in_grid(col, row)
-}  
+
+    // 新卡放置后需要重新计算海洋女神增幅，
+    // 否则只会在海洋女神自身变化时重建，导致放置顺序影响增幅。
+    if (variable_global_exists("ocean_buff_dirty"))
+        global.ocean_buff_dirty = true;
+}

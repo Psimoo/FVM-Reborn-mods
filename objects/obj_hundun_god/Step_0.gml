@@ -14,6 +14,8 @@ var _check_col_range = grid_range_col;
 var _check_row_range = grid_range_row;
 var _check_row = grid_row;
 var _check_col = grid_col;
+if (shape >= 3)
+    _check_col = grid_col + 1;
 
 var has_enemy = false;
 if (state == CARD_STATE.IDLE)

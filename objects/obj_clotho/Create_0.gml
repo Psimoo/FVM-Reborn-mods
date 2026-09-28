@@ -27,4 +27,4 @@ if (shape == 3)
 
 clotho_effect_obj = instance_create_depth(x, y - 30, 0, obj_clotho_effect);
 clotho_effect_obj.sprite_index = spr;
-gold_cards = ["gaia", "aurora", "zhurong", "rig", "ghost_god", "odin", "sun_god", "moon_god", "thor", "war_god", "hera", "poseidon", "love_god", "zeus", "ice_god", "fire_god", "water_god", "power_god", "sheng_huo", "ymir", "joker", "brahma", "time_god", "firework_dragon_real", "save_god", "xiangshui_god", "fengrao_god", "houyi_god", "heian_god", "guangming_god", "hundun_god"];
+gold_cards = ["gaia", "aurora", "zhurong", "rig", "ghost_god", "odin", "sun_god", "moon_god", "thor", "war_god", "hera", "poseidon", "love_god", "zeus", "ice_god", "fire_god", "water_god", "power_god", "sheng_huo", "ymir", "joker", "brahma", "time_god", "firework_dragon_real", "save_god", "xiangshui_god", "fengrao_god", "houyi_god", "heian_god", "guangming_god", "hundun_god", "shennong_god", "hufa_god", "haiyang_god", "chongsheng_god", "gongjiang_god"];

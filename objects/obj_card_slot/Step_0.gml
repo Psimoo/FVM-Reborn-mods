@@ -3,6 +3,13 @@ if global.is_paused{
 	exit
 }
 
+if (global.level_id == "test_level"
+    && ((variable_global_exists("test_mouse_picker_block_place") && global.test_mouse_picker_block_place)
+        || instance_exists(obj_info_island_bg)))
+{
+	exit
+}
+
 if card_id != "magic_chicken"{
 	current_cost = cost
 	if ds_exists(global.plus_card_map, ds_type_map) && ds_map_find_value(global.plus_card_map,card_id) != undefined{

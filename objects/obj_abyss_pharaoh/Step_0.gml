@@ -224,34 +224,38 @@ switch state{
 		}
 		if timer == 7*5+24*5*jump_times{
 			var avaliable_line = []
-		for(var i = 0 ; i < global.grid_rows;i++){
-			var lf = global.row_feature[i]
-			if lf == "land"{
-				array_push(avaliable_line,i)
-			}
-		}
-		if (array_length(avaliable_line) > 0) {
-			var linei = irandom_range(0,array_length(avaliable_line)-1)
-			var hole_col = irandom_range(7,8)
-			var hole_row = avaliable_line[linei]
-			var hole_pos = get_world_position_from_grid(hole_col,hole_row)
-			with obj_card_parent{
-				if grid_row == hole_row && grid_col == hole_col && plant_id != "player" && !invincible{
-					if hp >= max_hp{
-						obj_task_manager.card_loss++
-					}
-					instance_destroy()
+			for(var i = 0 ; i < global.grid_rows; i++){
+				var lf = global.row_feature[i]
+				if lf == "land"{
+					array_push(avaliable_line, i)
 				}
 			}
-			instance_create_depth(hole_pos.x,hole_pos.y,-5,obj_pharaoh_hole)
-		}
-		jump_times++
+			var _avaliable_count = array_length(avaliable_line)
+			if (_avaliable_count > 0) {
+				var linei = irandom_range(0, _avaliable_count - 1)
+				// 防御性检查：确保索引有效
+				if (linei < 0) linei = 0
+				if (linei >= _avaliable_count) linei = _avaliable_count - 1
+				var hole_col = irandom_range(7, 8)
+				var hole_row = avaliable_line[linei]
+				var hole_pos = get_world_position_from_grid(hole_col, hole_row)
+				with obj_card_parent{
+					if grid_row == hole_row && grid_col == hole_col && plant_id != "player" && !invincible{
+						if hp >= max_hp{
+							obj_task_manager.card_loss++
+						}
+						instance_destroy()
+					}
+				}
+				instance_create_depth(hole_pos.x, hole_pos.y, -5, obj_pharaoh_hole)
+			}
+			jump_times++
 		}
 		if timer >= 12*5*8-1{
 			skill_cycle += 1
 			timer = 0
-			move_target_row = irandom_range(0,global.grid_rows-1)
-			var land_pos = get_world_position_from_grid(10,move_target_row)
+			move_target_row = irandom_range(0, global.grid_rows-1)
+			var land_pos = get_world_position_from_grid(10, move_target_row)
 			y_move_speed = (land_pos.y+33 - y)/180
 			state = BOSS_STATE.MOVE
 			jump_times = 0

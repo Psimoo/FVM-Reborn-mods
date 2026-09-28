@@ -1,3 +1,55 @@
+if (global.level_id == "test_level")
+{
+    // F2 打开情报岛敌人页。
+    if (!instance_exists(obj_info_island_bg) && keyboard_check_pressed(vk_f2))
+    {
+        var test_info = instance_create_depth(1380, room_height / 2, -4000, obj_info_island_bg);
+        test_info.depth = -10000;
+        test_info.info_button_select = 2;
+        with (obj_card_slot)
+        {
+            is_selected = false;
+            if (selected_preview != noone && instance_exists(selected_preview))
+                instance_destroy(selected_preview);
+            selected_preview = noone;
+        }
+        global.selected_slot = noone;
+        global.test_mouse_picker_open = true;
+        global.is_paused = true;
+    }
+
+    // 选择敌人的鼠标按键释放前，不允许点击背后的地图或卡槽。
+    if (global.test_mouse_picker_block_place)
+    {
+        if (!mouse_check_button(mb_left))
+            global.test_mouse_picker_block_place = false;
+    }
+
+    // 选中情报岛敌人后，点击场上格子生成。
+    var test_player = instance_find(obj_player_character, 0);
+    if (test_player != noone && test_player.is_placed
+        && !instance_exists(obj_info_island_bg) && global.test_mouse_picker_id != ""
+        && !global.test_mouse_picker_block_place
+        && mouse_check_button_pressed(mb_left))
+    {
+        var place_pos = get_grid_position_from_world(mouse_x, mouse_y);
+        if (place_pos.col >= 0 && place_pos.col < global.grid_cols
+            && place_pos.row >= 0 && place_pos.row < global.grid_rows)
+        {
+            var enemy_data = global.enemy_map[? global.test_mouse_picker_id];
+            var place_world = get_world_position_from_grid(place_pos.col, place_pos.row);
+            var test_inst = instance_create_depth(place_world.x, place_world.y + 38, 0, obj_test_mouse);
+            test_inst.sprite_index = enemy_data.spr;
+            test_inst.mouse_id = global.test_mouse_picker_id;
+            test_inst.grid_row = place_pos.row;
+            test_inst.grid_col = place_pos.col;
+            test_inst.hp = 2147483647;
+            test_inst.maxhp = 2147483647;
+            global.test_mouse_picker_id = "";
+        }
+    }
+}
+
 if global.is_paused{
 	exit
 }
@@ -197,16 +249,18 @@ if global.debug{
 
 // 测试关卡：5秒伤害统计
 if global.level_id == "test_level"{
-	var _test_mouse = instance_find(obj_test_mouse, 0)
-	if _test_mouse != noone{
+	var _test_damage_total = 0
+	for (var _mouse_index = 0; _mouse_index < instance_number(obj_test_mouse); _mouse_index++) {
+		var _test_mouse = instance_find(obj_test_mouse, _mouse_index)
 		if !variable_instance_exists(_test_mouse, "test_damage_total"){
 			_test_mouse.test_damage_total = 0
 		}
-		test_dps_timer++
-		if test_dps_timer >= test_dps_window{
-			test_dps_display = _test_mouse.test_damage_total - test_dps_last_total
-			test_dps_last_total = _test_mouse.test_damage_total
-			test_dps_timer = 0
-		}
+		_test_damage_total += _test_mouse.test_damage_total
+	}
+	test_dps_timer++
+	if test_dps_timer >= test_dps_window{
+		test_dps_display = _test_damage_total - test_dps_last_total
+		test_dps_last_total = _test_damage_total
+		test_dps_timer = 0
 	}
 }

@@ -60,134 +60,54 @@ function refresh_ocean_buff_cells()
     }
 }
 
-/// @func rebuild_ocean_buff()
-/// @desc 重建所有海洋女神的增幅，重新计算所有受益卡片的 ocean_buff_multiplier
+/// @desc 按目标卡的逻辑坐标计算海洋增幅，不依赖放置顺序或格子列表缓存。
+function get_ocean_buff_multiplier(card)
+{
+    var multiplier = 1;
+    if (card.grid_col < 0 || card.grid_col >= global.grid_cols
+        || card.grid_row < 0 || card.grid_row >= global.grid_rows)
+        return multiplier;
+
+    var buff_type = mod_get_ocean_buff_type(card.plant_id);
+    var is_coffee = (card.plant_type == "coffee");
+    if (buff_type == "none" && !is_coffee)
+        return multiplier;
+
+    // 仅统计当前战场上有效的海洋女神，排除跨局残留的来源列表。
+    var sources = [];
+    with (obj_haiyang_god)
+    {
+        if (hp > 0 && grid_col >= 0 && grid_col < global.grid_cols
+            && grid_row >= 0 && grid_row < global.grid_rows)
+            array_push(sources, id);
+    }
+    var count = array_length(sources);
+    for (var i = 0; i < count; i++)
+    {
+        var source = sources[i];
+        var dc = abs(card.grid_col - source.grid_col);
+        var dr = abs(card.grid_row - source.grid_row);
+        var in_range = (source.shape == 3 && count >= 4);
+        if (!in_range)
+        {
+            in_range = ((buff_type == "sprayer" || buff_type == "both") && dc <= 2 && dr <= 2)
+                || ((buff_type == "attach" || buff_type == "both") && dc <= 2 && dr == 0)
+                || (is_coffee && dr == 0);
+        }
+        // 同一个来源只计一次，不同来源继续按加法叠加。
+        if (in_range)
+            multiplier += source.ocean_buff_value - 1;
+    }
+    return multiplier;
+}
+
+/// @desc 重建海洋增幅，并触发攻击力更新。
 function rebuild_ocean_buff()
 {
-    if (!variable_global_exists("ocean_god_sources"))
-        return;
-    
-    if (!variable_global_exists("grid_plants"))
-        return;
-    
-    // 重置所有卡片的 ocean_buff_multiplier
     with (obj_card_parent)
-    {
-        ocean_buff_multiplier = 1;
-    }
-    
-    // 遍历所有海洋女神来源，应用增幅
-    var sources = global.ocean_god_sources;
-    for (var i = 0; i < ds_list_size(sources); i++)
-    {
-        var inst = ds_list_find_value(sources, i);
-        if (!instance_exists(inst))
-            continue;
-        
-        apply_ocean_buff(inst);
-    }
-    
-    // 标记 dirty 为 false
+        ocean_buff_multiplier = get_ocean_buff_multiplier(id);
     global.ocean_buff_dirty = false;
-    
-    // 触发攻击力更新（递增buff应用ID，使所有卡片重新计算攻击力）
     global.buff_apply_id++;
-}
-
-/// @func apply_ocean_buff(arg0)
-/// @desc 应用单个海洋女神的增幅到所有受益卡片
-/// @param {instance} arg0 海洋女神实例
-function apply_ocean_buff(arg0)
-{
-    // 喷壶类增幅
-    apply_ocean_buff_type(arg0, arg0.ocean_buff_cells_sprayer, "sprayer");
-    
-    // 附加类增幅
-    apply_ocean_buff_type(arg0, arg0.ocean_buff_cells_attach, "attach");
-    
-    // 咖啡喷壶类增幅（按 plant_type == "coffee" 判断）
-    apply_ocean_buff_coffee(arg0);
-}
-
-/// @func apply_ocean_buff_type(arg0, arg1, arg2)
-/// @desc 应用指定类型的增幅
-/// @param {instance} arg0 海洋女神实例
-/// @param {array} arg1 增幅格子数组
-/// @param {string} arg2 buff 类型
-function apply_ocean_buff_type(arg0, arg1, arg2)
-{
-    var cells = arg1;
-    var buff_type = arg2;
-    
-    for (var i = 0; i < array_length(cells); i++)
-    {
-        var c = cells[i][0];
-        var r = cells[i][1];
-        var v = cells[i][2];
-        
-        // 边界检查
-        if (c < 0 || c >= global.grid_cols || r < 0 || r >= global.grid_rows)
-            continue;
-        
-        // 获取该格子上的所有卡片（ds_grid -> ds_list）
-        var cell_list = ds_grid_get(global.grid_plants, c, r);
-        if (cell_list == undefined)
-            continue;
-        
-        for (var j = 0; j < ds_list_size(cell_list); j++)
-        {
-            var card = ds_list_find_value(cell_list, j);
-            if (!instance_exists(card))
-                continue;
-            
-            // 检查卡片是否属于该 buff 类型
-            var card_buff_type = mod_get_ocean_buff_type(card.plant_id);
-            if (card_buff_type != buff_type && card_buff_type != "both")
-                continue;
-            
-            // 来源计数：加法叠加（叠加方式固定）
-            // 总倍率 = 1 + sum(每个来源的倍率 - 1)
-            card.ocean_buff_multiplier += (v - 1);
-        }
-    }
-}
-
-/// @func apply_ocean_buff_coffee(arg0)
-/// @desc 应用咖啡喷壶类增幅（按 plant_type == "coffee" 判断）
-/// @param {instance} arg0 海洋女神实例
-function apply_ocean_buff_coffee(arg0)
-{
-    var cells = arg0.ocean_buff_cells_coffee;
-    
-    for (var i = 0; i < array_length(cells); i++)
-    {
-        var c = cells[i][0];
-        var r = cells[i][1];
-        var v = cells[i][2];
-        
-        // 边界检查
-        if (c < 0 || c >= global.grid_cols || r < 0 || r >= global.grid_rows)
-            continue;
-        
-        // 获取该格子上的所有卡片（ds_grid -> ds_list）
-        var cell_list = ds_grid_get(global.grid_plants, c, r);
-        if (cell_list == undefined)
-            continue;
-        
-        for (var j = 0; j < ds_list_size(cell_list); j++)
-        {
-            var card = ds_list_find_value(cell_list, j);
-            if (!instance_exists(card))
-                continue;
-            
-            // 检查是否为咖啡喷壶类（plant_type == "coffee"）
-            if (card.plant_type != "coffee")
-                continue;
-            
-            // 来源计数：加法叠加
-            card.ocean_buff_multiplier += (v - 1);
-        }
-    }
 }
 
 /// @func mod_get_ocean_buff_type(arg0)
@@ -196,6 +116,10 @@ function apply_ocean_buff_coffee(arg0)
 /// @return {string} buff 类型（"sprayer"/"attach"/"both"/"none"）
 function mod_get_ocean_buff_type(arg0)
 {
+    // 护法神同时属于附加类和喷壶类，单独处理以避免附加类提前返回。
+    if (arg0 == "hufa_god")
+        return "both";
+
     var type = mod_get_buff_type(arg0);
     
     // 喷壶类

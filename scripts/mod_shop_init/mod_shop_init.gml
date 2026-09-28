@@ -325,8 +325,8 @@ function mod_shop_init()
         type: "gem",
         cost: "1000000",
         unlock_item_id: "rose_shield_gem_1",
-        description: "玫瑰之心：生产极限量的火苗",
-        display_name: "玫瑰之心"
+        description: "光合作用：生产极限量的火苗",
+        display_name: "光合作用"
     });
     register_goods("rose_shield_gem_2",
     {

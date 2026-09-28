@@ -40,6 +40,7 @@ ocean_last_shape = shape;
 
 // 全屏模式标记（终转且场上>=4张时激活）
 ocean_fullscreen = false;
+ocean_corner_effects = [];
 
 // 初始化全局海洋女神来源列表
 if (!variable_global_exists("ocean_god_sources"))
@@ -47,6 +48,8 @@ if (!variable_global_exists("ocean_god_sources"))
     global.ocean_god_sources = ds_list_create();
     global.ocean_buff_dirty = true;
 }
+if (!variable_global_exists("ocean_corner_effect_owner"))
+    global.ocean_corner_effect_owner = noone;
 
 // 添加到全局来源列表
 ds_list_add(global.ocean_god_sources, id);

@@ -1,6 +1,8 @@
 if (global.is_paused)
     exit;
 
+var _mod_mgr = instance_exists(obj_mod_battle_manager);
+
 grid_row = parent_player.grid_row;
 grid_col = parent_player.grid_col;
 depth = parent_player.depth - 1;
@@ -284,7 +286,7 @@ if (guard_gem || strength_gem)
                 }
             }
             
-            if (other.strength_gem && array_get_index(other.atk_modified_card_list, id) == -1)
+            if (other.strength_gem && !_mod_mgr && array_get_index(other.atk_modified_card_list, id) == -1)
             {
                 atk *= (other.atk_ratio + 1);
                 array_push(other.atk_modified_card_list, id);
@@ -346,7 +348,7 @@ if (gods_damage_gem)
     }
 }
 
-if (gods_buff_gem)
+if (gods_buff_gem && !_mod_mgr)
 {
     with (obj_card_parent)
     {
@@ -446,7 +448,7 @@ if (rose_flame_gem)
     }
 }
 
-if (rose_buff_gem)
+if (rose_buff_gem && !_mod_mgr)
 {
     with (obj_card_parent)
     {
@@ -554,6 +556,28 @@ if (rose_dmg_gem)
                 audio_play_sound(snd_rose_shield, 0, 0);
                 var effect_inst = instance_create_depth_define(x, y - 20, depth, obj_xiaolongbao_bullet_effect);
                 effect_inst.sprite_index = spr_rose_shield_effect_1;
+            }
+        }
+    }
+}
+
+if (divine_holy_gem)
+{
+    if ((timer % 150) == 0)
+    {
+        with (obj_enemy_parent)
+        {
+            var row_diff = self.grid_row - other.grid_row;
+            var col_diff = self.grid_col - other.grid_col;
+
+            if (!variable_instance_exists(id, "divine_holy_gem_debuffed"))
+                self.divine_holy_gem_debuffed = false;
+
+            if (row_diff >= -2 && row_diff <= 2 && col_diff >= -2 && col_diff <= 2 && !self.divine_holy_gem_debuffed)
+            {
+                self.hp -= other.divine_holy_atk;
+                self.ice_timer += other.divine_holy_ice_timer;
+                self.divine_holy_gem_debuffed = true;
             }
         }
     }

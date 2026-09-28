@@ -36,8 +36,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"Cards",
-    "path":"folders/精灵/mod/Cards.yy",
+    "name":"aurora",
+    "path":"folders/精灵/mod/Cards/aurora.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -1003,8 +1003,8 @@ function mod_slots_init()
     }, 
     {
         shape: 1,
-        sprite: spr_water_god_1,
-        cost: 75,
+    sprite: spr_water_god_1,
+    cost: 150,
         cooldown: 420,
         description: "忒提丝圣神：反弹子弹并附加伤害",
         plant_type: "normal",
@@ -1014,8 +1014,8 @@ function mod_slots_init()
     }, 
     {
         shape: 2,
-        sprite: spr_water_god_2_icon,
-        cost: 75,
+    sprite: spr_water_god_2_icon,
+    cost: 150,
         cooldown: 420,
         description: "水神·忒提丝：反弹子弹并附加伤害",
         plant_type: "normal",
@@ -1026,8 +1026,8 @@ function mod_slots_init()
     }, 
     {
         shape: 3,
-        sprite: spr_water_god_3_icon,
-        cost: 75,
+    sprite: spr_water_god_3_icon,
+    cost: 150,
         cooldown: 420,
         description: "至尊水神：反弹子弹并附加双倍伤害",
         plant_type: "normal",
@@ -2146,7 +2146,7 @@ register_card("hundun_god", obj_hundun_god, [
 {
     shape: 0,
     sprite: spr_hundun_god,
-    cost: 350,
+    cost: 205,
     cooldown: 1800,
     description: "混沌神使：吞噬5*5范围内的普通敌人，对精英敌人造成4500伤害，死亡时产生3*3灰烬爆炸",
     plant_type: "normal",
@@ -2158,7 +2158,7 @@ register_card("hundun_god", obj_hundun_god, [
 {
     shape: 1,
     sprite: spr_hundun_god_1,
-    cost: 350,
+    cost: 205,
     cooldown: 1800,
     description: "混沌圣神：吞噬范围扩大，精英伤害提升至6000，死亡爆炸范围5*5",
     plant_type: "normal",
@@ -2170,7 +2170,7 @@ register_card("hundun_god", obj_hundun_god, [
 {
     shape: 2,
     sprite: spr_hundun_god_2,
-    cost: 350,
+    cost: 205,
     cooldown: 1800,
     description: "上古神·混沌：纵向吞噬范围扩大，同时吞噬多个敌人",
     plant_type: "normal",
@@ -2182,7 +2182,7 @@ register_card("hundun_god", obj_hundun_god, [
 {
     shape: 3,
     sprite: spr_hundun_god_3,
-    cost: 350,
+    cost: 205,
     cooldown: 1800,
     description: "至尊上古神：自身右侧为中心5×7范围吞噬普通鼠军，对精英鼠造成9000伤害",
     plant_type: "normal",
@@ -2842,9 +2842,9 @@ register_card("xuanfengniu", obj_xuanfengniu, [
         sprite: spr_haiyang_god,
         cost: 360,
         cooldown: 2400,
-        description: "海洋女神使：5x5范围喷壶类、5x1范围附加类、本行咖啡喷壶类卡片增伤",
+        description: "塔拉萨神使：5x5范围喷壶类、5x1范围附加类、本行咖啡喷壶类卡片增伤",
         plant_type: "normal",
-        feature_type: "normal",
+        feature_type: "haiyang_obstacle",
         target_card: "none",
         is_gold: 1,
         place_preview: spr_haiyang_god
@@ -2854,9 +2854,9 @@ register_card("xuanfengniu", obj_xuanfengniu, [
         sprite: spr_haiyang_god_1,
         cost: 360,
         cooldown: 2400,
-        description: "海洋女圣神：5x5范围喷壶类、5x1范围附加类、本行咖啡喷壶类卡片增伤",
+        description: "塔拉萨圣神：5x5范围喷壶类、5x1范围附加类、本行咖啡喷壶类卡片增伤",
         plant_type: "normal",
-        feature_type: "normal",
+        feature_type: "haiyang_obstacle",
         target_card: "none",
         is_gold: 1,
         place_preview: spr_haiyang_god_1
@@ -2866,9 +2866,9 @@ register_card("xuanfengniu", obj_xuanfengniu, [
         sprite: spr_haiyang_god_2,
         cost: 360,
         cooldown: 2400,
-        description: "海洋女神·忒堤斯：悬浮卡，5x5范围喷壶类、5x1范围附加类、本行咖啡喷壶类卡片增伤",
+        description: "海洋女神塔拉萨：悬浮卡，5x5范围喷壶类、5x1范围附加类、本行咖啡喷壶类卡片增伤",
         plant_type: "gridless",
-        feature_type: "normal",
+        feature_type: "haiyang_obstacle",
         target_card: "none",
         is_gold: 1,
         place_preview: spr_haiyang_god_2
@@ -2880,7 +2880,7 @@ register_card("xuanfengniu", obj_xuanfengniu, [
         cooldown: 2400,
         description: "至尊海洋女神：悬浮卡，场上满4张后全屏增幅喷壶类、附加类、咖啡喷壶类卡片",
         plant_type: "gridless",
-        feature_type: "normal",
+        feature_type: "haiyang_obstacle",
         target_card: "none",
         is_gold: 1,
         place_preview: spr_haiyang_god_3

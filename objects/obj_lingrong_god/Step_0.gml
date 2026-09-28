@@ -23,7 +23,7 @@ if grid_row >= 0 && grid_col >= 0 && grid_row < global.grid_rows && grid_col < g
 
 event_inherited()
 
-depth = calculate_plant_depth(grid_col, grid_row, "lilypad")
+depth = calculate_plant_depth(grid_col, grid_row, "lilypad") + 2
 
 with obj_cloud {
     if is_hole && col > 1 &&

@@ -207,7 +207,7 @@ function mod_enemy_init()
         cycle: 36,
         range: 90,
         ash_proof: true,
-        spr: spr_infected_diver_mouse_land,
+        spr: spr_infected_diver_mouse_up,
         feature: "water"
     });
     register_enemy("infected_frog_prince_mouse", 
@@ -222,7 +222,7 @@ function mod_enemy_init()
         cycle: 36,
         range: 180,
         ash_proof: true,
-        spr: spr_infected_frog_prince_mouse_enter,
+        spr: spr_infected_frog_prince_mouse_frog,
         feature: "water"
     });
     register_enemy("infected_submarine_mouse", 
@@ -282,7 +282,7 @@ function mod_enemy_init()
         cycle: 36,
         range: 90,
         ash_proof: true,
-        spr: spr_infected_bingzha_fire_appear,
+        spr: spr_infected_bingzha_fire_skill_1,
         feature: "land"
     });
 }

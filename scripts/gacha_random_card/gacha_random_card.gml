@@ -107,6 +107,8 @@ function gacha_is_mod_weapon(weapon_id) {
 /// @return {bool}
 function gacha_is_mod_gem(gem_id) {
     // MOD宝石列表（来自mod_weapons_init.gml）
+    // 注：master_shield_gem_1/3/4 与 divine_blessing/protect/holy_gem 同名同功能，
+    // 已移除前者防止重复抽取（前者obj为noone且不在商店中）
     var mod_gems = [
         "zeus_shadow_gem",
         "zeus_power_gem",
@@ -118,10 +120,7 @@ function gacha_is_mod_gem(gem_id) {
         "gods_shield_gem_2",
         "gods_shield_gem_3",
         "gods_shield_gem_4",
-        "master_shield_gem_1",
         "master_shield_gem_2",
-        "master_shield_gem_3",
-        "master_shield_gem_4",
         "divine_blessing_gem",
         "divine_protect_gem",
         "divine_holy_gem",

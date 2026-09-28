@@ -1,7 +1,7 @@
 function enemy_init(){
 	enemy_registry_init()
 	register_enemy("normal_mouse",{"name":"平民鼠","_obj":obj_normal_mouse,"hp":100,"shield":0,"description":"平民鼠：很普通的老鼠，无特殊能力","speed":0.30,"atk":10,"cycle":36,"range":90,"ash_proof":false,"spr":spr_normal_mouse,"feature":"land"})
-	register_enemy("test_mouse",{"name":"测试鼠","_obj":obj_test_mouse,"hp":2147483647,"shield":0,"description":"测试用，不会移动，血量极高","speed":0,"atk":0,"cycle":9999,"range":0,"ash_proof":false,"spr":spr_normal_mouse,"feature":"land"})
+	register_enemy("test_mouse",{"name":"测试鼠","_obj":obj_test_mouse,"hp":2147483647,"shield":0,"description":"测试用，不会移动，血量极高，免疫灰烬秒杀","speed":0,"atk":0,"cycle":9999,"range":0,"ash_proof":true,"spr":spr_normal_mouse,"feature":"land"})
 	register_enemy("football_fan_mouse",{"name":"球迷鼠","_obj":obj_football_fan_mouse,"hp":280,"shield":0,"description":"球迷鼠：生命值稍高的普通老鼠","speed":0.30,"atk":10,"cycle":36,"range":90,"ash_proof":false,"spr":spr_football_fan_mouse_helmet,"feature":"land"})
 	register_enemy("iron_pan_mouse",{"name":"铁锅鼠","_obj":obj_iron_pan_mouse,"hp":660,"shield":0,"description":"铁锅鼠：生命值较高的普通老鼠","speed":0.30,"atk":10,"cycle":36,"range":90,"ash_proof":false,"spr":spr_iron_pan_mouse_helmet,"feature":"land"})
 	register_enemy("skateboard_mouse",{"name":"滑板鼠","_obj":obj_skateboard_mouse,"hp":170,"shield":0,"description":"滑板鼠：跳过第一个卡片","speed":0.90,"atk":10,"cycle":36,"range":90,"ash_proof":false,"spr":spr_skateboard_mouse_skate,"feature":"land"})

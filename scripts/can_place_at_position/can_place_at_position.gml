@@ -20,7 +20,8 @@ function can_place_at_position(x, y, plant_type,feature_type,target_card) {
 		return true
 	}
 	// 检查是否有障碍
-	if global.grid_terrains[row][col].type == "obstacle" && plant_type != "coffee"{
+	// 海洋女神所有形态可放置在障碍地形上，仍继续检查占格和底座规则。
+	if global.grid_terrains[row][col].type == "obstacle" && plant_type != "coffee" && feature_type != "haiyang_obstacle"{
 		return false
 	}
     

@@ -12,7 +12,7 @@ if (lifetime_timer <= 0)
     exit;
 }
 
-var _tg_blacklist = ["brahma", "ice_cream", "magic_chicken"];
+var _tg_blacklist = ["brahma", "ice_cream", "magic_chicken", "clotho"];
 
 var col_offset = 1;
 var row_offset = 1;

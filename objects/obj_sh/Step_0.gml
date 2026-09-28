@@ -11,7 +11,7 @@ var current_flash_speed = flash_speed;
 if (is_slowdown)
     current_flash_speed *= 2;
 
-var count = (variable_global_exists("mod_obj_sh_count") ? global.mod_obj_sh_count : 0) - 1;
+var count = instance_number(obj_sh) - 1;
 cluster_multiplier = 1 + (0.08 * count);
 cluster_multiplier = min(cluster_multiplier, 1.5);
 

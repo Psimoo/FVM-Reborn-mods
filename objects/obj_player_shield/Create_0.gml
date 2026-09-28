@@ -119,6 +119,11 @@ else if (get_gem_index("master_shield_gem_1") != -1)
     _fid = "master_shield_gem_1";
     gods_flame_gem = true;
 }
+else if (get_gem_index("divine_blessing_gem") != -1)
+{
+    _fid = "divine_blessing_gem";
+    gods_flame_gem = true;
+}
 
 if (gods_flame_gem)
 {
@@ -181,6 +186,38 @@ if (gods_buff_gem)
     var _gl = get_gem_level(_bid);
     gods_buff_inner = _gi.ratio_inner[_gl];
     gods_buff_outer = _gi.ratio_outer[_gl];
+}
+
+divine_protect_gem = false;
+divine_protect_ratio = 0;
+
+if (get_gem_index("divine_protect_gem") != -1)
+{
+    divine_protect_gem = true;
+    var _gi = get_gem_info("divine_protect_gem");
+    var _gl = get_gem_level("divine_protect_gem");
+
+    if (_gl > 15)
+        _gl = 15;
+
+    divine_protect_ratio = _gi.atk_ratio[_gl];
+}
+
+divine_holy_gem = false;
+divine_holy_atk = 0;
+divine_holy_ice_timer = 0;
+
+if (get_gem_index("divine_holy_gem") != -1)
+{
+    divine_holy_gem = true;
+    var _gi = get_gem_info("divine_holy_gem");
+    var _gl = get_gem_level("divine_holy_gem");
+
+    if (_gl > 15)
+        _gl = 15;
+
+    divine_holy_atk = _gi.atk[_gl];
+    divine_holy_ice_timer = _gi.ice_timer[_gl];
 }
 
 gods_hp_gem = false;

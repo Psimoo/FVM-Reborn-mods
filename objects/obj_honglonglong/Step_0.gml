@@ -251,20 +251,27 @@ switch state{
 			image_index = floor(timer/5) mod 24 + 24
 		}
 		if timer == 14 * 5{
-			// 变异版坐压：4x4范围摧毁（以目标位置为中心）
-			var _center_row = target_pos.row
-			var _center_col = target_pos.col
-			with obj_card_parent{
-				if grid_row >= _center_row - 1 && grid_row <= _center_row + 2
-				&& grid_col >= _center_col - 1 && grid_col <= _center_col + 2
-				&& !invincible && plant_id != "player"{
-					if hp >= max_hp{
-						obj_task_manager.card_loss++
+				// 变异版坐压：4x4范围摧毁（以目标位置为中心）
+				var _center_row = target_pos.row
+				var _center_col = target_pos.col
+				var _cards_to_destroy = []
+				with obj_card_parent{
+					if grid_row >= _center_row - 1 && grid_row <= _center_row + 2
+					&& grid_col >= _center_col - 1 && grid_col <= _center_col + 2
+					&& !invincible && plant_id != "player"{
+						array_push(_cards_to_destroy, id)
 					}
-					instance_destroy()
+				}
+				for (var i = 0; i < array_length(_cards_to_destroy); i++){
+					var _card = _cards_to_destroy[i]
+					with _card{
+						if hp >= max_hp{
+							obj_task_manager.card_loss++
+						}
+					}
+					instance_destroy(_card)
 				}
 			}
-		}
 		if timer >= 24*5-1{
 			timer = 0
 			state = BOSS_STATE.IDLE

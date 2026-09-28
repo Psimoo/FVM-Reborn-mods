@@ -24,14 +24,29 @@ switch (shape)
         break;
 }
 
-// 基础2行轨迹：上路、中路（从左向右）
-var bullet_rows = [-1, 0];
+// 边路补偿机制：越界的子弹改为中路（自身行），确保始终2发/3发
+// 基础：上路(-1) + 中路(0)，上路越界则改为中路 → 2发中路
+// >7只：增加下路(+1)，下路越界则改为中路 → 中路多1发
+var bullet_rows = [];
 
-// 大于7张（即至少8张）时，增加下路轨迹
+// 第一行：上路，越界则中路
+if (grid_row - 1 >= 0)
+    bullet_rows[0] = -1;
+else
+    bullet_rows[0] = 0;
+
+// 第二行：中路（自身所在行）
+bullet_rows[1] = 0;
+
+// 场上炎帝>7只时，增加第三行
 var shennong_count = instance_number(obj_shennong_god);
-if (shennong_count >= 8)
+if (shennong_count > 7)
 {
-    bullet_rows[array_length(bullet_rows)] = 1;  // 下路
+    // 下路，越界则中路
+    if (grid_row + 1 < global.grid_rows)
+        bullet_rows[2] = 1;
+    else
+        bullet_rows[2] = 0;
 }
 
 for (var i = 0; i < array_length(bullet_rows); i++)
@@ -39,11 +54,13 @@ for (var i = 0; i < array_length(bullet_rows); i++)
     var row_off = bullet_rows[i];
     var target_row = grid_row + row_off;
 
-    // 边界检查：如果行超出范围则跳过
-    if (target_row < 0 || target_row >= global.grid_rows)
-        continue;
-
     var start_x = col0_x - 40;
+    if (row_off == 0 && i != 1) {
+        if (i == 0)
+            start_x -= 20;
+        else
+            start_x -= 40;
+    }
     var start_y = global.grid_offset_y + (grid_cell_y * target_row) + middle_y_offset;
 
     var inst = instance_create_depth(start_x, start_y, depth - 500, obj_shennong_god_bullet_h);

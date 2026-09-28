@@ -11,7 +11,7 @@ var current_flash_speed = flash_speed;
 if (is_slowdown)
     current_flash_speed *= 2;
 
-var _hittable = (shape < 2) ? ["normal", "air"] : ["normal", "air", "underground"];
+var _hittable = (shape < 2) ? ["normal", "air", "invisible"] : ["normal", "air", "underground", "invisible"];
 
 var has_enemy = false;
 

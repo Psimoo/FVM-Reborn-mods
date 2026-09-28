@@ -17,26 +17,7 @@ if (variable_global_exists("ocean_buff_dirty") && global.ocean_buff_dirty)
     show_debug_message("海洋女神增幅更新");
 }
 
-if (!shield_replaced)
-{
-    if (global.save_data.equipped_items.secondary_weapon.id == "master_shield")
-    {
-        if (instance_exists(obj_player_shield))
-        {
-            var target_item = obj_player_shield;
-            var new_shield = instance_create_depth(target_item.x, target_item.y, target_item.depth, obj_master_shield);
-            new_shield.parent_player = target_item.parent_player;
-            new_shield.grid_row = target_item.grid_row;
-            new_shield.grid_col = target_item.grid_col;
-            instance_destroy(obj_player_shield);
-            shield_replaced = true;
-        }
-    }
-    else
-    {
-        shield_replaced = true;
-    }
-}
+shield_replaced = true;
 
 if (buff_timer > 0)
 {
@@ -106,6 +87,14 @@ else
                 }
             }
             
+            // 放置、复活或移动后的目标都按当前坐标重新判定。
+            var current_ocean_mult = get_ocean_buff_multiplier(self.id);
+            if (current_ocean_mult != self.ocean_buff_multiplier)
+            {
+                self.ocean_buff_multiplier = current_ocean_mult;
+                just_initialized = true;
+            }
+
             if (just_initialized || self.buff_applied_id != global.buff_apply_id)
             {
                 if (self.grid_col < 0 || self.grid_col >= global.grid_cols || self.grid_row < 0 || self.grid_row >= global.grid_rows)
@@ -220,7 +209,8 @@ else
                 if (variable_instance_exists(self.id, "ocean_buff_multiplier"))
                     ocean_mult = self.ocean_buff_multiplier;
 
-                self.atk = self.base_atk * buff_multiplier * ocean_mult;
+                var _shield_gem_mult = get_shield_gem_atk_mult(self.grid_col, self.grid_row, self.plant_id);
+                self.atk = self.base_atk * buff_multiplier * ocean_mult * _shield_gem_mult;
 
                 self.buff_applied_id = global.buff_apply_id;
             }

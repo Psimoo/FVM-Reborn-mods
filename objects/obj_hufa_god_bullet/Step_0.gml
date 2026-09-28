@@ -52,31 +52,42 @@ if (variable_global_exists("enemy_by_type"))
             {
                 has_hit = true;
 
-                var _is_boss = _e.is_boss;
-                var _is_elite = false;
-                if (variable_instance_exists(_e, "is_elite"))
-                    _is_elite = _e.is_elite;
+                var _is_boss = variable_instance_exists(_e, "is_boss") && _e.is_boss;
+                if (!_is_boss && variable_global_exists("boss_list")
+                    && ds_exists(global.boss_list, ds_type_map)
+                    && variable_instance_exists(_e, "mouse_id")
+                    && ds_map_exists(global.boss_list, _e.mouse_id))
+                {
+                    _is_boss = true;
+                }
+                var _immune_to_ash = _e.immune_to_ash;
                 var _is_soul = false;
                 if (variable_instance_exists(_e, "is_soul"))
                     _is_soul = _e.is_soul;
+                var _is_submarine = (string_pos("submarine", object_get_name(_e.object_index)) > 0);
 
                 var _dmg = damage;
 
                 if (_is_boss && shape == 3)
                 {
-                    _dmg = base_atk * 2;
+                    // 终转对 Boss 造成护法神当前实际攻击力的 2 倍，包含所有增幅。
+                    _dmg = damage * 2;
                 }
                 else if (_is_boss)
                 {
                     _dmg = damage;
                 }
-                else if (_is_elite)
+                else if (_immune_to_ash)
                 {
                     _dmg = damage;
                 }
                 else if (_is_soul)
                 {
                     _dmg = floor(damage * 1.8);
+                }
+                else if (_is_submarine)
+                {
+                    _dmg = damage;
                 }
                 else
                 {
@@ -107,7 +118,7 @@ if (variable_global_exists("enemy_by_type"))
                     case 3: _effect_spr = spr_hufa_god_effect_3; break;
                 }
 
-                if (!_is_boss && !_is_elite && !_is_soul)
+                if (!_is_boss && !_immune_to_ash && !_is_soul && !_is_submarine)
                     _effect_spr = spr_hufa_god_effect_death;
 
                 var _fx = instance_create_depth(_e.x, _e.y, depth, obj_hufa_god_effect);

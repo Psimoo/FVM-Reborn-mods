@@ -1424,7 +1424,7 @@ register_gods_goods("hufa_god",
     type: "card",
     cost: "16",
     unlock_item_id: "hufa_god",
-    description: "护法神使：全屏索敌追踪穿透弹，秒杀非精英鼠，15%概率定身1.5秒",
+    description: "护法神使：全屏索敌追踪穿透弹，秒杀不防爆鼠，15%概率定身1.5秒",
     display_name: "护法神使"
 });
 
@@ -1466,8 +1466,8 @@ register_gods_goods("haiyang_god",
     type: "card",
     cost: "16",
     unlock_item_id: "haiyang_god",
-    description: "海洋女神使：为5×5范围喷壶类、5×1范围附加类、本行咖啡喷壶类卡片增伤",
-    display_name: "海洋女神使"
+    description: "塔拉萨神使：为5×5范围喷壶类、5×1范围附加类、本行咖啡喷壶类卡片增伤",
+    display_name: "塔拉萨神使"
 });
 
 register_gods_goods("haiyang_god_1",
@@ -1476,7 +1476,7 @@ register_gods_goods("haiyang_god_1",
     cost: "16",
     unlock_item_id: "haiyang_god",
     target_shape: 1,
-    description: "海洋女圣神：攻击力提升，增幅倍率增加",
+    description: "塔拉萨圣神：攻击力提升，增幅倍率增加",
     display_name: "三转凭证（海洋女神）",
     spr: spr_haiyang_god_pin1
 });
@@ -1487,7 +1487,7 @@ register_gods_goods("haiyang_god_2",
     cost: "32",
     unlock_item_id: "haiyang_god",
     target_shape: 2,
-    description: "海洋女神·忒堤斯：悬浮卡，不占用格子，攻击力大幅提升",
+    description: "海洋女神塔拉萨：悬浮卡，不占用格子，攻击力大幅提升",
     display_name: "四转凭证（海洋女神）",
     spr: spr_haiyang_god_pin2
 });

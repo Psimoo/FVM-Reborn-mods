@@ -29,6 +29,12 @@ global.grid_offset_y = 228
 global.grid_cols = global.level_file.map_cols
 global.grid_rows = global.level_file.map_rows
 
+// 测试关卡老鼠选择器
+global.test_mouse_picker_open = false;
+global.test_mouse_picker_id = "";
+global.test_mouse_picker_block_place = false;
+global.test_info_island_mode = (global.level_id == "test_level");
+
 
 //啃食音效
 chomp_sound_list = ds_list_create()

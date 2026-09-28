@@ -11,6 +11,8 @@ function card_destroyed(plant_inst) {
         var index = ds_list_find_index(plant_list, plant_inst);
         if (index != -1) {
             ds_list_delete(plant_list, index);
+            if (variable_global_exists("ocean_buff_dirty"))
+                global.ocean_buff_dirty = true;
             return;
         }
     }
@@ -22,6 +24,8 @@ function card_destroyed(plant_inst) {
             var idx = ds_list_find_index(list, plant_inst);
             if (idx != -1) {
                 ds_list_delete(list, idx);
+                if (variable_global_exists("ocean_buff_dirty"))
+                    global.ocean_buff_dirty = true;
                 return;
             }
         }

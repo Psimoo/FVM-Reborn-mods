@@ -220,7 +220,7 @@ else if (state == "moving") {
                             var vis_grid_pos = get_grid_position_from_world(plant.x, plant.y);
                             var _ptype = plant.plant_type
                             if (plant.object_index == obj_cotton_candy || plant.object_index == obj_lingrong_god) _ptype = "lilypad"
-                            plant.depth = calculate_plant_depth(vis_grid_pos.col, vis_grid_pos.row, _ptype);
+                        plant.depth = calculate_plant_depth(vis_grid_pos.col, vis_grid_pos.row, _ptype) + (plant.object_index == obj_lingrong_god ? 2 : 0);
                         }
                         
                         if (variable_instance_exists(plant, "banding_star_obj") && instance_exists(plant.banding_star_obj)) {
