@@ -1,6 +1,6 @@
 function mod_slots_init()
 {
-    // 随机礼盒：固定50火苗、10秒冷却，可兼容陆地和水面放置。
+    // 随机礼盒：固定50火苗、10秒冷却，只能放置在陆地。
     register_card("lihe", obj_lihe, [
     {
         shape: 0,
@@ -9,7 +9,7 @@ function mod_slots_init()
         cooldown: 600,
         description: "随机礼盒：随机生成一张卡片，生成卡片继承礼盒星级",
         plant_type: "normal",
-        feature_type: "amphi",
+        feature_type: "normal",
         target_card: "none"
     }]);
 
@@ -1935,7 +1935,7 @@ register_card("xiangshui_god", obj_xiangshui_god, [
     sprite: spr_xiangshui_god_2,
     cost: 260,
     cooldown: 2400,
-    description: "宴飨女神·塔利亚：攻击力提升，为周围5x5范围追踪卡片提升大幅攻击力",
+    description: "宴飨女神·塔利亚：攻击力提升，为周围5x5范围追踪卡片提升大幅攻击力（终转前）",
     plant_type: "normal",
     feature_type: "normal",
     target_card: "none",
@@ -1947,7 +1947,7 @@ register_card("xiangshui_god", obj_xiangshui_god, [
     sprite: spr_xiangshui_god_3,
     cost: 260,
     cooldown: 2400,
-    description: "至尊宴飨女神：冰神类卡片共享增幅，为周围5x5范围追踪卡片提升大幅攻击力",
+    description: "至尊宴飨女神：冰神类卡片共享增幅，为周围5x7范围追踪卡片提升大幅攻击力（终转）",
     plant_type: "normal",
     feature_type: "normal",
     target_card: "none",
@@ -2261,7 +2261,7 @@ register_card("lingrong_god", obj_lingrong_god, [
     sprite: spr_lingrong_god,
     cost: 25,
     cooldown: 420,
-    description: "灵容神使：三合一承载卡片，可在海底、陆地、水面、岩浆上承载卡片并填补空洞",
+    description: "魔导士软糖：三合一承载卡片，可在海底、陆地、水面、岩浆上承载卡片并填补空洞",
     plant_type: "coffee",
     feature_type: "normal",
     target_card: "none",
@@ -2273,7 +2273,7 @@ register_card("lingrong_god", obj_lingrong_god, [
     sprite: spr_lingrong_god_1,
     cost: 0,
     cooldown: 420,
-    description: "灵容圣神：竖向生成三张，三合一承载卡片",
+    description: "彩虹棉花软糖：竖向生成三张，三合一承载卡片",
     plant_type: "coffee",
     feature_type: "normal",
     target_card: "none",
@@ -2285,7 +2285,7 @@ register_card("lingrong_god", obj_lingrong_god, [
     sprite: spr_lingrong_god_2,
     cost: 0,
     cooldown: 420,
-    description: "灵容天神：直接生成九张，三合一承载卡片",
+    description: "无敌猫猫软糖：直接生成九张，三合一承载卡片",
     plant_type: "coffee",
     feature_type: "normal",
     target_card: "none",
@@ -2587,7 +2587,7 @@ register_card("liehuohu", obj_liehuohu, [
         sprite: spr_wanpilong,
         cost: 100,
         cooldown: 3300,
-        description: "顽皮龙：选择一张己方卡片，将其移动到周围5x5范围内的空格。前摇3.1秒。该卡仅支持冷却强化，不支持技能强化。",
+        description: "顽皮龙：选择一张己方卡片，将其移动到周围5x5范围内的空格；瓜皮护罩、赫拉、春女可移动到已有卡片的格子。前摇3.1秒。该卡仅支持冷却强化，不支持技能强化。",
         plant_type: "normal",
         feature_type: "normal",
         target_card: "none",

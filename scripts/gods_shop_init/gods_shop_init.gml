@@ -1005,7 +1005,7 @@ register_gods_goods("xiangshui_god_2",
     cost: "32",
     unlock_item_id: "xiangshui_god",
     target_shape: 2,
-    description: "宴飨女神·塔利亚：攻击力提升，冰神类卡片共享增幅，范围扩大至5x5",
+    description: "宴飨女神·塔利亚：攻击力提升，冰神类卡片共享增幅，范围为5x5（终转前）",
     display_name: "四转凭证（塔利亚）",
     spr: spr_xiangshui_god_pin2
 });
@@ -1016,7 +1016,7 @@ register_gods_goods("xiangshui_god_3",
     cost: "48",
     unlock_item_id: "xiangshui_god",
     target_shape: 3,
-    description: "至尊宴飨女神：冰神类卡片共享增幅，增幅倍数大幅提升",
+    description: "至尊宴飨女神：冰神类卡片共享增幅，增幅倍数大幅提升，范围扩大至5x7（终转）",
     display_name: "终转凭证（塔利亚）",
     spr: spr_xiangshui_god_pin3
 });
@@ -1320,8 +1320,8 @@ register_gods_goods("lingrong_god",
     type: "card",
     cost: "16",
     unlock_item_id: "lingrong_god",
-    description: "灵容神使：三合一承载卡片，在水上、空中和岩浆上承载卡片并填补空洞",
-    display_name: "灵容神使"
+    description: "魔导士软糖：三合一承载卡片，在水上、空中和岩浆上承载卡片并填补空洞",
+    display_name: "魔导士软糖"
 });
 
 register_gods_goods("lingrong_god_1",
@@ -1330,8 +1330,8 @@ register_gods_goods("lingrong_god_1",
     cost: "16",
     unlock_item_id: "lingrong_god",
     target_shape: 1,
-    description: "灵容圣神：竖向生成三张，三合一承载卡片",
-    display_name: "三转凭证（灵容神）",
+    description: "彩虹棉花软糖：竖向生成三张，三合一承载卡片",
+    display_name: "三转凭证（软糖神）",
     spr: spr_lingrong_god_pin1
 });
 
@@ -1341,8 +1341,8 @@ register_gods_goods("lingrong_god_2",
     cost: "32",
     unlock_item_id: "lingrong_god",
     target_shape: 2,
-    description: "灵容天神：直接生成九张，三合一承载卡片",
-    display_name: "四转凭证（灵容神）",
+    description: "无敌猫猫软糖：直接生成九张，三合一承载卡片",
+    display_name: "四转凭证（软糖神）",
     spr: spr_lingrong_god_pin2
 });
 

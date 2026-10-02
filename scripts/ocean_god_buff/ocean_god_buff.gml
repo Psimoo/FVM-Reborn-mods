@@ -70,6 +70,7 @@ function get_ocean_buff_multiplier(card)
 
     var buff_type = mod_get_ocean_buff_type(card.plant_id);
     var is_coffee = (card.plant_type == "coffee");
+    // row_sprayer（直线喷壶/咖啡喷壶类）也属于喷壶类，需要参与后续判定
     if (buff_type == "none" && !is_coffee)
         return multiplier;
 
@@ -82,6 +83,7 @@ function get_ocean_buff_multiplier(card)
             array_push(sources, id);
     }
     var count = array_length(sources);
+    var max_buff = 1;
     for (var i = 0; i < count; i++)
     {
         var source = sources[i];
@@ -90,15 +92,28 @@ function get_ocean_buff_multiplier(card)
         var in_range = (source.shape == 3 && count >= 4);
         if (!in_range)
         {
-            in_range = ((buff_type == "sprayer" || buff_type == "both") && dc <= 2 && dr <= 2)
-                || ((buff_type == "attach" || buff_type == "both") && dc <= 2 && dr == 0)
-                || (is_coffee && dr == 0);
+            // 1. 直线喷壶（咖啡喷壶类 / row_sprayer）：本行整行增幅
+            if (buff_type == "row_sprayer" && dr == 0)
+            {
+                in_range = true;
+            }
+            // 2. 普通喷壶类 + 附加类：5x5 喷壶范围 / 5x1 附加范围
+            else
+            {
+                var _sprayer_ok = (buff_type == "sprayer" || buff_type == "both") && dc <= 2 && dr <= 2;
+                var _attach_ok  = (buff_type == "attach"  || buff_type == "both") && dc <= 2 && dr == 0;
+                in_range = _sprayer_ok || _attach_ok;
+            }
+
+            // 3. 兜底：plant_type 为 "coffee" 的卡片也享受本行增幅
+            if (!in_range && is_coffee && dr == 0)
+                in_range = true;
         }
-        // 同一个来源只计一次，不同来源继续按加法叠加。
-        if (in_range)
-            multiplier += source.ocean_buff_value - 1;
+        // 多个海洋女神的增幅不叠加，取最高倍率。
+        if (in_range && source.ocean_buff_value > max_buff)
+            max_buff = source.ocean_buff_value;
     }
-    return multiplier;
+    return max_buff;
 }
 
 /// @desc 重建海洋增幅，并触发攻击力更新。
@@ -113,7 +128,7 @@ function rebuild_ocean_buff()
 /// @func mod_get_ocean_buff_type(arg0)
 /// @desc 获取卡片在海洋女神系统中的 buff 类型
 /// @param {string} arg0 卡片 plant_id
-/// @return {string} buff 类型（"sprayer"/"attach"/"both"/"none"）
+/// @return {string} buff 类型（"row_sprayer"/"sprayer"/"attach"/"both"/"none"）
 function mod_get_ocean_buff_type(arg0)
 {
     // 护法神同时属于附加类和喷壶类，单独处理以避免附加类提前返回。
@@ -121,11 +136,16 @@ function mod_get_ocean_buff_type(arg0)
         return "both";
 
     var type = mod_get_buff_type(arg0);
-    
+
     // 喷壶类
     if (type == "sprayer")
+    {
+        // 直线喷壶（咖啡喷壶类）：单独分类，享受本行整行增幅
+        if (is_row_sprayer_card(arg0))
+            return "row_sprayer";
         return "sprayer";
-    
+    }
+
     // 附加类
     if (ds_map_exists(global.plant_buff_map, arg0))
     {
@@ -133,7 +153,7 @@ function mod_get_ocean_buff_type(arg0)
         if (t == "attach")
             return "attach";
     }
-    
+
     // 第二类型检查
     if (ds_map_exists(global.plant_buff_map_2, arg0))
     {
@@ -143,6 +163,6 @@ function mod_get_ocean_buff_type(arg0)
         if (t2 == "sprayer")
             return "both";
     }
-    
+
     return "none";
 }

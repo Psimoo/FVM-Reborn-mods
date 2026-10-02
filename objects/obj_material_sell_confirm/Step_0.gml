@@ -74,13 +74,17 @@ for (var i = 0; i < array_length(buttons); i++) {
                         var _total = input_quantity * unit_price
                         global.save_data.player.gold += _total
                         add_material_amount(sell_material_id, -input_quantity)
-                        obj_package_bg.is_submenu_opened = false
+                        if (instance_exists(obj_package_bg)) {
+                            obj_package_bg.is_submenu_opened = false
+                        }
                         instance_destroy()
                     }
                     break
                 case 2:
                     // 取消
-                    obj_package_bg.is_submenu_opened = false
+                    if (instance_exists(obj_package_bg)) {
+                        obj_package_bg.is_submenu_opened = false
+                    }
                     instance_destroy()
                     break
             }
@@ -97,13 +101,17 @@ if (keyboard_check_pressed(vk_enter)) {
         var _total = input_quantity * unit_price
         global.save_data.player.gold += _total
         add_material_amount(sell_material_id, -input_quantity)
-        obj_package_bg.is_submenu_opened = false
+        if (instance_exists(obj_package_bg)) {
+            obj_package_bg.is_submenu_opened = false
+        }
         instance_destroy()
     }
 }
 
 // ESC键取消
 if (keyboard_check_pressed(vk_escape)) {
-    obj_package_bg.is_submenu_opened = false
-    instance_destroy()
-}
+        if (instance_exists(obj_package_bg)) {
+            obj_package_bg.is_submenu_opened = false
+        }
+        instance_destroy()
+    }

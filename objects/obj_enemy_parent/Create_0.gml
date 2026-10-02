@@ -19,6 +19,7 @@ attack_timer = 0
 target_plant = noone
 attack_range = 90
 immune_to_ash = false
+ash_death = false
 ice_timer = 0
 is_slowdown = false
 frozen_timer = 0

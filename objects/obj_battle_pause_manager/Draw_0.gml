@@ -238,32 +238,42 @@ if (global.is_paused)
 						}
 						//draw_text(100,1060,"宝石解锁："+gem_string)
 						draw_text(1200,225, "关卡奖励");
-						draw_text(1200,260,"金币（"+string(global.level_file.rewards[1].gold)+"）")
-						draw_text(1200,285,"技能："+string(global.level_file.rewards[1].skill_level)+"级")
-						draw_text(1200,310,item_string)
-						draw_text(1200,335,"等级："+string(global.level_file.rewards[1].player_level)+"级")
-						draw_text(1200,360,"卡片解锁："+card_string)
-						draw_text(1200,385,"武器解锁："+weapon_string)
-						draw_text(1200,410,"宝石解锁："+gem_string)
-						if global.level_data.id == "champagne_island_water"{
-							draw_set_colour(c_yellow)
-							draw_text(1200,435,"你已解锁精英段，击败洞君和阿诺各一次以解锁神殿")
-						}
-						if global.level_data.id == "abyss"{
-							draw_set_colour(c_yellow)
-							draw_text(1200,435,"你的铲子已升级为铜铲")
-						}
-						if global.level_data.id == "macchiato_port"{
-							draw_set_colour(c_yellow)
-							draw_text(1200,435,"你的铲子已升级为银铲")
-						}
-						if global.level_data.id == "snowcap_volcano"{
-							draw_set_colour(c_yellow)
-							draw_text(1200,435,"你的铲子已升级为金铲")
-						}
-						if global.level_data.id == "tower_cake_35_3"{
-							draw_set_colour(c_yellow)
-							draw_text(1200,435,"你已在背包内的“冒险战绩”中获得勋章")
+						var _is_cs_draw = (string_pos("ancient_castle_", global.level_data.id) == 1);
+						if (_is_cs_draw) {
+							var _cs_silver_arr = [60, 84, 104, 129, 140, 160, 190, 220];
+							var _cs_lv_idx = real(string_delete(global.level_data.id, 1, string_length("ancient_castle_")));
+							var _cs_silver_val = _cs_silver_arr[min(_cs_lv_idx, array_length(_cs_silver_arr) - 1)];
+							var _cs_gold_medal_val = 5 * (_cs_lv_idx + 1);
+							draw_text(1200,260,"白银徽章（"+string(_cs_silver_val)+"）");
+							draw_text(1200,285,"黄金徽章（"+string(_cs_gold_medal_val)+"）");
+						} else {
+							draw_text(1200,260,"金币（"+string(global.level_file.rewards[1].gold)+"）")
+							draw_text(1200,285,"技能："+string(global.level_file.rewards[1].skill_level)+"级")
+							draw_text(1200,310,item_string)
+							draw_text(1200,335,"等级："+string(global.level_file.rewards[1].player_level)+"级")
+							draw_text(1200,360,"卡片解锁："+card_string)
+							draw_text(1200,385,"武器解锁："+weapon_string)
+							draw_text(1200,410,"宝石解锁："+gem_string)
+							if global.level_data.id == "champagne_island_water"{
+								draw_set_colour(c_yellow)
+								draw_text(1200,435,"你已解锁精英段，击败洞君和阿诺各一次以解锁神殿")
+							}
+							if global.level_data.id == "abyss"{
+								draw_set_colour(c_yellow)
+								draw_text(1200,435,"你的铲子已升级为铜铲")
+							}
+							if global.level_data.id == "macchiato_port"{
+								draw_set_colour(c_yellow)
+								draw_text(1200,435,"你的铲子已升级为银铲")
+							}
+							if global.level_data.id == "snowcap_volcano"{
+								draw_set_colour(c_yellow)
+								draw_text(1200,435,"你的铲子已升级为金铲")
+							}
+							if global.level_data.id == "tower_cake_35_3"{
+								draw_set_colour(c_yellow)
+								draw_text(1200,435,"你已在背包内的“冒险战绩”中获得勋章")
+							}
 						}
 						
 					}
@@ -276,8 +286,19 @@ if (global.is_paused)
 							var item_data = get_material_info(item_id)
 							item_string += (item_data.name + "（"+string(item_list[i].amount)+"） ")
 						}
-						draw_text(1200,260,"金币（"+string(global.level_file.rewards[0].gold)+"）")
-						draw_text(1200,285,item_string)
+						var _is_cs_draw_r = (string_pos("ancient_castle_", global.level_data.id) == 1);
+						if (_is_cs_draw_r) {
+							var _cs_silver_arr_r = [60, 84, 104, 129, 140, 160, 190, 220];
+							var _cs_lv_idx_r = real(string_delete(global.level_data.id, 1, string_length("ancient_castle_")));
+							var _cs_first_sv = _cs_silver_arr_r[min(_cs_lv_idx_r, array_length(_cs_silver_arr_r) - 1)];
+							var _cs_silver_val_r = floor(_cs_first_sv / 3);
+							var _cs_gold_val_r = 2 * (_cs_lv_idx_r + 1);
+							draw_text(1200,260,"白银徽章（"+string(_cs_silver_val_r)+"）");
+							draw_text(1200,285,"黄金徽章（"+string(_cs_gold_val_r)+"）");
+						} else {
+							draw_text(1200,260,"金币（"+string(global.level_file.rewards[0].gold)+"）")
+							draw_text(1200,285,item_string)
+						}
 					}
 				}
 			}

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"can_copy_card_at_position",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"can_copy_card_at_position",
+  "parent":{
+    "name":"assistant",
+    "path":"folders/脚本/assistant.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

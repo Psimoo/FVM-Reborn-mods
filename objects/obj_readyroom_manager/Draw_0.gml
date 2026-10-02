@@ -335,53 +335,74 @@ for(var i = deck_first_slot_index; i < deck_first_slot_index+11;i++){
 	if global.level_file.version != "1.0.0"{
 		if array_get_index(global.save_data.completed_levels,global.level_data.id) == -1{
 			draw_text(100,780,"关卡奖励（首通）")
-			draw_text(100,820,"金币（"+string(global.level_file.rewards[1].gold)+"）")
-			draw_text(100,860,"技能："+string(global.level_file.rewards[1].skill_level)+"级")
-			var item_string = ""
-			var item_list = global.level_file.rewards[1].items
-			for(var i = 0 ; i < array_length(item_list) ; i++){
-				var item_id = item_list[i].id
-				var item_data = get_material_info(item_id)
-				item_string += (item_data.name + "（"+string(item_list[i].amount)+"） ")
+			var _is_cs_ready = (string_pos("ancient_castle_", global.level_data.id) == 1);
+			if (_is_cs_ready) {
+				var _cs_silver_arr_rd = [60, 84, 104, 129, 140, 160, 190, 220];
+				var _cs_lv_idx_rd = real(string_delete(global.level_data.id, 1, string_length("ancient_castle_")));
+				var _cs_silver_rd = _cs_silver_arr_rd[min(_cs_lv_idx_rd, array_length(_cs_silver_arr_rd) - 1)];
+				var _cs_gm_rd = 5 * (_cs_lv_idx_rd + 1);
+				draw_text(100,820,"白银徽章（"+string(_cs_silver_rd)+"）");
+				draw_text(100,860,"黄金徽章（"+string(_cs_gm_rd)+"）");
+			} else {
+				draw_text(100,820,"金币（"+string(global.level_file.rewards[1].gold)+"）")
+				draw_text(100,860,"技能："+string(global.level_file.rewards[1].skill_level)+"级")
+				var item_string = ""
+				var item_list = global.level_file.rewards[1].items
+				for(var i = 0 ; i < array_length(item_list) ; i++){
+					var item_id = item_list[i].id
+					var item_data = get_material_info(item_id)
+					item_string += (item_data.name + "（"+string(item_list[i].amount)+"） ")
+				}
+				draw_text(100,900,item_string)
+				draw_text(100,940,"等级："+string(global.level_file.rewards[1].player_level)+"级")
+				var card_string = ""
+				var card_unlock_id_list = global.level_file.rewards[1].card_unlock
+				for(var i = 0 ; i < array_length(card_unlock_id_list) ; i++){
+					var card_id = card_unlock_id_list[i]
+					var card_data = get_plant_shape_data(card_id,0)
+					card_string += (card_data[? "name"] + " ")
+				}
+				draw_text(100,980,"卡片解锁："+card_string)
+				var weapon_string = ""
+				var weapon_unlock_id_list = global.level_file.rewards[1].weapon_unlock
+				for(var i = 0 ; i < array_length(weapon_unlock_id_list) ; i++){
+					var weapon_id = weapon_unlock_id_list[i]
+					var weapon_data = get_weapon_info(weapon_id)
+					weapon_string += (weapon_data.name + " ")
+				}
+				draw_text(100,1020,"武器解锁："+weapon_string)
+				var gem_string = ""
+				var gem_unlock_id_list = global.level_file.rewards[1].gem_unlock
+				for(var i = 0 ; i < array_length(gem_unlock_id_list) ; i++){
+					var gem_id = gem_unlock_id_list[i]
+					var gem_data = get_gem_info(gem_id)
+					gem_string += (gem_data.name + " ")
+				}
+				draw_text(100,1060,"宝石解锁："+gem_string)
 			}
-			draw_text(100,900,item_string)
-			draw_text(100,940,"等级："+string(global.level_file.rewards[1].player_level)+"级")
-			var card_string = ""
-			var card_unlock_id_list = global.level_file.rewards[1].card_unlock
-			for(var i = 0 ; i < array_length(card_unlock_id_list) ; i++){
-				var card_id = card_unlock_id_list[i]
-				var card_data = get_plant_shape_data(card_id,0)
-				card_string += (card_data[? "name"] + " ")
-			}
-			draw_text(100,980,"卡片解锁："+card_string)
-			var weapon_string = ""
-			var weapon_unlock_id_list = global.level_file.rewards[1].weapon_unlock
-			for(var i = 0 ; i < array_length(weapon_unlock_id_list) ; i++){
-				var weapon_id = weapon_unlock_id_list[i]
-				var weapon_data = get_weapon_info(weapon_id)
-				weapon_string += (weapon_data.name + " ")
-			}
-			draw_text(100,1020,"武器解锁："+weapon_string)
-			var gem_string = ""
-			var gem_unlock_id_list = global.level_file.rewards[1].gem_unlock
-			for(var i = 0 ; i < array_length(gem_unlock_id_list) ; i++){
-				var gem_id = gem_unlock_id_list[i]
-				var gem_data = get_gem_info(gem_id)
-				gem_string += (gem_data.name + " ")
-			}
-			draw_text(100,1060,"宝石解锁："+gem_string)
 		}
 		else{
 			draw_text(100,780,"关卡奖励")
-			draw_text(100,820,"金币（"+string(global.level_file.rewards[0].gold)+"）")
-			var item_string = ""
-			var item_list = global.level_file.rewards[0].items
-			for(var i = 0 ; i < array_length(item_list) ; i++){
-				var item_id = item_list[i].id
-				var item_data = get_material_info(item_id)
-				item_string += (item_data.name + "（"+string(item_list[i].amount)+"） ")
+			var _is_cs_ready_r = (string_pos("ancient_castle_", global.level_data.id) == 1);
+			if (_is_cs_ready_r) {
+				var _cs_silver_arr_rr = [60, 84, 104, 129, 140, 160, 190, 220];
+				var _cs_lv_idx_rr = real(string_delete(global.level_data.id, 1, string_length("ancient_castle_")));
+				var _cs_first_rr = _cs_silver_arr_rr[min(_cs_lv_idx_rr, array_length(_cs_silver_arr_rr) - 1)];
+				var _cs_silver_rr = floor(_cs_first_rr / 3);
+				var _cs_gold_rr = 2 * (_cs_lv_idx_rr + 1);
+				draw_text(100,820,"白银徽章（"+string(_cs_silver_rr)+"）");
+				draw_text(100,860,"黄金徽章（"+string(_cs_gold_rr)+"）");
+			} else {
+				draw_text(100,820,"金币（"+string(global.level_file.rewards[0].gold)+"）")
+				var item_string = ""
+				var item_list = global.level_file.rewards[0].items
+				for(var i = 0 ; i < array_length(item_list) ; i++){
+					var item_id = item_list[i].id
+					var item_data = get_material_info(item_id)
+					item_string += (item_data.name + "（"+string(item_list[i].amount)+"） ")
+				}
+				draw_text(100,860,item_string)
 			}
-			draw_text(100,860,item_string)
 		}
 	}
 	

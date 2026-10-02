@@ -8,6 +8,17 @@ if (hp <= 0) {
 }
 event_inherited();
 
+// 自动修复：通过通用生成器创建时 banding_target_inst 为 noone，需自动创建配对 target
+if (banding_target_inst == noone) {
+    var _grid = get_grid_position_from_world(x, y)
+    target_col = _grid.col
+    target_row = _grid.row
+    var _target_inst = instance_create_depth(x, y - room_height, -500, obj_bat_mouse_target)
+    _target_inst.target_col = target_col
+    _target_inst.target_row = target_row
+    banding_target_inst = _target_inst
+}
+
 var current_move_speed = 0
 if is_slowdown{
 	flash_speed = 12
@@ -20,7 +31,7 @@ else{
 
 var target_y = get_world_position_from_grid(target_col,target_row).y - 30
 
-if hp > 0 && state != ENEMY_STATE.DEAD && banding_target_inst.state != "appear"{
+if hp > 0 && state != ENEMY_STATE.DEAD && banding_target_inst != noone && instance_exists(banding_target_inst) && banding_target_inst.state != "appear"{
 	if state == ENEMY_STATE.APPEAR{
 		anim_timer++
 		//x -= current_move_speed

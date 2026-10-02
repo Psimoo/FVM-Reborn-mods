@@ -39,6 +39,9 @@ global.test_info_island_mode = (global.level_id == "test_level");
 //啃食音效
 chomp_sound_list = ds_list_create()
 battle_time = 0
+// Cross-server and tower stages use frame-rate-aware time progression.
+frame_time_accumulator = 0;
+time_ticks_this_step = 1;
 boss_count = 0
 map_spr_index = 0
 

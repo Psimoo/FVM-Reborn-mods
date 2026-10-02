@@ -1,7 +1,7 @@
 damage = 0;
 move_speed = 0;
 row = 0;
-damage_type = "normal";
+damage_type = "pierce";
 target_type = "normal";
 shape = 0;
 hitted_enemy = -4;

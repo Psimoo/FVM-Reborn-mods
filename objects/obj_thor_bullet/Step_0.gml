@@ -51,21 +51,10 @@ if (!hit_enemy && variable_global_exists("enemy_by_type"))
 				hit_enemy = true;
 				hitted_enemy = _e.id;
 
-				var inst;
-				if (sprite_index == spr_thor_bullet_2_s)
-					inst = instance_create_depth(x, y, depth, obj_thor_bullet_effect_1);
-				else if (sprite_index == spr_thor_bullet_3_s)
-					instance_create_depth(x, y, depth, obj_thor_bullet_effect_1);
-				else
-					inst = instance_create_depth(x, y, depth, obj_thor_bullet_effect_1);
-
-				var distance_x = _e.x + global.grid_cell_size_x;
-				var flight_time = 30;
-				var total_distance_x = distance_x - x;
-				var total_distance_y = 300;
-				move_speed = total_distance_x / flight_time;
-				cgravity = (2 * total_distance_y) / (flight_time * flight_time);
-				cvspeed = (total_distance_y - (0 * cgravity * flight_time * flight_time)) / flight_time;
+				instance_create_depth(x, y, depth, obj_thor_bullet_effect_1);
+				// 雷神冰锤命中后直接结束，不沿目标身后继续飞行（色拉投手的弹射行为）。
+				instance_destroy();
+				exit;
 			}
 		}
 	}

@@ -481,7 +481,7 @@ function mod_shop_init()
         type: "card",
         cost: "12500",
         unlock_item_id: "wanpilong",
-        description: "顽皮龙：选择一张己方卡片，将其移动到周围5x5范围内的空格",
+        description: "顽皮龙：选择一张己方卡片，将其移动到周围5x5范围内的空格；瓜皮护罩、赫拉、春女可移动到已有卡片的格子",
         display_name: "顽皮龙"
     });
     register_goods("baobaoji",

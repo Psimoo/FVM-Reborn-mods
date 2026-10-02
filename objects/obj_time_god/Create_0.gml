@@ -58,6 +58,7 @@ else if (shape == 3)
     eff_spr = spr_time_god_effect_3;
 
 time_god_effect_obj = instance_create_depth(x, y - 30, 0, obj_time_god_effect);
+time_god_effect_obj.parent_plant = id;
 time_god_effect_obj.sprite_index = eff_spr;
 time_god_effect_obj.is_one_shot = false;
 if (instance_exists(time_god_effect_obj))

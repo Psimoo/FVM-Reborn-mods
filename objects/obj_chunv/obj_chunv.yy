@@ -37,8 +37,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_chunv_0_3",
-    "path":"sprites/spr_chunv_0_3/spr_chunv_0_3.yy",
+    "name":"spr_melon_virgo_outer_1",
+    "path":"sprites/spr_melon_virgo_outer_1/spr_melon_virgo_outer_1.yy",
   },
   "spriteMaskId":null,
   "visible":true,

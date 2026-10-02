@@ -19,6 +19,9 @@ function load_custom_deck(deck_index) {
         }
     }
 
+    // 随机礼盒模式下整理卡组：移除不允许的卡，确保礼盒和顽皮龙存在
+    random_gift_prepare_selected_deck();
+
     // 重新创建卡槽（需在战斗房间调用）
     if (instance_exists(obj_battle)) {
         // 先删除旧卡槽

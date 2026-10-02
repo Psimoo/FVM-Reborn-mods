@@ -11,6 +11,7 @@ if (plant_data != undefined) {
 	clevel = card_save_data.level
 	cshape = card_save_data.shape
 	cskill = card_save_data.skill
+	if (is_random_gift_mode() && card_id == "wanpilong") cshape = 2
     
     // 应用基础属性
     var upgrade_data = get_plant_data_with_skill(card_id, cshape,clevel,cskill);

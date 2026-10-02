@@ -114,6 +114,8 @@ if (variable_global_exists("enemy_by_type"))
 
                     if (_is_kill)
                     {
+                        if (instance_exists(_e))
+                            _e.ash_death = true;
                         var _kill_fx = instance_create_depth(_e.x, _e.y, _e.depth - 10, obj_laipishe_effect);
                         if (bullet_shape == 0)
                             _kill_fx.sprite_index = spr_laipishe_effect;

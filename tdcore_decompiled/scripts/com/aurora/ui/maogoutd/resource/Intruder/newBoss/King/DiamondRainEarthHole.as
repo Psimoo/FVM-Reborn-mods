@@ -1,0 +1,55 @@
+package com.aurora.ui.maogoutd.resource.Intruder.newBoss.King
+{
+   import com.aurora.ui.maogoutd.base.PoolManager;
+   import com.aurora.ui.maogoutd.resource.effect.a_4135;
+   import flash.display.FrameLabel;
+   import flash.events.Event;
+   import flash.utils.setTimeout;
+   
+   public class DiamondRainEarthHole extends a_4135
+   {
+      
+      public function DiamondRainEarthHole()
+      {
+         super();
+      }
+      
+      public static function a_3926() : DiamondRainEarthHole
+      {
+         return PoolManager.getInstance().CheckOutOne(DiamondRainEarthHole) as DiamondRainEarthHole;
+      }
+      
+      override protected function getBindMovie() : Class
+      {
+         return DiamondRainEarthHoleMovie;
+      }
+      
+      override public function a_1797(isReversed:Boolean) : Boolean
+      {
+         super.a_1797(isReversed);
+         if(m_stCurrentFieldGrid != null)
+         {
+            timerout = setTimeout(ClearPigBarrierField,8 * 1000,m_stCurrentFieldGrid);
+         }
+         return true;
+      }
+      
+      override public function a_3940() : Boolean
+      {
+         super.a_3940();
+         PoolManager.getInstance().CheckInOne(this);
+         return true;
+      }
+      
+      override protected function a_4109(a_4730:Event) : void
+      {
+         nextFrame();
+         if(a_1273 == a_1274)
+         {
+            a_1275 = 3;
+            gotoAndStop((a_1276[3] as FrameLabel).frame);
+         }
+      }
+   }
+}
+

@@ -1,0 +1,162 @@
+package com.aurora.ui.maogoutd.resource.shot
+{
+   import a_4718.b_183;
+   import com.aurora.ui.maogoutd.base.PoolManager;
+   import com.aurora.ui.maogoutd.game.BattleFieldView;
+   import com.aurora.ui.maogoutd.game.a_3491;
+   import com.aurora.ui.maogoutd.resource.Intruder.a_4206;
+   import flash.display.FrameLabel;
+   
+   public class a_4359 extends a_4348
+   {
+      
+      public function a_4359()
+      {
+         super();
+         a_1304 = b_183.b_187;
+         a_1279 = -60;
+         a_1573 = 2;
+         a_1576 = true;
+         a_1588 = true;
+         a_1275 = 0;
+         a_1587 = 1;
+      }
+      
+      public static function a_4344() : a_4348
+      {
+         BattleFieldView.a_1018.play();
+         return PoolManager.getInstance().CheckOutOne(a_4359,EggShotMovie) as a_4359;
+      }
+      
+      public static function GetFreeShot1() : a_4348
+      {
+         BattleFieldView.a_1018.play();
+         return PoolManager.getInstance().CheckOutOne(a_4359,EggShot1Movie) as a_4359;
+      }
+      
+      override protected function a_4351() : void
+      {
+         var iXGridNo:int = 0;
+         var stFieldGrid:a_3491 = null;
+         var arrMoveIntruder:Array = null;
+         var iArrMoveIntruderLength:int = 0;
+         var stMoveIntruder:a_4206 = null;
+         var i:int = 0;
+         if(a_1283)
+         {
+            iXGridNo = BattleFieldView.a_1011 - 1 - int(x / a_3491.a_1080);
+         }
+         else
+         {
+            iXGridNo = int(x / a_3491.a_1080);
+         }
+         var iYGridNo:int = m_iYGridNo;
+         if(x < 0 || x >= BattleFieldView.a_1013 || y > a_3491.a_1081 * (m_iYGridNo + 1))
+         {
+            trace("x < 0 || x >= BattleFieldView.ms_iBattleFieldWidth, HitTest failed. x:" + x + ", BattleFieldView.ms_iBattleFieldWidth:" + BattleFieldView.a_1013);
+            a_3940();
+            return;
+         }
+         stFieldGrid = a_1583.a_3438(iXGridNo,iYGridNo);
+         if(stFieldGrid.m_isOccupy)
+         {
+            arrMoveIntruder = stFieldGrid.a_1511.slice();
+            if(stFieldGrid.m_stCurrentBattbleFieldView.iIntruderMoveDirection > 0)
+            {
+               arrMoveIntruder.sortOn("x",Array.DESCENDING | Array.NUMERIC);
+            }
+            else
+            {
+               arrMoveIntruder.sortOn("x",Array.NUMERIC);
+            }
+            iArrMoveIntruderLength = int(arrMoveIntruder.length);
+            for(i = 0; i < iArrMoveIntruderLength; i++)
+            {
+               stMoveIntruder = arrMoveIntruder[i];
+               if((0 == stMoveIntruder.iSpaceState || 2 == stMoveIntruder.iSpaceState) && !stMoveIntruder.isCannotSeeByFighter && hitTestObject(stMoveIntruder))
+               {
+                  if(Boolean(a_1583) && a_1583.isOwnBattleField)
+                  {
+                     BattleFieldView.a_1051.play();
+                  }
+                  a_4352(stMoveIntruder);
+                  m_isHited = true;
+                  if(a_1276.length > 0)
+                  {
+                     gotoAndStop((a_1276[a_1587] as FrameLabel).frame);
+                  }
+                  this.a_4360(stFieldGrid,stMoveIntruder);
+                  return;
+               }
+            }
+         }
+         if(a_1283)
+         {
+            stFieldGrid = a_1583.a_3438(iXGridNo + 1,iYGridNo);
+         }
+         else
+         {
+            stFieldGrid = a_1583.a_3438(iXGridNo - 1,iYGridNo);
+         }
+         if(null != stFieldGrid && stFieldGrid.m_isOccupy)
+         {
+            arrMoveIntruder = stFieldGrid.a_1511.slice();
+            if(stFieldGrid.m_stCurrentBattbleFieldView.iIntruderMoveDirection > 0)
+            {
+               arrMoveIntruder.sortOn("x",Array.DESCENDING | Array.NUMERIC);
+            }
+            else
+            {
+               arrMoveIntruder.sortOn("x",Array.NUMERIC);
+            }
+            iArrMoveIntruderLength = int(arrMoveIntruder.length);
+            for(i = 0; i < iArrMoveIntruderLength; i++)
+            {
+               stMoveIntruder = arrMoveIntruder[i];
+               if((0 == stMoveIntruder.iSpaceState || 2 == stMoveIntruder.iSpaceState) && !stMoveIntruder.isCannotSeeByFighter && hitTestObject(stMoveIntruder))
+               {
+                  if(Boolean(a_1583) && a_1583.isOwnBattleField)
+                  {
+                     BattleFieldView.a_1051.play();
+                  }
+                  a_4352(stMoveIntruder);
+                  m_isHited = true;
+                  if(a_1276.length > 0)
+                  {
+                     gotoAndStop((a_1276[a_1587] as FrameLabel).frame);
+                  }
+                  this.a_4360(stFieldGrid,stMoveIntruder);
+                  return;
+               }
+            }
+         }
+      }
+      
+      private function a_4360(stHitenFieldGrid:a_3491, stHitenMouseIntruder:a_4206) : void
+      {
+         var stFieldGrid:a_3491 = null;
+         var j:int = 0;
+         var arrMouveIntruder:Array = null;
+         var stMouseIntruder:a_4206 = null;
+         for(var i:int = stHitenFieldGrid.m_iXGridNo - 1; i <= stHitenFieldGrid.m_iXGridNo + 1; i++)
+         {
+            for(j = stHitenFieldGrid.m_iYGridNo - 1; j <= stHitenFieldGrid.m_iYGridNo + 1; j++)
+            {
+               stFieldGrid = a_1583.a_3438(i,j);
+               if(null != stFieldGrid)
+               {
+                  arrMouveIntruder = stFieldGrid.a_1511.slice();
+                  for each(stMouseIntruder in arrMouveIntruder)
+                  {
+                     if(stMouseIntruder != stHitenMouseIntruder && !stMouseIntruder.isCannotSeeByFighter && (0 == stMouseIntruder.iSpaceState || 2 == stMouseIntruder.iSpaceState))
+                     {
+                        stMouseIntruder.a_4209(int(a_1579 * 0.25));
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+}
+

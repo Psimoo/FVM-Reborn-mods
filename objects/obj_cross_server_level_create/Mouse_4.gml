@@ -1,3 +1,7 @@
+// The shop is a modal overlay. Ignore clicks on expedition buttons while it is open
+// so the underlying level cannot receive the same mouse event.
+if (instance_exists(obj_cross_server_shop)) exit;
+
 if (!is_disabled)
 {
     audio_play_sound(snd_button, 0, 0);

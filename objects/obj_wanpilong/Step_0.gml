@@ -83,7 +83,7 @@ function wanpilong_is_valid_source(_inst)
 }
 
 // ============================================
-// 辅助函数：检查目标格是否合法（空格+范围内）
+// 辅助函数：检查目标格是否合法（范围内，部分护罩卡允许共格）
 // ============================================
 function wanpilong_is_valid_dest(_col, _row)
 {
@@ -108,12 +108,28 @@ function wanpilong_is_valid_dest(_col, _row)
     if (global.grid_terrains[_row][_col].type == "obstacle")
         return false;
 
-    // 空格检查
+    // 顽皮龙通常只能移动到空格；这些护罩卡可以移动到已有卡片的格子，
+    // 以便继续发挥其共格保护效果。
     var _plant_list = ds_grid_get(global.grid_plants, _col, _row);
     if (ds_list_size(_plant_list) > 0)
     {
-        // 如果源是玩家角色，允许格子上有植物吗？不，角色也需要空格
-        return false;
+        var _source_id = "";
+        if (instance_exists(source_entity) && variable_instance_exists(source_entity, "plant_id"))
+            _source_id = source_entity.plant_id;
+
+        if (_source_id != "melon_shield" && _source_id != "hera" && _source_id != "chunv")
+            return false;
+
+        // A destination may contain other cards, but never another card of
+        // the same shield type.
+        for (var _i = 0; _i < ds_list_size(_plant_list); _i++)
+        {
+            var _target_plant = ds_list_find_value(_plant_list, _i);
+            if (instance_exists(_target_plant)
+                && variable_instance_exists(_target_plant, "plant_id")
+                && _target_plant.plant_id == _source_id)
+                return false;
+        }
     }
 
     return true;

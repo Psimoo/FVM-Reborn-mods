@@ -3,6 +3,9 @@ if (global.is_paused)
 
 event_inherited();
 
+// 海洋女神悬浮在其他卡片上层，避免被同格或相邻卡片遮挡。
+depth = calculate_plant_depth(grid_col, grid_row, plant_type) - 400;
+
 // 首次刷新增幅范围
 if (!ocean_buff_refreshed)
 {
@@ -56,15 +59,31 @@ if (instance_exists(haiyang_effect_obj))
     {
         ocean_fullscreen = should_fullscreen;
 
-        // 全屏增幅时在房间四角显示统一的全屏特效。
+        // 全屏增幅时将特效定位在地图网格四角，避免覆盖两侧卡牌栏和顶部界面。
         if (ocean_fullscreen && (!variable_global_exists("ocean_corner_effect_owner") || !instance_exists(global.ocean_corner_effect_owner)))
         {
             global.ocean_corner_effect_owner = id;
             var fx_scale = 1.8;
-            var right_x = room_width - (sprite_get_width(spr_haiyang_god_effect_4) - sprite_get_xoffset(spr_haiyang_god_effect_4)) * fx_scale;
-            var top_y = sprite_get_yoffset(spr_haiyang_god_effect_4) * fx_scale;
-            var corner_x = [room_width - right_x, right_x, room_width - right_x, right_x];
-            var corner_y = [top_y, top_y, room_height - top_y, room_height - top_y];
+            var fx_width = sprite_get_width(spr_haiyang_god_effect_4);
+            var fx_xoffset = sprite_get_xoffset(spr_haiyang_god_effect_4);
+            var fx_yoffset = sprite_get_yoffset(spr_haiyang_god_effect_4);
+            var grid_left = global.grid_offset_x;
+            var grid_top = global.grid_offset_y;
+            var grid_right = grid_left + global.grid_cols * global.grid_cell_size_x;
+            var grid_bottom = grid_top + global.grid_rows * global.grid_cell_size_y;
+            var grid_effect_offset_y = -20;
+            var corner_x = [
+                grid_left + (fx_width - fx_xoffset) * fx_scale,
+                grid_right - (fx_width - fx_xoffset) * fx_scale,
+                grid_left + (fx_width - fx_xoffset) * fx_scale,
+                grid_right - (fx_width - fx_xoffset) * fx_scale
+            ];
+            var corner_y = [
+                grid_top + fx_yoffset * fx_scale + grid_effect_offset_y,
+                grid_top + fx_yoffset * fx_scale + grid_effect_offset_y,
+                grid_bottom - fx_yoffset * fx_scale + grid_effect_offset_y,
+                grid_bottom - fx_yoffset * fx_scale + grid_effect_offset_y
+            ];
             var scale_x = [-fx_scale, fx_scale, -fx_scale, fx_scale];
             var scale_y = [fx_scale, fx_scale, -fx_scale, -fx_scale];
             for (var i = 0; i < 4; i++)

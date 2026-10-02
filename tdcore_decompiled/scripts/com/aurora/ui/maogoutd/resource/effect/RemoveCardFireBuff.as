@@ -1,0 +1,65 @@
+package com.aurora.ui.maogoutd.resource.effect
+{
+   import com.aurora.ui.maogoutd.base.PoolManager;
+   import com.aurora.ui.maogoutd.resource.a_3909;
+   import flash.display.FrameLabel;
+   import flash.events.Event;
+   
+   public class RemoveCardFireBuff extends a_3909
+   {
+      
+      public function RemoveCardFireBuff()
+      {
+         super();
+      }
+      
+      public static function a_3926() : RemoveCardFireBuff
+      {
+         return PoolManager.getInstance().CheckOutOne(RemoveCardFireBuff) as RemoveCardFireBuff;
+      }
+      
+      override protected function getBindMovie() : Class
+      {
+         return RemoveCardFireBuffMovie;
+      }
+      
+      public function a_1797(isReseaved:Boolean = false) : Boolean
+      {
+         a_1283 = isReseaved;
+         this.visible = true;
+         gotoAndStop(1);
+         scaleX = scaleY = 0.65;
+         return true;
+      }
+      
+      public function a_3940() : Boolean
+      {
+         gotoAndStop(1);
+         PoolManager.getInstance().CheckInOne(this);
+         return true;
+      }
+      
+      public function a_4003(a_4730:Event) : void
+      {
+         nextFrame();
+         trace("m_iCurrentFrame>>>>" + a_1273);
+         var xx:Array = a_1276;
+         if(a_1273 == a_1274)
+         {
+            this.a_3940();
+         }
+         else if(a_1273 == 5 || a_1273 == 20)
+         {
+            a_1275 = 1;
+            gotoAndStop((a_1276[1] as FrameLabel).frame);
+         }
+      }
+      
+      public function ClearBuff() : void
+      {
+         a_1275 = 2;
+         gotoAndStop((a_1276[2] as FrameLabel).frame);
+      }
+   }
+}
+

@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":7,
   "parent":{
-    "name":"Cross Server",
-    "path":"folders/精灵/mod/Cross Server.yy",
+    "name":"mouse",
+    "path":"folders/精灵/mod/Cross Server/mouse.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -285,7 +285,10 @@ switch (state)
     case UnknownEnum.Value_3:
         ice_timer = 0;
         frozen_timer = 0;
-        
+        if (ash_death) {
+            image_alpha = 0;
+            break;
+        }
         if (image_index >= ((death_anim + (move_anim * 2) + (attack_anim * 2)) - 1))
             image_alpha -= 0.08;
         else
@@ -299,6 +302,9 @@ if (hp <= 0 && state != UnknownEnum.Value_3)
     timer = 0;
     state = UnknownEnum.Value_3;
     target_plant = -4;
+    if (ash_death) {
+        image_alpha = 0;
+    }
 }
 
 if (image_alpha <= 0 && state == UnknownEnum.Value_3)

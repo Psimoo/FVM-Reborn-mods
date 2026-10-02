@@ -22,6 +22,7 @@ function mod_buff_init()
     ds_map_set(global.plant_buff_map, "shuangyu", "thrower");
     ds_map_set(global.plant_buff_map, "thor", "thrower");
     ds_map_set(global.plant_buff_map, "ymir", "thrower");
+    ds_map_set(global.plant_buff_map, "pan_fried_bun", "thrower");
     ds_map_set(global.plant_buff_map, "rotating_coffee_pot", "sprayer");
     ds_map_set(global.plant_buff_map, "coffee_pot", "sprayer");
     ds_map_set(global.plant_buff_map, "oden_pot", "sprayer");
@@ -51,4 +52,5 @@ function mod_buff_init()
     global.plant_buff_map_2 = ds_map_create();
     ds_map_set(global.plant_buff_map_2, "cold_drew", "xiangshui");
     ds_map_set(global.plant_buff_map_2, "hufa_god", "sprayer");
+    ds_map_set(global.plant_buff_map_2, "gaia", "thrower");
 }

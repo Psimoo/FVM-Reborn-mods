@@ -1,0 +1,163 @@
+package com.aurora.ui.maogoutd.resource.defender.PigYear.thunderExplosionPig
+{
+   import com.aurora.ui.maogoutd.game.BattleFieldView;
+   import com.aurora.ui.maogoutd.game.a_3491;
+   import com.aurora.ui.maogoutd.resource.Intruder.a_4206;
+   import com.aurora.ui.maogoutd.resource.shot.a_4348;
+   import flash.display.FrameLabel;
+   
+   public class ThunderExplosionPigBaseShot extends a_4348
+   {
+      
+      private static var ms_arrSagittariusShotVector:Array = new Array();
+      
+      private var m_stLastFieldGrid:a_3491;
+      
+      public var m_BOOMRate:Number = 0;
+      
+      private var hitMouseArray:Array = new Array();
+      
+      public function ThunderExplosionPigBaseShot()
+      {
+         super();
+         a_1279 = -width * 0.5;
+         a_1587 = 0;
+         a_1275 = 0;
+         a_1573 = 1;
+         a_1588 = true;
+         a_1576 = false;
+      }
+      
+      public static function a_4344() : a_4348
+      {
+         var stThunderExplosionPigBaseShot:ThunderExplosionPigBaseShot = ms_arrSagittariusShotVector.pop();
+         if(null == stThunderExplosionPigBaseShot)
+         {
+            stThunderExplosionPigBaseShot = new ThunderExplosionPigBaseShot();
+         }
+         BattleFieldView.a_1017.play();
+         return stThunderExplosionPigBaseShot;
+      }
+      
+      override protected function getBindMovie() : Class
+      {
+         return ThunderExplosionPigBaseShotMovie;
+      }
+      
+      override public function a_1797(param1:int, param2:Number, param3:int, param4:int, param5:int, param6:BattleFieldView, param7:a_3491, param8:Boolean = false, param9:Number = 1, param10:int = 0) : Boolean
+      {
+         super.a_1797(param1,param2,param3,param4,param5,param6,param7,param8,param9,param10);
+         this.hitMouseArray = new Array();
+         return true;
+      }
+      
+      override protected function a_3940() : Boolean
+      {
+         super.a_3940();
+         ms_iCritFrameLable = 0;
+         this.hitMouseArray = new Array();
+         this.m_BOOMRate = 1;
+         if(-1 == ms_arrSagittariusShotVector.indexOf(this))
+         {
+            ms_arrSagittariusShotVector.push(this);
+         }
+         return true;
+      }
+      
+      override public function a_4216(iCurrentTime:int) : void
+      {
+         var numYMove:Number = NaN;
+         if(m_isHited)
+         {
+            nextFrame();
+         }
+         if(a_1588)
+         {
+            nextFrame();
+            if(a_1273 == a_1274 || a_1278 != null)
+            {
+               gotoAndStop((a_1276[0] as FrameLabel).frame);
+            }
+         }
+         if(0 == a_1447)
+         {
+            a_1447 = iCurrentTime;
+         }
+         this.a_4351();
+         if(x < 0 || x > BattleFieldView.a_1013 - 75)
+         {
+            this.a_3940();
+            return;
+         }
+         if(a_1578)
+         {
+            if(!FollowingShotHandle())
+            {
+               return;
+            }
+         }
+         x += m_numXSpeed;
+         if(2 == a_1582 && y > a_1586 - a_3491.a_1081 * 0.9)
+         {
+            y += m_numYSpeed;
+         }
+         else if(3 == a_1582 && y < a_1586 + a_3491.a_1081 * 0.9)
+         {
+            y += m_numYSpeed;
+         }
+         else if(5 == a_1582 || 6 == a_1582)
+         {
+            y += m_numYSpeed;
+         }
+         if(7 == a_1582 && y > a_1586 - a_3491.a_1081 * 1.9)
+         {
+            y += m_numYSpeed;
+         }
+         else if(8 == a_1582 && y < a_1586 + a_3491.a_1081 * 1.9)
+         {
+            y += m_numYSpeed;
+         }
+         else if(a_1582 > 1)
+         {
+            a_1577 = true;
+         }
+         if(a_1576)
+         {
+            numYMove = 2 * m_numYSpeed * (iCurrentTime - a_1447) / a_1581 - m_numYSpeed;
+            y += numYMove > 30 ? 30 : numYMove;
+         }
+      }
+      
+      override protected function a_4351() : void
+      {
+         var iXGridNo:int = 0;
+         var arrMoveIntruder:Array = null;
+         var iArrMoveIntruderLength:int = 0;
+         var stMoveIntruder:a_4206 = null;
+         if(a_1283)
+         {
+            iXGridNo = BattleFieldView.a_1011 - 1 - int(x / a_3491.a_1080);
+         }
+         else
+         {
+            iXGridNo = int(x / a_3491.a_1080);
+         }
+         var iYGridNo:int = m_iYGridNo;
+         var stFieldGrid:a_3491 = a_1583.a_3438(iXGridNo,iYGridNo);
+         if(stFieldGrid == null)
+         {
+            return;
+         }
+         arrMoveIntruder = stFieldGrid.a_1511.slice();
+         for each(stMoveIntruder in arrMoveIntruder)
+         {
+            if(this.hitMouseArray.indexOf(stMoveIntruder) == -1)
+            {
+               this.hitMouseArray.push(stMoveIntruder);
+               stMoveIntruder.PowerfulBombReduceLifeRate(this.m_BOOMRate);
+            }
+         }
+      }
+   }
+}
+

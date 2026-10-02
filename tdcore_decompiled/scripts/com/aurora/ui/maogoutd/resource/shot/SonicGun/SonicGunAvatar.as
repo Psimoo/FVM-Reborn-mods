@@ -1,0 +1,95 @@
+package com.aurora.ui.maogoutd.resource.shot.SonicGun
+{
+   import com.aurora.ui.maogoutd.game.BattleFieldView;
+   import com.aurora.ui.maogoutd.game.a_3491;
+   import com.aurora.ui.maogoutd.resource.shot.a_4348;
+   import flash.display.FrameLabel;
+   
+   public class SonicGunAvatar extends a_4348
+   {
+      
+      private static var ms_stShadowMeowFirstSuperGunVector:Array = new Array();
+      
+      public function SonicGunAvatar()
+      {
+         super();
+         a_1279 = -48 - 24;
+         m_iYDisplayCenterPos = -132 - 60;
+         a_1576 = true;
+         a_1281 = false;
+         a_1588 = true;
+         a_1275 = 0;
+         a_1587 = 0;
+         this.visible = false;
+         scaleX = scaleY = 0.8;
+      }
+      
+      public static function a_4344() : a_4348
+      {
+         var _loc_1:* = ms_stShadowMeowFirstSuperGunVector.pop();
+         if(_loc_1 == null)
+         {
+            _loc_1 = new SonicGunAvatar();
+         }
+         BattleFieldView.a_1017.play();
+         return _loc_1;
+      }
+      
+      override protected function getBindMovie() : Class
+      {
+         return SonicGunAvatarMovie;
+      }
+      
+      override public function a_1797(param1:int, param2:Number, param3:int, param4:int, param5:int, param6:BattleFieldView, param7:a_3491, param8:Boolean = false, param9:Number = 1, param10:int = 0) : Boolean
+      {
+         super.a_1797(param1,param2,param3,param4,param5,param6,param7,param8,param9);
+         this.visible = false;
+         return true;
+      }
+      
+      override protected function a_4349() : Boolean
+      {
+         return true;
+      }
+      
+      override protected function a_3940() : Boolean
+      {
+         super.a_3940();
+         if(ms_stShadowMeowFirstSuperGunVector.indexOf(this) == -1)
+         {
+            ms_stShadowMeowFirstSuperGunVector.push(this);
+         }
+         return true;
+      }
+      
+      public function ForceRelease() : Boolean
+      {
+         return this.a_3940();
+      }
+      
+      public function a_3973() : void
+      {
+         this.visible = true;
+         a_1275 = 0;
+         gotoAndStop((a_1276[0] as FrameLabel).frame);
+      }
+      
+      override public function a_4216(param1:int) : void
+      {
+         if(a_1588 && param1 % 2 == 0)
+         {
+            nextFrame();
+            if(a_1273 == a_1274 || a_1278 != null)
+            {
+               this.visible = false;
+               gotoAndStop((a_1276[a_1275] as FrameLabel).frame);
+            }
+         }
+         if(a_1447 == 0)
+         {
+            a_1447 = param1;
+         }
+      }
+   }
+}
+

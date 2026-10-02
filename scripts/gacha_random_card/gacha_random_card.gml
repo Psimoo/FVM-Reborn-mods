@@ -13,13 +13,13 @@ function is_lucky_gacha_mode() {
 }
 
 /// @function random_gift_pick_card()
-/// @desc 从完整注册卡池按20/30/50类别权重抽取卡片和形态。
+/// @desc 从完整卡牌和敌人池按礼盒权重抽取结果。
 function random_gift_pick_card() {
-    var pools = [[], [], []]; // gold, zodiac, normal
+    var pools = [[], [], [], [], [], []]; // gold, zodiac, normal, normal mouse, elite mouse, boss
+    var gift_card_blacklist = ["magic_chicken", "baibianshe", "brahma", "ice_cream", "lihe"];
     for (var i = 0; i < ds_list_size(global.player_deck); i += 2) {
         var card_id = global.player_deck[| i];
-		if (card_id == "lihe") continue;
-        if (card_id == "lihe" || card_id == "magic_chicken") continue;
+        if (array_get_index(gift_card_blacklist, card_id) != -1) continue;
         var card = global.player_deck[| i + 1];
         if (!ds_exists(card, ds_type_map)) continue;
         var shapes = card[? "shapes"];
@@ -32,15 +32,35 @@ function random_gift_pick_card() {
         }
         if (!has_card) continue;
         var category = gacha_is_gold_card(card_id) ? 0 : (gacha_is_zodiac_card(card_id) ? 1 : 2);
-        array_push(pools[category], {id: card_id});
+        array_push(pools[category], {kind: "card", id: card_id});
     }
-    var weights = [20, 30, 50];
+
+    if (variable_global_exists("enemy_map") && ds_exists(global.enemy_map, ds_type_map)) {
+        var enemy_ids = [];
+        ds_map_keys_to_array(global.enemy_map, enemy_ids);
+        for (var e = 0; e < array_length(enemy_ids); e++) {
+            var enemy_id = enemy_ids[e];
+            var enemy_data = global.enemy_map[? enemy_id];
+            if (!variable_struct_exists(enemy_data, "_obj")) continue;
+            var is_boss_enemy = variable_global_exists("boss_list")
+                && ds_exists(global.boss_list, ds_type_map)
+                && ds_map_exists(global.boss_list, enemy_id);
+            if (is_boss_enemy) {
+                array_push(pools[5], {kind: "enemy", id: enemy_id, data: enemy_data});
+            } else if ((variable_struct_exists(enemy_data, "elite") && enemy_data.elite)
+                || (variable_struct_exists(enemy_data, "ash_proof") && enemy_data.ash_proof)) {
+                array_push(pools[4], {kind: "enemy", id: enemy_id, data: enemy_data});
+            } else {
+                array_push(pools[3], {kind: "enemy", id: enemy_id, data: enemy_data});
+            }
+        }
+    }
+
+    // 礼盒概率：金卡17%、生肖卡35%、普通卡40%、普通老鼠5%、精英老鼠2%、BOSS1%。
+    var weights = [17, 35, 40, 5, 2, 1];
     var available = [];
-    for (var c = 0; c < 3; c++) if (array_length(pools[c]) > 0) array_push(available, c);
-    if (array_length(available) != 3) {
-        show_debug_message("随机礼盒候选池分类不完整，无法维持20/30/50概率");
-        return undefined;
-    }
+    for (var c = 0; c < 6; c++) if (array_length(pools[c]) > 0) array_push(available, c);
+    if (array_length(available) == 0) return undefined;
     var total = 0;
     for (var a = 0; a < array_length(available); a++) total += weights[available[a]];
     var roll = random(total);
@@ -50,7 +70,9 @@ function random_gift_pick_card() {
         acc += weights[available[a]];
         if (roll < acc) { category = available[a]; break; }
     }
-    var card_id = pools[category][irandom(array_length(pools[category]) - 1)].id;
+    var picked = pools[category][irandom(array_length(pools[category]) - 1)];
+    if (picked.kind == "enemy") return picked;
+    var card_id = picked.id;
     var card = noone;
     for (var i = 0; i < ds_list_size(global.player_deck); i += 2) {
         if (global.player_deck[| i] == card_id) { card = global.player_deck[| i + 1]; break; }
@@ -64,7 +86,7 @@ function random_gift_pick_card() {
     }
     if (array_length(shape_list) == 0) return undefined;
     var shape = shape_list[irandom(array_length(shape_list) - 1)];
-    return {card_id: card_id, shape: shape, category: category, data: deck_get_card_data(card_id, shape)};
+    return {kind: "card", card_id: card_id, shape: shape, category: category, data: deck_get_card_data(card_id, shape)};
 }
 
 /// @function random_gift_spawn_card(x, y, col, row, level)
@@ -72,6 +94,12 @@ function random_gift_pick_card() {
 function random_gift_spawn_card(_x, _y, _col, _row, _level) {
     var result = random_gift_pick_card();
     if (result == undefined) return noone;
+    if (result.kind == "enemy") {
+        var enemy_obj = result.data._obj;
+        var enemy_inst = instance_create_depth(_x + 30, _y + 38, 0, enemy_obj);
+        if (instance_exists(enemy_inst)) enemy_inst.random_gift_result = true;
+        return enemy_inst;
+    }
     var target_level = clamp(_level, 0, 18);
     while (target_level > 0 && get_plant_upgrade(result.card_id, result.shape, target_level) == undefined) target_level--;
     if (get_plant_upgrade(result.card_id, result.shape, target_level) == undefined) return noone;
@@ -97,7 +125,7 @@ function random_gift_spawn_card(_x, _y, _col, _row, _level) {
 }
 
 /// @function gacha_get_excluded_cards()
-/// @desc 获取从抽卡奖励中排除的卡片ID列表（这些卡只通过关卡奖励获得）
+/// @desc 获取本体仅通过关卡奖励获得的八张卡片；其转职可通过抽卡获得。
 /// @return {array}
 function gacha_get_excluded_cards() {
     return [
@@ -119,6 +147,25 @@ function gacha_get_excluded_cards() {
 function gacha_is_excluded_card(card_id) {
     var excluded = gacha_get_excluded_cards();
     return array_get_index(excluded, card_id) != -1;
+}
+
+/// @function gacha_is_current_level_reward_card(card_id)
+/// @desc 指定八张卡片中，本次关卡会正常发放本体的卡片。
+function gacha_is_current_level_reward_card(card_id) {
+    if (!gacha_is_excluded_card(card_id)) return false;
+    if (!variable_global_exists("level_file") || !is_struct(global.level_file)) return false;
+    if (!variable_struct_exists(global.level_file, "rewards")) return false;
+
+    var rewards = global.level_file.rewards;
+    if (!is_array(rewards) || array_length(rewards) <= 1) return false;
+    var first_reward = rewards[1];
+    if (!is_struct(first_reward) || !variable_struct_exists(first_reward, "card_unlock")) return false;
+
+    var card_unlock = first_reward.card_unlock;
+    for (var i = 0; i < array_length(card_unlock); i++) {
+        if (card_unlock[i] == card_id) return true;
+    }
+    return false;
 }
 
 /// @function gacha_is_gold_card(card_id)
@@ -327,16 +374,26 @@ function gacha_pick_random_reward() {
         var card_id = global.player_deck[| i];
 		if (card_id == "lihe") continue;
 
-        // 跳过抽卡排除的卡片（只能通过关卡奖励获得）
-        if (gacha_is_excluded_card(card_id)) continue;
+        // 八张特殊卡只抽转职；已获得本体后，在任意关卡都可以抽转职。
+        if (gacha_is_excluded_card(card_id) && !is_card_unlocked(card_id)
+            && !gacha_is_current_level_reward_card(card_id)) continue;
 
         var current_shape = -1;
         var target_shape = 0;
 
-        if (is_card_unlocked(card_id)) {
+        var is_level_reward_card = gacha_is_current_level_reward_card(card_id);
+        if (is_card_unlocked(card_id) || is_level_reward_card) {
             var info = get_card_info_simple(card_id);
-            current_shape = info.shape;
-            target_shape = current_shape + 1;
+            // 当前关卡的基础卡片会作为正常奖励发放，因此抽卡从1形态开始。
+            if (is_level_reward_card && !is_card_unlocked(card_id)) {
+                current_shape = 0;
+                target_shape = 1;
+            } else {
+                // shape 是当前使用形态，max_shape 才是已经拥有的最高形态。
+                // 调低当前形态不应让已拥有的转职重新进入抽奖池。
+                current_shape = max(info.max_shape, info.shape);
+                target_shape = current_shape + 1;
+            }
         }
 
         if (get_plant_shape_data(card_id, target_shape) == undefined) {
@@ -485,13 +542,13 @@ function gacha_pick_fallback_reward() {
     var all_cards = [];
     for (var i = 0; i < ds_list_size(global.player_deck); i += 2) {
         var card_id = global.player_deck[| i];
-        if (gacha_is_excluded_card(card_id)) continue;
         if (is_card_unlocked(card_id)) {
             var info = get_card_info_simple(card_id);
             array_push(all_cards, {
                 reward_type: "card",
                 id: card_id,
-                shape: info.max_shape
+                // 兜底只提升等级；展示当前使用形态，避免误显示成重复转职。
+                shape: info.shape
             });
         }
     }

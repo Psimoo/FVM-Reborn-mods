@@ -29,6 +29,9 @@ if (hp <= 0 && state != UnknownEnum.Value_11)
     timer = 0;
     state = UnknownEnum.Value_11;
     target_plant = -4;
+    if (ash_death) {
+        image_alpha = 0;
+    }
     
     with (obj_battle)
     {
@@ -249,6 +252,10 @@ switch (state)
         break;
     
     case UnknownEnum.Value_11:
+        if (ash_death) {
+            image_alpha = 0;
+            break;
+        }
         sprite_index = spr_mario_mouse_death;
         image_index = floor(timer / 5) % image_number;
         

@@ -3,9 +3,16 @@ if (global.is_paused)
 
 timer++;
 image_index = floor(timer / flash_speed) % anim_frames;
-x += move_speed;
+if (is_vertical) {
+    y += move_speed;
+    grid_row = get_grid_position_from_world(x, y).row;
+} else {
+    x += move_speed;
+}
 
-if (x > 2200)
+if (is_vertical && y > get_world_position_from_grid(0, global.grid_rows - 1).y + global.grid_cell_size_y)
+    instance_destroy();
+else if (!is_vertical && x > 2200)
     instance_destroy();
 
 with (obj_enemy_parent)

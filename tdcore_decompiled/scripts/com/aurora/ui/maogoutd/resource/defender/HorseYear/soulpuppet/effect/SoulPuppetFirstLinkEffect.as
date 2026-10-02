@@ -1,0 +1,49 @@
+package com.aurora.ui.maogoutd.resource.defender.HorseYear.soulpuppet.effect
+{
+   import com.aurora.ui.maogoutd.base.PoolManager;
+   import com.aurora.ui.maogoutd.game.a_3491;
+   import com.aurora.ui.maogoutd.resource.effect.a_4108;
+   import flash.events.Event;
+   
+   public class SoulPuppetFirstLinkEffect extends a_4108
+   {
+      
+      private var m_iStartTime:int;
+      
+      public var stOriginalFieldGrid:a_3491;
+      
+      public function SoulPuppetFirstLinkEffect()
+      {
+         super();
+         a_1279 = -88.5;
+         m_iYDisplayCenterPos = -83;
+      }
+      
+      public static function a_3926() : SoulPuppetFirstLinkEffect
+      {
+         return PoolManager.getInstance().CheckOutOne(SoulPuppetFirstLinkEffect) as SoulPuppetFirstLinkEffect;
+      }
+      
+      override protected function getBindMovie() : Class
+      {
+         return SoulPuppetFirstLinkEffectMovie;
+      }
+      
+      override public function a_1797(isReversed:Boolean) : Boolean
+      {
+         super.a_1797(isReversed);
+         this.m_iStartTime = 0;
+         return true;
+      }
+      
+      override protected function a_4109(a_4730:Event) : void
+      {
+         nextFrame();
+         if(a_1273 == a_1274 || a_1278 != null)
+         {
+            a_3940();
+         }
+      }
+   }
+}
+

@@ -10,9 +10,10 @@ with (obj_enemy_parent)
         {
             into_act();
         }
-        else if (immune_to_ash && hp > other.damage)
+        else if (immune_to_ash)
         {
-            hp -= other.damage;
+            damage_amount = other.damage;
+            damage_type = "ash";
             event_user(0);
         }
         else

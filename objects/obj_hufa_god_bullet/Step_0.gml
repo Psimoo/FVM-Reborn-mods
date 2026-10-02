@@ -50,6 +50,27 @@ if (variable_global_exists("enemy_by_type"))
                 && _e.hp > 0
                 && precise_bbox_collision(id, _e))
             {
+                var _cannot_be_damaged = false;
+                if (variable_instance_exists(_e, "invincible") && _e.invincible)
+                    _cannot_be_damaged = true;
+                else if (variable_instance_exists(_e, "target_type")
+                    && _e.target_type == "invisible"
+                    && variable_instance_exists(_e, "image_alpha")
+                    && _e.image_alpha < 1)
+                    _cannot_be_damaged = true;
+
+                if (_cannot_be_damaged)
+                {
+                    target_id = noone;
+                    if (abs(move_x) < 0.001 && abs(move_y) < 0.001)
+                    {
+                        move_x = lengthdir_x(move_speed, image_angle);
+                        move_y = lengthdir_y(move_speed, image_angle);
+                    }
+                    ds_list_add(hitted_enemy, _e.id);
+                    continue;
+                }
+
                 has_hit = true;
 
                 var _is_boss = variable_instance_exists(_e, "is_boss") && _e.is_boss;
@@ -94,12 +115,27 @@ if (variable_global_exists("enemy_by_type"))
                     _dmg = _e.hp;
                 }
 
+                var _hp_before = _e.hp;
+                var _shield_before = 0;
+                if (variable_instance_exists(_e, "shield_hp"))
+                    _shield_before = _e.shield_hp;
+
                 with (_e)
                 {
                     audio_play_sound(hit_sound, 0, 0);
                     damage_amount = _dmg;
                     damage_type = other.damage_type;
                     event_user(0);
+                }
+
+                if (instance_exists(_e)
+                    && _e.hp >= _hp_before
+                    && (!variable_instance_exists(_e, "shield_hp") || _e.shield_hp >= _shield_before))
+                {
+                    has_hit = false;
+                    target_id = noone;
+                    ds_list_add(hitted_enemy, _e.id);
+                    continue;
                 }
 
                 ds_list_add(hitted_enemy, _e.id);
@@ -119,7 +155,10 @@ if (variable_global_exists("enemy_by_type"))
                 }
 
                 if (!_is_boss && !_immune_to_ash && !_is_soul && !_is_submarine)
+                {
                     _effect_spr = spr_hufa_god_effect_death;
+                    _e.ash_death = true;
+                }
 
                 var _fx = instance_create_depth(_e.x, _e.y, depth, obj_hufa_god_effect);
                 _fx.sprite_index = _effect_spr;

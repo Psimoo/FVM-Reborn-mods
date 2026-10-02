@@ -16,6 +16,10 @@ if card_id != "magic_chicken"{
 		current_cost = 50;
 		cooldown = 600;
 	}
+	if (is_random_gift_mode() && card_id == "wanpilong") {
+		current_cost = 500;
+		cooldown = 1800;
+	}
 	if ds_exists(global.plus_card_map, ds_type_map) && ds_map_find_value(global.plus_card_map,card_id) != undefined{
 		var plus_info = ds_map_find_value(global.plus_card_map,card_id)
 		with plus_info[0]{
@@ -25,6 +29,10 @@ if card_id != "magic_chicken"{
 		}
 	}
 	if (is_random_gift_mode() && card_id == "lihe") current_cost = 50;
+	if (is_random_gift_mode() && card_id == "wanpilong") {
+		current_cost = 500;
+		cooldown = 1800;
+	}
 }
 if global.debug || global.level_id == "test_level"{
 	cooldown_timer = cooldown
@@ -209,6 +217,19 @@ if (is_selected) {
         var logical_world = get_world_position_from_grid(logical_col, logical_row);
 
         var can_plant = (can_place_at_position(logical_world.x, logical_world.y, card_data[? "plant_type"],card_data[? "feature_type"],card_data[? "target_card"]));
+        if (is_random_gift_mode() && card_id == "lihe") {
+            // The pending effect is not in grid_plants yet, so check it explicitly.
+            var _gift_pending = false;
+            var _gift_count = instance_number(obj_random_gift_effect);
+            for (var _gift_i = 0; _gift_i < _gift_count; _gift_i++) {
+                var _gift_fx = instance_find(obj_random_gift_effect, _gift_i);
+                if (_gift_fx.spawn_col == logical_col && _gift_fx.spawn_row == logical_row) {
+                    _gift_pending = true;
+                    break;
+                }
+            }
+            can_plant = can_plant && !_gift_pending;
+        }
 
         if (can_plant && card_id == "lingrong_god" && !global.replace_placement) {
             var _plant_list = ds_grid_get(global.grid_plants, logical_col, logical_row);

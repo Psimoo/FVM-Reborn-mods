@@ -67,6 +67,13 @@ else if (config_key == "play_mode_lucky"){
 else if (config_key == "play_mode_gift"){
     global.play_mode = state ? 3 : 0;
 }
+if (config_key == "play_mode_gift" || config_key == "play_mode_gacha" || config_key == "play_mode_lucky") {
+    random_gift_sync_unlock();
+    // 切换玩法模式后同步整理卡组（确保礼盒卡的增减立即生效）
+    if (variable_global_exists("selected_deck") && ds_exists(global.selected_deck, ds_type_list)) {
+        random_gift_prepare_selected_deck();
+    }
+}
 else if (config_key == "borderless_window"){
 	global.borderless_window = state
 	window_enable_borderless_fullscreen(global.borderless_window)

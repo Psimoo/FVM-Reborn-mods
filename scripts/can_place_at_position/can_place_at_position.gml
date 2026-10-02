@@ -27,6 +27,18 @@ function can_place_at_position(x, y, plant_type,feature_type,target_card) {
     
     // 获取该网格的植物列表
     var plant_list = ds_grid_get(global.grid_plants, col, row);
+
+    // 海洋女神的悬浮形态不占用普通植物槽，但同一格仍只能存在一张海洋女神。
+    if (feature_type == "haiyang_obstacle" && !global.replace_placement)
+    {
+        for (var i = 0; i < ds_list_size(plant_list); i++)
+        {
+            var plant = ds_list_find_value(plant_list, i);
+            if (instance_exists(plant) && variable_instance_exists(plant, "plant_id")
+                && plant.plant_id == "haiyang_god")
+                return false;
+        }
+    }
     
     // 根据植物类型检查是否可以种植
 	if target_card != "none"{

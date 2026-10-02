@@ -60,6 +60,10 @@ function try_place_once(){
 		current_cost = 50;
 		cooldown = 600;
 	}
+	if (is_random_gift_mode() && card_id == "wanpilong") {
+		current_cost = 500;
+		cooldown = 1800;
+	}
 	// 检查是否在可种植区域
 		
 		var card_data = noone
@@ -133,6 +137,19 @@ function try_place_once(){
         var logical_world = get_world_position_from_grid(logical_col, logical_row);
 
         var can_plant = (can_place_at_position(logical_world.x, logical_world.y, card_data[? "plant_type"],card_data[? "feature_type"],card_data[? "target_card"]));
+        if (is_random_gift_mode() && card_id == "lihe") {
+            // The pending effect is not in grid_plants yet, so check it explicitly.
+            var _gift_pending = false;
+            var _gift_count = instance_number(obj_random_gift_effect);
+            for (var _gift_i = 0; _gift_i < _gift_count; _gift_i++) {
+                var _gift_fx = instance_find(obj_random_gift_effect, _gift_i);
+                if (_gift_fx.spawn_col == logical_col && _gift_fx.spawn_row == logical_row) {
+                    _gift_pending = true;
+                    break;
+                }
+            }
+            can_plant = can_plant && !_gift_pending;
+        }
         
         if (can_plant && global.flame >= current_cost) {
             // 创建植物实例

@@ -1,466 +1,134 @@
 {
-  "$GMSprite": "v2",
-  "%Name": "spr_infected_zhanshen_death",
-  "bboxMode": 2,
-  "bbox_bottom": 218,
-  "bbox_left": 65,
-  "bbox_right": 160,
-  "bbox_top": 80,
-  "collisionKind": 5,
-  "collisionTolerance": 0,
-  "DynamicTexturePage": false,
-  "edgeFiltering": false,
-  "For3D": false,
-  "frames": [
-    {
-      "$GMSpriteFrame": "v1",
-      "%Name": "a4fa5b7c-76b9-4da4-b164-4e7076a610c7",
-      "name": "a4fa5b7c-76b9-4da4-b164-4e7076a610c7",
-      "resourceType": "GMSpriteFrame",
-      "resourceVersion": "2.0"
-    },
-    {
-      "$GMSpriteFrame": "v1",
-      "%Name": "6dbe83f3-b56a-4bca-8866-03c2317cae95",
-      "name": "6dbe83f3-b56a-4bca-8866-03c2317cae95",
-      "resourceType": "GMSpriteFrame",
-      "resourceVersion": "2.0"
-    },
-    {
-      "$GMSpriteFrame": "v1",
-      "%Name": "f972cf67-ed14-414b-bb77-37ae7601163b",
-      "name": "f972cf67-ed14-414b-bb77-37ae7601163b",
-      "resourceType": "GMSpriteFrame",
-      "resourceVersion": "2.0"
-    },
-    {
-      "$GMSpriteFrame": "v1",
-      "%Name": "35e06abe-fdc2-40d8-a93e-78a4bef9b46e",
-      "name": "35e06abe-fdc2-40d8-a93e-78a4bef9b46e",
-      "resourceType": "GMSpriteFrame",
-      "resourceVersion": "2.0"
-    },
-    {
-      "$GMSpriteFrame": "v1",
-      "%Name": "f4594648-a2fe-48c1-8575-d2f39443c20b",
-      "name": "f4594648-a2fe-48c1-8575-d2f39443c20b",
-      "resourceType": "GMSpriteFrame",
-      "resourceVersion": "2.0"
-    },
-    {
-      "$GMSpriteFrame": "v1",
-      "%Name": "410f8347-8a57-4e73-8fca-b478ab8b4933",
-      "name": "410f8347-8a57-4e73-8fca-b478ab8b4933",
-      "resourceType": "GMSpriteFrame",
-      "resourceVersion": "2.0"
-    },
-    {
-      "$GMSpriteFrame": "v1",
-      "%Name": "98c2e147-1a06-48c0-8e06-c7aa3147de96",
-      "name": "98c2e147-1a06-48c0-8e06-c7aa3147de96",
-      "resourceType": "GMSpriteFrame",
-      "resourceVersion": "2.0"
-    },
-    {
-      "$GMSpriteFrame": "v1",
-      "%Name": "443fa381-1f20-40de-8fb9-be45057cedd2",
-      "name": "443fa381-1f20-40de-8fb9-be45057cedd2",
-      "resourceType": "GMSpriteFrame",
-      "resourceVersion": "2.0"
-    },
-    {
-      "$GMSpriteFrame": "v1",
-      "%Name": "38159c30-4878-4e59-86e3-8a0c9259dd1c",
-      "name": "38159c30-4878-4e59-86e3-8a0c9259dd1c",
-      "resourceType": "GMSpriteFrame",
-      "resourceVersion": "2.0"
-    },
-    {
-      "$GMSpriteFrame": "v1",
-      "%Name": "8f88cde6-425e-4a80-bc3f-60652e7ab5fc",
-      "name": "8f88cde6-425e-4a80-bc3f-60652e7ab5fc",
-      "resourceType": "GMSpriteFrame",
-      "resourceVersion": "2.0"
-    },
-    {
-      "$GMSpriteFrame": "v1",
-      "%Name": "d253ac5a-8cf0-4720-bc2f-2e4c7612ac93",
-      "name": "d253ac5a-8cf0-4720-bc2f-2e4c7612ac93",
-      "resourceType": "GMSpriteFrame",
-      "resourceVersion": "2.0"
-    },
-    {
-      "$GMSpriteFrame": "v1",
-      "%Name": "dd83e711-48c3-4cb0-b9c4-559d29bee295",
-      "name": "dd83e711-48c3-4cb0-b9c4-559d29bee295",
-      "resourceType": "GMSpriteFrame",
-      "resourceVersion": "2.0"
-    }
+  "$GMSprite":"v2",
+  "%Name":"spr_infected_zhanshen_death",
+  "bboxMode":2,
+  "bbox_bottom":218,
+  "bbox_left":65,
+  "bbox_right":160,
+  "bbox_top":80,
+  "collisionKind":5,
+  "collisionTolerance":0,
+  "DynamicTexturePage":false,
+  "edgeFiltering":false,
+  "For3D":false,
+  "frames":[
+    {"$GMSpriteFrame":"v1","%Name":"a4fa5b7c-76b9-4da4-b164-4e7076a610c7","name":"a4fa5b7c-76b9-4da4-b164-4e7076a610c7","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"6dbe83f3-b56a-4bca-8866-03c2317cae95","name":"6dbe83f3-b56a-4bca-8866-03c2317cae95","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"f972cf67-ed14-414b-bb77-37ae7601163b","name":"f972cf67-ed14-414b-bb77-37ae7601163b","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"35e06abe-fdc2-40d8-a93e-78a4bef9b46e","name":"35e06abe-fdc2-40d8-a93e-78a4bef9b46e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"f4594648-a2fe-48c1-8575-d2f39443c20b","name":"f4594648-a2fe-48c1-8575-d2f39443c20b","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"410f8347-8a57-4e73-8fca-b478ab8b4933","name":"410f8347-8a57-4e73-8fca-b478ab8b4933","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"98c2e147-1a06-48c0-8e06-c7aa3147de96","name":"98c2e147-1a06-48c0-8e06-c7aa3147de96","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"443fa381-1f20-40de-8fb9-be45057cedd2","name":"443fa381-1f20-40de-8fb9-be45057cedd2","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"38159c30-4878-4e59-86e3-8a0c9259dd1c","name":"38159c30-4878-4e59-86e3-8a0c9259dd1c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"8f88cde6-425e-4a80-bc3f-60652e7ab5fc","name":"8f88cde6-425e-4a80-bc3f-60652e7ab5fc","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"d253ac5a-8cf0-4720-bc2f-2e4c7612ac93","name":"d253ac5a-8cf0-4720-bc2f-2e4c7612ac93","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"dd83e711-48c3-4cb0-b9c4-559d29bee295","name":"dd83e711-48c3-4cb0-b9c4-559d29bee295","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
-  "gridX": 0,
-  "gridY": 0,
-  "height": 238,
-  "HTile": false,
-  "layers": [
-    {
-      "$GMImageLayer": "",
-      "%Name": "a84ddbf7-660d-437d-bb36-f287f7a5405a",
-      "blendMode": 0,
-      "displayName": "default",
-      "isLocked": false,
-      "name": "a84ddbf7-660d-437d-bb36-f287f7a5405a",
-      "opacity": 100,
-      "resourceType": "GMImageLayer",
-      "resourceVersion": "2.0",
-      "visible": true
-    }
+  "gridX":0,
+  "gridY":0,
+  "height":238,
+  "HTile":false,
+  "layers":[
+    {"$GMImageLayer":"","%Name":"a84ddbf7-660d-437d-bb36-f287f7a5405a","blendMode":0,"displayName":"default","isLocked":false,"name":"a84ddbf7-660d-437d-bb36-f287f7a5405a","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
-  "name": "spr_infected_zhanshen_death",
-  "nineSlice": null,
-  "origin": 9,
-  "parent": {
-    "name": "infected_zhanshen",
-    "path": "folders/精灵/Enemy/volcanic_island/BOSS/infected_zhanshen.yy"
+  "name":"spr_infected_zhanshen_death",
+  "nineSlice":null,
+  "origin":9,
+  "parent":{
+    "name":"infected_zhanshen",
+    "path":"folders/精灵/Enemy/volcanic_island/BOSS/infected_zhanshen.yy",
   },
-  "preMultiplyAlpha": false,
-  "resourceType": "GMSprite",
-  "resourceVersion": "2.0",
-  "sequence": {
-    "$GMSequence": "v1",
-    "%Name": "spr_infected_zhanshen_death",
-    "autoRecord": true,
-    "backdropHeight": 768,
-    "backdropImageOpacity": 0.5,
-    "backdropImagePath": "",
-    "backdropWidth": 1366,
-    "backdropXOffset": 0,
-    "backdropYOffset": 0,
-    "events": {
-      "$KeyframeStore<MessageEventKeyframe>": "",
-      "Keyframes": [],
-      "resourceType": "KeyframeStore<MessageEventKeyframe>",
-      "resourceVersion": "2.0"
+  "preMultiplyAlpha":false,
+  "resourceType":"GMSprite",
+  "resourceVersion":"2.0",
+  "sequence":{
+    "$GMSequence":"v1",
+    "%Name":"spr_infected_zhanshen_death",
+    "autoRecord":true,
+    "backdropHeight":768,
+    "backdropImageOpacity":0.5,
+    "backdropImagePath":"",
+    "backdropWidth":1366,
+    "backdropXOffset":0.0,
+    "backdropYOffset":0.0,
+    "events":{
+      "$KeyframeStore<MessageEventKeyframe>":"",
+      "Keyframes":[],
+      "resourceType":"KeyframeStore<MessageEventKeyframe>",
+      "resourceVersion":"2.0",
     },
-    "eventStubScript": null,
-    "eventToFunction": {},
-    "length": 12,
-    "lockOrigin": false,
-    "moments": {
-      "$KeyframeStore<MomentsEventKeyframe>": "",
-      "Keyframes": [],
-      "resourceType": "KeyframeStore<MomentsEventKeyframe>",
-      "resourceVersion": "2.0"
+    "eventStubScript":null,
+    "eventToFunction":{},
+    "length":12.0,
+    "lockOrigin":false,
+    "moments":{
+      "$KeyframeStore<MomentsEventKeyframe>":"",
+      "Keyframes":[],
+      "resourceType":"KeyframeStore<MomentsEventKeyframe>",
+      "resourceVersion":"2.0",
     },
-    "name": "spr_infected_zhanshen_death",
-    "playback": 1,
-    "playbackSpeed": 12,
-    "playbackSpeedType": 0,
-    "resourceType": "GMSequence",
-    "resourceVersion": "2.0",
-    "showBackdrop": true,
-    "showBackdropImage": false,
-    "timeUnits": 1,
-    "tracks": [
-      {
-        "$GMSpriteFramesTrack": "",
-        "builtinName": 0,
-        "events": [],
-        "inheritsTrackColour": true,
-        "interpolation": 1,
-        "isCreationTrack": false,
-        "keyframes": {
-          "$KeyframeStore<SpriteFrameKeyframe>": "",
-          "Keyframes": [
-            {
-              "$Keyframe<SpriteFrameKeyframe>": "",
-              "Channels": {
-                "0": {
-                  "$SpriteFrameKeyframe": "",
-                  "Id": {
-                    "name": "a4fa5b7c-76b9-4da4-b164-4e7076a610c7",
-                    "path": "sprites/spr_infected_zhanshen_death/spr_infected_zhanshen_death.yy"
-                  },
-                  "resourceType": "SpriteFrameKeyframe",
-                  "resourceVersion": "2.0"
-                }
-              },
-              "Disabled": false,
-              "id": "31e8dab6-2eba-4c15-81f5-7cd67335038c",
-              "IsCreationKey": false,
-              "Key": 0,
-              "Length": 1,
-              "resourceType": "Keyframe<SpriteFrameKeyframe>",
-              "resourceVersion": "2.0",
-              "Stretch": false
-            },
-            {
-              "$Keyframe<SpriteFrameKeyframe>": "",
-              "Channels": {
-                "0": {
-                  "$SpriteFrameKeyframe": "",
-                  "Id": {
-                    "name": "6dbe83f3-b56a-4bca-8866-03c2317cae95",
-                    "path": "sprites/spr_infected_zhanshen_death/spr_infected_zhanshen_death.yy"
-                  },
-                  "resourceType": "SpriteFrameKeyframe",
-                  "resourceVersion": "2.0"
-                }
-              },
-              "Disabled": false,
-              "id": "aac763b0-18c0-4248-9dbd-6ccf35c4b5b2",
-              "IsCreationKey": false,
-              "Key": 1,
-              "Length": 1,
-              "resourceType": "Keyframe<SpriteFrameKeyframe>",
-              "resourceVersion": "2.0",
-              "Stretch": false
-            },
-            {
-              "$Keyframe<SpriteFrameKeyframe>": "",
-              "Channels": {
-                "0": {
-                  "$SpriteFrameKeyframe": "",
-                  "Id": {
-                    "name": "f972cf67-ed14-414b-bb77-37ae7601163b",
-                    "path": "sprites/spr_infected_zhanshen_death/spr_infected_zhanshen_death.yy"
-                  },
-                  "resourceType": "SpriteFrameKeyframe",
-                  "resourceVersion": "2.0"
-                }
-              },
-              "Disabled": false,
-              "id": "db79c731-9a42-40f4-95d4-e13d7deebf08",
-              "IsCreationKey": false,
-              "Key": 2,
-              "Length": 1,
-              "resourceType": "Keyframe<SpriteFrameKeyframe>",
-              "resourceVersion": "2.0",
-              "Stretch": false
-            },
-            {
-              "$Keyframe<SpriteFrameKeyframe>": "",
-              "Channels": {
-                "0": {
-                  "$SpriteFrameKeyframe": "",
-                  "Id": {
-                    "name": "35e06abe-fdc2-40d8-a93e-78a4bef9b46e",
-                    "path": "sprites/spr_infected_zhanshen_death/spr_infected_zhanshen_death.yy"
-                  },
-                  "resourceType": "SpriteFrameKeyframe",
-                  "resourceVersion": "2.0"
-                }
-              },
-              "Disabled": false,
-              "id": "75bbcbbd-b359-4cc4-8053-2bf2eee05a45",
-              "IsCreationKey": false,
-              "Key": 3,
-              "Length": 1,
-              "resourceType": "Keyframe<SpriteFrameKeyframe>",
-              "resourceVersion": "2.0",
-              "Stretch": false
-            },
-            {
-              "$Keyframe<SpriteFrameKeyframe>": "",
-              "Channels": {
-                "0": {
-                  "$SpriteFrameKeyframe": "",
-                  "Id": {
-                    "name": "f4594648-a2fe-48c1-8575-d2f39443c20b",
-                    "path": "sprites/spr_infected_zhanshen_death/spr_infected_zhanshen_death.yy"
-                  },
-                  "resourceType": "SpriteFrameKeyframe",
-                  "resourceVersion": "2.0"
-                }
-              },
-              "Disabled": false,
-              "id": "fa2f78a9-41cf-4378-9a65-44ae80ad44d7",
-              "IsCreationKey": false,
-              "Key": 4,
-              "Length": 1,
-              "resourceType": "Keyframe<SpriteFrameKeyframe>",
-              "resourceVersion": "2.0",
-              "Stretch": false
-            },
-            {
-              "$Keyframe<SpriteFrameKeyframe>": "",
-              "Channels": {
-                "0": {
-                  "$SpriteFrameKeyframe": "",
-                  "Id": {
-                    "name": "410f8347-8a57-4e73-8fca-b478ab8b4933",
-                    "path": "sprites/spr_infected_zhanshen_death/spr_infected_zhanshen_death.yy"
-                  },
-                  "resourceType": "SpriteFrameKeyframe",
-                  "resourceVersion": "2.0"
-                }
-              },
-              "Disabled": false,
-              "id": "bdb9a274-36c2-45fa-b80c-8bf87fd8ea86",
-              "IsCreationKey": false,
-              "Key": 5,
-              "Length": 1,
-              "resourceType": "Keyframe<SpriteFrameKeyframe>",
-              "resourceVersion": "2.0",
-              "Stretch": false
-            },
-            {
-              "$Keyframe<SpriteFrameKeyframe>": "",
-              "Channels": {
-                "0": {
-                  "$SpriteFrameKeyframe": "",
-                  "Id": {
-                    "name": "98c2e147-1a06-48c0-8e06-c7aa3147de96",
-                    "path": "sprites/spr_infected_zhanshen_death/spr_infected_zhanshen_death.yy"
-                  },
-                  "resourceType": "SpriteFrameKeyframe",
-                  "resourceVersion": "2.0"
-                }
-              },
-              "Disabled": false,
-              "id": "93687b60-2ca2-4720-9313-17923aaa436f",
-              "IsCreationKey": false,
-              "Key": 6,
-              "Length": 1,
-              "resourceType": "Keyframe<SpriteFrameKeyframe>",
-              "resourceVersion": "2.0",
-              "Stretch": false
-            },
-            {
-              "$Keyframe<SpriteFrameKeyframe>": "",
-              "Channels": {
-                "0": {
-                  "$SpriteFrameKeyframe": "",
-                  "Id": {
-                    "name": "443fa381-1f20-40de-8fb9-be45057cedd2",
-                    "path": "sprites/spr_infected_zhanshen_death/spr_infected_zhanshen_death.yy"
-                  },
-                  "resourceType": "SpriteFrameKeyframe",
-                  "resourceVersion": "2.0"
-                }
-              },
-              "Disabled": false,
-              "id": "63c40ab6-808a-4d8e-a533-d9da0c23162a",
-              "IsCreationKey": false,
-              "Key": 7,
-              "Length": 1,
-              "resourceType": "Keyframe<SpriteFrameKeyframe>",
-              "resourceVersion": "2.0",
-              "Stretch": false
-            },
-            {
-              "$Keyframe<SpriteFrameKeyframe>": "",
-              "Channels": {
-                "0": {
-                  "$SpriteFrameKeyframe": "",
-                  "Id": {
-                    "name": "38159c30-4878-4e59-86e3-8a0c9259dd1c",
-                    "path": "sprites/spr_infected_zhanshen_death/spr_infected_zhanshen_death.yy"
-                  },
-                  "resourceType": "SpriteFrameKeyframe",
-                  "resourceVersion": "2.0"
-                }
-              },
-              "Disabled": false,
-              "id": "17ce5e1b-9994-4e80-9061-bef0628231af",
-              "IsCreationKey": false,
-              "Key": 8,
-              "Length": 1,
-              "resourceType": "Keyframe<SpriteFrameKeyframe>",
-              "resourceVersion": "2.0",
-              "Stretch": false
-            },
-            {
-              "$Keyframe<SpriteFrameKeyframe>": "",
-              "Channels": {
-                "0": {
-                  "$SpriteFrameKeyframe": "",
-                  "Id": {
-                    "name": "8f88cde6-425e-4a80-bc3f-60652e7ab5fc",
-                    "path": "sprites/spr_infected_zhanshen_death/spr_infected_zhanshen_death.yy"
-                  },
-                  "resourceType": "SpriteFrameKeyframe",
-                  "resourceVersion": "2.0"
-                }
-              },
-              "Disabled": false,
-              "id": "2d0dad72-c130-4bea-8506-3f94f3ca249a",
-              "IsCreationKey": false,
-              "Key": 9,
-              "Length": 1,
-              "resourceType": "Keyframe<SpriteFrameKeyframe>",
-              "resourceVersion": "2.0",
-              "Stretch": false
-            },
-            {
-              "$Keyframe<SpriteFrameKeyframe>": "",
-              "Channels": {
-                "0": {
-                  "$SpriteFrameKeyframe": "",
-                  "Id": {
-                    "name": "d253ac5a-8cf0-4720-bc2f-2e4c7612ac93",
-                    "path": "sprites/spr_infected_zhanshen_death/spr_infected_zhanshen_death.yy"
-                  },
-                  "resourceType": "SpriteFrameKeyframe",
-                  "resourceVersion": "2.0"
-                }
-              },
-              "Disabled": false,
-              "id": "7617c10e-9511-4d51-8479-ec08c6bf7d83",
-              "IsCreationKey": false,
-              "Key": 10,
-              "Length": 1,
-              "resourceType": "Keyframe<SpriteFrameKeyframe>",
-              "resourceVersion": "2.0",
-              "Stretch": false
-            },
-            {
-              "$Keyframe<SpriteFrameKeyframe>": "",
-              "Channels": {
-                "0": {
-                  "$SpriteFrameKeyframe": "",
-                  "Id": {
-                    "name": "dd83e711-48c3-4cb0-b9c4-559d29bee295",
-                    "path": "sprites/spr_infected_zhanshen_death/spr_infected_zhanshen_death.yy"
-                  },
-                  "resourceType": "SpriteFrameKeyframe",
-                  "resourceVersion": "2.0"
-                }
-              },
-              "Disabled": false,
-              "id": "98f0374f-c004-4e98-b2e8-e39345c2f7b4",
-              "IsCreationKey": false,
-              "Key": 11,
-              "Length": 1,
-              "resourceType": "Keyframe<SpriteFrameKeyframe>",
-              "resourceVersion": "2.0",
-              "Stretch": false
-            }
-          ],
-          "resourceType": "KeyframeStore<SpriteFrameKeyframe>",
-          "resourceVersion": "2.0"
-        },
-        "modifiers": [],
-        "name": "frames",
-        "resourceType": "GMSpriteFramesTrack",
-        "resourceVersion": "2.0",
-        "spriteId": null,
-        "trackColour": 0,
-        "tracks": [],
-        "traits": 0
-      }
+    "name":"spr_infected_zhanshen_death",
+    "playback":1,
+    "playbackSpeed":12.0,
+    "playbackSpeedType":0,
+    "resourceType":"GMSequence",
+    "resourceVersion":"2.0",
+    "showBackdrop":true,
+    "showBackdropImage":false,
+    "timeUnits":1,
+    "tracks":[
+      {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"a4fa5b7c-76b9-4da4-b164-4e7076a610c7","path":"sprites/spr_infected_zhanshen_death/spr_infected_zhanshen_death.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"31e8dab6-2eba-4c15-81f5-7cd67335038c","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"6dbe83f3-b56a-4bca-8866-03c2317cae95","path":"sprites/spr_infected_zhanshen_death/spr_infected_zhanshen_death.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"aac763b0-18c0-4248-9dbd-6ccf35c4b5b2","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"f972cf67-ed14-414b-bb77-37ae7601163b","path":"sprites/spr_infected_zhanshen_death/spr_infected_zhanshen_death.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"db79c731-9a42-40f4-95d4-e13d7deebf08","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"35e06abe-fdc2-40d8-a93e-78a4bef9b46e","path":"sprites/spr_infected_zhanshen_death/spr_infected_zhanshen_death.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"75bbcbbd-b359-4cc4-8053-2bf2eee05a45","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"f4594648-a2fe-48c1-8575-d2f39443c20b","path":"sprites/spr_infected_zhanshen_death/spr_infected_zhanshen_death.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"fa2f78a9-41cf-4378-9a65-44ae80ad44d7","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"410f8347-8a57-4e73-8fca-b478ab8b4933","path":"sprites/spr_infected_zhanshen_death/spr_infected_zhanshen_death.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"bdb9a274-36c2-45fa-b80c-8bf87fd8ea86","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"98c2e147-1a06-48c0-8e06-c7aa3147de96","path":"sprites/spr_infected_zhanshen_death/spr_infected_zhanshen_death.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"93687b60-2ca2-4720-9313-17923aaa436f","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"443fa381-1f20-40de-8fb9-be45057cedd2","path":"sprites/spr_infected_zhanshen_death/spr_infected_zhanshen_death.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"63c40ab6-808a-4d8e-a533-d9da0c23162a","IsCreationKey":false,"Key":7.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"38159c30-4878-4e59-86e3-8a0c9259dd1c","path":"sprites/spr_infected_zhanshen_death/spr_infected_zhanshen_death.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"17ce5e1b-9994-4e80-9061-bef0628231af","IsCreationKey":false,"Key":8.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"8f88cde6-425e-4a80-bc3f-60652e7ab5fc","path":"sprites/spr_infected_zhanshen_death/spr_infected_zhanshen_death.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"2d0dad72-c130-4bea-8506-3f94f3ca249a","IsCreationKey":false,"Key":9.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"d253ac5a-8cf0-4720-bc2f-2e4c7612ac93","path":"sprites/spr_infected_zhanshen_death/spr_infected_zhanshen_death.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"7617c10e-9511-4d51-8479-ec08c6bf7d83","IsCreationKey":false,"Key":10.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"dd83e711-48c3-4cb0-b9c4-559d29bee295","path":"sprites/spr_infected_zhanshen_death/spr_infected_zhanshen_death.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"98f0374f-c004-4e98-b2e8-e39345c2f7b4","IsCreationKey":false,"Key":11.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+          ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
-    "visibleRange": null,
-    "volume": 1,
-    "xorigin": 96,
-    "yorigin": 238
+    "visibleRange":null,
+    "volume":1.0,
+    "xorigin":96,
+    "yorigin":238,
   },
-  "swatchColours": null,
-  "swfPrecision": 0.5,
-  "textureGroupId": {
-    "name": "enemy_volcanic",
-    "path": "texturegroups/enemy_volcanic"
+  "swatchColours":null,
+  "swfPrecision":0.5,
+  "textureGroupId":{
+    "name":"enemy_volcanic",
+    "path":"texturegroups/enemy_volcanic",
   },
-  "type": 0,
-  "VTile": false,
-  "width": 282
+  "type":0,
+  "VTile":false,
+  "width":282,
 }

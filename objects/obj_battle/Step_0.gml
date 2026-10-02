@@ -60,7 +60,21 @@ if global.lose_focus_pause{
 	}
 }
 
-battle_time ++
+// Keep expedition/tower timers tied to rendered frame rate.  At 60 FPS this
+// is unchanged; lower FPS advances fewer game-time frames per real frame.
+var _frame_rate_scaled = (string_pos("ancient_castle_", global.level_data.id) == 1)
+    || (string_pos("tower_cake_", global.level_data.id) == 1);
+if (_frame_rate_scaled) {
+    var _target_fps = max(1, game_get_speed(gamespeed_fps));
+    var _current_fps = max(0, fps);
+    frame_time_accumulator += min(1, _current_fps / _target_fps);
+    time_ticks_this_step = floor(frame_time_accumulator);
+    frame_time_accumulator -= time_ticks_this_step;
+} else {
+    time_ticks_this_step = 1;
+}
+
+battle_time += time_ticks_this_step
 // obj_controller STEP 事件
 if global.debug{
 	if keyboard_check_pressed(ord("M")){
@@ -150,7 +164,7 @@ if global.level_file.time_limit != 0 && time_limit == -1{
 }
 if time_limit > 0{
 	if !timer_pause{
-		time_limit --
+		time_limit -= time_ticks_this_step
 	}
 	if time_limit <= 0{
 		global.is_paused = true

@@ -52,6 +52,16 @@ if timer < current_flash_speed - 1 {
                 inst.atk = atk
                 inst.shape = shape
             }
+
+            if (shape == 3) {
+                var vertical_pos = get_world_position_from_grid(global.grid_cols - 1, 0)
+                var vertical_fish = instance_create_depth(vertical_pos.x, vertical_pos.y, depth, obj_save_god23_e2)
+                vertical_fish.sprite_index = spr_save_god_23_e2
+                vertical_fish.is_vertical = true
+                vertical_fish.grid_row = 0
+                vertical_fish.atk = atk
+                vertical_fish.shape = shape
+            }
         }
         instance_destroy()
     }

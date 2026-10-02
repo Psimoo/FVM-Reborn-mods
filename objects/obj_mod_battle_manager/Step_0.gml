@@ -118,16 +118,23 @@ else
 
                         case "tracker":
                             var grid_tracker = ds_map_find_value(global.buff_grid, "tracker");
-                            buff_multiplier = grid_tracker[self.grid_col][self.grid_row];
+                            var stack_tracker = ds_map_find_value(global.buff_stack_grid, "tracker");
+                            var tr_normal = grid_tracker[self.grid_col][self.grid_row];
+                            var tr_stack = stack_tracker[self.grid_col][self.grid_row];
+                            buff_multiplier = max(tr_normal, tr_stack);
                             break;
 
                         case "xiangshui":
                             var grid_xiangshui = ds_map_find_value(global.buff_grid, "xiangshui");
-                            buff_multiplier = grid_xiangshui[self.grid_col][self.grid_row];
+                            var stack_xiangshui = ds_map_find_value(global.buff_stack_grid, "xiangshui");
+                            var xs_normal = grid_xiangshui[self.grid_col][self.grid_row];
+                            var xs_stack = stack_xiangshui[self.grid_col][self.grid_row];
+                            buff_multiplier = max(xs_normal, xs_stack);
                             break;
 
                         case "sprayer":
-                            var grid_sprayer = ds_map_find_value(global.buff_grid, "sprayer");
+                            var grid_sprayer = ds_map_find_value(global.buff_grid,
+                                is_row_sprayer_card(self.plant_id) ? "sprayer_row" : "sprayer");
                             buff_multiplier = grid_sprayer[self.grid_col][self.grid_row];
                             break;
 
@@ -171,16 +178,23 @@ else
 
                         case "tracker":
                             var grid_tracker2 = ds_map_find_value(global.buff_grid, "tracker");
-                            buff2_multiplier = grid_tracker2[self.grid_col][self.grid_row];
+                            var stack_tracker2 = ds_map_find_value(global.buff_stack_grid, "tracker");
+                            var tr2_normal = grid_tracker2[self.grid_col][self.grid_row];
+                            var tr2_stack = stack_tracker2[self.grid_col][self.grid_row];
+                            buff2_multiplier = max(tr2_normal, tr2_stack);
                             break;
 
                         case "xiangshui":
                             var grid_xiangshui2 = ds_map_find_value(global.buff_grid, "xiangshui");
-                            buff2_multiplier = grid_xiangshui2[self.grid_col][self.grid_row];
+                            var stack_xiangshui2 = ds_map_find_value(global.buff_stack_grid, "xiangshui");
+                            var xs2_normal = grid_xiangshui2[self.grid_col][self.grid_row];
+                            var xs2_stack = stack_xiangshui2[self.grid_col][self.grid_row];
+                            buff2_multiplier = max(xs2_normal, xs2_stack);
                             break;
 
                         case "sprayer":
-                            var grid_sprayer2 = ds_map_find_value(global.buff_grid, "sprayer");
+                            var grid_sprayer2 = ds_map_find_value(global.buff_grid,
+                                is_row_sprayer_card(self.plant_id) ? "sprayer_row" : "sprayer");
                             buff2_multiplier = grid_sprayer2[self.grid_col][self.grid_row];
                             break;
 
@@ -204,13 +218,18 @@ else
                     buff_multiplier = max(buff_multiplier, buff2_multiplier);
                 }
 
-                // 海洋女神增幅倍率
+                // 海洋女神与榨汁机、魔杖蛇的喷壶增幅不叠加，取较高倍率。
                 var ocean_mult = 1;
                 if (variable_instance_exists(self.id, "ocean_buff_multiplier"))
                     ocean_mult = self.ocean_buff_multiplier;
 
+                var has_sprayer_buff = (self.buff_type == "sprayer" || buff_type_2 == "sprayer");
+                var combined_buff_multiplier = has_sprayer_buff
+                    ? max(buff_multiplier, ocean_mult)
+                    : buff_multiplier * ocean_mult;
+
                 var _shield_gem_mult = get_shield_gem_atk_mult(self.grid_col, self.grid_row, self.plant_id);
-                self.atk = self.base_atk * buff_multiplier * ocean_mult * _shield_gem_mult;
+                self.atk = self.base_atk * combined_buff_multiplier * _shield_gem_mult;
 
                 self.buff_applied_id = global.buff_apply_id;
             }

@@ -1,178 +1,96 @@
 {
-  "$GMSprite": "v2",
-  "%Name": "spr_infected_zhanshen_bullet_sf",
-  "bboxMode": 2,
-  "bbox_bottom": 45,
-  "bbox_left": 0,
-  "bbox_right": 45,
-  "bbox_top": 16,
-  "collisionKind": 0,
-  "collisionTolerance": 0,
-  "DynamicTexturePage": false,
-  "edgeFiltering": false,
-  "For3D": false,
-  "frames": [
-    {
-      "$GMSpriteFrame": "v1",
-      "%Name": "9775aac6-aabf-468c-a505-49155c9bb89c",
-      "name": "9775aac6-aabf-468c-a505-49155c9bb89c",
-      "resourceType": "GMSpriteFrame",
-      "resourceVersion": "2.0"
-    },
-    {
-      "$GMSpriteFrame": "v1",
-      "%Name": "b260d568-2484-468d-bf2f-854bd3203e29",
-      "name": "b260d568-2484-468d-bf2f-854bd3203e29",
-      "resourceType": "GMSpriteFrame",
-      "resourceVersion": "2.0"
-    }
+  "$GMSprite":"v2",
+  "%Name":"spr_infected_zhanshen_bullet_sf",
+  "bboxMode":2,
+  "bbox_bottom":45,
+  "bbox_left":0,
+  "bbox_right":45,
+  "bbox_top":16,
+  "collisionKind":0,
+  "collisionTolerance":0,
+  "DynamicTexturePage":false,
+  "edgeFiltering":false,
+  "For3D":false,
+  "frames":[
+    {"$GMSpriteFrame":"v1","%Name":"9775aac6-aabf-468c-a505-49155c9bb89c","name":"9775aac6-aabf-468c-a505-49155c9bb89c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"b260d568-2484-468d-bf2f-854bd3203e29","name":"b260d568-2484-468d-bf2f-854bd3203e29","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
-  "gridX": 0,
-  "gridY": 0,
-  "height": 135,
-  "HTile": false,
-  "layers": [
-    {
-      "$GMImageLayer": "",
-      "%Name": "80a04dff-098e-47f8-b5bc-7adf36ceb644",
-      "blendMode": 0,
-      "displayName": "default",
-      "isLocked": false,
-      "name": "80a04dff-098e-47f8-b5bc-7adf36ceb644",
-      "opacity": 100,
-      "resourceType": "GMImageLayer",
-      "resourceVersion": "2.0",
-      "visible": true
-    }
+  "gridX":0,
+  "gridY":0,
+  "height":135,
+  "HTile":false,
+  "layers":[
+    {"$GMImageLayer":"","%Name":"80a04dff-098e-47f8-b5bc-7adf36ceb644","blendMode":0,"displayName":"default","isLocked":false,"name":"80a04dff-098e-47f8-b5bc-7adf36ceb644","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
-  "name": "spr_infected_zhanshen_bullet_sf",
-  "nineSlice": null,
-  "origin": 4,
-  "parent": {
-    "name": "infected_zhanshen",
-    "path": "folders/精灵/Enemy/volcanic_island/BOSS/infected_zhanshen.yy"
+  "name":"spr_infected_zhanshen_bullet_sf",
+  "nineSlice":null,
+  "origin":4,
+  "parent":{
+    "name":"infected_zhanshen",
+    "path":"folders/精灵/Enemy/volcanic_island/BOSS/infected_zhanshen.yy",
   },
-  "preMultiplyAlpha": false,
-  "resourceType": "GMSprite",
-  "resourceVersion": "2.0",
-  "sequence": {
-    "$GMSequence": "v1",
-    "%Name": "spr_infected_zhanshen_bullet_sf",
-    "autoRecord": true,
-    "backdropHeight": 768,
-    "backdropImageOpacity": 0.5,
-    "backdropImagePath": "",
-    "backdropWidth": 1366,
-    "backdropXOffset": 0,
-    "backdropYOffset": 0,
-    "events": {
-      "$KeyframeStore<MessageEventKeyframe>": "",
-      "Keyframes": [],
-      "resourceType": "KeyframeStore<MessageEventKeyframe>",
-      "resourceVersion": "2.0"
+  "preMultiplyAlpha":false,
+  "resourceType":"GMSprite",
+  "resourceVersion":"2.0",
+  "sequence":{
+    "$GMSequence":"v1",
+    "%Name":"spr_infected_zhanshen_bullet_sf",
+    "autoRecord":true,
+    "backdropHeight":768,
+    "backdropImageOpacity":0.5,
+    "backdropImagePath":"",
+    "backdropWidth":1366,
+    "backdropXOffset":0.0,
+    "backdropYOffset":0.0,
+    "events":{
+      "$KeyframeStore<MessageEventKeyframe>":"",
+      "Keyframes":[],
+      "resourceType":"KeyframeStore<MessageEventKeyframe>",
+      "resourceVersion":"2.0",
     },
-    "eventStubScript": null,
-    "eventToFunction": {},
-    "length": 2,
-    "lockOrigin": false,
-    "moments": {
-      "$KeyframeStore<MomentsEventKeyframe>": "",
-      "Keyframes": [],
-      "resourceType": "KeyframeStore<MomentsEventKeyframe>",
-      "resourceVersion": "2.0"
+    "eventStubScript":null,
+    "eventToFunction":{},
+    "length":2.0,
+    "lockOrigin":false,
+    "moments":{
+      "$KeyframeStore<MomentsEventKeyframe>":"",
+      "Keyframes":[],
+      "resourceType":"KeyframeStore<MomentsEventKeyframe>",
+      "resourceVersion":"2.0",
     },
-    "name": "spr_infected_zhanshen_bullet_sf",
-    "playback": 1,
-    "playbackSpeed": 10,
-    "playbackSpeedType": 0,
-    "resourceType": "GMSequence",
-    "resourceVersion": "2.0",
-    "seqHeight": 60,
-    "seqWidth": 60,
-    "showBackdrop": true,
-    "showBackdropImage": false,
-    "timeUnits": 1,
-    "tracks": [
-      {
-        "$GMSpriteFramesTrack": "",
-        "builtinName": 0,
-        "events": [],
-        "inheritsTrackColour": true,
-        "interpolation": 1,
-        "isCreationTrack": false,
-        "keyframes": {
-          "$KeyframeStore<SpriteFrameKeyframe>": "",
-          "Keyframes": [
-            {
-              "$Keyframe<SpriteFrameKeyframe>": "",
-              "Channels": {
-                "0": {
-                  "$SpriteFrameKeyframe": "",
-                  "Id": {
-                    "name": "9775aac6-aabf-468c-a505-49155c9bb89c",
-                    "path": "sprites/spr_infected_zhanshen_bullet_sf/spr_infected_zhanshen_bullet_sf.yy"
-                  },
-                  "resourceType": "SpriteFrameKeyframe",
-                  "resourceVersion": "2.0"
-                }
-              },
-              "Disabled": false,
-              "id": "77ea588c-fa29-4666-b43f-c29075e63cfc",
-              "IsCreationKey": false,
-              "Key": 0,
-              "Length": 1,
-              "resourceType": "Keyframe<SpriteFrameKeyframe>",
-              "resourceVersion": "2.0",
-              "Stretch": false
-            },
-            {
-              "$Keyframe<SpriteFrameKeyframe>": "",
-              "Channels": {
-                "0": {
-                  "$SpriteFrameKeyframe": "",
-                  "Id": {
-                    "name": "b260d568-2484-468d-bf2f-854bd3203e29",
-                    "path": "sprites/spr_infected_zhanshen_bullet_sf/spr_infected_zhanshen_bullet_sf.yy"
-                  },
-                  "resourceType": "SpriteFrameKeyframe",
-                  "resourceVersion": "2.0"
-                }
-              },
-              "Disabled": false,
-              "id": "ca178e0b-8a02-4f4a-af48-62501e876d42",
-              "IsCreationKey": false,
-              "Key": 1,
-              "Length": 1,
-              "resourceType": "Keyframe<SpriteFrameKeyframe>",
-              "resourceVersion": "2.0",
-              "Stretch": false
-            }
-          ],
-          "resourceType": "KeyframeStore<SpriteFrameKeyframe>",
-          "resourceVersion": "2.0"
-        },
-        "modifiers": [],
-        "name": "frames",
-        "resourceType": "GMSpriteFramesTrack",
-        "resourceVersion": "2.0",
-        "spriteId": null,
-        "trackColour": 0,
-        "tracks": [],
-        "traits": 0
-      }
+    "name":"spr_infected_zhanshen_bullet_sf",
+    "playback":1,
+    "playbackSpeed":10.0,
+    "playbackSpeedType":0,
+    "resourceType":"GMSequence",
+    "resourceVersion":"2.0",
+    "seqHeight":60.0,
+    "seqWidth":60.0,
+    "showBackdrop":true,
+    "showBackdropImage":false,
+    "timeUnits":1,
+    "tracks":[
+      {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"9775aac6-aabf-468c-a505-49155c9bb89c","path":"sprites/spr_infected_zhanshen_bullet_sf/spr_infected_zhanshen_bullet_sf.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"77ea588c-fa29-4666-b43f-c29075e63cfc","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"b260d568-2484-468d-bf2f-854bd3203e29","path":"sprites/spr_infected_zhanshen_bullet_sf/spr_infected_zhanshen_bullet_sf.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"ca178e0b-8a02-4f4a-af48-62501e876d42","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+          ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
-    "visibleRange": null,
-    "volume": 1,
-    "xorigin": 30,
-    "yorigin": 30
+    "visibleRange":null,
+    "volume":1.0,
+    "xorigin":30,
+    "yorigin":30,
   },
-  "swatchColours": null,
-  "swfPrecision": 0.5,
-  "textureGroupId": {
-    "name": "bullet",
-    "path": "texturegroups/bullet"
+  "swatchColours":null,
+  "swfPrecision":0.5,
+  "textureGroupId":{
+    "name":"bullet",
+    "path":"texturegroups/bullet",
   },
-  "type": 0,
-  "VTile": false,
-  "width": 162
+  "type":0,
+  "VTile":false,
+  "width":162,
 }

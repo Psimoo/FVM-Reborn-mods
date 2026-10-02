@@ -40,7 +40,7 @@ if (shape >= 2)
                 {
                     if ((is_boss || string_pos("infected_", mouse_id) == 1) && special_ash)
                     {
-                        var inst = instance_create_depth(x, y - 20, depth, obj_mouse_ash_death);
+                        var inst = instance_create_depth(x, y - 20, depth, obj_mouse_ash_dead);
                         inst.special_ash = true;
                         inst.sprite_index = sprite_index;
                         inst.image_index = image_index;

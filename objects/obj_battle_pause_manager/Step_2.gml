@@ -166,18 +166,30 @@ if (keyboard_check_pressed(vk_space) || (mouse_check_button_pressed(mb_left) && 
                             }
                         }
                         
-                        global.save_data.player.gold += global.level_file.rewards[1].gold * reward_multiplier
+                        // 跨服远征关卡：特殊奖励（银币 + 金徽章，不含金币）
+                        var _is_cross_server = (string_pos("ancient_castle_", global.level_data.id) == 1);
+                        if (_is_cross_server) {
+                            var _cs_silver_medals = [60, 84, 104, 129, 140, 160, 190, 220];
+                            var _cs_level_idx = real(string_delete(global.level_data.id, 1, string_length("ancient_castle_")));
+                            var _cs_silver = _cs_silver_medals[min(_cs_level_idx, array_length(_cs_silver_medals) - 1)];
+                            var _cs_gold_medal = 5 * (_cs_level_idx + 1);
+                            global.save_data.cross_server_silver_medal += _cs_silver * reward_multiplier;
+                            global.save_data.cross_server_gold_medal += _cs_gold_medal * reward_multiplier;
+                        } else {
+                            global.save_data.player.gold += global.level_file.rewards[1].gold * reward_multiplier;
+                        }
                         var item_list = global.level_file.rewards[1].items
                         for (var i = 0; i < array_length(item_list); i++) {
                             var item_id = item_list[i].id
                             add_material_amount(item_id, real(item_list[i].amount) * reward_multiplier)
                         }
                         
-                        // 难度6：排除卡正常通过关卡奖励发放，其他卡通过抽卡获得
+                        // 两种抽卡模式仅正常发放指定八张卡片的0形态。
                         var card_unlock_id_list = global.level_file.rewards[1].card_unlock
                         for (var i = 0; i < array_length(card_unlock_id_list); i++) {
                             var card_id = card_unlock_id_list[i]
-                            if (gacha_is_excluded_card(card_id)) {
+                            if (!gacha_is_excluded_card(card_id)) continue;
+                            if (!is_card_unlocked(card_id)) {
                                 unlock_card(card_id, 0, 0, global.save_data.unlocked_items.max_skill_level)
                             }
                         }
@@ -195,7 +207,18 @@ if (keyboard_check_pressed(vk_space) || (mouse_check_button_pressed(mb_left) && 
                         }
                     } else {
                         // 非首次普通通关：重复通关奖励
-                        global.save_data.player.gold += global.level_file.rewards[0].gold * reward_multiplier
+                        var _is_cross_server_repeat = (string_pos("ancient_castle_", global.level_data.id) == 1);
+                        if (_is_cross_server_repeat) {
+                            var _cs_silver_medals_r = [60, 84, 104, 129, 140, 160, 190, 220];
+                            var _cs_level_idx_r = real(string_delete(global.level_data.id, 1, string_length("ancient_castle_")));
+                            var _cs_first_silver = _cs_silver_medals_r[min(_cs_level_idx_r, array_length(_cs_silver_medals_r) - 1)];
+                            var _cs_silver_r = floor(_cs_first_silver / 3);
+                            var _cs_gold_r = 2 * (_cs_level_idx_r + 1);
+                            global.save_data.cross_server_silver_medal += _cs_silver_r * reward_multiplier;
+                            global.save_data.player.gold += _cs_gold_r * reward_multiplier;
+                        } else {
+                            global.save_data.player.gold += global.level_file.rewards[0].gold * reward_multiplier;
+                        }
                         var item_list = global.level_file.rewards[0].items
                         for (var i = 0; i < array_length(item_list); i++) {
                             var item_id = item_list[i].id
@@ -344,8 +367,19 @@ if (keyboard_check_pressed(vk_space) || (mouse_check_button_pressed(mb_left) && 
 									}
 								
 								}
+							// 跨服远征关卡：特殊奖励（银币 + 金徽章，不含金币）
+							var _is_cross_server2 = (string_pos("ancient_castle_", global.level_data.id) == 1);
+							if (_is_cross_server2) {
+								var _cs_silver_medals2 = [60, 84, 104, 129, 140, 160, 190, 220];
+								var _cs_level_idx2 = real(string_delete(global.level_data.id, 1, string_length("ancient_castle_")));
+								var _cs_silver2 = _cs_silver_medals2[min(_cs_level_idx2, array_length(_cs_silver_medals2) - 1)];
+								var _cs_gold_medal2 = 5 * (_cs_level_idx2 + 1);
+								global.save_data.cross_server_silver_medal += _cs_silver2 * reward_multiplier;
+								global.save_data.cross_server_gold_medal += _cs_gold_medal2 * reward_multiplier;
+							} else {
 								global.save_data.player.gold += global.level_file.rewards[1].gold * reward_multiplier
-								var item_list = global.level_file.rewards[1].items
+							}
+							var item_list = global.level_file.rewards[1].items
 								for(var i = 0 ; i < array_length(item_list) ; i++){
 									var item_id = item_list[i].id
 									add_material_amount(item_id,real(item_list[i].amount) * reward_multiplier)
@@ -356,6 +390,7 @@ if (keyboard_check_pressed(vk_space) || (mouse_check_button_pressed(mb_left) && 
 								var card_id = card_unlock_id_list[i]
 								// 抽卡难度：仅发放排除卡（其他卡通过抽卡获得）
 								if ((is_eternal_gacha_mode() || is_random_gift_mode()) && !gacha_is_excluded_card(card_id)) continue;
+								if (is_eternal_gacha_mode() && is_card_unlocked(card_id)) continue;
 								unlock_card(card_id,0,0,global.save_data.unlocked_items.max_skill_level)
 							}
 						
@@ -373,7 +408,19 @@ if (keyboard_check_pressed(vk_space) || (mouse_check_button_pressed(mb_left) && 
 								save_file(global.save_slot)
 							}
 							else{
-								global.save_data.player.gold += global.level_file.rewards[0].gold * reward_multiplier
+								// 跨服远征关卡：重复通关特殊奖励
+								var _is_cross_server_repeat2 = (string_pos("ancient_castle_", global.level_data.id) == 1);
+								if (_is_cross_server_repeat2) {
+									var _cs_silver_medals_r2 = [60, 84, 104, 129, 140, 160, 190, 220];
+									var _cs_level_idx_r2 = real(string_delete(global.level_data.id, 1, string_length("ancient_castle_")));
+									var _cs_first_silver_r2 = _cs_silver_medals_r2[min(_cs_level_idx_r2, array_length(_cs_silver_medals_r2) - 1)];
+									var _cs_silver_r2 = floor(_cs_first_silver_r2 / 3);
+									var _cs_gold_r2 = 2 * (_cs_level_idx_r2 + 1);
+									global.save_data.cross_server_silver_medal += _cs_silver_r2 * reward_multiplier;
+									global.save_data.player.gold += _cs_gold_r2 * reward_multiplier;
+								} else {
+									global.save_data.player.gold += global.level_file.rewards[0].gold * reward_multiplier
+								}
 								var item_list = global.level_file.rewards[0].items
 								for(var i = 0 ; i < array_length(item_list) ; i++){
 									var item_id = item_list[i].id

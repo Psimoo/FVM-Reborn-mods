@@ -10,9 +10,10 @@ var _x = x;
 				into_act()
 			}
 			else{
-		        if (immune_to_ash && hp>other.damage) {
-		            // 对免疫灰烬的敌人只造成伤害
-		            hp -= other.damage;
+				if (immune_to_ash && hp>other.damage) {
+			            // 对免疫灰烬的敌人只造成伤害，并通过受伤事件计入测试统计
+			            damage_amount = other.damage;
+			            damage_type = "ash";
 					event_user(0)
 		            // 受伤效果
 		            //effect_create_above(effect_smoke, x, y, 1, c_gray);

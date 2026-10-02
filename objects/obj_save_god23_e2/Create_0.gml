@@ -6,6 +6,7 @@ timer = 0;
 flash_speed = 4;
 anim_frames = 4;
 move_speed = 8;
+is_vertical = false;
 shape = 2;
 ignore_list = ["mario_mouse", "mario_pipeline", "arno", "pharaoh_coffin", "temple_pharaoh", "ice_residue", "rumble", "abyss_pharaoh", "pink_paul", "paul_tentacle", "blonde_mary", "pete", "pete_claw", "pete_spike", "barrier", "hells_messenger", "messenger_mace", "messenger_poop", "needle_baron", "fog_julie", "lieutenant_buzz", "irritable_jack", "hot_vajra", "hot_vajra_spike", "infected_arno", "infected_mario_pipeline", "infected_mario_mouse"];
 hit_array = [];

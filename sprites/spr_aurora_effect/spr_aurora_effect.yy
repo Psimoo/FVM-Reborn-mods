@@ -32,7 +32,7 @@
   ],
   "name":"spr_aurora_effect",
   "nineSlice":null,
-  "origin":4,
+  "origin":9,
   "parent":{
     "name":"aurora",
     "path":"folders/精灵/mod/Cards/aurora.yy",
@@ -112,7 +112,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":323,
-    "yorigin":143,
+    "yorigin":125,
   },
   "swatchColours":null,
   "swfPrecision":0.5,

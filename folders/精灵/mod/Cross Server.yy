@@ -13,6 +13,7 @@
   "listItems":[
     {"name":"1a4d27fe-230b-4463-8cd9-44a14d9cbdaa","path":"sprites/spr_mod_cs_enter/spr_mod_cs_enter.yy",},
     {"name":"49a7a3b6-868f-4a8e-88fb-230458c20e09","path":"sprites/spr_mod_cs_bg/spr_mod_cs_bg.yy",},
+    {"name":"d48fa3bd-7e35-4f14-b930-e3a8cc313b83","path":"sprites/spr_mod_cs_silver_medal/spr_mod_cs_silver_medal.yy",},
     {"name":"19e8a675-3dfe-42e9-bd11-c6dd33ff852a","path":"sprites/spr_mod_cs_level/spr_mod_cs_level.yy",},
     {"name":"4f82b550-757d-4e48-abe7-6af72dd4fea7","path":"sprites/spr_mod_cs_level_create/spr_mod_cs_level_create.yy",},
     {"name":"bb504189-8a0c-4a9b-b76a-c605e2b82aa2","path":"sprites/spr_mod_cs_level_icon/spr_mod_cs_level_icon.yy",},

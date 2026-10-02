@@ -1,0 +1,80 @@
+package com.aurora.protocol.logicserver
+{
+   import com.aurora.protocol.a_2664;
+   import com.aurora.protocol.common.CMessageBody;
+   import flash.utils.ByteArray;
+   
+   public class a_2962 implements CMessageBody
+   {
+      
+      public var m_nResultID:int;
+      
+      public var m_byAct:int;
+      
+      public var m_iMatchID:int;
+      
+      public var m_iRoomID:int;
+      
+      public var m_iSumPlayerMMCount:int;
+      
+      public var m_iSumPlayerOtherCount:int;
+      
+      public var m_iRoomPlayerMMCount:int;
+      
+      public var m_iRoomPlayerOtherCount:int;
+      
+      public var m_iMatchBeginRestTime:int;
+      
+      public var m_szReasonMsg:String;
+      
+      public function a_2962()
+      {
+         super();
+      }
+      
+      public function encode(byte_array:ByteArray, encode_length:int) : Boolean
+      {
+         var propertyArray:Array = [["m_nResultID","int16"],["m_byAct","int8"],["m_iMatchID","int32"]];
+         if(this.m_nResultID == 0)
+         {
+            propertyArray.push(["m_iRoomID","int32"]);
+            propertyArray.push(["m_iSumPlayerMMCount","int32"]);
+            propertyArray.push(["m_iSumPlayerOtherCount","int32"]);
+            propertyArray.push(["m_iRoomPlayerMMCount","int32"]);
+            propertyArray.push(["m_iRoomPlayerOtherCount","int32"]);
+            propertyArray.push(["m_iMatchBeginRestTime","int32"]);
+         }
+         else
+         {
+            propertyArray.push(["m_szReasonMsg","string",2048]);
+         }
+         return a_2664.a_2665(this,propertyArray,byte_array,encode_length);
+      }
+      
+      public function decode(byte_array:ByteArray, decode_length:int) : Boolean
+      {
+         this.m_nResultID = a_2664.decode_int16(byte_array);
+         var propertyArray:Array = [["m_byAct","int8"],["m_iMatchID","int32"]];
+         if(this.m_nResultID == 0)
+         {
+            propertyArray.push(["m_iRoomID","int32"]);
+            propertyArray.push(["m_iSumPlayerMMCount","int32"]);
+            propertyArray.push(["m_iSumPlayerOtherCount","int32"]);
+            propertyArray.push(["m_iRoomPlayerMMCount","int32"]);
+            propertyArray.push(["m_iRoomPlayerOtherCount","int32"]);
+            propertyArray.push(["m_iMatchBeginRestTime","int32"]);
+         }
+         else
+         {
+            propertyArray.push(["m_szReasonMsg","string",2048]);
+         }
+         return a_2664.a_2666(this,propertyArray,byte_array,decode_length);
+      }
+      
+      public function dump() : Boolean
+      {
+         return false;
+      }
+   }
+}
+

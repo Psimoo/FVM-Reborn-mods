@@ -1,0 +1,39 @@
+package com.aurora.protocol.hallserver
+{
+   import com.aurora.protocol.a_2664;
+   import com.aurora.protocol.common.CMessageBody;
+   import flash.utils.ByteArray;
+   
+   public class a_2817 implements CMessageBody
+   {
+      
+      public var m_nUserCount:int;
+      
+      public var m_arrUin:Array;
+      
+      public var m_iFlag:int;
+      
+      public function a_2817()
+      {
+         super();
+      }
+      
+      public function encode(byte_array:ByteArray, encode_length:int) : Boolean
+      {
+         var propertyArray:Array = [["m_nUserCount","int16"],["m_arrUin",["int32"]],["m_iFlag","int32"]];
+         return a_2664.a_2665(this,propertyArray,byte_array,encode_length);
+      }
+      
+      public function decode(byte_array:ByteArray, decode_length:int) : Boolean
+      {
+         var propertyArray:Array = [["m_nUserCount","int16"],["m_arrUin",["int32"]],["m_iFlag","int32"]];
+         return a_2664.a_2666(this,propertyArray,byte_array,decode_length);
+      }
+      
+      public function dump() : Boolean
+      {
+         return false;
+      }
+   }
+}
+

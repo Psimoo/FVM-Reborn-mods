@@ -18,6 +18,11 @@ for (var _page = 0; _page < 8; _page++) {
     draw_sprite_ext(spr_mod_cs_level_choose, _tab_frame, _tab_x, _tab_y, 1.5, 1.5, 0, _tab_enabled ? c_white : c_gray, 1);
 }
 
+// 跨服商店入口覆盖在最右侧第 8 个页签位置，使用精灵第 8 帧。
+var _shop_x = x + 700;
+var _shop_y = y - 420;
+draw_sprite_ext(spr_mod_cs_level_choose, 7, _shop_x, _shop_y, 1.5, 1.5, 0, c_white, 1);
+
 if (!ds_map_exists(global.maps_map, cross_server_page_map_ids[selected_page])) {
     draw_set_font(font_yuan);
     draw_set_color(c_ltgray);
@@ -42,7 +47,8 @@ for (var j = 0; j < 2; j++)
         if (k >= level_unlocked)
         {
             draw_sprite_ext(spr_mod_cs_level, 0, (x - 608) + (405 * i), (y - 170) + (400 * j), 1.8, 1.8, 0, c_gray, 1);
-            draw_sprite_ext(spr_gods_hall_reward, 0, 239 + (405 * i), 314 + (400 * j), 1.8, 1.8, 0, c_gray, 1);
+            draw_sprite_ext(spr_mod_cs_silver_medal, 0, 256 + (405 * i), 328 + (400 * j), 2.3, 2.3, 0, c_gray, 1);
+            draw_sprite_ext(spr_mod_cs_xunzhang, 0, 348 + (405 * i), 314 + (400 * j), 1.8, 1.8, 0, c_gray, 1);
             draw_set_font(font_hei);
             draw_set_color(c_black);
             draw_set_halign(fa_center);
@@ -65,7 +71,8 @@ for (var j = 0; j < 2; j++)
         else
         {
             draw_sprite_ext(spr_mod_cs_level, 0, (x - 608) + (405 * i), (y - 170) + (400 * j), 1.8, 1.8, 0, c_white, 1);
-            draw_sprite_ext(spr_gods_hall_reward, 0, 239 + (405 * i), 314 + (400 * j), 1.8, 1.8, 0, c_white, 1);
+            draw_sprite_ext(spr_mod_cs_silver_medal, 0, 256 + (405 * i), 328 + (400 * j), 2.3, 2.3, 0, c_white, 1);
+            draw_sprite_ext(spr_mod_cs_xunzhang, 0, 348 + (405 * i), 314 + (400 * j), 1.8, 1.8, 0, c_white, 1);
             draw_set_font(font_hei);
             draw_set_color(c_white);
             draw_set_halign(fa_center);

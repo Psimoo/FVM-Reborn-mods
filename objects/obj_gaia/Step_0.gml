@@ -28,7 +28,7 @@ if (!attacking)
 
  with (obj_enemy_parent)
  {
- if (grid_col <= (global.grid_cols + 1) && can_target_on(other.target_type, target_type))
+ if (grid_col <= (global.grid_cols + 1) && can_target_on(other.target_type, target_type) && grid_row >= (other.grid_row - row_offset) && grid_row <= (other.grid_row + row_offset))
  {
  var distance = grid_col - other.grid_col;
 

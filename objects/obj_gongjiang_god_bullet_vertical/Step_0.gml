@@ -86,6 +86,8 @@ if (variable_global_exists("enemy_by_type"))
                     var _is_kill = (!instance_exists(_e) || _e.hp <= 0 || _hp_before <= damage);
                     if (_is_kill)
                     {
+                        if (instance_exists(_e))
+                            _e.ash_death = true;
                         var _fx = instance_create_depth(_e.x, _e.y, _e.depth - 10, obj_gongjiang_god_effect);
                         _fx.sprite_index = spr_gongjiang_god_effect_death;
                         _fx.effect_kind = "kill";

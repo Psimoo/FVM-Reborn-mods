@@ -2,11 +2,16 @@ for (var _i = 0; _i < array_length(global._move_instance_pre_arr); _i++) {
     var _inst = global._move_instance_pre_arr[_i];
     with (_inst) {
         // 判断是否拥有 parent_plant 或 parent_player 变量，且它们的值（对象索引）继承自 obj_card_parent
-        var _hasPlant = variable_instance_exists(id, "parent_plant")  && object_is_ancestor(parent_plant.object_index, obj_card_parent);
-        var _hasPlayer = variable_instance_exists(id, "parent_player") && object_is_ancestor(parent_player.object_index, obj_card_parent);
-        if (_hasPlant || _hasPlayer) {
+        var _hasPlant = variable_instance_exists(id, "parent_plant") && instance_exists(parent_plant) && object_is_ancestor(parent_plant.object_index, obj_card_parent);
+        var _hasPlayer = variable_instance_exists(id, "parent_player") && instance_exists(parent_player) && object_is_ancestor(parent_player.object_index, obj_card_parent);
+		// Some card-attached ground effects keep their owner in banding_card_obj.
+		var _hasCard = (object_index == obj_in_water_effect || object_index == obj_sleep_effect || object_index == obj_lava_burn_effect)
+			&& variable_instance_exists(id, "banding_card_obj")
+			&& instance_exists(banding_card_obj)
+			&& object_is_ancestor(banding_card_obj.object_index, obj_card_parent);
+		if (_hasPlant || _hasPlayer || _hasCard) {
 			if(!object_is_ancestor(object_index,obj_card_parent)){
-	            var tid = _hasPlant?parent_plant.id:parent_player.id;
+	            var tid = _hasPlant ? parent_plant.id : (_hasPlayer ? parent_player.id : banding_card_obj.id);
 				if !ds_map_exists(global._move_instance_map,tid){
 					var _list = ds_list_create()
 					ds_map_add(global._move_instance_map,tid,_list);
@@ -50,7 +55,7 @@ if current_wave_hp <= hp_ratio * current_total_hp && level_stage != "boss"{
 	}
 }
 if not global.is_paused{
-	wave_timer --
+	wave_timer -= obj_battle.time_ticks_this_step
 }
 // 魔塔模式：小兵击杀后立刻进入下一波
 var _is_tower = (string_pos("tower_cake_", global.level_data.id) > 0)

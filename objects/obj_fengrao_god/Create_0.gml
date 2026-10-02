@@ -43,4 +43,5 @@ else if (shape == 3)
     eff_spr = spr_fengrao_god_effect_3;
 
 fengrao_effect_obj = instance_create_depth(x, y, 0, obj_fengrao_god_effect);
+fengrao_effect_obj.parent_plant = id;
 fengrao_effect_obj.sprite_index = eff_spr;

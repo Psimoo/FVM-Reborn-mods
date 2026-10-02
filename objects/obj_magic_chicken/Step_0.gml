@@ -11,7 +11,7 @@ if is_slowdown{
 attack_timer++
 
 if attack_timer == 15 * current_flash_speed - 1{
-	var _blacklist = ["brahma","magic_chicken","ice_cream"]
+	var _blacklist = ["brahma","magic_chicken","ice_cream","shegengbao"]
 	if target_card == "" || array_get_index(_blacklist,target_card) != -1{
 		exit
 	}

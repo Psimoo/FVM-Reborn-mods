@@ -6,7 +6,7 @@ event_inherited();
 if (!copied && !is_derivative && image_index >= 14)
 {
     copied = true;
-    var _blacklist = ["brahma", "magic_chicken", "ice_cream"];
+    var _blacklist = ["brahma", "magic_chicken", "ice_cream", "shegengbao"];
     var _copy_count = 2;
     
     if (shape == 2)
@@ -45,7 +45,7 @@ if (!copied && !is_derivative && image_index >= 14)
 
         // 优先尝试自身所在的格子（终转后该格会空出，也应能复制）
         var _self_world = get_world_position_from_grid(grid_col, grid_row);
-        if (found_count < _copy_count && can_place_at_position(_self_world.x, _self_world.y, _copy_plant_type, _copy_feature_type, _copy_target_card))
+        if (found_count < _copy_count && can_copy_card_at_position(_self_world.x, _self_world.y, _copy_plant_type, _copy_feature_type, target_card, _copy_target_card))
         {
             target_cells[found_count] = [grid_col, grid_row];
             found_count++;
@@ -121,7 +121,7 @@ if (!copied && !is_derivative && image_index >= 14)
                 var cand = candidates[i];
                 var _cand_world = get_world_position_from_grid(cand.col, cand.row);
                 
-                if (can_place_at_position(_cand_world.x, _cand_world.y, _copy_plant_type, _copy_feature_type, _copy_target_card))
+                if (can_copy_card_at_position(_cand_world.x, _cand_world.y, _copy_plant_type, _copy_feature_type, target_card, _copy_target_card))
                 {
                     target_cells[found_count] = [cand.col, cand.row];
                     found_count++;

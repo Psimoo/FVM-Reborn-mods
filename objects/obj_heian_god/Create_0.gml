@@ -54,6 +54,7 @@ if (shape >= 1)
     eff_spr = spr_heian_god_effect_1;
 
 heian_effect_obj = instance_create_depth(x, y - 30, 0, obj_heian_god_effect);
+heian_effect_obj.parent_plant = id;
 heian_effect_obj.sprite_index = eff_spr;
 heian_effect_obj.image_xscale = 1.8;
 heian_effect_obj.image_yscale = 1.8;

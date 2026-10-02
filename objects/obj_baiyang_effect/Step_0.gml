@@ -10,7 +10,8 @@ if (x > 2200)
 
 with (obj_enemy_parent)
 {
-    if (hp > 0 && grid_row == other.grid_row && abs(x - other.x) <= 100)
+    var cross_server_boss = is_boss && global.map_name == "跨服远征";
+    if (hp > 0 && !cross_server_boss && grid_row == other.grid_row && abs(x - other.x) <= 100)
     {
         if (is_boss || array_get_index(other.ignore_list, mouse_id) != -1)
         {

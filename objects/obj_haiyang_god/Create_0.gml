@@ -65,4 +65,5 @@ else if (shape == 3)
     eff_spr = spr_haiyang_god_effect_3;
 
 haiyang_effect_obj = instance_create_depth(x, y, 0, obj_haiyang_god_effect);
+haiyang_effect_obj.parent_plant = id;
 haiyang_effect_obj.sprite_index = eff_spr;

@@ -124,6 +124,7 @@ if package_button_select == 1 {
     deck_sort_order = []
     var _gold_order = []
     for(var si = 0; si < ds_list_size(global.player_deck); si += 2) {
+        if (global.player_deck[| si] == "lihe" && !is_random_gift_mode()) continue;
         var _entry = global.player_deck[| si+1]
         var _shapes = _entry[? "shapes"]
         var _data = _shapes[| 0]

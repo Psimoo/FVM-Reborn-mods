@@ -48,4 +48,12 @@ ds_list_add(global.buff_sources, id);
 global.buff_dirty = true;
 
 xiangshui_effect_obj = instance_create_depth(x, y, 0, obj_xiangshui_god_effect);
+xiangshui_effect_obj.parent_plant = id;
 xiangshui_effect_obj.sprite_index = spr_xiangshui_god_effect_3;
+
+// The shared range effect sprite is authored for the final 5x7 form.
+// Match its display bounds to the actual buff shape for each upgrade.
+var effect_width = (shape >= 2) ? 5 : 3;
+var effect_height = (shape == 3) ? 7 : effect_width;
+xiangshui_effect_obj.image_xscale = 1.8 * (effect_width / 5.0);
+xiangshui_effect_obj.image_yscale = 1.8 * (effect_height / 7.0);

@@ -222,12 +222,39 @@ switch state{
 		else{
 			image_index = floor(timer/5) mod 12 + 12
 		}
+		
+		// 在技能开始时预先检查是否有可用陆地行，如果没有则直接跳过此技能
+		if timer == 0 {
+			var _has_land = false
+			if (variable_global_exists("row_feature") && is_array(global.row_feature)) {
+				for(var i = 0; i < global.grid_rows; i++) {
+					if (global.row_feature[i] == "land") {
+						_has_land = true
+						break
+					}
+				}
+			}
+			if (!_has_land) {
+				// 没有陆地行，跳过此技能，直接进入下一个
+				skill_cycle += 1
+				timer = 0
+				move_target_row = irandom_range(0, global.grid_rows-1)
+				var land_pos = get_world_position_from_grid(10, move_target_row)
+				y_move_speed = (land_pos.y+33 - y)/180
+				state = BOSS_STATE.MOVE
+				jump_times = 0
+				break
+			}
+		}
+		
 		if timer == 7*5+24*5*jump_times{
 			var avaliable_line = []
-			for(var i = 0 ; i < global.grid_rows; i++){
-				var lf = global.row_feature[i]
-				if lf == "land"{
-					array_push(avaliable_line, i)
+			if (variable_global_exists("row_feature") && is_array(global.row_feature)) {
+				for(var i = 0 ; i < global.grid_rows; i++){
+					var lf = global.row_feature[i]
+					if lf == "land"{
+						array_push(avaliable_line, i)
+					}
 				}
 			}
 			var _avaliable_count = array_length(avaliable_line)

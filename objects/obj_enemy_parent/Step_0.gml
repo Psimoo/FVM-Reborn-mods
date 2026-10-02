@@ -341,6 +341,10 @@ switch(state) {
     case ENEMY_STATE.DEAD: {
 		ice_timer = 0
 		frozen_timer = 0
+        if (ash_death) {
+            image_alpha = 0;
+            break;
+        }
         // 死亡动画
 		if shield_max_hp > 0 && shield_hp > 0{
 			if image_index >= death_anim + move_anim * 4 + attack_anim * 4 - 1 {
@@ -365,6 +369,9 @@ if (hp <= 0 && state != ENEMY_STATE.DEAD) {
     timer = 0;
     state = ENEMY_STATE.DEAD;
     target_plant = noone;  // 清除攻击目标
+    if (ash_death) {
+        image_alpha = 0;
+    }
 }
 
 // 透明度处理
