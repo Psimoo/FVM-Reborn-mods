@@ -47,10 +47,12 @@ function mod_buff_init()
     ds_map_set(global.plant_buff_map, "soda_bubble", "attach");
     ds_map_set(global.plant_buff_map, "firework_dragon", "attach");
     ds_map_set(global.plant_buff_map, "hufa_god", "attach");
+    ds_map_set(global.plant_buff_map, "hongliukaochuan", "attach");
 
     // 第二buff类型映射（植物可同时受益于两种buff类型，倍率相乘）
     global.plant_buff_map_2 = ds_map_create();
     ds_map_set(global.plant_buff_map_2, "cold_drew", "xiangshui");
     ds_map_set(global.plant_buff_map_2, "hufa_god", "sprayer");
+    ds_map_set(global.plant_buff_map_2, "hongliukaochuan", "sprayer");
     ds_map_set(global.plant_buff_map_2, "gaia", "thrower");
 }

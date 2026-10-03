@@ -1476,7 +1476,7 @@ register_gods_goods("haiyang_god_1",
     cost: "16",
     unlock_item_id: "haiyang_god",
     target_shape: 1,
-    description: "塔拉萨圣神：攻击力提升，增幅倍率增加",
+    description: "塔拉萨圣神：悬浮卡，不占用格子，攻击力提升，增幅倍率增加",
     display_name: "三转凭证（海洋女神）",
     spr: spr_haiyang_god_pin1
 });

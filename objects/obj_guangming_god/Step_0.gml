@@ -175,10 +175,7 @@ if (state != CARD_STATE.SLEEP)
                         event_user(0);
                     }
                     if (_before > 0 && _te.hp <= 0)
-                    {
-                        _te.ash_death = true;
                         instance_create_depth(_te.x, _te.y - 20, _te.depth, obj_mouse_ash_death);
-                    }
                 }
             }
         }

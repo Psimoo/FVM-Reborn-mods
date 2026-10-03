@@ -1,7 +1,7 @@
  // Inherit the parent event
 event_inherited();
 
-mouse_id = "war_god_duck"
+mouse_id = "infected_zhanshen_duck"
 
 hp = 150000
 maxhp = 150000

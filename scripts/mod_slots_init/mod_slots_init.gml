@@ -2849,6 +2849,11 @@ register_card("xuanfengniu", obj_xuanfengniu, [
         place_preview: spr_chongsheng_god_3
     }]);
 
+    register_card("zhanqima", obj_zhanqima, [
+    { shape: 0, sprite: spr_zhanqima, cost: 380, cooldown: 2700, description: "战旗马：5*5范围内攻击型卡片提高基础攻击力", plant_type: "normal", feature_type: "normal", target_card: "none", is_gold: 0, place_preview: spr_zhanqima },
+    { shape: 1, sprite: spr_zhanqima_1, cost: 380, cooldown: 2700, description: "二战旗马：5*5范围内攻击型卡片提高基础攻击力，增幅倍率提升，无需格子", plant_type: "gridless", feature_type: "normal", target_card: "none", is_gold: 0, place_preview: spr_zhanqima_1 },
+    { shape: 2, sprite: spr_zhanqima_2, cost: 380, cooldown: 2700, description: "燎原战旗马：全屏增幅所有主动攻击型卡片，无需格子", plant_type: "gridless", feature_type: "normal", target_card: "none", is_gold: 0, place_preview: spr_zhanqima_2 }]);
+
     register_card("haiyang_god", obj_haiyang_god, [
     {
         shape: 0,
@@ -2867,8 +2872,8 @@ register_card("xuanfengniu", obj_xuanfengniu, [
         sprite: spr_haiyang_god_1,
         cost: 360,
         cooldown: 2400,
-        description: "塔拉萨圣神：5x5范围喷壶类、5x1范围附加类、本行咖啡喷壶类卡片增伤",
-        plant_type: "normal",
+        description: "塔拉萨圣神：悬浮卡，不占用格子，5x5范围喷壶类、5x1范围附加类、本行咖啡喷壶类卡片增伤",
+        plant_type: "gridless",
         feature_type: "haiyang_obstacle",
         target_card: "none",
         is_gold: 1,
@@ -2879,7 +2884,7 @@ register_card("xuanfengniu", obj_xuanfengniu, [
         sprite: spr_haiyang_god_2,
         cost: 360,
         cooldown: 2400,
-        description: "海洋女神塔拉萨：悬浮卡，5x5范围喷壶类、5x1范围附加类、本行咖啡喷壶类卡片增伤",
+        description: "海洋女神塔拉萨：悬浮卡，不占用格子，5x5范围喷壶类、5x1范围附加类、本行咖啡喷壶类卡片增伤",
         plant_type: "gridless",
         feature_type: "haiyang_obstacle",
         target_card: "none",
@@ -2891,7 +2896,7 @@ register_card("xuanfengniu", obj_xuanfengniu, [
         sprite: spr_haiyang_god_3,
         cost: 360,
         cooldown: 2400,
-        description: "至尊海洋女神：悬浮卡，场上满4张后全屏增幅喷壶类、附加类、咖啡喷壶类卡片",
+        description: "至尊海洋女神：悬浮卡，不占用格子，场上满4张后全屏增幅喷壶类、附加类、咖啡喷壶类卡片",
         plant_type: "gridless",
         feature_type: "haiyang_obstacle",
         target_card: "none",
@@ -2986,4 +2991,9 @@ register_card("shennong_god", obj_shennong_god, [
     is_gold: 1,
     place_preview: spr_shennong_god_2
 }]);
+register_card("hongliukaochuan", obj_hongliukaochuan, [
+{ shape: 0, sprite: spr_hongliukaochuan, cost: 230, cooldown: 420, description: "红柳烤串机：全屏索敌追踪穿透弹", plant_type: "normal", feature_type: "normal", target_card: "none", is_gold: 0, place_preview: spr_hongliukaochuan },
+{ shape: 1, sprite: spr_hongliukaochuan_1, cost: 230, cooldown: 420, description: "茴香红柳烤串机：攻击力提高", plant_type: "normal", feature_type: "normal", target_card: "none", is_gold: 0, place_preview: spr_hongliukaochuan_1 },
+{ shape: 2, sprite: spr_hongliukaochuan_2, cost: 230, cooldown: 420, description: "星火红柳烤串机：攻击力翻倍", plant_type: "normal", feature_type: "normal", target_card: "none", is_gold: 0, place_preview: spr_hongliukaochuan_2 }
+]);
 }

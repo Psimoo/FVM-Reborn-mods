@@ -40,6 +40,5 @@ image_alpha = 1;
 
 // 常驻光环效果
 guangming_effect_obj = instance_create_depth(x, y - 30, 0, obj_guangming_god_effect);
-guangming_effect_obj.parent_plant = id;
 guangming_effect_obj.sprite_index = spr_guangming_god_effect;
 guangming_effect_obj.is_one_shot = false;

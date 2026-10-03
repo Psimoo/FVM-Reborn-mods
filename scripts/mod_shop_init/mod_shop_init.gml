@@ -500,4 +500,38 @@ function mod_shop_init()
         description: "青涩柿柿：向前方一定范围内的老鼠发起重击",
         display_name: "青涩柿柿"
     });
+    register_goods("zhanqima", { type: "card", cost: "1900", unlock_item_id: "zhanqima", description: "战旗马：5*5范围内主动攻击型卡片提高基础攻击力", display_name: "战旗马" });
+    register_goods("zhanqima_1", { type: "card", card_id: "zhanqima", card_shape: 1, cost: "30000", unlock_item_id: "zhanqima", required_card_shape: 0, description: "飞天战旗马：增幅倍率提升", display_name: "飞天战旗马" });
+    register_goods("zhanqima_2", { type: "card", card_id: "zhanqima", card_shape: 2, cost: "70000", unlock_item_id: "zhanqima", required_card_shape: 1, description: "燎原战旗马：增幅范围扩大至全屏", display_name: "燎原战旗马" });
+    register_goods("hongliukaochuan",
+    {
+        type: "card",
+        cost: "1650",
+        unlock_item_id: "hongliukaochuan",
+        description: "红柳烤串机：全屏索敌追踪穿透弹",
+        display_name: "红柳烤串机"
+    });
+    register_goods("hongliukaochuan_1",
+    {
+        type: "card",
+        card_id: "hongliukaochuan",
+        card_shape: 1,
+        cost: "390",
+        unlock_item_id: "hongliukaochuan",
+        required_card_shape: 0,
+        description: "茴香红柳烤串机：解锁一转",
+        display_name: "茴香红柳烤串机"
+    });
+    register_goods("hongliukaochuan_2",
+    {
+        type: "card",
+        card_id: "hongliukaochuan",
+        card_shape: 2,
+        cost: "730",
+        unlock_item_id: "hongliukaochuan",
+        required_card_shape: 1,
+        description: "星火红柳烤串机：解锁二转",
+        display_name: "星火红柳烤串机"
+    });
+
 }

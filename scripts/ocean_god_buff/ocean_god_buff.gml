@@ -125,14 +125,37 @@ function rebuild_ocean_buff()
     global.buff_apply_id++;
 }
 
+/// @desc 获取战旗马对卡片的倍率（增幅所有卡片，多个战旗马取最高倍率，不叠加）。
+function get_zhanqima_buff_multiplier(card)
+{
+    // 战旗马不增幅自身
+    if (card.plant_id == "zhanqima")
+        return 1;
+
+    var best = 1;
+    with (obj_zhanqima)
+    {
+        if (hp > 0 && grid_col >= 0 && grid_col < global.grid_cols
+            && grid_row >= 0 && grid_row < global.grid_rows)
+        {
+            var dc = abs(card.grid_col - grid_col);
+            var dr = abs(card.grid_row - grid_row);
+            var in_range = (shape >= 2) || (dc <= 2 && dr <= 2);
+            if (in_range && zhanqima_buff_value > best)
+                best = zhanqima_buff_value;
+        }
+    }
+    return best;
+}
+
 /// @func mod_get_ocean_buff_type(arg0)
 /// @desc 获取卡片在海洋女神系统中的 buff 类型
 /// @param {string} arg0 卡片 plant_id
 /// @return {string} buff 类型（"row_sprayer"/"sprayer"/"attach"/"both"/"none"）
 function mod_get_ocean_buff_type(arg0)
 {
-    // 护法神同时属于附加类和喷壶类，单独处理以避免附加类提前返回。
-    if (arg0 == "hufa_god")
+    // 护法神和烤串机同时属于附加类和喷壶类，单独处理以避免附加类提前返回。
+    if (arg0 == "hufa_god" || arg0 == "hongliukaochuan")
         return "both";
 
     var type = mod_get_buff_type(arg0);

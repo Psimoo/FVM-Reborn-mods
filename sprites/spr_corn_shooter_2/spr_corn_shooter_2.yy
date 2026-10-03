@@ -48,8 +48,8 @@
   "nineSlice":null,
   "origin":7,
   "parent":{
-    "name":"Cards",
-    "path":"folders/精灵/mod/Cards.yy",
+    "name":"corn_shooter",
+    "path":"folders/精灵/mod/Cards/corn_shooter.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

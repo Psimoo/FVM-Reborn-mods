@@ -62,7 +62,13 @@ else if package_button_select == 3{
 				inst.sell_material_id = _mat_id
 				inst.sell_material_name = _mat_data.name
 				inst.sell_material_icon = _mat_data.icon
-				inst.sell_material_spr = (_mat_id == "oracle_stone") ? spr_oriacle_stone : spr_craft_material
+				if (_mat_id == "cross_server_gold_medal") {
+					inst.sell_material_spr = spr_mod_cs_xunzhang
+				} else if (_mat_id == "cross_server_silver_medal") {
+					inst.sell_material_spr = spr_mod_cs_silver_medal
+				} else {
+					inst.sell_material_spr = (_mat_id == "oracle_stone") ? spr_oriacle_stone : spr_craft_material
+				}
 				inst.max_amount = _amount
 				inst.unit_price = _price
 				is_submenu_opened = true

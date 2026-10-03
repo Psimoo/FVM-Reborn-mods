@@ -40,6 +40,9 @@ if (plant_data != undefined) {
         if (ds_map_exists(upgrade_data, "flame_produce")) {
             flame_produce = upgrade_data[? "flame_produce"];
         }
+        if (ds_map_exists(upgrade_data, "first_produce_delay")) {
+            first_produce_delay = upgrade_data[? "first_produce_delay"];
+        }
     }
 }
 

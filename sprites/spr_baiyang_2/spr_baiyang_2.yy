@@ -28,8 +28,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"Cards",
-    "path":"folders/精灵/mod/Cards.yy",
+    "name":"baiyang",
+    "path":"folders/精灵/mod/Cards/baiyang.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

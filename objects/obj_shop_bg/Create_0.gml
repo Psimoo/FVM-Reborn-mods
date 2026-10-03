@@ -21,7 +21,10 @@ cross_server_exchange_ids = [
     "zeus_shadow_gem", "zeus_power_gem", "zeus_anger_gem",
     "star_wand_gem_1", "star_wand_gem_2", "star_wand_gem_3", "star_wand_gem_4", "star_wand_gem_5",
     "rose_shield_gem_1", "rose_shield_gem_2", "rose_shield_gem_3", "rose_shield_gem_4", "rose_shield_gem_5",
-    "aladdin_lamp_gem_1", "aladdin_lamp_gem_2", "aladdin_lamp_gem_3", "aladdin_lamp_gem_4", "aladdin_lamp_gem_5"
+    "aladdin_lamp_gem_1", "aladdin_lamp_gem_2", "aladdin_lamp_gem_3", "aladdin_lamp_gem_4", "aladdin_lamp_gem_5",
+    // 红柳烤串机转职卡片（仅跨服黄金商店）
+    "hongliukaochuan", "hongliukaochuan_1", "hongliukaochuan_2",
+    "zhanqima", "zhanqima_1", "zhanqima_2"
 ]
 
 instance_create_depth(x+800,y-430,depth-1,obj_closeshop_btn)

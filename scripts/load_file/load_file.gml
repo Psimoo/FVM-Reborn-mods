@@ -78,6 +78,21 @@ function ensure_save_data() {
     if !variable_struct_exists(global.save_data, "inventory") || !is_array(global.save_data.inventory) {
         global.save_data.inventory = []
     }
+    // 迁移旧存档的跨服徽章（独立字段）到inventory系统
+    if (variable_struct_exists(global.save_data, "cross_server_gold_medal") && global.save_data.cross_server_gold_medal > 0) {
+        var _gold_val = global.save_data.cross_server_gold_medal
+        variable_struct_remove(global.save_data, "cross_server_gold_medal")
+        array_push(global.save_data.inventory, {id: "cross_server_gold_medal", amount: _gold_val})
+    } else if (variable_struct_exists(global.save_data, "cross_server_gold_medal")) {
+        variable_struct_remove(global.save_data, "cross_server_gold_medal")
+    }
+    if (variable_struct_exists(global.save_data, "cross_server_silver_medal") && global.save_data.cross_server_silver_medal > 0) {
+        var _silver_val = global.save_data.cross_server_silver_medal
+        variable_struct_remove(global.save_data, "cross_server_silver_medal")
+        array_push(global.save_data.inventory, {id: "cross_server_silver_medal", amount: _silver_val})
+    } else if (variable_struct_exists(global.save_data, "cross_server_silver_medal")) {
+        variable_struct_remove(global.save_data, "cross_server_silver_medal")
+    }
     if !variable_struct_exists(global.save_data, "unlocked_items") {
         global.save_data.unlocked_items = {
             max_card_level: 0,

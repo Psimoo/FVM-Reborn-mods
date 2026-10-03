@@ -216,7 +216,7 @@ if (is_selected) {
         
         var logical_world = get_world_position_from_grid(logical_col, logical_row);
 
-        var can_plant = (can_place_at_position(logical_world.x, logical_world.y, card_data[? "plant_type"],card_data[? "feature_type"],card_data[? "target_card"]));
+        var can_plant = (can_place_at_position(logical_world.x, logical_world.y, card_data[? "plant_type"],card_data[? "feature_type"],card_data[? "target_card"],card_id));
         if (is_random_gift_mode() && card_id == "lihe") {
             // The pending effect is not in grid_plants yet, so check it explicitly.
             var _gift_pending = false;

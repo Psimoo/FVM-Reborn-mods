@@ -22,8 +22,8 @@ else if (grid_col != ocean_last_col || grid_row != ocean_last_row || shape != oc
 {
     ocean_buff_value = atk / 100;
     
-    // 三转及以上变为悬浮卡
-    if (shape >= 2)
+    // 三转及以上变为悬浮卡；海洋女神 shape 1 对应三转。
+    if (shape >= 1)
         plant_type = "gridless";
     else
         plant_type = "normal";

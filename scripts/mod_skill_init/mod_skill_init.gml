@@ -59,5 +59,7 @@ function mod_skill_init()
     register_card_skill("double_blade_snake", "cycle", [78, 75, 72, 69, 66, 63, 60, 57, 51]);
     register_card_skill("chongsheng_god", "chongsheng_reduction", [0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.7, 0.8]);
     register_card_skill("hufa_god", "cycle", [108, 105, 102, 99, 96, 93, 90, 84, 78]);
+    register_card_skill("zhanqima", "cycle", [20, 21, 23, 25, 27, 29, 32, 35, 45]);
+    register_card_skill("hongliukaochuan", "cycle", [90, 87, 84, 81, 78, 75, 72, 69, 60]);
 
 }

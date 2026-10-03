@@ -5,6 +5,8 @@ var _mid_row = clamp(3, 0, global.grid_rows - 1);
 var _bot_row = clamp(6, 0, global.grid_rows - 1);
 
 var _wp_top = get_world_position_from_grid(_right_col, _top_row);
+// 第1行路径点位于该格中心线的上顶点，而不是格子中心。
+_wp_top.y -= global.grid_cell_size_y / 2;
 var _wp_mid = get_world_position_from_grid(_right_col, _mid_row);
 var _wp_bot = get_world_position_from_grid(_right_col, _bot_row);
 

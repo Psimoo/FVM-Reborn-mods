@@ -23,6 +23,7 @@
     {"name":"obj_fengrao_god_effect","path":"objects/obj_fengrao_god_effect/obj_fengrao_god_effect.yy",},
     {"name":"obj_xiangshui_god_effect","path":"objects/obj_xiangshui_god_effect/obj_xiangshui_god_effect.yy",},
     {"name":"obj_haiyang_god_effect","path":"objects/obj_haiyang_god_effect/obj_haiyang_god_effect.yy",},
+    {"name":"obj_zhanqima_effect","path":"objects/obj_zhanqima_effect/obj_zhanqima_effect.yy",},
     {"name":"obj_gaia_bullet_effect","path":"objects/obj_gaia_bullet_effect/obj_gaia_bullet_effect.yy",},
     {"name":"obj_cherry_pudding","path":"objects/obj_ghost_god_bullet_xie/obj_ghost_god_bullet_xie.yy",},
     {"name":"obj_water_god","path":"objects/obj_ghost_god_bullet_xie_m/obj_ghost_god_bullet_xie_m.yy",},

@@ -14,10 +14,10 @@
     {"name":"save_god","path":"folders/物体/mod/Cards/save_god.yy",},
     {"name":"baibianshe","path":"folders/物体/mod/Cards/baibianshe.yy",},
     {"name":"xiangshui_god","path":"folders/物体/mod/Cards/xiangshui_god.yy",},
-    {"name":"haiyang_god","path":"folders/物体/mod/Cards/haiyang_god.yy",}
+    {"name":"haiyang_god","path":"folders/物体/mod/Cards/haiyang_god.yy",},{"name":"zhanqima","path":"folders/物体/mod/Cards/zhanqima.yy",}
   ],
   "listItems":[
-    {"name":"obj_12yinliao","path":"objects/obj_12yinliao/obj_12yinliao.yy",},
+    {"name":"obj_zhanqima","path":"objects/obj_zhanqima/obj_zhanqima.yy",},{"name":"obj_12yinliao","path":"objects/obj_12yinliao/obj_12yinliao.yy",},
     {"name":"obj_aladdin_lamp","path":"objects/obj_aladdin_lamp/obj_aladdin_lamp.yy",},
     {"name":"obj_anranxiaohunfan","path":"objects/obj_anranxiaohunfan/obj_anranxiaohunfan.yy",},
     {"name":"obj_athena","path":"objects/obj_athena/obj_athena.yy",},
@@ -91,6 +91,7 @@
     {"name":"obj_zeus_bolt","path":"objects/obj_zeus_bolt/obj_zeus_bolt.yy",},
     {"name":"obj_zhurong","path":"objects/obj_zhurong/obj_zhurong.yy",},
     {"name":"obj_zhiyumiao","path":"objects/obj_zhiyumiao/obj_zhiyumiao.yy",},
-    {"name":"obj_zhiyumiao_regen_buff","path":"objects/obj_zhiyumiao_regen_buff/obj_zhiyumiao_regen_buff.yy",}
+    {"name":"obj_zhiyumiao_regen_buff","path":"objects/obj_zhiyumiao_regen_buff/obj_zhiyumiao_regen_buff.yy",},
+    {"name":"obj_hongliukaochuan","path":"objects/obj_hongliukaochuan/obj_hongliukaochuan.yy",}
   ],
 }

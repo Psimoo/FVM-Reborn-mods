@@ -48,8 +48,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"Cards",
-    "path":"folders/精灵/mod/Cards.yy",
+    "name":"cold_drew_machine",
+    "path":"folders/精灵/mod/Cards/cold_drew_machine.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
