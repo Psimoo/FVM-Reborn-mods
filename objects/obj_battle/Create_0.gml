@@ -13,6 +13,14 @@ mus_inst.battle_music = global.level_data.pre_music
 
 global.game_over = false
 
+// 清空上一局残留的对象池（含未正常结束/中途退出的场景），保证新局从零开始。
+pool_clear_round();
+
+// 有界预热：各预建 1 个闲置实例，把“首次创建 + Create 事件”的开销
+// 从首次发射/首次生成时提前到战斗加载阶段（保持延迟池“首用即建”语义）。
+obj_pool_prealloc(obj_coffeecup_bullet, 1);
+obj_pool_prealloc(obj_normal_mouse, 1);
+
 // 每场战斗重新建立敌人索引，避免上一局销毁实例后的残留 ID 被新局扫描。
 global.enemy_by_type = {};
 
@@ -363,7 +371,19 @@ function enemy_subwave_summon(){
             var new_y = global.grid_offset_y + (target_row - 1) * global.grid_cell_size_y;
             
             var grid_pos = get_grid_position_from_world(new_x, new_y);
-            var new_enemy = instance_create_depth(grid_pos.x+30, grid_pos.y + 38, 0, enemy_obj);
+            var new_enemy;
+            // 普通鼠（平民鼠）接入延迟对象池；其余敌人保持普通生命周期
+            if (_enemy_type == "normal_mouse") {
+                var _et = get_timer()
+                new_enemy = pool_acquire_enemy(enemy_obj, grid_pos.x+30, grid_pos.y + 38, 0);
+                if (!variable_global_exists("_pool_first_enemy_measured")) {
+                    global._pool_first_enemy_measured = true
+                    show_debug_message("[对象池] 首只普通鼠创建耗时 " + string(get_timer() - _et) + " us")
+                }
+                pool_reset_enemy(new_enemy, global.enemy_map[? _enemy_type]);
+            } else {
+                new_enemy = instance_create_depth(grid_pos.x+30, grid_pos.y + 38, 0, enemy_obj);
+            }
             
             // 更新统计信息
             current_total_hp += global.enemy_map[? _enemy_type].hp;

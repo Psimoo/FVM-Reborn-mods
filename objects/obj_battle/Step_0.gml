@@ -58,6 +58,11 @@ if (global.level_id == "test_level")
     }
 }
 
+// 对局结束（胜利/失败/时间到）时统一清空对象池；池为空时自动跳过。
+if (global.game_over && variable_global_exists("_obj_pool_initialized") && global._obj_pool_initialized){
+    pool_clear_round();
+}
+
 if global.is_paused{
 	exit
 }

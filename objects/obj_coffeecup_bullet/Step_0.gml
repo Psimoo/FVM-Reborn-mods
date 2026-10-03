@@ -1,3 +1,7 @@
+// 池内对象不执行逻辑（移动、碰撞、音效、绘制全部跳过）
+if (!active || pooled){
+	exit
+}
 if global.is_paused{
 	exit
 }
@@ -50,8 +54,11 @@ if (variable_global_exists("enemy_by_type"))
                     damage_type = other.damage_type
                     event_user(0)
                 }
-                instance_create_depth(x,y,depth,obj_coffeecup_bullet_effect)
-                instance_destroy()
+                var _fx = pool_acquire(obj_coffeecup_bullet_effect, x, y, depth);
+                _fx.pooled_managed = true;
+                _fx.timer = 0;
+                _fx.image_index = 0;
+                pool_release_bullet(id, "hit")
                 exit
             }
         }
@@ -59,12 +66,12 @@ if (variable_global_exists("enemy_by_type"))
 }
 
 if x > 2200 or y > 1200 or x < 0 or y < 0{
-    instance_destroy()
+    pool_release_bullet(id, "out")
     exit
 }
 if disabled{
-	image_alpha -= 0.1
-	if image_alpha <= 0{
-		instance_destroy()
-	}
+    image_alpha -= 0.1
+    if image_alpha <= 0{
+        pool_release_bullet(id, "fade")
+    }
 }
