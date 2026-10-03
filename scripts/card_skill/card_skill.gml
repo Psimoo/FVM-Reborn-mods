@@ -156,6 +156,9 @@ function create_plant_with_skill(plant_id, shape, upgrade_level, skill_level, x,
     if (ds_map_exists(plant_data, "flame_produce")) {
         plant.flame_produce = plant_data[? "flame_produce"];
     }
+    if (ds_map_exists(plant_data, "first_produce_delay")) {
+        plant.first_produce_delay = plant_data[? "first_produce_delay"];
+    }
     
     return plant;
 }

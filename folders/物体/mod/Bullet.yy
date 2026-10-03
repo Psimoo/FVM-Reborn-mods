@@ -66,6 +66,7 @@
     {"name":"obj_zeus_bullet","path":"objects/obj_zeus_bullet/obj_zeus_bullet.yy",},
     {"name":"obj_zhurong_bullet","path":"objects/obj_zhurong_bullet/obj_zhurong_bullet.yy",},
     {"name":"obj_shennong_god_bullet_h","path":"objects/obj_shennong_god_bullet_h/obj_shennong_god_bullet_h.yy",},
-    {"name":"obj_shennong_god_bullet_v","path":"objects/obj_shennong_god_bullet_v/obj_shennong_god_bullet_v.yy",}
+    {"name":"obj_shennong_god_bullet_v","path":"objects/obj_shennong_god_bullet_v/obj_shennong_god_bullet_v.yy",},
+    {"name":"obj_hongliukaochuan_bullet","path":"objects/obj_hongliukaochuan_bullet/obj_hongliukaochuan_bullet.yy",}
   ],
 }

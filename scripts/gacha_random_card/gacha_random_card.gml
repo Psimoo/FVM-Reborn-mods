@@ -17,6 +17,7 @@ function is_lucky_gacha_mode() {
 function random_gift_pick_card() {
     var pools = [[], [], [], [], [], []]; // gold, zodiac, normal, normal mouse, elite mouse, boss
     var gift_card_blacklist = ["magic_chicken", "baibianshe", "brahma", "ice_cream", "lihe"];
+    var gift_enemy_blacklist = ["test_mouse"];
     for (var i = 0; i < ds_list_size(global.player_deck); i += 2) {
         var card_id = global.player_deck[| i];
         if (array_get_index(gift_card_blacklist, card_id) != -1) continue;
@@ -40,6 +41,7 @@ function random_gift_pick_card() {
         ds_map_keys_to_array(global.enemy_map, enemy_ids);
         for (var e = 0; e < array_length(enemy_ids); e++) {
             var enemy_id = enemy_ids[e];
+            if (array_get_index(gift_enemy_blacklist, enemy_id) != -1) continue;
             var enemy_data = global.enemy_map[? enemy_id];
             if (!variable_struct_exists(enemy_data, "_obj")) continue;
             var is_boss_enemy = variable_global_exists("boss_list")

@@ -32,7 +32,8 @@ if (global.is_paused)
         draw_set_halign(fa_center);
         draw_set_valign(fa_middle);
 		draw_set_color(c_white)
-		if obj_battle.battle_time == 1{
+		var _player = instance_find(obj_player_character, 0);
+		if obj_battle.battle_time == 1 && _player != noone && !_player.is_placed{
 			draw_sprite_ext(spr_place_player_tip,0,room_width / 2, room_height / 2,1.8,1.8,0,c_white,1)
 		}
 		else if not global.game_over{
@@ -240,12 +241,14 @@ if (global.is_paused)
 						draw_text(1200,225, "关卡奖励");
 						var _is_cs_draw = (string_pos("ancient_castle_", global.level_data.id) == 1);
 						if (_is_cs_draw) {
-							var _cs_silver_arr = [60, 84, 104, 129, 140, 160, 190, 220];
+                            var _cs_silver_arr = [350, 400, 181, 240, 280, 395, 635, 875];
 							var _cs_lv_idx = real(string_delete(global.level_data.id, 1, string_length("ancient_castle_")));
 							var _cs_silver_val = _cs_silver_arr[min(_cs_lv_idx, array_length(_cs_silver_arr) - 1)];
-							var _cs_gold_medal_val = 5 * (_cs_lv_idx + 1);
-							draw_text(1200,260,"白银徽章（"+string(_cs_silver_val)+"）");
-							draw_text(1200,285,"黄金徽章（"+string(_cs_gold_medal_val)+"）");
+                            var _cs_gold_medal_val = [90, 120, 181, 240, 280, 395, 635, 875][min(_cs_lv_idx, 7)];
+                            var _cs_gold_val = [600000, 840000, 1040000, 1290000, 1400000, 1600000, 1900000, 2200000][min(_cs_lv_idx, 7)];
+                            draw_text(1200,260,"白银徽章（"+string(_cs_silver_val)+"）");
+                            draw_text(1200,285,"黄金徽章（"+string(_cs_gold_medal_val)+"）");
+                            draw_text(1200,310,"金币（"+string(_cs_gold_val)+"）");
 						} else {
 							draw_text(1200,260,"金币（"+string(global.level_file.rewards[1].gold)+"）")
 							draw_text(1200,285,"技能："+string(global.level_file.rewards[1].skill_level)+"级")
@@ -288,13 +291,14 @@ if (global.is_paused)
 						}
 						var _is_cs_draw_r = (string_pos("ancient_castle_", global.level_data.id) == 1);
 						if (_is_cs_draw_r) {
-							var _cs_silver_arr_r = [60, 84, 104, 129, 140, 160, 190, 220];
+							var _cs_silver_arr_r = [105, 149, 169, 203, 209, 203, 157, 113];
 							var _cs_lv_idx_r = real(string_delete(global.level_data.id, 1, string_length("ancient_castle_")));
-							var _cs_first_sv = _cs_silver_arr_r[min(_cs_lv_idx_r, array_length(_cs_silver_arr_r) - 1)];
-							var _cs_silver_val_r = floor(_cs_first_sv / 3);
-							var _cs_gold_val_r = 2 * (_cs_lv_idx_r + 1);
+							var _cs_silver_val_r = _cs_silver_arr_r[min(_cs_lv_idx_r, array_length(_cs_silver_arr_r) - 1)];
+							var _cs_gold_val_r = [27, 35, 55, 71, 83, 119, 191, 263][min(_cs_lv_idx_r, 7)];
+							var _cs_gold_coins_val_r = [30000, 42000, 52000, 64500, 70000, 80000, 95000, 110000][min(_cs_lv_idx_r, 7)];
 							draw_text(1200,260,"白银徽章（"+string(_cs_silver_val_r)+"）");
 							draw_text(1200,285,"黄金徽章（"+string(_cs_gold_val_r)+"）");
+							draw_text(1200,310,"金币（"+string(_cs_gold_coins_val_r)+"）");
 						} else {
 							draw_text(1200,260,"金币（"+string(global.level_file.rewards[0].gold)+"）")
 							draw_text(1200,285,item_string)

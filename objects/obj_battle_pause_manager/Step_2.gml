@@ -169,12 +169,14 @@ if (keyboard_check_pressed(vk_space) || (mouse_check_button_pressed(mb_left) && 
                         // 跨服远征关卡：特殊奖励（银币 + 金徽章，不含金币）
                         var _is_cross_server = (string_pos("ancient_castle_", global.level_data.id) == 1);
                         if (_is_cross_server) {
-                            var _cs_silver_medals = [60, 84, 104, 129, 140, 160, 190, 220];
+                            var _cs_silver_medals = [350, 400, 181, 240, 280, 395, 635, 875];
                             var _cs_level_idx = real(string_delete(global.level_data.id, 1, string_length("ancient_castle_")));
                             var _cs_silver = _cs_silver_medals[min(_cs_level_idx, array_length(_cs_silver_medals) - 1)];
-                            var _cs_gold_medal = 5 * (_cs_level_idx + 1);
-                            global.save_data.cross_server_silver_medal += _cs_silver * reward_multiplier;
-                            global.save_data.cross_server_gold_medal += _cs_gold_medal * reward_multiplier;
+                            var _cs_gold_medal = [90, 120, 181, 240, 280, 395, 635, 875][min(_cs_level_idx, 7)];
+                            var _cs_gold = [600000, 840000, 1040000, 1290000, 1400000, 1600000, 1900000, 2200000][min(_cs_level_idx, 7)];
+                            add_material_amount("cross_server_silver_medal", _cs_silver * reward_multiplier);
+                            add_material_amount("cross_server_gold_medal", _cs_gold_medal * reward_multiplier);
+                            global.save_data.player.gold += _cs_gold * reward_multiplier;
                         } else {
                             global.save_data.player.gold += global.level_file.rewards[1].gold * reward_multiplier;
                         }
@@ -209,13 +211,15 @@ if (keyboard_check_pressed(vk_space) || (mouse_check_button_pressed(mb_left) && 
                         // 非首次普通通关：重复通关奖励
                         var _is_cross_server_repeat = (string_pos("ancient_castle_", global.level_data.id) == 1);
                         if (_is_cross_server_repeat) {
-                            var _cs_silver_medals_r = [60, 84, 104, 129, 140, 160, 190, 220];
+                            var _cs_silver_medals_r = [105, 149, 169, 203, 209, 203, 157, 113];
                             var _cs_level_idx_r = real(string_delete(global.level_data.id, 1, string_length("ancient_castle_")));
                             var _cs_first_silver = _cs_silver_medals_r[min(_cs_level_idx_r, array_length(_cs_silver_medals_r) - 1)];
-                            var _cs_silver_r = floor(_cs_first_silver / 3);
-                            var _cs_gold_r = 2 * (_cs_level_idx_r + 1);
-                            global.save_data.cross_server_silver_medal += _cs_silver_r * reward_multiplier;
-                            global.save_data.player.gold += _cs_gold_r * reward_multiplier;
+                            var _cs_silver_r = _cs_first_silver;
+                            var _cs_gold_r = [27, 35, 55, 71, 83, 119, 191, 263][min(_cs_level_idx_r, 7)];
+                            var _cs_gold_coins_r = [30000, 42000, 52000, 64500, 70000, 80000, 95000, 110000][min(_cs_level_idx_r, 7)];
+                            add_material_amount("cross_server_silver_medal", _cs_silver_r * reward_multiplier);
+                            add_material_amount("cross_server_gold_medal", _cs_gold_r * reward_multiplier);
+                            global.save_data.player.gold += _cs_gold_coins_r * reward_multiplier;
                         } else {
                             global.save_data.player.gold += global.level_file.rewards[0].gold * reward_multiplier;
                         }
@@ -370,12 +374,14 @@ if (keyboard_check_pressed(vk_space) || (mouse_check_button_pressed(mb_left) && 
 							// 跨服远征关卡：特殊奖励（银币 + 金徽章，不含金币）
 							var _is_cross_server2 = (string_pos("ancient_castle_", global.level_data.id) == 1);
 							if (_is_cross_server2) {
-								var _cs_silver_medals2 = [60, 84, 104, 129, 140, 160, 190, 220];
+                                var _cs_silver_medals2 = [350, 400, 181, 240, 280, 395, 635, 875];
 								var _cs_level_idx2 = real(string_delete(global.level_data.id, 1, string_length("ancient_castle_")));
 								var _cs_silver2 = _cs_silver_medals2[min(_cs_level_idx2, array_length(_cs_silver_medals2) - 1)];
-								var _cs_gold_medal2 = 5 * (_cs_level_idx2 + 1);
-								global.save_data.cross_server_silver_medal += _cs_silver2 * reward_multiplier;
-								global.save_data.cross_server_gold_medal += _cs_gold_medal2 * reward_multiplier;
+                                var _cs_gold_medal2 = [90, 120, 181, 240, 280, 395, 635, 875][min(_cs_level_idx2, 7)];
+                                var _cs_gold2 = [600000, 840000, 1040000, 1290000, 1400000, 1600000, 1900000, 2200000][min(_cs_level_idx2, 7)];
+                                add_material_amount("cross_server_silver_medal", _cs_silver2 * reward_multiplier);
+                                add_material_amount("cross_server_gold_medal", _cs_gold_medal2 * reward_multiplier);
+                                global.save_data.player.gold += _cs_gold2 * reward_multiplier;
 							} else {
 								global.save_data.player.gold += global.level_file.rewards[1].gold * reward_multiplier
 							}
@@ -411,13 +417,15 @@ if (keyboard_check_pressed(vk_space) || (mouse_check_button_pressed(mb_left) && 
 								// 跨服远征关卡：重复通关特殊奖励
 								var _is_cross_server_repeat2 = (string_pos("ancient_castle_", global.level_data.id) == 1);
 								if (_is_cross_server_repeat2) {
-									var _cs_silver_medals_r2 = [60, 84, 104, 129, 140, 160, 190, 220];
+									var _cs_silver_medals_r2 = [105, 149, 169, 203, 209, 203, 157, 113];
 									var _cs_level_idx_r2 = real(string_delete(global.level_data.id, 1, string_length("ancient_castle_")));
 									var _cs_first_silver_r2 = _cs_silver_medals_r2[min(_cs_level_idx_r2, array_length(_cs_silver_medals_r2) - 1)];
-									var _cs_silver_r2 = floor(_cs_first_silver_r2 / 3);
-									var _cs_gold_r2 = 2 * (_cs_level_idx_r2 + 1);
-									global.save_data.cross_server_silver_medal += _cs_silver_r2 * reward_multiplier;
-									global.save_data.player.gold += _cs_gold_r2 * reward_multiplier;
+									var _cs_silver_r2 = _cs_first_silver_r2;
+								var _cs_gold_r2 = [27, 35, 55, 71, 83, 119, 191, 263][min(_cs_level_idx_r2, 7)];
+								var _cs_gold_coins_r2 = [30000, 42000, 52000, 64500, 70000, 80000, 95000, 110000][min(_cs_level_idx_r2, 7)];
+								add_material_amount("cross_server_silver_medal", _cs_silver_r2 * reward_multiplier);
+								add_material_amount("cross_server_gold_medal", _cs_gold_r2 * reward_multiplier);
+								global.save_data.player.gold += _cs_gold_coins_r2 * reward_multiplier;
 								} else {
 									global.save_data.player.gold += global.level_file.rewards[0].gold * reward_multiplier
 								}
@@ -472,6 +480,10 @@ if (keyboard_check_pressed(ord("R"))) {
 	}
 }
 
+// 战斗开始时等待玩家放置角色。角色放置后 battle_time 仍可能保持为 1，
+// 因此不能仅按时间反复强制暂停，否则会导致游戏永久停在提示界面。
 if obj_battle.battle_time == 1{
-	global.is_paused = true;
+    var _player = instance_find(obj_player_character, 0);
+    if (_player != noone && !_player.is_placed)
+        global.is_paused = true;
 }

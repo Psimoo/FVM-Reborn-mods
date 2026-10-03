@@ -70,5 +70,17 @@ function material_init(){
 										"icon": 13,        // 取决于图集中下一个可用的图标索引
 										"pos_x": 3,       // 在背包网格中的显示位置
 										"pos_y": 0
-});
+	});
+	register_material("cross_server_gold_medal",{"name": "黄金徽章",
+										"description": "黄金徽章：跨服远征奖励，用于跨服黄金商店兑换",
+										"icon": 0,
+										"pos_x": 3,
+										"pos_y": 2
+	});
+	register_material("cross_server_silver_medal",{"name": "白银徽章",
+										"description": "白银徽章：跨服远征奖励，用于跨服白银商店兑换",
+										"icon": 0,
+										"pos_x": 3,
+										"pos_y": 3
+	});
 }

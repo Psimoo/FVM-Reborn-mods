@@ -53,11 +53,6 @@ if (variable_global_exists("enemy_by_type"))
                 var _cannot_be_damaged = false;
                 if (variable_instance_exists(_e, "invincible") && _e.invincible)
                     _cannot_be_damaged = true;
-                else if (variable_instance_exists(_e, "target_type")
-                    && _e.target_type == "invisible"
-                    && variable_instance_exists(_e, "image_alpha")
-                    && _e.image_alpha < 1)
-                    _cannot_be_damaged = true;
 
                 if (_cannot_be_damaged)
                 {

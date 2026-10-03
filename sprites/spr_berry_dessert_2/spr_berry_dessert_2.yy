@@ -36,8 +36,8 @@
   "nineSlice":null,
   "origin":7,
   "parent":{
-    "name":"Cards",
-    "path":"folders/精灵/mod/Cards.yy",
+    "name":"berry_dessert",
+    "path":"folders/精灵/mod/Cards/berry_dessert.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

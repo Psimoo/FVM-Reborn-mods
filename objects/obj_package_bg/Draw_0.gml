@@ -635,19 +635,26 @@ else if package_button_select == 3{
             if (material_y > -100 && material_y < 875) {
                 var material_x = 42 + col * 84;
 
-                //draw_sprite_ext(spr_package_slot_bg,  1,  weapon_x,  weapon_y, 0.9, 0.9,  0,  c_white,  1);
-                var _mat_spr = (material_id == "oracle_stone") ? spr_oriacle_stone :spr_craft_material ;
-                var _mat_idx = (material_id == "oracle_stone") ? 0 : material_data.icon;
-                draw_sprite_ext(_mat_spr, _mat_idx,  material_x,  material_y, 0.9, 0.9,  0,  c_white,  1);
+                // 跨服徽章使用专属精灵，其他道具使用道具图标
+                if (material_id == "cross_server_gold_medal") {
+                    draw_sprite_ext(spr_mod_cs_xunzhang, 0, material_x, material_y, 0.9, 0.9, 0, c_white, 1);
+                } else if (material_id == "cross_server_silver_medal") {
+                    draw_sprite_ext(spr_mod_cs_silver_medal, 0, material_x, material_y, 0.9, 0.9, 0, c_white, 1);
+                } else {
+                    var _mat_spr = (material_id == "oracle_stone") ? spr_oriacle_stone :spr_craft_material ;
+                    var _mat_idx = (material_id == "oracle_stone") ? 0 : material_data.icon;
+                    draw_sprite_ext(_mat_spr, _mat_idx,  material_x,  material_y, 0.9, 0.9,  0,  c_white,  1);
+                }
 				draw_set_halign(fa_right);
 				draw_set_valign(fa_bottom);
 				draw_set_colour(c_white)
 				draw_set_font(font_number)
-				if get_material_amount(material_id) < 10000{
-					draw_text(material_x+40,material_y+42,string(get_material_amount(material_id)))
+				var _display_amount = get_material_amount(material_id);
+				if _display_amount < 10000{
+					draw_text(material_x+40,material_y+42,string(_display_amount))
 				}
 				else{
-					draw_text(material_x+40,material_y+42,string(floor(get_material_amount(material_id)/10000))+"w")
+					draw_text(material_x+40,material_y+42,string(floor(_display_amount/10000))+"w")
 				}
 
                 // 检查鼠标是否悬停在道具上
@@ -686,9 +693,11 @@ else if package_button_select == 3{
 
             var tooltip_text = ""
 
-			tooltip_text = material_data.description + "\n数量："+string(get_material_amount(material_id))
+			var _tooltip_amount = get_material_amount(material_id);
+			tooltip_text = material_data.description + "\n数量："+string(_tooltip_amount)
+			// 获取出售价格
 			var _sell_price = get_material_sell_price(material_id)
-			if _sell_price > 0 && get_material_amount(material_id) > 0{
+			if _sell_price > 0 && _tooltip_amount > 0{
 				tooltip_text += "\n出售价格：" + string(_sell_price) + "G/个"
 				tooltip_text += "\n左键点击出售"
 			}

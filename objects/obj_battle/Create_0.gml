@@ -13,6 +13,9 @@ mus_inst.battle_music = global.level_data.pre_music
 
 global.game_over = false
 
+// 每场战斗重新建立敌人索引，避免上一局销毁实例后的残留 ID 被新局扫描。
+global.enemy_by_type = {};
+
 instance_create_depth(0,0,0,obj_battle_pause_manager)
 instance_create_depth(0,0,-2900,obj_battle_timer_display)
 instance_create_depth(mouse_x,mouse_y,0,obj_player_character)

@@ -5,6 +5,7 @@ mod_skill_init();
 mod_weapons_init();
 mod_info_island_init();
 mod_shop_init();
+cross_server_shop_init();
 mod_maps_init();
 mod_enemy_init();
 gods_goods_registry_init();

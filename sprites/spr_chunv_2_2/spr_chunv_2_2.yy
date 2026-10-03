@@ -35,8 +35,8 @@
   "nineSlice":null,
   "origin":7,
   "parent":{
-    "name":"Cards",
-    "path":"folders/精灵/mod/Cards.yy",
+    "name":"chunv",
+    "path":"folders/精灵/mod/Cards/chunv.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

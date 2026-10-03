@@ -7,14 +7,6 @@ level_unlocked = 0;
 level_passed = 0;
 selected_page = 0;
 
-// 跨服商店使用的金色勋章余额；旧存档没有该字段时从零开始。
-if (!variable_struct_exists(global.save_data, "cross_server_gold_medal")) {
-    global.save_data.cross_server_gold_medal = 0;
-}
-if (!variable_struct_exists(global.save_data, "cross_server_silver_medal")) {
-    global.save_data.cross_server_silver_medal = 0;
-}
-
 // 页签对应的远征章节。当前项目已有数据绑定到第一个章节，其他章节
 // 预留独立 map id，后续加入关卡数据后即可直接启用。
 cross_server_page_map_ids = [

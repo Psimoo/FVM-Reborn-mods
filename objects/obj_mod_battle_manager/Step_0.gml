@@ -223,13 +223,15 @@ else
                 if (variable_instance_exists(self.id, "ocean_buff_multiplier"))
                     ocean_mult = self.ocean_buff_multiplier;
 
+                var zhanqima_mult = get_zhanqima_buff_multiplier(self.id);
+
                 var has_sprayer_buff = (self.buff_type == "sprayer" || buff_type_2 == "sprayer");
                 var combined_buff_multiplier = has_sprayer_buff
                     ? max(buff_multiplier, ocean_mult)
                     : buff_multiplier * ocean_mult;
 
                 var _shield_gem_mult = get_shield_gem_atk_mult(self.grid_col, self.grid_row, self.plant_id);
-                self.atk = self.base_atk * combined_buff_multiplier * _shield_gem_mult;
+                self.atk = self.base_atk * combined_buff_multiplier * zhanqima_mult * _shield_gem_mult;
 
                 self.buff_applied_id = global.buff_apply_id;
             }

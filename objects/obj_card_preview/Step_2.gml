@@ -14,7 +14,7 @@ if card_id == "magic_chicken"{
     }
 }
 if card_data != noone{
-    is_valid = (can_place_at_position(logical_base_x, logical_base_y, card_data[? "plant_type"],card_data[? "feature_type"],card_data[? "target_card"]));
+    is_valid = (can_place_at_position(logical_base_x, logical_base_y, card_data[? "plant_type"],card_data[? "feature_type"],card_data[? "target_card"],card_id));
 }
 else{
     is_valid = false

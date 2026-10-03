@@ -45,9 +45,12 @@ for (var _slot = 0; _slot < 16; _slot++) {
 
     var _id = _cards[_index];
     var _goods = global.goods_map[? _id];
-    var _medals = ceil(real(_goods.cost) / 1000);
+    var _card_id = variable_struct_exists(_goods, "card_id") ? _goods.card_id : _id;
+    var _card_shape = variable_struct_exists(_goods, "card_shape") ? _goods.card_shape : 0;
+    var _medals = real(_goods.cost);
     var _goods_type = _goods.type;
     var _owned = false;
+    var _prerequisite_met = true;
 
     // 抽卡模式/欧皇模式/随机礼盒模式：禁止购买跨服商店商品
     if (is_eternal_gacha_mode() || is_random_gift_mode()) {
@@ -62,7 +65,17 @@ for (var _slot = 0; _slot < 16; _slot++) {
     // 判断是否已拥有
     if (_goods_type == "card") {
         for (var _k = 0; _k < array_length(global.save_data.unlocked_cards); _k++) {
-            if (global.save_data.unlocked_cards[_k].id == _id) { _owned = true; break; }
+            if (global.save_data.unlocked_cards[_k].id == _card_id && global.save_data.unlocked_cards[_k].shape >= _card_shape) { _owned = true; break; }
+        }
+        if (variable_struct_exists(_goods, "required_card_shape")) {
+            _prerequisite_met = false;
+            for (var _k = 0; _k < array_length(global.save_data.unlocked_cards); _k++) {
+                if (global.save_data.unlocked_cards[_k].id == _card_id
+                    && global.save_data.unlocked_cards[_k].shape >= _goods.required_card_shape) {
+                    _prerequisite_met = true;
+                    break;
+                }
+            }
         }
     } else if (_goods_type == "weapon") {
         _owned = is_weapon_unlocked(_id);
@@ -70,15 +83,19 @@ for (var _slot = 0; _slot < 16; _slot++) {
         _owned = is_gem_unlocked(_id);
     }
 
-    var _balance = shop_type == 0 ? global.save_data.cross_server_gold_medal : global.save_data.cross_server_silver_medal;
+    var _medal_id = shop_type == 0 ? "cross_server_gold_medal" : "cross_server_silver_medal";
+    var _balance = get_material_amount(_medal_id);
     if (_owned) show_notice("该商品已兑换", 60);
+    else if (!_prerequisite_met) {
+        var _required_shape = _goods.required_card_shape;
+        show_notice(_required_shape == 0 ? "请先兑换本体卡牌" : "请先兑换一转转职凭证", 60);
+    }
     else if (_balance < _medals && !global.debug) show_notice(shop_type == 0 ? "金色勋章不足" : "白银勋章不足", 60);
     else {
-        if (shop_type == 0) global.save_data.cross_server_gold_medal -= _medals;
-        else global.save_data.cross_server_silver_medal -= _medals;
+        add_material_amount(_medal_id, -_medals);
 
         if (_goods_type == "card") {
-            unlock_card(_id, 0, 0, global.save_data.unlocked_items.max_skill_level);
+            unlock_card(_card_id, 0, _card_shape, global.save_data.unlocked_items.max_skill_level);
         } else if (_goods_type == "weapon") {
             unlock_weapon(_id);
         } else if (_goods_type == "gem") {
