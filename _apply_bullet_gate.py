@@ -49,13 +49,12 @@ for d in dirs:
         skipped.append((d, 'no brace match')); continue
     j, k = blk
     inner = t[j:k + 1]
-    # 只允许包裹"遍历敌人 + 精密碰撞"的循环块
+
     if 'precise_bbox_collision' not in inner or 'instance_exists' not in inner:
         skipped.append((d, 'block not collision loop')); continue
     if ('for (' not in inner) and ('while (' not in inner):
         skipped.append((d, 'no loop in block')); continue
 
-    # 插到 if 所在行的行首
     line_start = t.rfind('\n', 0, i) + 1
     indent = re.match(r'[ \t]*', t[line_start:]).group(0)
 

@@ -29,7 +29,6 @@ for d in dirs:
                 found.add(name)
     refs[d] = found
 
-# propagate ancestors
 memo = {}
 def eff(d, seen=None):
     if d in memo:
@@ -53,11 +52,6 @@ for d in sorted(dirs):
         entries.append((d, sorted(s)))
 
 lines = []
-lines.append('// ============================================================')
-lines.append('// obj_pool_deck —— 按卡组预热（自动生成，勿手改）')
-lines.append('// 由 _gen_deck_map.py 扫描每个植物对象引用到的子弹/特效对象生成。')
-lines.append('// ============================================================')
-lines.append('')
 lines.append('function obj_pool_build_deck_map() {')
 lines.append('    var _m = {};')
 for d, s in entries:
@@ -65,14 +59,12 @@ for d, s in entries:
 lines.append('    return _m;')
 lines.append('}')
 lines.append('')
-lines.append('// 战斗房间开始（obj_battle 的 Room Start）调用：只预热当前卡组带进来的卡。')
-lines.append('// 不一次性生成，而是排队后每帧生成一小批（obj_pool_prewarm_tick），避免进关瞬间卡顿。')
 lines.append('function obj_pool_prewarm_deck() {')
 lines.append('    if (!variable_global_exists("_obj_pool_ready") || !global._obj_pool_ready) obj_pool_init();')
 lines.append('    if (!variable_global_exists("obj_pool_deck_prewarm")) global.obj_pool_deck_prewarm = 25;')
 lines.append('    if (!variable_global_exists("obj_pool_prewarm_per_frame")) global.obj_pool_prewarm_per_frame = 8;')
 lines.append('')
-lines.append('    global._obj_pool_prewarm_queue = []; // 重置队列')
+lines.append('    global._obj_pool_prewarm_queue = [];')
 lines.append('')
 lines.append('    var _count = global.obj_pool_deck_prewarm;')
 lines.append('    if (_count <= 0) return;')
@@ -102,10 +94,9 @@ lines.append('            array_push(global._obj_pool_prewarm_queue, [_b, _count
 lines.append('        }')
 lines.append('    }')
 lines.append('    ds_map_destroy(_done);')
-lines.append('    obj_pool_prewarm_tick(); // 本帧先做一批')
+lines.append('    obj_pool_prewarm_tick();')
 lines.append('}')
 lines.append('')
-lines.append('// 每帧生成一小批空壳（obj_battle 的 End Step 调用），避免单帧峰值')
 lines.append('function obj_pool_prewarm_tick() {')
 lines.append('    if (!variable_global_exists("_obj_pool_prewarm_queue") || !is_array(global._obj_pool_prewarm_queue)) return;')
 lines.append('    var _q = global._obj_pool_prewarm_queue;')
@@ -131,7 +122,6 @@ print('objects scanned:', len(dirs))
 print('map entries:', len(entries))
 print('total bullet refs:', total)
 
-# 校验：生成脚本里用到的对象标识符必须在 .yyp 中注册，否则 GameMaker 编译不过
 yyp = open(os.path.join(ROOT, 'FVM_Reborn_makk.yyp'), encoding='utf-8', errors='replace').read()
 missing = []
 for d, s in entries:

@@ -1,4 +1,3 @@
-// 继续分帧预热（obj_pool_prewarm_deck 在 Room Start 排的队），每帧只生成一小批
 obj_pool_prewarm_tick();
 
 for (var _i = 0; _i < array_length(global._move_instance_pre_arr); _i++) {
@@ -126,10 +125,6 @@ if (!global.save_data.unlocked_items.elite_unlocked && current_wave >= global.le
 	}
 }
 
-// ---- 增量清理 global.enemy_by_type 里已销毁的 id ----
-// 很多敌人的 Destroy 没有调用 event_inherited()，死亡后不会从类型表注销，
-// 每颗子弹每帧都要遍历这些列表，条目会随击杀数不断累积（越玩越卡）。
-// 这里每帧只清理一个类型，避免单帧峰值；只删除 instance_exists 为 false 的条目，不影响存活敌人。
 if (variable_global_exists("enemy_by_type")) {
 	if (!variable_global_exists("_ebt_keys") || !variable_global_exists("_ebt_refresh") || global._ebt_refresh <= 0) {
 		global._ebt_keys = variable_struct_get_names(global.enemy_by_type);
@@ -144,8 +139,6 @@ if (variable_global_exists("enemy_by_type")) {
 		if (variable_struct_exists(global.enemy_by_type, _ebt_key)) {
 			var _ebt_list = global.enemy_by_type[$ _ebt_key];
 			if (is_array(_ebt_list)) {
-				// 一次遍历重建，O(n)。不要用"循环里 array_delete"——那是 O(n²)，
-				// 一波怪被瞬间清空时会直接卡住。
 				var _ebt_keep = [];
 				var _ebt_len = array_length(_ebt_list);
 				for (var _ebt_i = 0; _ebt_i < _ebt_len; _ebt_i++) {

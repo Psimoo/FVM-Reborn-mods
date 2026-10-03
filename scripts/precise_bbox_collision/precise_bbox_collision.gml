@@ -4,8 +4,6 @@
 /// @return {bool} 是否发生碰撞
 /// @description 检测 inst_a 的精确碰撞遮罩（1:1 原始尺寸，不受 image_xscale/image_yscale 影响）是否与 inst_b 的 bbox 重叠。
 ///              考虑 image_angle 旋转。适用于保持视觉缩放但碰撞使用精确遮罩的场景。
-///              同一帧内一颗子弹会与大量敌人比对，子弹自身的旋转包围盒是固定的，这里做缓存，
-///              避免每个敌人重复调用 cos/sin 与 sprite_get_bbox_*（性能优化，结果不变）。
 function precise_bbox_collision(_inst_a, _inst_b) {
     if (is_undefined(_inst_a) || is_undefined(_inst_b)) return false;
     if (_inst_a == noone || _inst_b == noone) return false;
@@ -73,11 +71,6 @@ function precise_bbox_collision(_inst_a, _inst_b) {
         && _a_bottom >= _b_top && _a_top <= _b_bottom;
 }
 
-/// @function precise_bbox_prepare(inst_a)
-/// @description 计算并缓存 inst_a（子弹）的旋转包围盒，结果写入 global._pbc_l / _pbc_r / _pbc_t / _pbc_b。
-///              返回 false 表示实例无效或没有 sprite（不可能碰撞）。
-///              给"子弹一帧内要扫描大量敌人"的 Step 用：先把自身包围盒算一次，之后在循环里
-///              直接内联比较 _e.bbox_*，避免对每只敌人都调用一次 precise_bbox_collision。
 function precise_bbox_prepare(_inst_a) {
     if (is_undefined(_inst_a) || _inst_a == noone) return false;
     if (!instance_exists(_inst_a)) return false;

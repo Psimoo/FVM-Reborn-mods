@@ -10,18 +10,12 @@ if burnt == 1{
 x += move_speed
 y += y_move_speed
 
-// 碰撞判定降频：海星子弹每 hit_interval 帧才扫描一次敌人（本对象 = 3 帧，其它子弹用 2 帧）。
-// 子弹一帧只移动 8px，敌人 bbox 有 100px 以上，3 帧判一次也不会穿过敌人。
-// 出界销毁仍然每帧检查。
 hit_tick++;
 if (hit_tick >= hit_interval)
 {
 	hit_tick = 0;
 
 	// 类型过滤碰撞检测
-	// 本帧先把自身旋转包围盒算一次（precise_bbox_prepare），循环里直接内联比较
-	// _e.bbox_*，不再对场上每一只敌人都调用一次 precise_bbox_collision。
-	// 判断顺序与原版一致：instance_exists -> hp -> b_type/row -> bbox 重叠。
 	if (variable_global_exists("enemy_by_type") && precise_bbox_prepare(id))
 	{
 		var _al = global._pbc_l;

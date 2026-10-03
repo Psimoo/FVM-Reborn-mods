@@ -54,7 +54,7 @@ for d in sorted(os.listdir(OBJ)):
     if b != 0:
         bad.append((d, 'brace diff %+d' % b))
         continue
-    # 找到 gate 的 { ，配对，检查后面是不是紧接 else
+
     gi = raw.find(GATE)
     j = raw.find('{', gi)
     depth = 0

@@ -1,8 +1,3 @@
-// ============================================================
-// obj_pool_deck —— 按卡组预热（自动生成，勿手改）
-// 由 _gen_deck_map.py 扫描每个植物对象引用到的子弹/特效对象生成。
-// ============================================================
-
 function obj_pool_build_deck_map() {
     var _m = {};
     _m[$ "obj_12yinliao"] = [obj_coke_bomb_explode, obj_mouse_ash_death];
@@ -31,7 +26,7 @@ function obj_pool_build_deck_map() {
     _m[$ "obj_chocolatepult_bullet"] = [obj_coffeecup_bullet_effect];
     _m[$ "obj_cloud"] = [obj_drop_death_effect];
     _m[$ "obj_coal_starfish"] = [obj_coalstarfish_bullet];
-    _m[$ "obj_coalstarfish_bullet"] = [obj_coke_bomb_explode, obj_fire_bullet_effect, obj_xiaolongbao_bullet_effect];
+    _m[$ "obj_coalstarfish_bullet"] = [obj_coke_bomb_explode, obj_fire_bullet_effect];
     _m[$ "obj_coffee_cup"] = [obj_coffeecup_bullet];
     _m[$ "obj_coffee_pot"] = [obj_coffeepot_bullet];
     _m[$ "obj_coffeecup_bullet"] = [obj_coffeecup_bullet_effect];
@@ -264,14 +259,12 @@ function obj_pool_build_deck_map() {
     return _m;
 }
 
-// 战斗房间开始（obj_battle 的 Room Start）调用：只预热当前卡组带进来的卡。
-// 不一次性生成，而是排队后每帧生成一小批（obj_pool_prewarm_tick），避免进关瞬间卡顿。
 function obj_pool_prewarm_deck() {
     if (!variable_global_exists("_obj_pool_ready") || !global._obj_pool_ready) obj_pool_init();
     if (!variable_global_exists("obj_pool_deck_prewarm")) global.obj_pool_deck_prewarm = 25;
     if (!variable_global_exists("obj_pool_prewarm_per_frame")) global.obj_pool_prewarm_per_frame = 8;
 
-    global._obj_pool_prewarm_queue = []; // 重置队列
+    global._obj_pool_prewarm_queue = [];
 
     var _count = global.obj_pool_deck_prewarm;
     if (_count <= 0) return;
@@ -301,10 +294,9 @@ function obj_pool_prewarm_deck() {
         }
     }
     ds_map_destroy(_done);
-    obj_pool_prewarm_tick(); // 本帧先做一批
+    obj_pool_prewarm_tick();
 }
 
-// 每帧生成一小批空壳（obj_battle 的 End Step 调用），避免单帧峰值
 function obj_pool_prewarm_tick() {
     if (!variable_global_exists("_obj_pool_prewarm_queue") || !is_array(global._obj_pool_prewarm_queue)) return;
     var _q = global._obj_pool_prewarm_queue;
