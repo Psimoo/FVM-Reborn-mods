@@ -7,6 +7,12 @@ cvspeed -= cgravity
 image_angle -= 5
 
 // 类型过滤碰撞检测
+if (!variable_instance_exists(id, "hit_tick")) hit_tick = 0;
+if (!variable_global_exists("bullet_hit_interval")) global.bullet_hit_interval = 2;
+hit_tick++;
+if (hit_tick >= global.bullet_hit_interval)
+{
+	hit_tick = 0;
 if (!hit_enemy && variable_global_exists("enemy_by_type"))
 {
     for (var _t = 0; _t < array_length(hittable_types); _t++)
@@ -37,6 +43,8 @@ if (!hit_enemy && variable_global_exists("enemy_by_type"))
         }
     }
 }
+}
+
 
 if x > 2200 or y > 1200 or x < -200 or y < -200{
     instance_destroy()

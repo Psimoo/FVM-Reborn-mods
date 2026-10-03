@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"obj_pool_deck",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"obj_pool_deck",
+  "parent":{
+    "name":"shell",
+    "path":"folders/脚本/shell.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

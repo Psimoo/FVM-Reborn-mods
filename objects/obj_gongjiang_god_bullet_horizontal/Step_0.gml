@@ -93,6 +93,12 @@ else
 // 命中检测 - 全程沿路对 bbox 相交的敌人造成伤害
 if (!ds_exists(hitted_enemy, ds_type_list)) exit;
 
+if (!variable_instance_exists(id, "hit_tick")) hit_tick = 0;
+if (!variable_global_exists("bullet_hit_interval")) global.bullet_hit_interval = 2;
+hit_tick++;
+if (hit_tick >= global.bullet_hit_interval)
+{
+	hit_tick = 0;
 if (variable_global_exists("enemy_by_type"))
 {
     for (var _t = 0; _t < array_length(hittable_types); _t++)
@@ -152,6 +158,8 @@ if (variable_global_exists("enemy_by_type"))
         if (!ds_exists(hitted_enemy, ds_type_list)) break;
     }
 }
+}
+
 
 // 越界兜底
 if (x > 2200 || y > 1200 || x < -200 || y < -200)

@@ -58,6 +58,12 @@ if (y > 1200 || x < -100 || x > 2200)
 }
 
 // 碰撞检测：攻击当前列范围内（第7-9列）的所有行敌人
+if (!variable_instance_exists(id, "hit_tick")) hit_tick = 0;
+if (!variable_global_exists("bullet_hit_interval")) global.bullet_hit_interval = 2;
+hit_tick++;
+if (hit_tick >= global.bullet_hit_interval)
+{
+	hit_tick = 0;
 if (variable_global_exists("enemy_by_type"))
 {
     for (var _t = 0; _t < array_length(hittable_types); _t++)
@@ -117,3 +123,5 @@ if (variable_global_exists("enemy_by_type"))
         }
     }
 }
+}
+

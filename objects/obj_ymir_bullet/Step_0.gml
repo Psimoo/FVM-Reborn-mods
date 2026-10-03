@@ -40,6 +40,12 @@ if (cvspeed < 0 && y >= thrower_y)
 }
 
 // 类型过滤碰撞检测
+if (!variable_instance_exists(id, "hit_tick")) hit_tick = 0;
+if (!variable_global_exists("bullet_hit_interval")) global.bullet_hit_interval = 2;
+hit_tick++;
+if (hit_tick >= global.bullet_hit_interval)
+{
+	hit_tick = 0;
 if (variable_global_exists("enemy_by_type"))
 {
     for (var _t = 0; _t < array_length(hittable_types); _t++)
@@ -108,3 +114,5 @@ if (variable_global_exists("enemy_by_type"))
         if (hit_enemy) break;
     }
 }
+}
+

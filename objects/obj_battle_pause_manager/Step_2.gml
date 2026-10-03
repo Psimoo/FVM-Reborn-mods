@@ -1,4 +1,41 @@
 // obj_battle_pause_manager - Step Event
+
+// 手动暂停标记与全局冻结状态保持同步：
+// 菜单“继续游戏”等外部路径会直接把 is_paused 置 false，这里顺手清掉标记。
+if (!global.is_paused) {
+    manual_pause = false;
+}
+
+// ===== ESC：打开 / 关闭暂停菜单（最先处理）=====
+// 独立于“空格/鼠标”那一段输入，也不受进关暂停分支的 exit 影响：
+// 即便已经用空格暂停（is_paused 为真但 show_menu 为假）、或正处于放置人物阶段，ESC 都能打开菜单。
+if (keyboard_check_pressed(vk_escape)) {
+    var _menu = instance_find(obj_pause_menu, 0);
+
+    if (_menu == noone) {
+        // 没有菜单：只要不处于结算 / 抽卡礼盒 / 测试情报岛这类模态状态，就进入手动暂停并开菜单。
+        if (!global.game_over
+            && !instance_exists(obj_game_over)
+            && !instance_exists(obj_gacha_drop)
+            && !instance_exists(obj_info_island_bg)) {
+            // ESC暂停：暂停并显示菜单
+            manual_pause = true;
+            global.is_paused = true;
+            global.show_menu = true;
+            instance_create_depth(room_width / 2, room_height / 2, depth, obj_pause_menu);
+        }
+    }
+    else if (instance_exists(obj_config_menu)) {
+        // 设置子菜单打开时，ESC 只关闭子菜单
+        instance_destroy(obj_config_menu);
+    }
+    else if (!_menu.submenu_open) {
+        instance_destroy(_menu);
+        manual_pause = false;
+        global.is_paused = false;
+        global.show_menu = false;
+    }
+}
 // 抽卡模式：礼盒动画帧推进（每帧执行）
 if (is_eternal_gacha_mode() && instance_exists(obj_gacha_drop)) {
     if (obj_gacha_drop.state == 1) {
@@ -40,6 +77,25 @@ if (is_eternal_gacha_mode() && instance_exists(obj_gacha_drop)) {
             }
         }
     }
+}
+
+// ===== 进关暂停：等待玩家放置人物 =====
+// 只负责“进关卡”这一种暂停：人物放下即解除，不响应空格，也不会每帧重新置位。
+if (entry_pause) {
+    if (instance_exists(obj_player_character) && obj_player_character.is_placed) {
+        // 人物已放置 → 进关暂停结束，战场从下一帧开始计时
+        entry_pause = false;
+        manual_pause = false;
+        global.is_paused = false;
+        global.show_menu = false;
+    } else if (!instance_exists(obj_pause_menu)) {
+        // 人物还没放下 → 保持冻结，且不显示暂停菜单
+        // （放置阶段按 ESC 打开了菜单时不覆盖，交给菜单自己维持暂停）
+        manual_pause = false;
+        global.is_paused = true;
+        global.show_menu = false;
+    }
+    exit;
 }
 
 // 抽卡礼盒必须优先处理，不能依赖普通暂停输入条件。
@@ -308,6 +364,7 @@ if (keyboard_check_pressed(vk_space) || (mouse_check_button_pressed(mb_left) && 
                 // 空格暂停：只暂停不显示菜单
                 global.is_paused = true;
                 global.show_menu = false;
+                manual_pause = true;
             }
         }
         else if (global.is_paused && !global.show_menu) {
@@ -438,30 +495,10 @@ if (keyboard_check_pressed(vk_space) || (mouse_check_button_pressed(mb_left) && 
 			}
 			if obj_battle.battle_time != 0 && !global.game_over{
 				global.is_paused = false;
+				manual_pause = false;
 			}
         }
     //}
-}
-
-if (keyboard_check_pressed(vk_escape)) {
-    if (!global.is_paused) {
-        // ESC暂停：暂停并显示菜单
-        global.is_paused = true;
-        global.show_menu = true;
-        
-        // 创建暂停菜单实例
-        
-        instance_create_depth(room_width / 2, room_height / 2, depth, obj_pause_menu);
-    }
-    else if (global.is_paused && global.show_menu) {
-        // 尝试关闭菜单（菜单自身会处理ESC关闭）
-        var menu = instance_find(obj_pause_menu, 0);
-        if (menu != noone && !menu.submenu_open) {
-            instance_destroy(menu);
-            global.is_paused = false;
-            global.show_menu = false;
-        }
-    }
 }
 
 if (keyboard_check_pressed(ord("R"))) {
@@ -472,6 +509,7 @@ if (keyboard_check_pressed(ord("R"))) {
 	}
 }
 
-if obj_battle.battle_time == 1{
-	global.is_paused = true;
-}
+// 旧代码这里用 `if obj_battle.battle_time == 1 { global.is_paused = true }` 每帧强制暂停：
+// 而 obj_battle.Step_0 的 `if global.is_paused { exit }` 在 battle_time += 1 之前，
+// 于是 battle_time 卡死在 1、进关暂停永远无法解除（自锁）。
+// 进关暂停现在由文件开头的 entry_pause 分支单独负责，这里不再强制置位。
