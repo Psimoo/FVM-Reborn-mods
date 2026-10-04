@@ -337,13 +337,15 @@ for(var i = deck_first_slot_index; i < deck_first_slot_index+11;i++){
 			draw_text(100,780,"关卡奖励（首通）")
 			var _is_cs_ready = (string_pos("ancient_castle_", global.level_data.id) == 1);
 			if (_is_cs_ready) {
-				var _cs_silver_arr_rd = [60, 84, 104, 129, 140, 160, 190, 220];
-				var _cs_lv_idx_rd = real(string_delete(global.level_data.id, 1, string_length("ancient_castle_")));
-				var _cs_silver_rd = _cs_silver_arr_rd[min(_cs_lv_idx_rd, array_length(_cs_silver_arr_rd) - 1)];
-				var _cs_gm_rd = 5 * (_cs_lv_idx_rd + 1);
-				draw_text(100,820,"白银徽章（"+string(_cs_silver_rd)+"）");
-				draw_text(100,860,"黄金徽章（"+string(_cs_gm_rd)+"）");
-			} else {
+					var _cs_silver_arr_rd = [350, 400, 181, 240, 280, 395, 635, 875];
+					var _cs_lv_idx_rd = real(string_delete(global.level_data.id, 1, string_length("ancient_castle_")));
+					var _cs_silver_rd = _cs_silver_arr_rd[min(_cs_lv_idx_rd, array_length(_cs_silver_arr_rd) - 1)];
+					var _cs_gold_medal_rd = [90, 120, 181, 240, 280, 395, 635, 875][min(_cs_lv_idx_rd, 7)];
+					var _cs_gold_coins_rd = [600000, 840000, 1040000, 1290000, 1400000, 1600000, 1900000, 2200000][min(_cs_lv_idx_rd, 7)];
+					draw_text(100,820,"白银徽章（"+string(_cs_silver_rd)+"）");
+					draw_text(100,860,"黄金徽章（"+string(_cs_gold_medal_rd)+"）");
+					draw_text(100,900,"金币（"+string(_cs_gold_coins_rd)+"）");
+				} else {
 				draw_text(100,820,"金币（"+string(global.level_file.rewards[1].gold)+"）")
 				draw_text(100,860,"技能："+string(global.level_file.rewards[1].skill_level)+"级")
 				var item_string = ""
@@ -385,14 +387,15 @@ for(var i = deck_first_slot_index; i < deck_first_slot_index+11;i++){
 			draw_text(100,780,"关卡奖励")
 			var _is_cs_ready_r = (string_pos("ancient_castle_", global.level_data.id) == 1);
 			if (_is_cs_ready_r) {
-				var _cs_silver_arr_rr = [60, 84, 104, 129, 140, 160, 190, 220];
-				var _cs_lv_idx_rr = real(string_delete(global.level_data.id, 1, string_length("ancient_castle_")));
-				var _cs_first_rr = _cs_silver_arr_rr[min(_cs_lv_idx_rr, array_length(_cs_silver_arr_rr) - 1)];
-				var _cs_silver_rr = floor(_cs_first_rr / 3);
-				var _cs_gold_rr = 2 * (_cs_lv_idx_rr + 1);
-				draw_text(100,820,"白银徽章（"+string(_cs_silver_rr)+"）");
-				draw_text(100,860,"黄金徽章（"+string(_cs_gold_rr)+"）");
-			} else {
+					var _cs_silver_arr_rr = [105, 149, 169, 203, 209, 203, 157, 113];
+					var _cs_lv_idx_rr = real(string_delete(global.level_data.id, 1, string_length("ancient_castle_")));
+					var _cs_silver_rr = _cs_silver_arr_rr[min(_cs_lv_idx_rr, array_length(_cs_silver_arr_rr) - 1)];
+					var _cs_gold_rr = [27, 35, 55, 71, 83, 119, 191, 263][min(_cs_lv_idx_rr, 7)];
+					var _cs_gold_coins_rr = [30000, 42000, 52000, 64500, 70000, 80000, 95000, 110000][min(_cs_lv_idx_rr, 7)];
+					draw_text(100,820,"白银徽章（"+string(_cs_silver_rr)+"）");
+					draw_text(100,860,"黄金徽章（"+string(_cs_gold_rr)+"）");
+					draw_text(100,900,"金币（"+string(_cs_gold_coins_rr)+"）");
+				} else {
 				draw_text(100,820,"金币（"+string(global.level_file.rewards[0].gold)+"）")
 				var item_string = ""
 				var item_list = global.level_file.rewards[0].items

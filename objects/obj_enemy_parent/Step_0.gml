@@ -1,4 +1,7 @@
 // 修改后的僵尸Step事件
+if (variable_instance_exists(id, "pooled") && pooled){
+	exit
+}
 if global.is_paused{
 	exit
 }
@@ -385,7 +388,18 @@ if (image_alpha <= 0 && state == ENEMY_STATE.DEAD) {
         }
         enemy_registered = false;
     }
-    instance_destroy();
+
+    if (variable_instance_exists(id, "pooled_managed") && pooled_managed) {
+        // 池化敌人：只结算一次死亡掉落，然后回收（不销毁）
+        if (!death_reward_processed) {
+            death_reward_processed = true;
+            enemy_drop_reward(id);
+        }
+        pool_release_enemy(id, "death");
+    } else {
+        // 非池化敌人：保持原有生命周期
+        instance_destroy();
+    }
 }
 
 
