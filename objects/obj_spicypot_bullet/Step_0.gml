@@ -26,7 +26,6 @@ if x > 2200 or y > 1200 or x < 0 or y < 0{
 	exit
 }
 
-// 类型过滤碰撞检测
 hit_tick++;
 if (hit_tick >= global.bullet_hit_interval)
 {

@@ -1,5 +1,5 @@
 if global.is_paused{
-	
+
 	image_speed = 0
 	exit
 }
@@ -15,7 +15,6 @@ if x > 2200 or y > 1200 or x < 0 or y < -200{
 	instance_destroy()
 }
 
-// 类型过滤碰撞检测
 hit_tick++;
 if (hit_tick >= global.bullet_hit_interval)
 {

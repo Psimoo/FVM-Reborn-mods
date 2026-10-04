@@ -7,7 +7,6 @@ if (global.is_paused)
 image_speed = 1;
 x += move_speed;
 
-// 类型过滤碰撞检测
 hit_tick++;
 if (hit_tick >= global.bullet_hit_interval)
 {
@@ -46,7 +45,6 @@ if (variable_global_exists("enemy_by_type"))
 }
 	}
 }
-
 
 if (x > 2200 || y > 1200 || x < 0 || y < 0)
     instance_destroy();

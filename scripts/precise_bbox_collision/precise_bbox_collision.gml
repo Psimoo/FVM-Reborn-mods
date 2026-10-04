@@ -1,9 +1,4 @@
-/// @function precise_bbox_collision(inst_a, inst_b)
-/// @param {instance} inst_a - 子弹实例（使用精确未缩放的碰撞遮罩）
-/// @param {instance} inst_b - 目标实例（使用其内置 bbox）
-/// @return {bool} 是否发生碰撞
-/// @description 检测 inst_a 的精确碰撞遮罩（1:1 原始尺寸，不受 image_xscale/image_yscale 影响）是否与 inst_b 的 bbox 重叠。
-///              考虑 image_angle 旋转。适用于保持视觉缩放但碰撞使用精确遮罩的场景。
+
 function precise_bbox_collision(_inst_a, _inst_b) {
     if (is_undefined(_inst_a) || is_undefined(_inst_b)) return false;
     if (_inst_a == noone || _inst_b == noone) return false;

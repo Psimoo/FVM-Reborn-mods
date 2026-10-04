@@ -12,10 +12,10 @@ if x > 2200 or y > 1200 or x < -200 or y < -200{
 	instance_destroy()
 	exit
 }
-// 目标敌人在飞行过程中死亡，检查是否落地
+
 if target_enemy != noone && (!instance_exists(target_enemy) or target_enemy.hp <= 0){
     if y >= thrower_y {
-        // 击中地面，造成溅射伤害
+
 		var inst = instance_create_depth(x,y,depth,obj_coffeecup_bullet_effect)
 		inst.sprite_index = spr_chocolatepult_bullet_effect
 		inst.image_xscale = 1.2
@@ -35,7 +35,6 @@ if !atk_modified{
 	}
 }
 
-// 类型过滤碰撞检测
 hit_tick++;
 if (hit_tick >= global.bullet_hit_interval)
 {
@@ -65,7 +64,7 @@ if (!hit_enemy && variable_global_exists("enemy_by_type"))
 				}
 				hit_enemy = true
 				hitted_enemy = _e.id
-				// 命中敌人后直接产生效果并销毁，不再弹射
+
 				if sprite_index == spr_chocolatepult_bullet_large{
                     if shape >= 1{
                         if _e.stun_timer <240{

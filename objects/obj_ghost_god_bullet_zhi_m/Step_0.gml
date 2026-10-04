@@ -17,7 +17,6 @@ if (x > 2200 || y > 1200 || x < 0 || y < -200)
     exit;
 }
 
-// 类型过滤碰撞检测
 hit_tick++;
 if (hit_tick >= global.bullet_hit_interval)
 {
@@ -54,4 +53,3 @@ if (variable_global_exists("enemy_by_type"))
 }
 	}
 }
-

@@ -1,5 +1,4 @@
-// 工匠神竖向子弹 - 步事件
-// 列锁定 + 上下速度，到达边缘后反转方向返回；沿途对 bbox 相交敌人造成伤害
+
 if (global.is_paused)
 {
     image_speed = 0;
@@ -16,10 +15,8 @@ if (life_frames >= max_life_frames)
     exit;
 }
 
-// 上下移动
 y += move_speed * vertical_dir;
 
-// 到达边缘后反转方向返回，清空命中列表以重新命中
 if (vertical_dir < 0 && y <= my_top)
 {
     y = my_top;
@@ -35,7 +32,6 @@ else if (vertical_dir > 0 && y >= my_bottom)
     if (ds_exists(hitted_enemy, ds_type_list)) ds_list_clear(hitted_enemy);
 }
 
-// 命中检测
 if (!ds_exists(hitted_enemy, ds_type_list)) exit;
 
 hit_tick++;
@@ -108,4 +104,3 @@ if (variable_global_exists("enemy_by_type"))
 }
 	}
 }
-

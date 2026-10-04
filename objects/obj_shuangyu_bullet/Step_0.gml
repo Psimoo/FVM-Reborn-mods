@@ -22,7 +22,6 @@ if (target_enemy != -4 && (!instance_exists(target_enemy) || target_enemy.hp <= 
     }
 }
 
-// 类型过滤碰撞检测
 hit_tick++;
 if (hit_tick >= global.bullet_hit_interval)
 {
@@ -64,4 +63,3 @@ if (!hit_enemy && variable_global_exists("enemy_by_type"))
 }
 	}
 }
-

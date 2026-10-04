@@ -91,7 +91,7 @@ if (variable_global_exists("enemy_by_type"))
 
                 if (_is_boss && shape == 3)
                 {
-                    // 终转对 Boss 造成护法神当前实际攻击力的 2 倍，包含所有增幅。
+
                     _dmg = damage * 2;
                 }
                 else if (_is_boss)
@@ -168,4 +168,3 @@ if (variable_global_exists("enemy_by_type"))
 }
 	}
 }
-

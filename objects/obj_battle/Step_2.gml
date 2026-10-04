@@ -3,10 +3,10 @@ obj_pool_prewarm_tick();
 for (var _i = 0; _i < array_length(global._move_instance_pre_arr); _i++) {
     var _inst = global._move_instance_pre_arr[_i];
     with (_inst) {
-        // 判断是否拥有 parent_plant 或 parent_player 变量，且它们的值（对象索引）继承自 obj_card_parent
+
         var _hasPlant = variable_instance_exists(id, "parent_plant") && instance_exists(parent_plant) && object_is_ancestor(parent_plant.object_index, obj_card_parent);
         var _hasPlayer = variable_instance_exists(id, "parent_player") && instance_exists(parent_player) && object_is_ancestor(parent_player.object_index, obj_card_parent);
-		// Some card-attached ground effects keep their owner in banding_card_obj.
+
 		var _hasCard = (object_index == obj_in_water_effect || object_index == obj_sleep_effect || object_index == obj_lava_burn_effect)
 			&& variable_instance_exists(id, "banding_card_obj")
 			&& instance_exists(banding_card_obj)
@@ -27,8 +27,6 @@ for (var _i = 0; _i < array_length(global._move_instance_pre_arr); _i++) {
 
 global._move_instance_pre_arr = [];
 
-
-
 current_wave_hp = 0
 with obj_enemy_parent{
 	if target_type != "obstacle"{
@@ -46,7 +44,7 @@ if is_real(global.level_file.version){
 				}
 			}
 		}
-		
+
 	}
 }
 if current_wave_hp <= hp_ratio * current_total_hp && level_stage != "boss"{
@@ -59,12 +57,12 @@ if current_wave_hp <= hp_ratio * current_total_hp && level_stage != "boss"{
 if not global.is_paused{
 	wave_timer -= obj_battle.time_ticks_this_step
 }
-// 魔塔模式：小兵击杀后立刻进入下一波
+
 var _is_tower = (string_pos("tower_cake_", global.level_data.id) > 0)
 if _is_tower && level_stage == "pre" && !boss_waiting_clear && current_wave_hp <= 0 && current_wave < total_wave - 1 {
 	var _curr_sub_total = array_length(global.level_file.waves[current_wave].subwaves)
 	if current_subwave >= _curr_sub_total - 1 {
-		// 所有子波已召唤且敌人全清，立刻进入下一波
+
 		current_wave += 1
 		current_subwave = 0
 		wave_timer = 0
@@ -72,14 +70,14 @@ if _is_tower && level_stage == "pre" && !boss_waiting_clear && current_wave_hp <
 		instance_create_depth(room_width/2,room_height/2,-300,obj_huge_wave_text)
 	}
 }
-// 魔塔模式：Boss波一开始就出Boss（不等小兵清完）
+
 if _is_tower && level_stage == "pre" && !boss_waiting_clear && current_wave < total_wave {
 	var _tw_data = global.level_file.waves[current_wave]
 	if _tw_data.boss_wave && global.save_data.unlocked_items.elite_unlocked {
 		boss_waiting_clear = true
 	}
 }
-// BOSS波：等待所有小怪被清光后召唤BOSS（魔塔模式直接召唤）
+
 if boss_waiting_clear && level_stage == "pre" && (current_wave_hp <= 0 || _is_tower) {
 	boss_waiting_clear = false
 	level_stage = "boss"

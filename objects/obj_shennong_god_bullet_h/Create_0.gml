@@ -1,7 +1,7 @@
 damage = 0;
 move_speed = 0;
 row = 0;
-damage_type = "pierce"; // 穿透
+damage_type = "pierce";
 target_type = "all";
 timer = 0;
 shape = 0;

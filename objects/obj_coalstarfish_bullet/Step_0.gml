@@ -1,7 +1,7 @@
 if global.is_paused{
 	image_speed = 0
 	exit
-	
+
 }
 image_speed = 1
 if burnt == 1{
@@ -15,7 +15,6 @@ if (hit_tick >= hit_interval)
 {
 	hit_tick = 0;
 
-	// 类型过滤碰撞检测
 	if (variable_global_exists("enemy_by_type") && precise_bbox_prepare(id)
 		&& bullet_enemy_reachable(id))
 	{

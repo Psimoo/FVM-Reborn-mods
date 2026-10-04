@@ -16,7 +16,6 @@ if (x > 2200 || y > 1200 || x < 0 || y < 0)
     exit;
 }
 
-// Use the unscaled sprite bbox for reflection and obstacle blocking.
 if (!bounced)
 {
     with (obj_water_god)
@@ -54,7 +53,6 @@ with (obj_obstacle)
 if (!instance_exists(id))
     exit;
 
-// 类型过滤碰撞检测
 hit_tick++;
 if (hit_tick >= global.bullet_hit_interval)
 {
@@ -89,4 +87,3 @@ if (variable_global_exists("enemy_by_type"))
 }
 	}
 }
-

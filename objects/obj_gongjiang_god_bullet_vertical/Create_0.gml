@@ -1,10 +1,9 @@
-// 工匠神竖向子弹 - 创建事件
-// 终转额外子弹：在第 1、2 列锁定 x，按上下速度移动，越界销毁
+
 event_inherited();
 damage = 0;
 move_speed = 8;
-vertical_dir = 1;            // -1 向上，+1 向下
-col = 0;                     // 锁定列（代码索引）
+vertical_dir = 1;
+col = 0;
 damage_type = "normal";
 target_type = "normal";
 hittable_types = get_hittable_enemy_types(target_type);

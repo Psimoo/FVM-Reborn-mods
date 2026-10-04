@@ -1,5 +1,4 @@
-// 工匠神水平子弹 - 步事件
-// 沿路径点往返移动，到达每个路径点播放一次转向特效，全程对沿途敌人造成伤害
+
 if (global.is_paused)
 {
     image_speed = 0;
@@ -16,31 +15,29 @@ if (life_frames >= max_life_frames)
     exit;
 }
 
-// 确定当前段目标点
 var _tx, _ty;
-if (phase == 1)            // OUTBOUND_POINT_1
+if (phase == 1)
 {
     _tx = wp1_x;
     _ty = wp1_y;
 }
-else if (phase == 2)        // OUTBOUND_POINT_2
+else if (phase == 2)
 {
     _tx = wp2_x;
     _ty = wp2_y;
 }
-else if (phase == 3)        // RETURN（返回起点快照）
+else if (phase == 3)
 {
     _tx = start_x;
     _ty = start_y;
 }
-else                       // DONE
+else
 {
     if (ds_exists(hitted_enemy, ds_type_list)) ds_list_destroy(hitted_enemy);
     instance_destroy();
     exit;
 }
 
-// 向当前段目标移动（向量归一化，避免浮点插值造成路线偏移）
 var _dx = _tx - x;
 var _dy = _ty - y;
 var _dist = sqrt(_dx * _dx + _dy * _dy);
@@ -59,7 +56,7 @@ if (_dist <= move_speed)
         var _turn_fx = instance_create_depth(x, y, depth - 10, obj_gongjiang_god_effect);
         _turn_fx.sprite_index = _turn_spr;
         _turn_fx.effect_kind = "turn";
-        // 若 wp1 == wp2（单段往返），跳过 phase 2 直接返回
+
         if (wp1_x == wp2_x && wp1_y == wp2_y)
             phase = 3;
         else
@@ -90,7 +87,6 @@ else
     y += (_dy / _dist) * move_speed;
 }
 
-// 命中检测 - 全程沿路对 bbox 相交的敌人造成伤害
 if (!ds_exists(hitted_enemy, ds_type_list)) exit;
 
 hit_tick++;
@@ -117,7 +113,6 @@ if (variable_global_exists("enemy_by_type"))
                 {
                     var _hp_before = _e.hp;
 
-                    // 调用统一伤害接口，不直接访问敌人私有字段
                     with (_e)
                     {
                         damage_amount = other.damage;
@@ -128,11 +123,9 @@ if (variable_global_exists("enemy_by_type"))
                     if (!ds_exists(hitted_enemy, ds_type_list)) break;
                     ds_list_add(hitted_enemy, _e.id);
 
-                    // 三转(含以上)命中后概率定身
                     if (pin_chance > 0 && instance_exists(_e) && _e.hp > 0 && random(1) < pin_chance)
                         _e.frozen_timer = max(_e.frozen_timer, pin_duration);
 
-                    // 三转+ 概率释放河豚毒素特效
                     if (poison_chance > 0 && poison_spr != -1 && instance_exists(_e) && random(1) < poison_chance)
                     {
                         var _pfx = instance_create_depth(_e.x, _e.y, _e.depth - 10, obj_gongjiang_god_effect);
@@ -140,7 +133,6 @@ if (variable_global_exists("enemy_by_type"))
                         _pfx.effect_kind = "poison";
                     }
 
-                    // 击杀产生泡沫效果
                     var _is_kill = (!instance_exists(_e) || _e.hp <= 0 || _hp_before <= damage);
                     if (_is_kill)
                     {
@@ -160,8 +152,6 @@ if (variable_global_exists("enemy_by_type"))
 	}
 }
 
-
-// 越界兜底
 if (x > 2200 || y > 1200 || x < -200 || y < -200)
 {
     if (ds_exists(hitted_enemy, ds_type_list)) ds_list_destroy(hitted_enemy);

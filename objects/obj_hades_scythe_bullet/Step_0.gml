@@ -36,7 +36,6 @@ if (dir == -1)
 x = start_x + px;
 y = start_y + py;
 
-// 类型过滤碰撞检测
 hit_tick++;
 if (hit_tick >= global.bullet_hit_interval)
 {
@@ -70,4 +69,3 @@ if (variable_global_exists("enemy_by_type"))
 }
 	}
 }
-

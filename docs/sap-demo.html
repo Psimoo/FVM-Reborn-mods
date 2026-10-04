@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SAP 扫描线剪枝演示 —— 子弹 vs 敌人</title>
+    <style>
+        body {
+            background: #10131a;
+            color: #dfe6f2;
+            font: 14px/1.6 "Segoe UI", "Microsoft YaHei", sans-serif;
+            margin: 0;
+            padding: 16px;
+        }
+
+        h1 {
+            font-size: 18px;
+            margin: 0 0 8px;
+        }
+
+        #ui {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background: #23304a;
+            color: #dfe6f2;
+            border: 1px solid #3b4b6b;
+            border-radius: 6px;
+            padding: 6px 14px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        button.on {
+            background: #2f6f4f;
+            border-color: #48a877;
+        }
+
+        #stat {
+            margin-left: auto;
+            font-family: Consolas, monospace;
+            font-size: 13px;
+            white-space: pre;
+            color: #9fd0ff;
+        }
+
+        canvas {
+            border: 1px solid #2a3448;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .note {
+            color: #8fa0bb;
+            font-size: 12px;
+            margin-top: 8px;
+        }
+
+        code {
+            color: #ffd479;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>SAP（Sweep and Prune 扫描线剪枝）演示</h1>
+
+    <div id="ui">
+        <button id="b1" class="on">暴力双层遍历 O(n²)</button>
+        <button id="b2">SAP 扫描线</button>
+        <button id="b3">本工程做法：单次二分查询</button>
+        <input id="cnt" type="range" min="100" max="2000" value="800" step="100" style="width:160px">
+        <span id="cntTxt">800</span>
+        <div id="stat"></div>
+    </div>
+
+    <canvas id="cv" width="1160" height="620"></canvas>
+
+    <div class="note">
+        圆形＝子弹，方形＝敌人。只在"两两相交"时才标黄。<br>
+        切换模式看 <code>测试次数</code>：暴力是 n²/2，SAP 只测"当前扫描线附近还活跃"的那些。
+    </div>
+
+    <script>
+        /* =========================================================
+           0. 基础
+           ========================================================= */
+
+        const cv = document.getElementById('cv');
+        const ctx = cv.getContext('2d');
+        const statEl = document.getElementById('stat');
+
+        const 颜色 = { bullet: '#6ec8ff', enemy: '#ff8f6e' };
+
+        // 每个物体都是"子弹"或"敌人"，各自有一个半径（决定 AABB 大小）
+        class 物体 {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.子弹 = Math.random() < 0.5;
+                this.r = this.子弹 ? 7 : 16;          // 子弹小、敌人大
+                this.vx = (Math.random() * 2 - 1) * 1.6; // 速度
+                this.vy = (Math.random() * 2 - 1) * 1.6;
+                this.方 = this.r;                       // 取正方形 AABB，简化演示
+                this.命中 = false;                       // 本帧是否发生碰撞（用于标黄）
+            }
+
+            // 移动 + 边界反弹
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < this.r || this.x > cv.width - this.r) this.vx *= -1;
+                if (this.y < this.r || this.y > cv.height - this.r) this.vy *= -1;
+                this.命中 = false;
+            }
+
+            // ① 关键：每个物体先算出一个"轴对齐包围盒 AABB"
+            //    SAP 的一切都建立在这些 AABB 的 l / r 上
+            get aabb() {
+                return { l: this.x - this.方, r: this.x + this.方, t: this.y - this.方, b: this.y + this.方 };
+            }
+
+            draw() {
+                ctx.fillStyle = this.命中 ? '#ffe066' : (this.子弹 ? 颜色.bullet : 颜色.enemy);
+                if (this.子弹) {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.方, 0, Math.PI * 2);
+                    ctx.fill();
+                } else {
+                    ctx.fillRect(this.x - this.方, this.y - this.方, this.方 * 2, this.方 * 2);
+                }
+            }
+        }
+
+        // AABB 相交判定 —— 所有模式最终都用它，所以"碰撞体积"完全一致
+        function 相交(a, b) {
+            return a.r >= b.l && a.l <= b.r && a.b >= b.t && a.t <= b.b;
+        }
+
+        let 数组 = [];
+        function 重建(n) {
+            数组 = [];
+            for (let i = 0; i < n; i++) 数组.push(new 物体(Math.random() * cv.width, Math.random() * cv.height));
+        }
+
+        /* =========================================================
+           1. 暴力双层遍历：O(n²)
+           ========================================================= */
+
+        function 暴力检测() {
+            let 测试次数 = 0;
+            const 命中 = [];
+            for (let i = 0; i < 数组.length; i++) {
+                for (let j = i + 1; j < 数组.length; j++) {
+                    测试次数++;                       // 每进一次内层循环 = 一次 AABB 测试
+                    if (相交(数组[i].aabb, 数组[j].aabb)) 命中.push([i, j]);
+                }
+            }
+            return { 命中, 测试次数 };
+        }
+
+        /* =========================================================
+           2. SAP 扫描线（参考写法：排序 + 活动队列）
+           ========================================================= */
+
+        function SAP检测() {
+            // ---- ① 按左边界排序 ----
+            // 排序之后，只要沿着 X 轴从左往右扫，就能保证"已经走过的物体"都排在自己前面
+            const 盒 = 数组.map((o, i) => Object.assign({ i }, o.aabb));
+            盒.sort((a, b) => a.l - b.l);
+
+            let 测试次数 = 0;
+            const 命中 = [];
+            const 活动 = [];   // 活动队列：还没被扫描线"甩在身后"的盒子
+
+            for (let k = 0; k < 盒.length; k++) {
+                const 当前 = 盒[k];
+
+                // ---- ② 剪枝：把"右边界已经小于当前左边界"的从队头丢掉 ----
+                // 因为已经按左边界排序，后面的物体左边界只会更大，
+                // 所以队头这个盒子永远不可能再和任何人相交了
+                while (活动.length && 活动[0].r < 当前.l) 活动.shift();
+
+                // ---- ③ 只和活动队列里剩下的比 ----
+                for (let q = 0; q < 活动.length; q++) {
+                    测试次数++;
+                    if (相交(当前, 活动[q])) 命中.push([当前.i, 活动[q].i]);
+                }
+
+                活动.push(当前);
+            }
+            return { 命中, 测试次数, 盒, 活动 };
+        }
+
+        /* =========================================================
+           3. 本工程的做法：排序 + 前缀最大值 + 单次二分查询
+           ---------------------------------------------------------
+           游戏里不是"所有物体两两相比"，而是"每颗子弹问一次：我附近有谁"。
+           所以把 SAP 改造成"可以被单次查询复用"的形式：
+
+              Step_2（每帧一次）:  排序 + 算好"前缀最大右边界"
+              子弹（每次判定）:    二分找到上界 → 往回扫 → 前缀最大值不够就整段停
+
+           注意：这只是"粗筛"，真正的碰撞判定仍然是 相交() ——
+           所以它只会多给候选，绝不会漏判，碰撞体积一个像素都不变。
+           ========================================================= */
+
+        function 建立SAP索引() {
+            // ① 取所有盒子的快照并按左边界排序
+            const 盒 = 数组.map((o, i) => Object.assign({ i }, o.aabb));
+            盒.sort((a, b) => a.l - b.l);
+
+            // ② 前缀最大右边界：pm[k] = max(r[0..k])
+            //    有了它，"往回扫到第 k 个就够了"这句话才有依据：
+            //    如果 pm[k] < 查询左边界，说明 0..k 全体都够不着
+            const pm = new Array(盒.length);
+            let 走 = -Infinity;
+            for (let k = 0; k < 盒.length; k++) {
+                走 = Math.max(走, 盒[k].r);
+                pm[k] = 走;
+            }
+            return { 盒, pm };
+        }
+
+        function 单次查询(索引, ql, qr, qt, qb) {
+            const { 盒, pm } = 索引;
+            let 测试次数 = 0;
+            const 命中 = [];
+
+            // ③ 二分：找到最后一个"左边界 <= 查询右边界"的下标
+            //    （再往右的盒子左边界都超过查询范围，不可能相交）
+            let lo = 0, hi = 盒.length - 1, last = -1;
+            while (lo <= hi) {
+                const mid = Math.floor((lo + hi) / 2);
+                if (盒[mid].l <= qr) { last = mid; lo = mid + 1; } else { hi = mid - 1; }
+            }
+
+            // ④ 从后往前扫，前缀最大值不够就整段停（等价于 SAP 的活动队列剪枝）
+            for (let k = last; k >= 0; k--) {
+                if (pm[k] < ql) break;            // ← 0..k 全体够不着，可以停了
+                测试次数++;
+                const c = 盒[k];
+                if (c.r < ql || c.b < qt || c.t > qb) continue;   // x/y 再确认一次
+                命中.push(c.i);
+            }
+            return { 命中, 测试次数 };
+        }
+
+        /* =========================================================
+           4. 主循环
+           ========================================================= */
+
+        let 模式 = 1;                 // 1=暴力 2=SAP扫描线 3=单次查询
+        let 测试次数 = 0, 命中数 = 0;
+        let 帧 = 0, 上帧 = performance.now(), fps = 0;
+        let 索引缓存 = null;
+
+        function 循环() {
+            帧++;
+
+            // ---- 更新所有物体 ----
+            for (const o of 数组) o.update();
+
+            // ---- 按模式做碰撞检测 ----
+            if (模式 === 1) {
+                const r = 暴力检测();
+                测试次数 = r.测试次数;
+                命中数 = r.命中.length;
+                for (const [i, j] of r.命中) { 数组[i].命中 = true; 数组[j].命中 = true; }
+            }
+            else if (模式 === 2) {
+                const r = SAP检测();
+                测试次数 = r.测试次数;
+                命中数 = r.命中.length;
+                for (const [i, j] of r.命中) { 数组[i].命中 = true; 数组[j].命中 = true; }
+            }
+            else {
+                // 本工程做法：每帧重建一次索引（对应 obj_battle 的 Step_2）
+                索引缓存 = 建立SAP索引();
+                测试次数 = 0;
+                命中数 = 0;
+                // 然后每颗"子弹"独立查询一次（对应每颗子弹的 Step）
+                for (const o of 数组) {
+                    if (!o.子弹) continue;                    // 只有子弹主动查询
+                    const a = o.aabb;
+                    const r = 单次查询(索引缓存, a.l, a.r, a.t, a.b);
+                    测试次数 += r.测试次数;
+                    o.命中 = r.命中.length > 0;
+                    命中数 += r.命中.length;
+                }
+            }
+
+            // ---- 绘制 ----
+            ctx.clearRect(0, 0, cv.width, cv.height);
+            for (const o of 数组) o.draw();
+
+            // ---- 统计 ----
+            const now = performance.now();
+            if (帧 % 15 === 0) fps = Math.round(1000 / (now - 上帧) * 15);
+            上帧 = now;
+            const 名称 = ['', '暴力 O(n²)', 'SAP 扫描线', '本工程：二分查询'][模式];
+            const 上限 = 模式 === 1 ? (数组.length * (数组.length - 1) / 2) : 数组.length;
+            statEl.textContent =
+                `${名称}\n` +
+                `物体  ${数组.length}\n` +
+                `测试  ${测试次数}  (理论上限 ${上限})\n` +
+                `命中  ${命中数}\n` +
+                `FPS   ${fps}`;
+
+            requestAnimationFrame(循环);
+        }
+
+        /* =========================================================
+           5. 界面
+           ========================================================= */
+
+        const 按钮 = [document.getElementById('b1'), document.getElementById('b2'), document.getElementById('b3')];
+        按钮.forEach((b, i) => b.onclick = () => {
+            模式 = i + 1;
+            按钮.forEach((x, k) => x.classList.toggle('on', k === i));
+        });
+
+        const 滑块 = document.getElementById('cnt');
+        滑块.oninput = () => {
+            document.getElementById('cntTxt').textContent = 滑块.value;
+            重建(+滑块.value);
+        };
+
+        重建(800);
+        循环();
+    </script>
+
+</body>
+
+</html>

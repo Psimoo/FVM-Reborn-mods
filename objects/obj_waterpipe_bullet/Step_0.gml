@@ -1,7 +1,7 @@
 if global.is_paused{
 	image_speed = 0
 	exit
-	
+
 }
 image_speed = 1
 if burnt == 1{
@@ -9,16 +9,13 @@ if burnt == 1{
 }
 x += move_speed
 
-// 处理上下行的子弹移动动画
 if target_row != -1{
-    // 计算目标行的y坐标（需要根据你的游戏地图调整计算方式）
+
     var target_y =global.grid_offset_y + global.grid_cell_size_y*target_row;
-    
-    
-    // 平滑移动到目标行（使用线性插值）
-    var transition_speed = 0.15; // 调整这个值来控制移动速度
+
+    var transition_speed = 0.15;
     y = lerp(y, target_y, transition_speed);
-	
+
 	if abs(y - target_y) < 30 {
 		row = target_row
 	}
@@ -29,7 +26,6 @@ if x > 2200 or y > 1200 or x < 0 or y < 0{
 	exit
 }
 
-// 类型过滤碰撞检测
 hit_tick++;
 if (hit_tick >= global.bullet_hit_interval)
 {

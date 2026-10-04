@@ -16,7 +16,7 @@ if (target_row != -1)
     var target_y = global.grid_offset_y + (global.grid_cell_size_y * target_row);
     var transition_speed = 0.15;
     y = lerp(y, target_y, transition_speed);
-    
+
     if (abs(y - target_y) < 30)
         row = target_row;
 }
@@ -24,7 +24,6 @@ if (target_row != -1)
 if (x > 2200 || y > 1200 || x < 0 || y < 0)
     instance_destroy();
 
-// 类型过滤碰撞检测
 hit_tick++;
 if (hit_tick >= global.bullet_hit_interval)
 {
@@ -77,4 +76,3 @@ if (variable_global_exists("enemy_by_type"))
 }
 	}
 }
-

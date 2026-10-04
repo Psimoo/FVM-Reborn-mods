@@ -28,7 +28,6 @@ else{
 }
 x += move_speed
 
-// 类型过滤碰撞检测
 hit_tick++;
 if (hit_tick >= global.bullet_hit_interval)
 {
@@ -64,7 +63,6 @@ if (variable_global_exists("enemy_by_type"))
 }
 	}
 }
-
 
 if x > 2200 or y > 1200 or x < 0 or y < 0{
     instance_destroy()

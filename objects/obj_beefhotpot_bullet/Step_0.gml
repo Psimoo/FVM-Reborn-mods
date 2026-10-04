@@ -7,7 +7,6 @@ if attack_timer >= 120{
     exit
 }
 
-// 类型过滤碰撞检测
 hit_tick++;
 if (hit_tick >= global.bullet_hit_interval)
 {

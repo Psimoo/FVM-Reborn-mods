@@ -11,7 +11,7 @@ if x > 2200 or y > 1200 or x < -200 or y < -200{
 }
 
 if y >= thrower_y {
-    // 击中地面，造成溅射伤害
+
 	var grid_pos = get_grid_position_from_world(x,y)
 	var inst = instance_create_depth(grid_pos.x,grid_pos.y,0,obj_panfriedbun_bullet_effect)
 	inst.damage = round(damage*splash_ratio)
@@ -34,7 +34,6 @@ if !atk_modified{
 	}
 }
 
-// 类型过滤碰撞检测
 hit_tick++;
 if (hit_tick >= global.bullet_hit_interval)
 {

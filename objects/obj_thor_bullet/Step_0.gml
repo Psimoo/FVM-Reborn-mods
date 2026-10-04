@@ -22,7 +22,6 @@ if (target_enemy != -4 && (!instance_exists(target_enemy) || target_enemy.hp <= 
     }
 }
 
-// 类型过滤碰撞检测
 hit_tick++;
 if (hit_tick >= global.bullet_hit_interval)
 {
@@ -57,7 +56,7 @@ if (!hit_enemy && variable_global_exists("enemy_by_type"))
 				hitted_enemy = _e.id;
 
 				instance_create_depth(x, y, depth, obj_thor_bullet_effect_1);
-				// 雷神冰锤命中后直接结束，不沿目标身后继续飞行（色拉投手的弹射行为）。
+
 				instance_destroy();
 				exit;
 			}
@@ -66,4 +65,3 @@ if (!hit_enemy && variable_global_exists("enemy_by_type"))
 }
 	}
 }
-

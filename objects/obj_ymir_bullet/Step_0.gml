@@ -20,26 +20,25 @@ if (cvspeed < 0 && y >= thrower_y)
     if (!hit_enemy)
     {
         var inst = instance_create_depth(x, y, depth, obj_iceeggboilerpult_bullet_effect);
-        
+
         if (shape == 3)
             inst.sprite_index = spr_ymir_bullet_effect;
-        
+
         if (shape == 2)
             inst.sprite_index = spr_ymir_bullet_effect_1;
-        
+
         if (shape == 1)
             inst.sprite_index = spr_ymir_bullet_effect_2;
-        
+
         if (shape == 0)
             inst.sprite_index = spr_ymir_bullet_effect_3;
-        
+
         audio_play_sound(snd_egg_bullet, 0, 0);
         instance_destroy();
         exit;
     }
 }
 
-// 类型过滤碰撞检测
 hit_tick++;
 if (hit_tick >= global.bullet_hit_interval)
 {
@@ -115,4 +114,3 @@ if (variable_global_exists("enemy_by_type"))
 }
 	}
 }
-

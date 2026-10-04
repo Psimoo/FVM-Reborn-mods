@@ -64,7 +64,6 @@ if (variable_global_exists("enemy_by_type"))
 
                 ds_list_add(hitted_enemy, _e.id);
 
-                // 子弹击杀灰烬
                 if (ash_kill && _prev_hp > 0 && _e.hp <= 0)
                 {
                     if (shape >= 2)
@@ -103,4 +102,3 @@ if (variable_global_exists("enemy_by_type"))
 }
 	}
 }
-
