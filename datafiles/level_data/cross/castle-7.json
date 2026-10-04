@@ -1738,36 +1738,15 @@
     ],
     "rewards": [
         {
-            "gold": 8000000,
-            "items": [
-                {
-                    "id": "natural_spices",
-                    "amount": 20
-                }
-            ]
+            "items": []
         },
         {
-            "gem_unlock": [
-                "attack_gem"
-            ],
             "player_level": 2,
             "skill_level": 1,
-            "gold": 8000000,
-            "items": [
-                {
-                    "id": "natural_spices",
-                    "amount": 20
-                }
-            ],
-            "card_unlock": [
-                "double_long_bao",
-                "coke_bomb",
-                "mouse_clip"
-            ],
-            "weapon_unlock": [
-                "star_gun",
-                "cookie_shield"
-            ]
+            "items": [],
+            "gem_unlock": [],
+            "card_unlock": [],
+            "weapon_unlock": []
         }
     ],
     "hp_modify": 1,

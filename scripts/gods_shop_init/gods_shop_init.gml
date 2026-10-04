@@ -1503,4 +1503,22 @@ register_gods_goods("haiyang_god_3",
     spr: spr_haiyang_god_pin3
 });
 
+// 最新融合卡：本体和全部融合凭证进入诸神商店；凭证沿用对应形态卡面。
+register_gods_goods("lizi_god", {type:"card", cost:"16", unlock_item_id:"lizi_god", description:"如意香烤栗子：滚动栗子并造成灼烧", display_name:"如意香烤栗子"});
+register_gods_goods("lizi_god_1", {type:"shape", cost:"16", unlock_item_id:"lizi_god", target_shape:1, description:"初级融合：3×3范围灼烧", display_name:"初级融合凭证（烤栗子）", spr:spr_lizi_god_1});
+register_gods_goods("lizi_god_2", {type:"shape", cost:"32", unlock_item_id:"lizi_god", target_shape:2, description:"深度融合：周期性追加3×3爆炸", display_name:"深度融合凭证（烤栗子）", spr:spr_lizi_god_2});
+register_gods_goods("lizi_god_3", {type:"shape", cost:"48", unlock_item_id:"lizi_god", target_shape:3, description:"灵魂融合：向三行投掷栗子弹", display_name:"灵魂融合凭证（烤栗子）", spr:spr_lizi_god_2});
+register_gods_goods("youyu_god", {type:"card", cost:"16", unlock_item_id:"youyu_god", description:"松香怪味鱿鱼：八方向各一发鱿鱼弹，需放置在章鱼烧上", display_name:"松香怪味鱿鱼"});
+register_gods_goods("youyu_god_1", {type:"shape", cost:"16", unlock_item_id:"youyu_god", target_shape:1, description:"初级融合·鱿鱼：八方向射击，无需底座", display_name:"初级融合凭证（鱿鱼）", spr:spr_youyu_god_1});
+register_gods_goods("youyu_god_2", {type:"shape", cost:"32", unlock_item_id:"youyu_god", target_shape:2, description:"深度融合·鱿鱼：前后路追加弹道，中路子弹穿火增幅", display_name:"深度融合凭证（鱿鱼）", spr:spr_youyu_god_2});
+register_gods_goods("youyu_god_3", {type:"shape", cost:"48", unlock_item_id:"youyu_god", target_shape:3, description:"灵魂融合·鱿鱼：二十二发鱿鱼弹齐射", display_name:"灵魂融合凭证（鱿鱼）", spr:spr_youyu_god_2});
+register_gods_goods("ronghehaixing", {type:"card", cost:"16", unlock_item_id:"ronghehaixing", description:"仙人球海星刺身：双发多方向刺身弹", display_name:"仙人球海星刺身"});
+register_gods_goods("ronghehaixing_1", {type:"shape", cost:"16", unlock_item_id:"ronghehaixing", target_shape:1, description:"初级融合：命中后按比例扩散", display_name:"初级融合凭证（海星刺身）", spr:spr_ronghehaixing_1});
+register_gods_goods("ronghehaixing_2", {type:"shape", cost:"32", unlock_item_id:"ronghehaixing", target_shape:2, description:"深度融合：扩散伤害提升", display_name:"深度融合凭证（海星刺身）", spr:spr_ronghehaixing_2});
+register_gods_goods("ronghehaixing_3", {type:"shape", cost:"48", unlock_item_id:"ronghehaixing", target_shape:3, description:"灵魂融合：追踪弹增加额外伤害", display_name:"灵魂融合凭证（海星刺身）", spr:spr_ronghehaixing_2});
+register_gods_goods("ronghedan_god", {type:"card", cost:"16", unlock_item_id:"ronghedan_god", description:"臭豆腐煮蛋器：双蛋攻击并有概率定身", display_name:"臭豆腐煮蛋器"});
+register_gods_goods("ronghedan_god_1", {type:"shape", cost:"16", unlock_item_id:"ronghedan_god", target_shape:1, description:"初级融合：定身概率和持续时间提升", display_name:"初级融合凭证（煮蛋器）", spr:spr_ronghedan_god_1});
+register_gods_goods("ronghedan_god_2", {type:"shape", cost:"32", unlock_item_id:"ronghedan_god", target_shape:2, description:"深度融合：附加毒伤", display_name:"深度融合凭证（煮蛋器）", spr:spr_ronghedan_god_2});
+register_gods_goods("ronghedan_god_3", {type:"shape", cost:"48", unlock_item_id:"ronghedan_god", target_shape:3, description:"灵魂融合：三行各发射两枚煮蛋", display_name:"灵魂融合凭证（煮蛋器）", spr:spr_ronghedan_god_2});
+
 }

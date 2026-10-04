@@ -14,6 +14,7 @@
     {"name":"obj_beefhotpot_bullet","path":"objects/obj_beefhotpot_bullet/obj_beefhotpot_bullet.yy",},
     {"name":"obj_obstacle","path":"objects/obj_catgun_bullet/obj_catgun_bullet.yy",},
     {"name":"obj_cherry_pudding","path":"objects/obj_coalstarfish_bullet/obj_coalstarfish_bullet.yy",},
+    {"name":"obj_ronghehaixing_bullet","path":"objects/obj_ronghehaixing_bullet/obj_ronghehaixing_bullet.yy",},
     {"name":"obj_obstacle","path":"objects/obj_coffeecup_bullet/obj_coffeecup_bullet.yy",},
     {"name":"obj_coffeepot_bullet","path":"objects/obj_coffeepot_bullet/obj_coffeepot_bullet.yy",},
     {"name":"obj_obstacle","path":"objects/obj_hotdogcannon_bullet/obj_hotdogcannon_bullet.yy",},

@@ -173,7 +173,7 @@ if (keyboard_check_pressed(vk_space) || (mouse_check_button_pressed(mb_left) && 
                             var _cs_level_idx = real(string_delete(global.level_data.id, 1, string_length("ancient_castle_")));
                             var _cs_silver = _cs_silver_medals[min(_cs_level_idx, array_length(_cs_silver_medals) - 1)];
                             var _cs_gold_medal = [90, 120, 181, 240, 280, 395, 635, 875][min(_cs_level_idx, 7)];
-                            var _cs_gold = [600000, 840000, 1040000, 1290000, 1400000, 1600000, 1900000, 2200000][min(_cs_level_idx, 7)];
+                            var _cs_gold = [60000, 84000, 104000, 129000, 140000, 160000, 190000, 220000][min(_cs_level_idx, 7)];
                             add_material_amount("cross_server_silver_medal", _cs_silver * reward_multiplier);
                             add_material_amount("cross_server_gold_medal", _cs_gold_medal * reward_multiplier);
                             global.save_data.player.gold += _cs_gold * reward_multiplier;
@@ -378,7 +378,7 @@ if (keyboard_check_pressed(vk_space) || (mouse_check_button_pressed(mb_left) && 
 								var _cs_level_idx2 = real(string_delete(global.level_data.id, 1, string_length("ancient_castle_")));
 								var _cs_silver2 = _cs_silver_medals2[min(_cs_level_idx2, array_length(_cs_silver_medals2) - 1)];
                                 var _cs_gold_medal2 = [90, 120, 181, 240, 280, 395, 635, 875][min(_cs_level_idx2, 7)];
-                                var _cs_gold2 = [600000, 840000, 1040000, 1290000, 1400000, 1600000, 1900000, 2200000][min(_cs_level_idx2, 7)];
+                                var _cs_gold2 = [60000, 84000, 104000, 129000, 140000, 160000, 190000, 220000][min(_cs_level_idx2, 7)];
                                 add_material_amount("cross_server_silver_medal", _cs_silver2 * reward_multiplier);
                                 add_material_amount("cross_server_gold_medal", _cs_gold_medal2 * reward_multiplier);
                                 global.save_data.player.gold += _cs_gold2 * reward_multiplier;

@@ -9,6 +9,7 @@ function mod_buff_init()
     ds_map_set(global.plant_buff_map, "grilled_lizard_pult", "thrower");
     ds_map_set(global.plant_buff_map, "spoon_rabbit", "thrower");
     ds_map_set(global.plant_buff_map, "zhurong", "thrower");
+    ds_map_set(global.plant_buff_map, "lizi_god", "thrower");
     ds_map_set(global.plant_buff_map, "gaia", "tracker");
     ds_map_set(global.plant_buff_map, "athena", "xiangshui");
     ds_map_set(global.plant_buff_map, "zeus", "xiangshui");
@@ -17,6 +18,7 @@ function mod_buff_init()
     ds_map_set(global.plant_buff_map, "chocolate_pult", "thrower");
     ds_map_set(global.plant_buff_map, "egg_boiler_pult", "thrower");
     ds_map_set(global.plant_buff_map, "ice_egg_boiler_pult", "thrower");
+    ds_map_set(global.plant_buff_map, "ronghedan_god", "thrower");
     ds_map_set(global.plant_buff_map, "salad_pult", "thrower");
     ds_map_set(global.plant_buff_map, "stinky_tofu_pult", "thrower");
     ds_map_set(global.plant_buff_map, "shuangyu", "thrower");
@@ -35,6 +37,8 @@ function mod_buff_init()
     ds_map_set(global.plant_buff_map, "ghost_god", "five_dir");
     ds_map_set(global.plant_buff_map, "rig", "five_dir");
     ds_map_set(global.plant_buff_map, "coal_starfish", "five_dir");
+    ds_map_set(global.plant_buff_map, "ronghehaixing", "five_dir");
+    ds_map_set(global.plant_buff_map, "youyu_god", "five_dir");
     ds_map_set(global.plant_buff_map, "love_god", "multi_dir");
     ds_map_set(global.plant_buff_map, "tiancheng", "multi_dir");
     ds_map_set(global.plant_buff_map, "war_god", "multi_dir");

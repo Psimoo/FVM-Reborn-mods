@@ -1,6 +1,18 @@
 if (global.is_paused) exit;
 event_inherited();
 
+// 战旗存活倒计时：到达技能等级规定的存活时间后淡出并销毁
+zhanqima_life_timer++;
+if (zhanqima_life_timer > zhanqima_life_max)
+{
+    image_alpha -= 0.1;
+    if (image_alpha <= 0)
+    {
+        instance_destroy();
+        exit;
+    }
+}
+
 depth = calculate_plant_depth(grid_col, grid_row, plant_type) - 400;
 if (zhanqima_buff_value != atk / 100)
 {

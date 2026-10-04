@@ -2851,8 +2851,8 @@ register_card("xuanfengniu", obj_xuanfengniu, [
 
     register_card("zhanqima", obj_zhanqima, [
     { shape: 0, sprite: spr_zhanqima, cost: 380, cooldown: 2700, description: "战旗马：5*5范围内攻击型卡片提高基础攻击力", plant_type: "normal", feature_type: "normal", target_card: "none", is_gold: 0, place_preview: spr_zhanqima },
-    { shape: 1, sprite: spr_zhanqima_1, cost: 380, cooldown: 2700, description: "二战旗马：5*5范围内攻击型卡片提高基础攻击力，增幅倍率提升，无需格子", plant_type: "gridless", feature_type: "normal", target_card: "none", is_gold: 0, place_preview: spr_zhanqima_1 },
-    { shape: 2, sprite: spr_zhanqima_2, cost: 380, cooldown: 2700, description: "燎原战旗马：全屏增幅所有主动攻击型卡片，无需格子", plant_type: "gridless", feature_type: "normal", target_card: "none", is_gold: 0, place_preview: spr_zhanqima_2 }]);
+    { shape: 1, sprite: spr_zhanqima_1, cost: 380, cooldown: 2700, description: "飞天战旗马：5*5范围内攻击型卡片提高基础攻击力，无需格子", plant_type: "gridless", feature_type: "normal", target_card: "none", is_gold: 0, place_preview: spr_zhanqima_1 },
+    { shape: 2, sprite: spr_zhanqima_2, cost: 380, cooldown: 2700, description: "燎原战旗马：全屏增幅所有主动攻击型卡片，增幅提升，无需格子", plant_type: "gridless", feature_type: "normal", target_card: "none", is_gold: 0, place_preview: spr_zhanqima_2 }]);
 
     register_card("haiyang_god", obj_haiyang_god, [
     {
@@ -2995,5 +2995,31 @@ register_card("hongliukaochuan", obj_hongliukaochuan, [
 { shape: 0, sprite: spr_hongliukaochuan, cost: 230, cooldown: 420, description: "红柳烤串机：全屏索敌追踪穿透弹", plant_type: "normal", feature_type: "normal", target_card: "none", is_gold: 0, place_preview: spr_hongliukaochuan },
 { shape: 1, sprite: spr_hongliukaochuan_1, cost: 230, cooldown: 420, description: "茴香红柳烤串机：攻击力提高", plant_type: "normal", feature_type: "normal", target_card: "none", is_gold: 0, place_preview: spr_hongliukaochuan_1 },
 { shape: 2, sprite: spr_hongliukaochuan_2, cost: 230, cooldown: 420, description: "星火红柳烤串机：攻击力翻倍", plant_type: "normal", feature_type: "normal", target_card: "none", is_gold: 0, place_preview: spr_hongliukaochuan_2 }
+]);
+
+// 融合卡：四形态均为金卡，形态贴图直接使用对应 shape 素材。
+register_card("lizi_god", obj_lizi_god, [
+{shape:0,sprite:spr_lizi_god,cost:160,cooldown:420,description:"如意香烤栗子：滚动栗子并造成灼烧",plant_type:"normal",feature_type:"normal",target_card:"none",is_gold:1,place_preview:spr_lizi_god},
+{shape:1,sprite:spr_lizi_god_1,cost:160,cooldown:420,description:"初级融合：3×3范围灼烧",plant_type:"normal",feature_type:"normal",target_card:"none",is_gold:1,place_preview:spr_lizi_god_1},
+{shape:2,sprite:spr_lizi_god_2,cost:160,cooldown:420,description:"深度融合：周期性追加3×3爆炸",plant_type:"normal",feature_type:"normal",target_card:"none",is_gold:1,place_preview:spr_lizi_god_2},
+{shape:3,sprite:spr_lizi_god_2,cost:160,cooldown:420,description:"灵魂融合：向三行投掷栗子弹",plant_type:"normal",feature_type:"normal",target_card:"none",is_gold:1,place_preview:spr_lizi_god_2}
+]);
+register_card("youyu_god", obj_youyu_god, [
+{shape:0,sprite:spr_youyu_god,cost:155,cooldown:420,description:"松香怪味鱿鱼：八方向各一发鱿鱼弹，需放置在章鱼烧上",plant_type:"normal",feature_type:"upgrade",target_card:"takoyaki",is_gold:1,place_preview:spr_youyu_god},
+{shape:1,sprite:spr_youyu_god_1,cost:155,cooldown:420,description:"初级融合·鱿鱼：八方向射击，无需底座",plant_type:"normal",feature_type:"normal",target_card:"none",is_gold:1,place_preview:spr_youyu_god_1},
+{shape:2,sprite:spr_youyu_god_2,cost:155,cooldown:420,description:"深度融合·鱿鱼：前后路追加弹道，中路子弹穿火增幅",plant_type:"normal",feature_type:"normal",target_card:"none",is_gold:1,place_preview:spr_youyu_god_2},
+{shape:3,sprite:spr_youyu_god_2,cost:155,cooldown:420,description:"灵魂融合·鱿鱼：二十二发鱿鱼弹齐射",plant_type:"normal",feature_type:"normal",target_card:"none",is_gold:1,place_preview:spr_youyu_god_2}
+]);
+register_card("ronghehaixing", obj_ronghehaixing, [
+{shape:0,sprite:spr_ronghehaixing,cost:175,cooldown:420,description:"仙人球海星刺身：双发多方向刺身弹",plant_type:"normal",feature_type:"normal",target_card:"none",is_gold:1,place_preview:spr_ronghehaixing},
+{shape:1,sprite:spr_ronghehaixing_1,cost:175,cooldown:420,description:"初级融合：命中后按比例扩散",plant_type:"normal",feature_type:"normal",target_card:"none",is_gold:1,place_preview:spr_ronghehaixing_1},
+{shape:2,sprite:spr_ronghehaixing_2,cost:175,cooldown:420,description:"深度融合：扩散伤害提升",plant_type:"normal",feature_type:"normal",target_card:"none",is_gold:1,place_preview:spr_ronghehaixing_2},
+{shape:3,sprite:spr_ronghehaixing_2,cost:175,cooldown:420,description:"灵魂融合：追踪弹增加额外伤害",plant_type:"normal",feature_type:"normal",target_card:"none",is_gold:1,place_preview:spr_ronghehaixing_2}
+]);
+register_card("ronghedan_god", obj_ronghedan_god, [
+{shape:0,sprite:spr_ronghedan_god,cost:250,cooldown:420,description:"臭豆腐煮蛋器：双蛋攻击并有概率定身",plant_type:"normal",feature_type:"normal",target_card:"none",is_gold:1,place_preview:spr_ronghedan_god},
+{shape:1,sprite:spr_ronghedan_god_1,cost:250,cooldown:420,description:"初级融合：定身概率和持续时间提升",plant_type:"normal",feature_type:"normal",target_card:"none",is_gold:1,place_preview:spr_ronghedan_god_1},
+{shape:2,sprite:spr_ronghedan_god_2,cost:250,cooldown:420,description:"深度融合：附加毒伤",plant_type:"normal",feature_type:"normal",target_card:"none",is_gold:1,place_preview:spr_ronghedan_god_2},
+{shape:3,sprite:spr_ronghedan_god_2,cost:250,cooldown:420,description:"灵魂融合：三行各发射两枚煮蛋",plant_type:"normal",feature_type:"normal",target_card:"none",is_gold:1,place_preview:spr_ronghedan_god_2}
 ]);
 }

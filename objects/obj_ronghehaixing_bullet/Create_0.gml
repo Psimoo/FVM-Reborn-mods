@@ -1,0 +1,16 @@
+damage = 0
+move_speed = 0
+y_move_speed = 0
+row = 0
+col = 0
+damage_type = "normal"
+target_type = "normal"
+b_type = 0
+bounced = false
+shape = 0
+target_id = noone
+has_bounced_wall = false
+bullet_speed = 8
+image_xscale = 1.5;
+image_yscale = 1.5;
+hittable_types = get_hittable_enemy_types(target_type);

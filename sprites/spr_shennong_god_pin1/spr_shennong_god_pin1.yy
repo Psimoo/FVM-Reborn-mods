@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"spr_shennong_god",
-    "path":"folders/精灵/mod/Cards/spr_shennong_god.yy",
+    "name":"shennong_god",
+    "path":"folders/精灵/mod/Cards/shennong_god.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

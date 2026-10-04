@@ -41,3 +41,7 @@ if (!variable_global_exists("zhanqima_sources"))
     global.zhanqima_sources = ds_list_create();
 ds_list_add(global.zhanqima_sources, id);
 if (variable_global_exists("buff_apply_id")) global.buff_apply_id++;
+
+// 战旗持续[攻击间隔]后消失：存活时长由技能等级对应的 cycle 决定（单位：帧）
+zhanqima_life_max = cycle;
+zhanqima_life_timer = 0;

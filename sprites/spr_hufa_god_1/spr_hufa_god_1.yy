@@ -53,8 +53,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"spr_hufa_god",
-    "path":"folders/精灵/mod/Cards/spr_hufa_god.yy",
+    "name":"hufa_god",
+    "path":"folders/精灵/mod/Cards/hufa_god.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
