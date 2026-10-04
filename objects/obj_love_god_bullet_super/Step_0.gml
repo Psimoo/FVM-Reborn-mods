@@ -34,6 +34,7 @@ hit_tick++;
 if (hit_tick >= global.bullet_hit_interval)
 {
 	hit_tick = 0;
+	if (bullet_enemy_reachable(id)) {
 if (variable_global_exists("enemy_by_type"))
 {
     for (var _t = 0; _t < array_length(hittable_types); _t++)
@@ -63,5 +64,6 @@ if (variable_global_exists("enemy_by_type"))
         }
     }
 }
+	}
 }
 

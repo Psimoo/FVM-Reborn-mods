@@ -16,7 +16,8 @@ if (hit_tick >= hit_interval)
 	hit_tick = 0;
 
 	// 类型过滤碰撞检测
-	if (variable_global_exists("enemy_by_type") && precise_bbox_prepare(id))
+	if (variable_global_exists("enemy_by_type") && precise_bbox_prepare(id)
+		&& bullet_enemy_reachable(id))
 	{
 		var _al = global._pbc_l;
 		var _ar = global._pbc_r;

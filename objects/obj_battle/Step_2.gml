@@ -126,29 +126,38 @@ if (!global.save_data.unlocked_items.elite_unlocked && current_wave >= global.le
 }
 
 if (variable_global_exists("enemy_by_type")) {
-	if (!variable_global_exists("_ebt_keys") || !variable_global_exists("_ebt_refresh") || global._ebt_refresh <= 0) {
-		global._ebt_keys = variable_struct_get_names(global.enemy_by_type);
-		global._ebt_refresh = 120;
-	}
-	global._ebt_refresh--;
-	var _ebt_n = array_length(global._ebt_keys);
-	if (_ebt_n > 0) {
-		if (!variable_global_exists("_ebt_cursor") || global._ebt_cursor >= _ebt_n) global._ebt_cursor = 0;
-		var _ebt_key = global._ebt_keys[global._ebt_cursor];
-		global._ebt_cursor = (global._ebt_cursor + 1) % _ebt_n;
-		if (variable_struct_exists(global.enemy_by_type, _ebt_key)) {
-			var _ebt_list = global.enemy_by_type[$ _ebt_key];
-			if (is_array(_ebt_list)) {
-				var _ebt_keep = [];
-				var _ebt_len = array_length(_ebt_list);
-				for (var _ebt_i = 0; _ebt_i < _ebt_len; _ebt_i++) {
-					var _ebt_id = _ebt_list[_ebt_i];
-					if (instance_exists(_ebt_id)) array_push(_ebt_keep, _ebt_id);
-				}
-				if (array_length(_ebt_keep) != _ebt_len) {
-					global.enemy_by_type[$ _ebt_key] = _ebt_keep;
-				}
+	var _ebt_min = 1000000;
+	var _ebt_max = -1000000;
+	var _ebt_keys = variable_struct_get_names(global.enemy_by_type);
+	var _ebt_kn = array_length(_ebt_keys);
+	for (var _ebt_k = 0; _ebt_k < _ebt_kn; _ebt_k++) {
+		var _ebt_key = _ebt_keys[_ebt_k];
+		var _ebt_list = global.enemy_by_type[$ _ebt_key];
+		if (!is_array(_ebt_list)) continue;
+		var _ebt_len = array_length(_ebt_list);
+		if (_ebt_len == 0) continue;
+		var _ebt_dead = 0;
+		for (var _ebt_i = 0; _ebt_i < _ebt_len; _ebt_i++) {
+			var _ebt_id = _ebt_list[_ebt_i];
+			if (!instance_exists(_ebt_id)) { _ebt_dead++; continue; }
+			var _ebt_x = _ebt_id.x;
+			if (_ebt_x < -10000) { _ebt_dead++; continue; }
+			var _ebt_l = _ebt_id.bbox_left;
+			if (_ebt_l < _ebt_min) _ebt_min = _ebt_l;
+			var _ebt_r = _ebt_id.bbox_right;
+			if (_ebt_r > _ebt_max) _ebt_max = _ebt_r;
+		}
+		if (_ebt_dead > 0) {
+			var _ebt_keep = [];
+			for (var _ebt_i = 0; _ebt_i < _ebt_len; _ebt_i++) {
+				var _ebt_id = _ebt_list[_ebt_i];
+				if (!instance_exists(_ebt_id)) continue;
+				if (_ebt_id.x < -10000) continue;
+				array_push(_ebt_keep, _ebt_id);
 			}
+			global.enemy_by_type[$ _ebt_key] = _ebt_keep;
 		}
 	}
+	global.enemy_min_left = _ebt_min;
+	global.enemy_max_right = _ebt_max;
 }

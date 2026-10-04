@@ -134,3 +134,14 @@ function precise_bbox_prepare(_inst_a) {
     global._pbc_b = _a_bottom;
     return true;
 }
+
+function bullet_enemy_reachable(_inst) {
+    if (variable_global_exists("bullet_range_prune") && !global.bullet_range_prune) return true;
+    if (!variable_global_exists("enemy_min_left") || !variable_global_exists("enemy_max_right")) return true;
+    if (!precise_bbox_prepare(_inst)) return true;
+
+    if (!variable_global_exists("bullet_range_margin")) global.bullet_range_margin = 128;
+    if (global.enemy_min_left - global.bullet_range_margin > global._pbc_r) return false;
+    if (global.enemy_max_right + global.bullet_range_margin < global._pbc_l) return false;
+    return true;
+}
