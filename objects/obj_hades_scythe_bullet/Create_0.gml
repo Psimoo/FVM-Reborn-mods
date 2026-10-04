@@ -21,4 +21,5 @@ start_y = y;
 image_xscale = 1.2;
 image_yscale = 1.2;
 hittable_types = get_hittable_enemy_types(target_type);
+hit_tick = 0;
 array_push(hittable_types, "invisible");

@@ -16,6 +16,7 @@ bounced = false;
 image_xscale = 1.6;
 image_yscale = 1.6;
 hittable_types = get_hittable_enemy_types(target_type);
+hit_tick = 0;
 ash_kill = false;
 sanwei_stack = 1;
 burn_bonus = false;

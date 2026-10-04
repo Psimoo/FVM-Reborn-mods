@@ -8,3 +8,4 @@ hitted_enemy = -4;
 image_xscale = 1.4;
 image_yscale = 1.4;
 hittable_types = get_hittable_enemy_types(target_type);
+hit_tick = 0;

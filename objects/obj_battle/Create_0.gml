@@ -16,6 +16,13 @@ global.game_over = false
 // 每场战斗重新建立敌人索引，避免上一局销毁实例后的残留 ID 被新局扫描。
 global.enemy_by_type = {};
 
+global.enemy_sx = [];
+global.enemy_sx_l = [];
+global.enemy_sx_pmax = [];
+global.enemy_sx_gen = 0;
+
+if (!variable_global_exists("bullet_hit_interval")) global.bullet_hit_interval = 2;
+
 instance_create_depth(0,0,0,obj_battle_pause_manager)
 instance_create_depth(0,0,-2900,obj_battle_timer_display)
 instance_create_depth(mouse_x,mouse_y,0,obj_player_character)
@@ -31,6 +38,8 @@ global.grid_cell_size_y = 116
 global.grid_offset_y = 228
 global.grid_cols = global.level_file.map_cols
 global.grid_rows = global.level_file.map_rows
+
+global.enemy_col_n = array_create(global.grid_cols, 0);
 
 // 测试关卡老鼠选择器
 global.test_mouse_picker_open = false;

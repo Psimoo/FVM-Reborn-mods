@@ -31,7 +31,7 @@ if (hit_tick >= hit_interval)
 		{
 			var _key = hittable_types[_t];
 			if (!variable_struct_exists(global.enemy_by_type, _key)) continue;
-			var _list = global.enemy_by_type[$ _key];
+			var _list = bullet_sap_type_list(id, _key);
 			var _n = array_length(_list);
 			for (var _i = 0; _i < _n; _i++)
 			{

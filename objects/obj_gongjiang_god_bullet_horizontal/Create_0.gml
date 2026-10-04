@@ -7,6 +7,7 @@ move_speed = 8;
 damage_type = "normal";
 target_type = "normal";
 hittable_types = get_hittable_enemy_types(target_type);
+hit_tick = 0;
 
 // 已命中敌人去重列表，避免同一发子弹重复伤害同一目标
 hitted_enemy = ds_list_create();

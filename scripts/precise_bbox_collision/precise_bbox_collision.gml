@@ -138,10 +138,72 @@ function precise_bbox_prepare(_inst_a) {
 function bullet_enemy_reachable(_inst) {
     if (variable_global_exists("bullet_range_prune") && !global.bullet_range_prune) return true;
     if (!variable_global_exists("enemy_min_left") || !variable_global_exists("enemy_max_right")) return true;
-    if (!precise_bbox_prepare(_inst)) return true;
+    if (!instance_exists(_inst)) return true;
 
     if (!variable_global_exists("bullet_range_margin")) global.bullet_range_margin = 128;
-    if (global.enemy_min_left - global.bullet_range_margin > global._pbc_r) return false;
-    if (global.enemy_max_right + global.bullet_range_margin < global._pbc_l) return false;
+    var _m = global.bullet_range_margin + 64;
+    var _x = _inst.x;
+    if (global.enemy_min_left > _x + _m) return false;
+    if (global.enemy_max_right < _x - _m) return false;
     return true;
+}
+
+function bullet_sap_type_list(_inst, _key) {
+    if (!variable_instance_exists(_inst, "_sap_all")) _inst._sap_all = [];
+    if (!variable_instance_exists(_inst, "_sap_out")) _inst._sap_out = [];
+
+    if (!variable_instance_exists(_inst, "_sap_gen") || _inst._sap_gen != global.enemy_sx_gen) {
+        if (!precise_bbox_prepare(_inst)) return [];
+        _inst._sap_gen = global.enemy_sx_gen;
+
+        var _all = _inst._sap_all;
+        array_resize(_all, 0);
+
+        if (!variable_global_exists("bullet_range_margin")) global.bullet_range_margin = 128;
+        var _m = global.bullet_range_margin;
+        var _ql = global._pbc_l - _m;
+        var _qr = global._pbc_r + _m;
+        var _qt = global._pbc_t;
+        var _qb = global._pbc_b;
+
+        var _sx = global.enemy_sx;
+        var _sl = global.enemy_sx_l;
+        var _pm = global.enemy_sx_pmax;
+        var _n = array_length(_sx);
+
+        var _lo = 0;
+        var _hi = _n - 1;
+        var _last = -1;
+        while (_lo <= _hi) {
+            var _mid = floor((_lo + _hi) / 2);
+            if (_sl[_mid] <= _qr) {
+                _last = _mid;
+                _lo = _mid + 1;
+            } else {
+                _hi = _mid - 1;
+            }
+        }
+
+        for (var i = _last; i >= 0; i--) {
+            if (_pm[i] < _ql) break;
+            var _e = _sx[i];
+            if (!instance_exists(_e)) continue;
+            if (_e.bbox_right < _ql) continue;
+            if (_e.bbox_bottom < _qt || _e.bbox_top > _qb) continue;
+            array_push(_all, _e);
+        }
+    }
+
+    var _cand = _inst._sap_all;
+    var _out = _inst._sap_out;
+    array_resize(_out, 0);
+    var _cn = array_length(_cand);
+    for (var i = 0; i < _cn; i++) {
+        var _e = _cand[i];
+        if (!instance_exists(_e)) continue;
+        if (!variable_instance_exists(_e, "target_type")) continue;
+        if (_e.target_type != _key) continue;
+        array_push(_out, _e);
+    }
+    return _out;
 }

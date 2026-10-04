@@ -126,8 +126,16 @@ if (!global.save_data.unlocked_items.elite_unlocked && current_wave >= global.le
 }
 
 if (variable_global_exists("enemy_by_type")) {
+	var _ebt_cols = global.grid_cols;
+	if (!variable_global_exists("enemy_col_n") || array_length(global.enemy_col_n) != _ebt_cols) {
+		global.enemy_col_n = array_create(_ebt_cols, 0);
+	}
+	var _ebt_coln = global.enemy_col_n;
+	for (var _ebt_z = 0; _ebt_z < _ebt_cols; _ebt_z++) _ebt_coln[_ebt_z] = 0;
+
 	var _ebt_min = 1000000;
 	var _ebt_max = -1000000;
+	var _ebt_sx = [];
 	var _ebt_keys = variable_struct_get_names(global.enemy_by_type);
 	var _ebt_kn = array_length(_ebt_keys);
 	for (var _ebt_k = 0; _ebt_k < _ebt_kn; _ebt_k++) {
@@ -146,6 +154,11 @@ if (variable_global_exists("enemy_by_type")) {
 			if (_ebt_l < _ebt_min) _ebt_min = _ebt_l;
 			var _ebt_r = _ebt_id.bbox_right;
 			if (_ebt_r > _ebt_max) _ebt_max = _ebt_r;
+			array_push(_ebt_sx, _ebt_id);
+
+			var _ebt_cc0 = clamp(floor((_ebt_l - global.grid_offset_x) / global.grid_cell_size_x), 0, _ebt_cols - 1);
+			var _ebt_cc1 = clamp(floor((_ebt_r - global.grid_offset_x) / global.grid_cell_size_x), 0, _ebt_cols - 1);
+			for (var _ebt_cc = _ebt_cc0; _ebt_cc <= _ebt_cc1; _ebt_cc++) _ebt_coln[_ebt_cc] = _ebt_coln[_ebt_cc] + 1;
 		}
 		if (_ebt_dead > 0) {
 			var _ebt_keep = [];
@@ -160,4 +173,46 @@ if (variable_global_exists("enemy_by_type")) {
 	}
 	global.enemy_min_left = _ebt_min;
 	global.enemy_max_right = _ebt_max;
+
+	var _ebt_n2 = array_length(_ebt_sx);
+	var _ebt_sl = array_create(_ebt_n2, 0);
+	var _ebt_sr = array_create(_ebt_n2, 0);
+	for (var _ebt_s = 0; _ebt_s < _ebt_n2; _ebt_s++) {
+		var _ebt_ee = _ebt_sx[_ebt_s];
+		_ebt_sl[_ebt_s] = _ebt_ee.bbox_left;
+		_ebt_sr[_ebt_s] = _ebt_ee.bbox_right;
+	}
+
+	var _ebt_gap = floor(_ebt_n2 / 2);
+	while (_ebt_gap > 0) {
+		for (var _ebt_i2 = _ebt_gap; _ebt_i2 < _ebt_n2; _ebt_i2++) {
+			var _ebt_kv = _ebt_sl[_ebt_i2];
+			var _ebt_rv = _ebt_sr[_ebt_i2];
+			var _ebt_iv = _ebt_sx[_ebt_i2];
+			var _ebt_j = _ebt_i2;
+			while (_ebt_j >= _ebt_gap && _ebt_sl[_ebt_j - _ebt_gap] > _ebt_kv) {
+				_ebt_sl[_ebt_j] = _ebt_sl[_ebt_j - _ebt_gap];
+				_ebt_sr[_ebt_j] = _ebt_sr[_ebt_j - _ebt_gap];
+				_ebt_sx[_ebt_j] = _ebt_sx[_ebt_j - _ebt_gap];
+				_ebt_j -= _ebt_gap;
+			}
+			_ebt_sl[_ebt_j] = _ebt_kv;
+			_ebt_sr[_ebt_j] = _ebt_rv;
+			_ebt_sx[_ebt_j] = _ebt_iv;
+		}
+		_ebt_gap = floor(_ebt_gap / 2);
+	}
+
+	var _ebt_pm = array_create(_ebt_n2, -1000000);
+	var _ebt_run = -1000000;
+	for (var _ebt_s = 0; _ebt_s < _ebt_n2; _ebt_s++) {
+		if (_ebt_sr[_ebt_s] > _ebt_run) _ebt_run = _ebt_sr[_ebt_s];
+		_ebt_pm[_ebt_s] = _ebt_run;
+	}
+	global.enemy_sx = _ebt_sx;
+	global.enemy_sx_l = _ebt_sl;
+	global.enemy_sx_pmax = _ebt_pm;
+	global.enemy_sx_n = _ebt_n2;
+	if (!variable_global_exists("enemy_sx_gen")) global.enemy_sx_gen = 0;
+	global.enemy_sx_gen++;
 }
