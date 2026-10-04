@@ -38,7 +38,6 @@ for (var i = 0; i < array_length(buttons); i++) {
 					if instance_exists(obj_world_map_button){
 						obj_world_map_button.world_map = 0
 					}
-					pool_clear_round()
 					if global.menu_screen{
 						game_end()
 					}

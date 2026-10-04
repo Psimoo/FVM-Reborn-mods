@@ -21,6 +21,8 @@ global.enemy_sx_pmax = [];
 global.enemy_sx_gen = 0;
 
 if (!variable_global_exists("bullet_hit_interval")) global.bullet_hit_interval = 2;
+// 每场战斗重新建立敌人索引，避免上一局销毁实例后的残留 ID 被新局扫描。
+global.enemy_by_type = {};
 
 instance_create_depth(0,0,0,obj_battle_pause_manager)
 instance_create_depth(0,0,-2900,obj_battle_timer_display)
@@ -348,6 +350,8 @@ function enemy_subwave_summon(){
             var grid_pos = get_grid_position_from_world(new_x, new_y);
             var new_enemy = instance_create_depth(grid_pos.x+30, grid_pos.y + 38, 0, enemy_obj);
 
+            
+            // 更新统计信息
             current_total_hp += global.enemy_map[? _enemy_type].hp;
 
             var row_index = target_row - 1;

@@ -1,5 +1,3 @@
-pooled = false
-pooled_managed = false
 image_speed = 0
 timer = 0
 image_xscale = 1.8

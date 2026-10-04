@@ -1,11 +1,3 @@
-// 对象池标记（复用不执行 Create，默认走普通生命周期；启用池化后由池接管）
-active = true
-pooled = false
-pool_generation = 0
-pooled_managed = false
-pool_cleanup = false
-death_reward_processed = false
-
 image_xscale = 1.8
 image_yscale = 1.8
 image_speed = 0

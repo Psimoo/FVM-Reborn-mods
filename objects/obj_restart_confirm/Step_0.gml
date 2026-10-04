@@ -35,7 +35,6 @@ for (var i = 0; i < array_length(buttons); i++) {
 					if instance_exists(obj_player_info_ui){
 						obj_player_info_ui.menu_type = 0
 					}
-					pool_clear_round()
 					room_restart()
                     break;
             }

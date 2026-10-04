@@ -1,9 +1,3 @@
-// 对象池标记（首个实例创建后由池接管，复用不再执行 Create）
-active = true
-pooled = false
-pool_generation = 0
-pool_created_this_round = false
-
 damage = 0
 move_speed = 0
 state = 1
