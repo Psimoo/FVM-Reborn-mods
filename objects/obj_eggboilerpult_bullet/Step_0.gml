@@ -6,14 +6,18 @@ y -= cvspeed
 cvspeed -= cgravity
 image_angle -= 5
 
-// 类型过滤碰撞检测
+hit_tick++;
+if (hit_tick >= global.bullet_hit_interval)
+{
+	hit_tick = 0;
+	if (bullet_enemy_reachable(id)) {
 if (!hit_enemy && variable_global_exists("enemy_by_type"))
 {
     for (var _t = 0; _t < array_length(hittable_types); _t++)
     {
         var _key = hittable_types[_t];
         if (!variable_struct_exists(global.enemy_by_type, _key)) continue;
-        var _list = global.enemy_by_type[$ _key];
+        var _list = bullet_sap_type_list(id, _key);
         for (var _i = 0; _i < array_length(_list); _i++)
         {
             var _e = _list[_i];
@@ -37,34 +41,18 @@ if (!hit_enemy && variable_global_exists("enemy_by_type"))
         }
     }
 }
+	}
+}
 
 if x > 2200 or y > 1200 or x < -200 or y < -200{
     instance_destroy()
     exit
 }
-// 检查是否命中目标敌人
-//if target_enemy != noone && instance_exists(target_enemy) && target_enemy.hp > 0{
-//    if hit_enemy {
-//        // 命中主要目标
-        
-//        // 弹射到敌人身后一格位置
-//        var splash_x = target_enemy.x + global.grid_cell_size_x
-//        var splash_y = target_enemy.y
-        
-//        // 计算弹射轨迹（简单的直线运动）
-//        var dist = point_distance(x, y, splash_x, splash_y)
-        
-//        if dist <= 10 or y >= thrower_y {
-//            // 到达溅射点，造成溅射伤害
-//            instance_create_depth(x,y,depth,obj_eggboilerpult_bullet_effect)
-//            instance_destroy()
-//        }
-//    }
-//} else 
+
 if target_enemy != noone && (!instance_exists(target_enemy) or target_enemy.hp <= 0){
-    // 目标敌人在飞行过程中死亡，检查是否落地
+
     if y >= thrower_y {
-        // 击中地面，造成溅射伤害
+
         instance_create_depth(x,y,depth,obj_eggboilerpult_bullet_effect)
         instance_destroy()
         exit

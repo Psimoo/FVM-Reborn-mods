@@ -1,12 +1,13 @@
 damage = 0;
 move_speed = 0;
 row = 0;
-damage_type = "pierce"; // 穿透
+damage_type = "pierce";
 target_type = "all";
 timer = 0;
 shape = 0;
 hitted_enemy = ds_list_create();
 hittable_types = get_hittable_enemy_types(target_type);
+hit_tick = 0;
 ash_kill = false;
 image_xscale = 1.5;
 image_yscale = 1.5;

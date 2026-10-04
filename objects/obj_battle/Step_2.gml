@@ -1,10 +1,12 @@
+obj_pool_prewarm_tick();
+
 for (var _i = 0; _i < array_length(global._move_instance_pre_arr); _i++) {
     var _inst = global._move_instance_pre_arr[_i];
     with (_inst) {
-        // 判断是否拥有 parent_plant 或 parent_player 变量，且它们的值（对象索引）继承自 obj_card_parent
+
         var _hasPlant = variable_instance_exists(id, "parent_plant") && instance_exists(parent_plant) && object_is_ancestor(parent_plant.object_index, obj_card_parent);
         var _hasPlayer = variable_instance_exists(id, "parent_player") && instance_exists(parent_player) && object_is_ancestor(parent_player.object_index, obj_card_parent);
-		// Some card-attached ground effects keep their owner in banding_card_obj.
+
 		var _hasCard = (object_index == obj_in_water_effect || object_index == obj_sleep_effect || object_index == obj_lava_burn_effect)
 			&& variable_instance_exists(id, "banding_card_obj")
 			&& instance_exists(banding_card_obj)
@@ -25,8 +27,6 @@ for (var _i = 0; _i < array_length(global._move_instance_pre_arr); _i++) {
 
 global._move_instance_pre_arr = [];
 
-
-
 current_wave_hp = 0
 with obj_enemy_parent{
 	if target_type != "obstacle"{
@@ -44,7 +44,7 @@ if is_real(global.level_file.version){
 				}
 			}
 		}
-		
+
 	}
 }
 if current_wave_hp <= hp_ratio * current_total_hp && level_stage != "boss"{
@@ -57,12 +57,12 @@ if current_wave_hp <= hp_ratio * current_total_hp && level_stage != "boss"{
 if not global.is_paused{
 	wave_timer -= obj_battle.time_ticks_this_step
 }
-// 魔塔模式：小兵击杀后立刻进入下一波
+
 var _is_tower = (string_pos("tower_cake_", global.level_data.id) > 0)
 if _is_tower && level_stage == "pre" && !boss_waiting_clear && current_wave_hp <= 0 && current_wave < total_wave - 1 {
 	var _curr_sub_total = array_length(global.level_file.waves[current_wave].subwaves)
 	if current_subwave >= _curr_sub_total - 1 {
-		// 所有子波已召唤且敌人全清，立刻进入下一波
+
 		current_wave += 1
 		current_subwave = 0
 		wave_timer = 0
@@ -70,14 +70,14 @@ if _is_tower && level_stage == "pre" && !boss_waiting_clear && current_wave_hp <
 		instance_create_depth(room_width/2,room_height/2,-300,obj_huge_wave_text)
 	}
 }
-// 魔塔模式：Boss波一开始就出Boss（不等小兵清完）
+
 if _is_tower && level_stage == "pre" && !boss_waiting_clear && current_wave < total_wave {
 	var _tw_data = global.level_file.waves[current_wave]
 	if _tw_data.boss_wave && global.save_data.unlocked_items.elite_unlocked {
 		boss_waiting_clear = true
 	}
 }
-// BOSS波：等待所有小怪被清光后召唤BOSS（魔塔模式直接召唤）
+
 if boss_waiting_clear && level_stage == "pre" && (current_wave_hp <= 0 || _is_tower) {
 	boss_waiting_clear = false
 	level_stage = "boss"
@@ -121,4 +121,96 @@ if (!global.save_data.unlocked_items.elite_unlocked && current_wave >= global.le
 	if current_wave_hp <= 0 && !instance_exists(obj_game_over) && !instance_exists(obj_gacha_drop){
 		battle_finish_win();
 	}
+}
+
+if (variable_global_exists("enemy_by_type")) {
+	var _ebt_cols = global.grid_cols;
+	if (!variable_global_exists("enemy_col_n") || array_length(global.enemy_col_n) != _ebt_cols) {
+		global.enemy_col_n = array_create(_ebt_cols, 0);
+	}
+	var _ebt_coln = global.enemy_col_n;
+	for (var _ebt_z = 0; _ebt_z < _ebt_cols; _ebt_z++) _ebt_coln[_ebt_z] = 0;
+
+	var _ebt_min = 1000000;
+	var _ebt_max = -1000000;
+	var _ebt_sx = [];
+	var _ebt_keys = variable_struct_get_names(global.enemy_by_type);
+	var _ebt_kn = array_length(_ebt_keys);
+	for (var _ebt_k = 0; _ebt_k < _ebt_kn; _ebt_k++) {
+		var _ebt_key = _ebt_keys[_ebt_k];
+		var _ebt_list = global.enemy_by_type[$ _ebt_key];
+		if (!is_array(_ebt_list)) continue;
+		var _ebt_len = array_length(_ebt_list);
+		if (_ebt_len == 0) continue;
+		var _ebt_dead = 0;
+		for (var _ebt_i = 0; _ebt_i < _ebt_len; _ebt_i++) {
+			var _ebt_id = _ebt_list[_ebt_i];
+			if (!instance_exists(_ebt_id)) { _ebt_dead++; continue; }
+			var _ebt_x = _ebt_id.x;
+			if (_ebt_x < -10000) { _ebt_dead++; continue; }
+			var _ebt_l = _ebt_id.bbox_left;
+			if (_ebt_l < _ebt_min) _ebt_min = _ebt_l;
+			var _ebt_r = _ebt_id.bbox_right;
+			if (_ebt_r > _ebt_max) _ebt_max = _ebt_r;
+			array_push(_ebt_sx, _ebt_id);
+
+			var _ebt_cc0 = clamp(floor((_ebt_l - global.grid_offset_x) / global.grid_cell_size_x), 0, _ebt_cols - 1);
+			var _ebt_cc1 = clamp(floor((_ebt_r - global.grid_offset_x) / global.grid_cell_size_x), 0, _ebt_cols - 1);
+			for (var _ebt_cc = _ebt_cc0; _ebt_cc <= _ebt_cc1; _ebt_cc++) _ebt_coln[_ebt_cc] = _ebt_coln[_ebt_cc] + 1;
+		}
+		if (_ebt_dead > 0) {
+			var _ebt_keep = [];
+			for (var _ebt_i = 0; _ebt_i < _ebt_len; _ebt_i++) {
+				var _ebt_id = _ebt_list[_ebt_i];
+				if (!instance_exists(_ebt_id)) continue;
+				if (_ebt_id.x < -10000) continue;
+				array_push(_ebt_keep, _ebt_id);
+			}
+			global.enemy_by_type[$ _ebt_key] = _ebt_keep;
+		}
+	}
+	global.enemy_min_left = _ebt_min;
+	global.enemy_max_right = _ebt_max;
+
+	var _ebt_n2 = array_length(_ebt_sx);
+	var _ebt_sl = array_create(_ebt_n2, 0);
+	var _ebt_sr = array_create(_ebt_n2, 0);
+	for (var _ebt_s = 0; _ebt_s < _ebt_n2; _ebt_s++) {
+		var _ebt_ee = _ebt_sx[_ebt_s];
+		_ebt_sl[_ebt_s] = _ebt_ee.bbox_left;
+		_ebt_sr[_ebt_s] = _ebt_ee.bbox_right;
+	}
+
+	var _ebt_gap = floor(_ebt_n2 / 2);
+	while (_ebt_gap > 0) {
+		for (var _ebt_i2 = _ebt_gap; _ebt_i2 < _ebt_n2; _ebt_i2++) {
+			var _ebt_kv = _ebt_sl[_ebt_i2];
+			var _ebt_rv = _ebt_sr[_ebt_i2];
+			var _ebt_iv = _ebt_sx[_ebt_i2];
+			var _ebt_j = _ebt_i2;
+			while (_ebt_j >= _ebt_gap && _ebt_sl[_ebt_j - _ebt_gap] > _ebt_kv) {
+				_ebt_sl[_ebt_j] = _ebt_sl[_ebt_j - _ebt_gap];
+				_ebt_sr[_ebt_j] = _ebt_sr[_ebt_j - _ebt_gap];
+				_ebt_sx[_ebt_j] = _ebt_sx[_ebt_j - _ebt_gap];
+				_ebt_j -= _ebt_gap;
+			}
+			_ebt_sl[_ebt_j] = _ebt_kv;
+			_ebt_sr[_ebt_j] = _ebt_rv;
+			_ebt_sx[_ebt_j] = _ebt_iv;
+		}
+		_ebt_gap = floor(_ebt_gap / 2);
+	}
+
+	var _ebt_pm = array_create(_ebt_n2, -1000000);
+	var _ebt_run = -1000000;
+	for (var _ebt_s = 0; _ebt_s < _ebt_n2; _ebt_s++) {
+		if (_ebt_sr[_ebt_s] > _ebt_run) _ebt_run = _ebt_sr[_ebt_s];
+		_ebt_pm[_ebt_s] = _ebt_run;
+	}
+	global.enemy_sx = _ebt_sx;
+	global.enemy_sx_l = _ebt_sl;
+	global.enemy_sx_pmax = _ebt_pm;
+	global.enemy_sx_n = _ebt_n2;
+	if (!variable_global_exists("enemy_sx_gen")) global.enemy_sx_gen = 0;
+	global.enemy_sx_gen++;
 }

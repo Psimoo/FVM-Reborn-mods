@@ -19,14 +19,18 @@ if (y >= (thrower_y - 50))
     exit;
 }
 
-// 类型过滤碰撞检测
+hit_tick++;
+if (hit_tick >= global.bullet_hit_interval)
+{
+	hit_tick = 0;
+	if (bullet_enemy_reachable(id)) {
 if (!hit_enemy && variable_global_exists("enemy_by_type"))
 {
 	for (var _t = 0; _t < array_length(hittable_types); _t++)
 	{
 		var _key = hittable_types[_t];
 		if (!variable_struct_exists(global.enemy_by_type, _key)) continue;
-		var _list = global.enemy_by_type[$ _key];
+		var _list = bullet_sap_type_list(id, _key);
 		for (var _i = 0; _i < array_length(_list); _i++)
 		{
 			var _e = _list[_i];
@@ -49,5 +53,7 @@ if (!hit_enemy && variable_global_exists("enemy_by_type"))
 				exit;
 			}
 		}
+	}
+}
 	}
 }

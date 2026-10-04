@@ -22,14 +22,18 @@ if (target_enemy != -4 && (!instance_exists(target_enemy) || target_enemy.hp <= 
     }
 }
 
-// 类型过滤碰撞检测
+hit_tick++;
+if (hit_tick >= global.bullet_hit_interval)
+{
+	hit_tick = 0;
+	if (bullet_enemy_reachable(id)) {
 if (!hit_enemy && variable_global_exists("enemy_by_type"))
 {
 	for (var _t = 0; _t < array_length(hittable_types); _t++)
 	{
 		var _key = hittable_types[_t];
 		if (!variable_struct_exists(global.enemy_by_type, _key)) continue;
-		var _list = global.enemy_by_type[$ _key];
+		var _list = bullet_sap_type_list(id, _key);
 		for (var _i = 0; _i < array_length(_list); _i++)
 		{
 			var _e = _list[_i];
@@ -52,10 +56,12 @@ if (!hit_enemy && variable_global_exists("enemy_by_type"))
 				hitted_enemy = _e.id;
 
 				instance_create_depth(x, y, depth, obj_thor_bullet_effect_1);
-				// 雷神冰锤命中后直接结束，不沿目标身后继续飞行（色拉投手的弹射行为）。
+
 				instance_destroy();
 				exit;
 			}
 		}
+	}
+}
 	}
 }

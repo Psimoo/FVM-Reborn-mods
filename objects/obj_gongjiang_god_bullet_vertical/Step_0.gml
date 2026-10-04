@@ -1,5 +1,4 @@
-// 工匠神竖向子弹 - 步事件
-// 列锁定 + 上下速度，到达边缘后反转方向返回；沿途对 bbox 相交敌人造成伤害
+
 if (global.is_paused)
 {
     image_speed = 0;
@@ -16,34 +15,38 @@ if (life_frames >= max_life_frames)
     exit;
 }
 
-// 锁定 x 到列中心
-var _col_pos = get_world_position_from_grid(col, 0);
-x = _col_pos.x;
-
-// 上下移动
 y += move_speed * vertical_dir;
 
-// 到达边缘后反转方向返回，清空命中列表以重新命中
-var _grid_top = global.grid_offset_y - 40;
-var _grid_bottom = global.grid_offset_y + global.grid_cell_size_y * global.grid_rows + 40;
-if (vertical_dir < 0 && y <= _grid_top)
+if (vertical_dir < 0 && y <= my_top)
 {
-    y = _grid_top;
+    y = my_top;
     vertical_dir = 1;
     image_angle = 270;
     if (ds_exists(hitted_enemy, ds_type_list)) ds_list_clear(hitted_enemy);
 }
-else if (vertical_dir > 0 && y >= _grid_bottom)
+else if (vertical_dir > 0 && y >= my_bottom)
 {
-    y = _grid_bottom;
+    y = my_bottom;
     vertical_dir = -1;
     image_angle = 90;
     if (ds_exists(hitted_enemy, ds_type_list)) ds_list_clear(hitted_enemy);
 }
 
-// 命中检测
 if (!ds_exists(hitted_enemy, ds_type_list)) exit;
 
+hit_tick++;
+if (hit_tick >= global.bullet_hit_interval)
+{
+	hit_tick = 0;
+	var _has_col = false;
+	var _cc0 = col - 1;
+	if (_cc0 < 0) _cc0 = 0;
+	var _cc1 = col + 1;
+	if (_cc1 > global.grid_cols - 1) _cc1 = global.grid_cols - 1;
+	for (var _cc = _cc0; _cc <= _cc1; _cc++) {
+		if (global.enemy_col_n[_cc] > 0) { _has_col = true; break; }
+	}
+	if (_has_col) {
 if (variable_global_exists("enemy_by_type"))
 {
     for (var _t = 0; _t < array_length(hittable_types); _t++)
@@ -51,7 +54,7 @@ if (variable_global_exists("enemy_by_type"))
         var _key = hittable_types[_t];
         if (!variable_struct_exists(global.enemy_by_type, _key)) continue;
 
-        var _list = global.enemy_by_type[$ _key];
+        var _list = bullet_sap_type_list(id, _key);
         for (var _i = 0; _i < array_length(_list); _i++)
         {
             var _e = _list[_i];
@@ -98,4 +101,6 @@ if (variable_global_exists("enemy_by_type"))
 
         if (!ds_exists(hitted_enemy, ds_type_list)) break;
     }
+}
+	}
 }

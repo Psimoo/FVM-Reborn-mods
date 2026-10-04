@@ -19,14 +19,18 @@ else
 var _top = global.grid_offset_y - 81;
 var _bot = global.grid_offset_y + (global.grid_rows * global.grid_cell_size_y) + 81;
 
-// 类型过滤碰撞检测
+hit_tick++;
+if (hit_tick >= global.bullet_hit_interval)
+{
+	hit_tick = 0;
+	if (bullet_enemy_reachable(id)) {
 if (variable_global_exists("enemy_by_type"))
 {
     for (var _t = 0; _t < array_length(hittable_types); _t++)
     {
         var _key = hittable_types[_t];
         if (!variable_struct_exists(global.enemy_by_type, _key)) continue;
-        var _list = global.enemy_by_type[$ _key];
+        var _list = bullet_sap_type_list(id, _key);
         for (var _i = 0; _i < array_length(_list); _i++)
         {
             var _e = _list[_i];
@@ -76,6 +80,8 @@ if (variable_global_exists("enemy_by_type"))
             }
         }
     }
+}
+	}
 }
 
 if (y < _top || y > _bot)
