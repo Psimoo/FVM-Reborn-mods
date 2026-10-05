@@ -109,14 +109,6 @@ function obj_pool_acquire(_obj, _x, _y, _depth) {
         if (instance_exists(_inst)) break;
         _inst = noone;
     }
-    return noone;
-}
-
-// 池为空时允许按需扩容（延迟创建）。取出闲置实例或新建实例，并统一
-// 完成进入场内所需的最小初始化。
-function pool_acquire(_obj, _x, _y, _depth) {
-    var _pool = pool_get_or_create(_obj);
-    var _inst = pool_take_idle(_pool);
 
     if (_inst == noone) {
         _st.create++;
