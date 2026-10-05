@@ -52,6 +52,7 @@
     {"name":"obj_time_god_effect","path":"objects/obj_time_god_effect/obj_time_god_effect.yy",},
     {"name":"obj_war_god_bullet_effect","path":"objects/obj_war_god_bullet_effect/obj_war_god_bullet_effect.yy",},
     {"name":"obj_zeus_bolt_bullet_effect","path":"objects/obj_zeus_bolt_bullet_effect/obj_zeus_bolt_bullet_effect.yy",},
-    {"name":"obj_zhurong_bullet_effect","path":"objects/obj_zhurong_bullet_effect/obj_zhurong_bullet_effect.yy",}
+    {"name":"obj_zhurong_bullet_effect","path":"objects/obj_zhurong_bullet_effect/obj_zhurong_bullet_effect.yy",},
+    {"name":"obj_lizi_god_bullet_effect","path":"objects/obj_lizi_god_bullet_effect/obj_lizi_god_bullet_effect.yy",}
   ],
 }

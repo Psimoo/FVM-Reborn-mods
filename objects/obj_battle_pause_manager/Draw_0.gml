@@ -245,7 +245,7 @@ if (global.is_paused)
 							var _cs_lv_idx = real(string_delete(global.level_data.id, 1, string_length("ancient_castle_")));
 							var _cs_silver_val = _cs_silver_arr[min(_cs_lv_idx, array_length(_cs_silver_arr) - 1)];
                             var _cs_gold_medal_val = [90, 120, 181, 240, 280, 395, 635, 875][min(_cs_lv_idx, 7)];
-                            var _cs_gold_val = [600000, 840000, 1040000, 1290000, 1400000, 1600000, 1900000, 2200000][min(_cs_lv_idx, 7)];
+                            var _cs_gold_val = [60000, 84000, 104000, 129000, 140000, 160000, 190000, 220000][min(_cs_lv_idx, 7)];
                             draw_text(1200,260,"白银徽章（"+string(_cs_silver_val)+"）");
                             draw_text(1200,285,"黄金徽章（"+string(_cs_gold_medal_val)+"）");
                             draw_text(1200,310,"金币（"+string(_cs_gold_val)+"）");

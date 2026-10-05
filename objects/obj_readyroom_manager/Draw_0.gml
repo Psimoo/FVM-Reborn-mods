@@ -341,7 +341,7 @@ for(var i = deck_first_slot_index; i < deck_first_slot_index+11;i++){
 					var _cs_lv_idx_rd = real(string_delete(global.level_data.id, 1, string_length("ancient_castle_")));
 					var _cs_silver_rd = _cs_silver_arr_rd[min(_cs_lv_idx_rd, array_length(_cs_silver_arr_rd) - 1)];
 					var _cs_gold_medal_rd = [90, 120, 181, 240, 280, 395, 635, 875][min(_cs_lv_idx_rd, 7)];
-					var _cs_gold_coins_rd = [600000, 840000, 1040000, 1290000, 1400000, 1600000, 1900000, 2200000][min(_cs_lv_idx_rd, 7)];
+					var _cs_gold_coins_rd = [60000, 84000, 104000, 129000, 140000, 160000, 190000, 220000][min(_cs_lv_idx_rd, 7)];
 					draw_text(100,820,"白银徽章（"+string(_cs_silver_rd)+"）");
 					draw_text(100,860,"黄金徽章（"+string(_cs_gold_medal_rd)+"）");
 					draw_text(100,900,"金币（"+string(_cs_gold_coins_rd)+"）");

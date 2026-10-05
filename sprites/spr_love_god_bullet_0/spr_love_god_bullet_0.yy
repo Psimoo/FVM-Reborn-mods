@@ -62,7 +62,7 @@
     },
     "name":"spr_love_god_bullet_0",
     "playback":1,
-    "playbackSpeed":10.0,
+    "playbackSpeed":3.0,
     "playbackSpeedType":0,
     "resourceType":"GMSequence",
     "resourceVersion":"2.0",

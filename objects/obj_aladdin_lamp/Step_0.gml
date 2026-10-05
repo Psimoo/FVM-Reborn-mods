@@ -49,6 +49,8 @@ if (!is_attacking && cooldown <= 0)
     
     with (obj_enemy_parent)
     {
+        if (hp <= 0 || pooled)
+            continue;
         _target = id;
         break;
     }

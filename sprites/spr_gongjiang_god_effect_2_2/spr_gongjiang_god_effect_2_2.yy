@@ -65,7 +65,7 @@
     },
     "name":"spr_gongjiang_god_effect_2_2",
     "playback":1,
-    "playbackSpeed":11.0,
+    "playbackSpeed":3.0,
     "playbackSpeedType":0,
     "resourceType":"GMSequence",
     "resourceVersion":"2.0",

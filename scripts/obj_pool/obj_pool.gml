@@ -117,27 +117,12 @@ function obj_pool_acquire(_obj, _x, _y, _depth) {
 
     _st.get++;
     with (_inst) {
-
         x = _x;
         y = _y;
         depth = _depth;
         visible = true;
-
-        image_index = 0;
-        image_angle = 0;
-        image_alpha = 1;
-        image_blend = c_white;
-        image_xscale = 1;
-        image_yscale = 1;
-        image_speed = 1;
-        hspeed = 0;
-        vspeed = 0;
-        speed = 0;
-        direction = 0;
-        gravity = 0;
-        friction = 0;
-
         instance_change(_obj, true);
+        event_user(14);
     }
     return _inst;
 }

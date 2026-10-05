@@ -57,8 +57,16 @@ if current_wave_hp <= hp_ratio * current_total_hp && level_stage != "boss"{
 if not global.is_paused{
 	wave_timer -= obj_battle.time_ticks_this_step
 }
-
 var _is_tower = (string_pos("tower_cake_", global.level_data.id) > 0)
+// 魔塔最后一波没有 Boss 时，清空敌人即可结束关卡。
+// 最后一波的计时器仍在运行会让玩家在已完成后等到限时结束并判负。
+if _is_tower && level_stage == "pre" && !boss_waiting_clear && current_wave == total_wave - 1 && current_wave_hp <= 0 {
+	var _last_sub_total = array_length(global.level_file.waves[current_wave].subwaves)
+	if _last_sub_total > 0 && current_subwave >= _last_sub_total - 1 {
+		battle_finish_win()
+	}
+}
+// 魔塔模式：小兵击杀后立刻进入下一波
 if _is_tower && level_stage == "pre" && !boss_waiting_clear && current_wave_hp <= 0 && current_wave < total_wave - 1 {
 	var _curr_sub_total = array_length(global.level_file.waves[current_wave].subwaves)
 	if current_subwave >= _curr_sub_total - 1 {
@@ -77,7 +85,17 @@ if _is_tower && level_stage == "pre" && !boss_waiting_clear && current_wave < to
 		boss_waiting_clear = true
 	}
 }
-
+// 普通关卡的 Boss 波也在这里兜底确认，避免波次计时器与清场发生在同一帧时漏掉 Boss。
+if !_is_tower && level_stage == "pre" && !boss_waiting_clear && current_wave < total_wave && global.save_data.unlocked_items.elite_unlocked {
+	var _main_boss_data = global.level_file.waves[current_wave]
+	if _main_boss_data.boss_wave && _main_boss_data.boss != "" && current_wave_hp <= 0 {
+		var _main_boss_sub_total = array_length(_main_boss_data.subwaves)
+		if _main_boss_sub_total > 0 && current_subwave >= _main_boss_sub_total - 1 {
+			boss_waiting_clear = true
+		}
+	}
+}
+// BOSS波：等待所有小怪被清光后召唤BOSS（魔塔模式直接召唤）
 if boss_waiting_clear && level_stage == "pre" && (current_wave_hp <= 0 || _is_tower) {
 	boss_waiting_clear = false
 	level_stage = "boss"
