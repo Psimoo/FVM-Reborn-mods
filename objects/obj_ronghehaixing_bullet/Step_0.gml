@@ -2,7 +2,37 @@ if global.is_paused{
 	image_speed = 0
 	exit
 }
-image_speed = 1
+
+// 动画控制
+if (!has_hit_anim) {
+	// 未命中阶段：保持指定帧范围
+	if (shape == 0 || shape == 1) {
+		// shape0/1：保持第一帧
+		image_speed = 0
+		image_index = 0
+	} else {
+		// shape2及以上：循环播放1-8帧（索引0-7）
+		image_speed = 1
+		var _frames = sprite_get_number(sprite_index)
+		if (_frames > 8) {
+			if (image_index >= 8) image_index = 0
+		}
+	}
+} else {
+	// 命中后：播放剩余帧，播完销毁
+	image_speed = 1
+	hit_anim_timer++
+	var _total_frames = sprite_get_number(sprite_index)
+	if (image_index >= _total_frames - 1) {
+		instance_destroy()
+		exit
+	}
+}
+
+// 命中动画播放中不移动也不碰撞
+if (has_hit_anim) {
+	exit
+}
 
 // 追踪模式（终转边界反弹后）
 if (has_bounced_wall) {
@@ -63,7 +93,16 @@ if (variable_global_exists("enemy_by_type"))
                     damage_type = other.damage_type
                     event_user(0)
                 }
-                instance_destroy()
+                // 命中后切换到命中动画
+                has_hit_anim = true
+                move_speed = 0
+                y_move_speed = 0
+                // 跳到剩余帧的起始帧
+                if (shape == 0 || shape == 1) {
+                    image_index = 1
+                } else {
+                    image_index = 8
+                }
                 exit
             }
         }

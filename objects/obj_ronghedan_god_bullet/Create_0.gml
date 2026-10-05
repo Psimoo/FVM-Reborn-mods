@@ -1,3 +1,4 @@
+event_inherited();
 damage = 0
 move_speed = 0
 cvspeed = 0
@@ -15,6 +16,10 @@ atk_modified = false
 image_xscale = 1.8;
 image_yscale = 1.8;
 hittable_types = get_hittable_enemy_types(target_type);
+hit_tick = 0;
+has_splashed = false;
+image_speed = 0;
+image_index = 1;
 stun_chance = 20;
 stun_duration = 90;
 original_damage = 0;

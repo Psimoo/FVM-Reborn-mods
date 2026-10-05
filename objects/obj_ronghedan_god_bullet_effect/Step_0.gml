@@ -55,6 +55,6 @@ if (image_index >= 6 && !has_splashed) {
     audio_play_sound(snd_egg_bullet, 0, 0)
 }
 
-if timer >= 18{
+if timer >= 45{
 	instance_destroy()
 }
