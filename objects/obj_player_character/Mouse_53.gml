@@ -1,4 +1,6 @@
 if not is_placed{
+	// 暂停菜单打开时不响应放置，避免点菜单按钮时顺手把人物放到菜单底下的格子
+	if (instance_exists(obj_pause_menu)) exit;
 	var logical_x = mouse_x;
 	var logical_y = mouse_y;
 	var platform_shift_x = 0;

@@ -12,6 +12,8 @@
   "folders":[],
   "listItems":[
     {"name":"obj_pool","path":"scripts/obj_pool/obj_pool.yy",},
-    {"name":"src_hook_function","path":"scripts/src_hook_function/src_hook_function.yy",}
+    {"name":"obj_pool_deck","path":"scripts/obj_pool_deck/obj_pool_deck.yy",},
+    {"name":"src_hook_function","path":"scripts/src_hook_function/src_hook_function.yy",},
+    {"name":"obj_pool_holder","path":"objects/obj_pool_holder/obj_pool_holder.yy",}
   ],
 }

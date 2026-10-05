@@ -12,6 +12,7 @@ damage_type = "pierce";
 target_type = "normal";
 hitted_enemy = ds_list_create();
 hittable_types = ["normal", "air", "invisible"];
+hit_tick = 0;
 stun_chance = 15;
 stun_duration = 90;
 image_xscale = 1.6;
